@@ -1,0 +1,29 @@
+@import "/app.wxss";
+
+.repair-progress-list{padding:25rpx;}
+.repair-progress-list .li{height:330rpx; border-radius:10rpx; background:#fff;box-shadow:0 0 24rpx 5rpx #eeeeee; margin-bottom:30rpx; position:relative;}
+.repair-progress-list .li .top{height:180rpx; background:#e1eaf1; border-top-left-radius: 10rpx; border-top-right-radius: 10rpx; padding:30rpx;}
+.repair-progress-list .li .top .h3{font-size:34rpx; margin-bottom:20rpx; margin-right:80rpx; color:#8a8b8d;text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.repair-progress-list .li .top .h3 text{color:#333;}
+.repair-progress-list .li .top .p{color:#777777; font-size:30rpx; line-height:48rpx; border:1rpx solid #bdc4ca; padding:10rpx 20rpx 20rpx; border-radius:10rpx; height:96rpx;}
+.repair-progress-list .li .top .p .p_txt{display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 2;}
+.repair-progress-list .li .top .p .ico_q{width:40rpx; height:40rpx; background-position:-40rpx -160rpx; margin-right:10rpx;}
+.repair-progress-list .li .btm{height:90rpx; line-height:90rpx; padding:0 30rpx;color:#999; font-size:24rpx;}
+.repair-progress-list .li .btm .time{float:left; }
+.repair-progress-list .li .btm .time icon{width:30rpx; height:30rpx; background-position: -120rpx -120rpx; vertical-align: middle; position: relative; top:-2rpx; margin-right:5rpx;}
+.repair-progress-list .li .btm .pay_price{float:right;}
+.repair-progress-list .li .btm .pay_price icon{background-position:0 -120rpx; width:30rpx; height:30rpx; vertical-align: middle; position:relative; top:-2rpx;}
+.repair-progress-list .li .btm .btns{float:right; text-align: right;}
+.repair-progress-list .li .btm .btns>view{display:inline-block; height:50rpx; line-height:50rpx; padding:0 30rpx; border-radius:26rpx; border:1rpx solid #c2c2c2; margin-left:15rpx;}
+.repair-progress-list .li .btm .btns>view.btn02{border-color:#22a5f9; color:#22a5f9;}
+.repair-progress-list .li .label{display:inline-block; width:97rpx; height:42rpx; line-height:38rpx; text-align: center; color:#fff; font-size:24rpx; position:absolute; top:30rpx; right:-3rpx;}
+.repair-progress-list .li .l_yellow{background-position:-180rpx 0;}
+.repair-progress-list .li .l_blue{background-position:-285rpx 0;}
+.repair-progress-list .li .l_blue2{background-position:-70rpx 0;}
+.repair-progress-list .li .l_gray{background-position:-395rpx 0;}
+
+/* .repair-progress-list .li:first-child .top{background:url('https://www.5iparks.com/static/yuanding/images/msg/notice_bg.png') no-repeat; background-size:100% 100%; }
+.repair-progress-list .li:first-child .top .h3{ color:#e6e7ff;}
+.repair-progress-list .li:first-child .top .h3 text{color:#fff;}
+.repair-progress-list .li:first-child .top .p{color:#fff; border-color:#7bb8ff; background:rgba(0,0,0,.1);} */
+.repair-progress-list .li .fwpf_txt{text-align:center; }

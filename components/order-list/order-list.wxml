@@ -1,0 +1,179 @@
+
+<!--  -->
+<view class='order_month'>
+
+  <!-- <view class='order_month_top'>
+    <view class='month_btn'><icon class='icons ico_month'></icon></view>
+    <view class='info'>
+      <text class='tit'>本月</text>
+      <view class='txt'>待支付：<text class='orange'>￥ {{}}</text></view>
+      <view class='txt'>未开票：<text class='green'>￥ 2344.23</text></view>
+    </view>
+  </view> -->
+
+  <view class='order_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    <block wx:for="{{listInfo.list}}" wx:key="{{index}}">
+
+      <!-- 未支付-租金 -->
+      <view class='li' bindtap="gotoDetailsFn" data-id="{{item.billId}}" wx:if="{{item.status==2}}">
+        <view class='label l_purple'>{{langData.orderName}}</view>
+
+        <view class='info'>
+          <view class='info_r'>
+            <view class='price'>￥ {{item.totalAmount}}</view>
+            <view class='btn'>{{langData.payBtn}}</view>
+          </view>
+          <view class='info_l'>
+            <view class='h3'>{{item.month}}{{langData.orderText1}}</view>
+            <!-- <view class='p'>{{langData.payee}}：广州园叮科技有限公司</view> -->
+            <view class='ico_txt'><icon class='icons ico_time'></icon>{{item.feePeriod}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 未开票 -->
+      <view class='li fapiao_li' bindtap="gotoDetailsFn" data-id="{{item.billId}}" wx:if="{{item.status==3}}">
+        <view class='label l_purple'>{{langData.orderName}}</view>
+        <view class='info'>
+          <view class='info_r'>
+           <view class='price'>￥ {{item.totalAmount}}</view>
+            <!-- <view class='btn'>我要开票</view> -->
+          </view>
+          <view class='info_l'>
+            <view class='h3'>{{item.month}}{{langData.orderText1}}</view>
+            <!-- <view class='p'>{{langData.payee}}：广州园叮科技有限公司</view> -->
+            <view class='ico_txt'><icon class='icons ico_time'></icon>{{item.feePeriod}}</view>
+          </view>
+        </view>
+      </view>
+
+    </block>
+  </view>
+ <!-- 底部提示文字 -->
+  <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
+    <view class='txt'>{{listInfo.tipTxt}}</view>
+  </view>  
+</view>
+
+<!-- 暂无状态 -->
+<list-nothing 
+  c-name="order" 
+  wx:if="{{!listInfo.list.length>0 && listInfo.list}}"
+></list-nothing>
+
+
+<!-- li那里有几种状态：默认、fapiao_li、finish_li -->
+<!-- label那里有好几种状态：l_blue、l_blue2、l_yellow、l_purple、l_gray、l_gray2 -->
+  <view class='order_list' wx:if="{{false}}">
+    
+    <!-- 未支付 -->
+    <view class='li'>
+      <view class='label l_blue2'>水费</view>
+      <view class='info'>
+        <view class='info_r'>
+          <view class='price'>￥ 433.4</view>
+          <view class='btn'>立即支付</view>
+        </view>
+        <view class='info_l'>
+          <view class='h3'>广州滴滴出行科技有限公司</view>
+          <view class='p'>收款方：广州园叮科技有限公司</view>
+          <view class='ico_txt'><icon class='icons ico_time'></icon>07-29 19:52</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 未开票 -->
+    <view class='li fapiao_li'>
+      <view class='label l_blue'>电费</view>
+      <view class='info'>
+        <view class='info_r'>
+          <view class='price'>￥ 433.4</view>
+          <view class='btn'>我要开票</view>
+        </view>
+        <view class='info_l'>
+          <view class='h3'>广州滴滴出行科技有限公司</view>
+          <view class='p'>收款方：广州园叮科技有限公司</view>
+          <view class='ico_txt'><icon class='icons ico_time'></icon>07-29 19:52</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 已开票 -->
+    <view class='li finish_li'>
+      <view class='label l_purple'>租金</view>
+      <view class='info'>
+        <view class='info_r'>
+          <view class='price'>￥ 433.4</view>
+          <view class='btn'>立即支付</view>
+          <image class='ykp_img' src='{{domainUrl}}/images/order/ykp_img.png' mode='widthFix'></image>
+        </view>
+        <view class='info_l'>
+          <view class='h3'>广州滴滴出行科技有限公司</view>
+          <view class='p'>收款方：广州园叮科技有限公司</view>
+          <view class='ico_txt'><icon class='icons ico_time'></icon>07-29 19:52</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 临时停车 -->
+    <view class='li linting_li'>
+      <view class='label l_purple'>临停</view>
+      <view class='info'>
+        <view class='info_r'>
+          <view class='price'>￥ 20.00</view>
+        </view>
+        <view class='info_l'>
+          <view class='h3'><text class="gray">缴费车辆：</text>粤A H888K</view>
+          <view class='ico_txt'><icon class='icons ico_tc'></icon>07-29 13:45 至 07-29 19:52</view>
+          <view class='ico_txt'><icon class='icons ico_time'></icon>入园计时：6小时07分</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 月卡 -->
+    <view class='li month_li'>
+      <view class='label l_yellow'>月卡</view>
+      <view class='info'>
+        <view class='info_r'>
+          <view class='price'>￥ 200.00</view>
+        </view>
+        <view class='info_l'>
+          <view class='h3'><text class="gray">缴费月份：</text>2018年6月</view>
+          <view class='ico_txt'><icon class='icons ico_xf'></icon>续费至：2018-08-09</view>
+          <view class='ico_txt'><icon class='icons ico_time'></icon>缴费时间：07-29 19:52</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 免费停车券 -->
+    <view class='li tcq_li'>
+      <view class='label ico_mf icons'></view>
+      <view class='info'>
+        <view class='info_r'>
+          <view class='price'>×1</view>
+        </view>
+        <view class='info_l'>
+          <view class='h3'>免费停车券</view>
+          <view class='ico_txt'>发放方：广州园叮科技有限公司</view>
+          <view class='ico_txt'><icon class='icons ico_time'></icon>07-29 19:52</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 临时停车卡 -->
+    <view class='li month_li'>
+      <view class='label ico_ls icons'></view>
+      <view class='info'>
+        <view class='info_r'>
+          <view class='price'>￥ 75.00</view>
+        </view>
+        <view class='info_l'>
+          <view class='h3'>临时停车卡<text class="gray">(5张)</text></view>
+          <view class='ico_txt'><icon class='icons ico_xf'></icon>收款方：广州园叮科技有限公司</view>
+          <view class='ico_txt'><icon class='icons ico_time'></icon>07-29 19:52</view>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+

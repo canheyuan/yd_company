@@ -1,0 +1,28 @@
+page{padding-bottom: 60rpx; background: #f7f7f7;}
+/* 顶部说明 */
+.supplies_top{padding-top: 214rpx; background:url(https://www.5iparks.com/static/yuanding/images/supplies/supplies_banner.jpg) no-repeat center top #fff; background-size: 100% 300rpx;}
+.supplies_intro{padding: 36rpx 40rpx 0; background:url(https://www.5iparks.com/static/yuanding/images/supplies/intro_bg.png) no-repeat center top; background-size: 100% 270rpx;}
+.supplies_intro .text_ctn{color: #333; font-size: 30rpx; line-height: 44rpx; padding: 22rpx 16rpx; margin-top: 22rpx; border-radius: 10rpx; background: #f5f5f5;}
+
+/* 物品借用 */
+.borrow{ background: #fff; padding-top:20rpx;}
+.borrow .dl{padding-left:26rpx; margin-bottom:20rpx;  position:relative;}
+.borrow .dt{width: 60rpx; float: left; margin-right:20rpx;}
+.borrow .dt .img{width: 60rpx; height: 60rpx;}
+.borrow .dd{overflow:hidden; border-bottom: 1rpx solid #e2e2e2; padding-bottom:20rpx;}
+.borrow .dl:last-child .dd{border-bottom:none;}
+.borrow .dd .title{color: #333; font-size: 30rpx; line-height:60rpx;}
+.borrow .dd .title text{color: #9d9d9d; font-size: 26rpx; display: inline-block; line-height:60rpx;}
+.borrow .dd .address{font-size:24rpx; color:#999; line-height:30rpx;}
+.borrow .dd .address .ico_build{width:30rpx; height:30rpx; background-position:-300rpx -120rpx; vertical-align: top; margin-right:10rpx;}
+.borrow .dd .apply{color: #2a99f1; font-size: 26rpx; line-height:40rpx; position:absolute; right:30rpx; top:10rpx; padding-right:40rpx;
+background:url(https://www.5iparks.com/static/yuanding/images/supplies/arrow.png) no-repeat right top; background-size: 40rpx 40rpx;}
+.borrow .dd .apply.brwed{color: #9d9d9d; padding-right: 20rpx; background:none;}
+
+
+/* 查看记录 */
+.txtnbtn_box{color: #2a99f1; font-size: 30rpx; text-align: center; text-decoration: underline; padding-top: 36rpx;}
+
+/* 弹框内容 */
+.pop_ctn .text_ctn{color: #555; font-size: 32rpx; line-height: 50rpx; margin: 40rpx 0 60rpx;}
+.pop_ctn .text_ctn .supplies{color: #ff6000;  display: block;}

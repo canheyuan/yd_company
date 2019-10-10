@@ -1,0 +1,97 @@
+<!-- 下拉刷新动画 -->
+<reach-load></reach-load>
+
+
+<!--顶部-->
+<view 
+    class='user_head'
+    style="background: url({{domainUrl}}/images/me/user_bg.jpg) #fff no-repeat center top; background-size: 100% auto;"
+>
+    <!-- 编辑按钮 -->
+    <navigator class='update_txt' url='/pages/user/user-info/user-info' hover-class='hover'>
+        <image src='{{domainUrl}}/images/me/bj.png'></image>
+        <text class='bj_txt'>{{langData.editBtn}}</text>
+    </navigator>
+
+    <!-- 我的信息 -->
+    <view class="per_info">
+        <image
+            class='per_img' src='{{userInfo.headImgs?userInfo.headImgs:domainUrl+"/images/default/df_userhead.png"}}'
+            binderror='errorImgFn' data-obj="userInfo.headImgs"
+            data-img="{{domainUrl}}/images/default/df_userhead.png"
+        >
+        </image>
+        <view class='name'>
+            <text>{{userInfo.name}}</text>
+            <image wx:if="{{userInfo.sex==1 || userInfo.sex==2}}" class='ico_sex' src='{{domainUrl}}/images/me/{{userInfo.sex == 1?"man":"woman"}}.png'></image>
+        </view>
+         <view class='company_name' wx:if="{{userInfo.enterpriseInfo.entName}}">{{userInfo.enterpriseInfo.entName}}</view>
+    </view>
+   
+    <!-- 顶部功能按钮 -->
+    <view class='head_btn_list'>
+        <navigator 
+            class='a' hover-class='hover'  wx:if="{{moduleSwitch.repair}}"
+            url='/pages/user/my-repair/my-repair'
+        >
+            <image class='ico' src='{{domainUrl}}/images/me/ico_repair.png'></image>
+            <text class='txt'>{{langData.repairBtn}}</text>
+        </navigator>
+        
+        <navigator 
+            class='a' hover-class='hover' wx:if="{{moduleSwitch.venue}}"
+            url='/pages/user/my-reserve/my-reserve' 
+        >
+            <image class='ico' src='{{domainUrl}}/images/me/ico_venue.png'></image>
+            <text class='txt'>{{langData.venueBtn}}</text>
+        </navigator>
+
+        <navigator class='a' hover-class='hover' url='' bindtap="fapiaoTip">
+            <image class='ico' src='{{domainUrl}}/images/me/ico_invoice.png'></image>
+            <text class='txt'>{{langData.invoiceBtn}}</text>
+        </navigator>
+
+        <navigator 
+            class='a' hover-class='hover' wx:if="{{moduleSwitch.recommend && isRecommendInfo==1}}"
+            url='/pages/recommend/recommend-index/recommend-index' bindtap='recommendGotoUrl' 
+        >
+            <image class='ico' src='{{domainUrl}}/images/me/ico_recommend.png'></image>
+            <text class='txt'>{{langData.recommendBtn}}</text>
+        </navigator>
+    </view>
+</view>
+
+<!-- 菜单按钮列表 -->
+<view class='menu_list'>
+    <navigator 
+        wx:for="{{menuList}}" wx:key="menuList{{index}}"  wx:if="{{item.isShow}}"
+        class='li {{item.ico_class=="ico_coupon"?"divide":""}}' hover-class='hover' 
+        url='{{item.link}}'
+    >
+        <icon class='icons2 menu_ico {{item.ico_class}}'></icon>
+        <view class='info'><text class='txt'>{{item.title}}</text></view>
+        <icon class='icons ico_tri'></icon>
+    </navigator>
+
+    <!-- 切换语言按钮 -->
+    <picker 
+        bindchange="changeLangFn" range="{{pickerLang.list}}" wx:if="{{moduleSwitch.lang}}"
+        class='li' hover-class='hover' value="{{pickerLang.index}}"
+    >
+        <icon class='icons2 menu_ico {{item.ico_class}}'></icon>
+        <view class='info'>
+            <text class='txt'>{{langData.changeLangBtn}}({{pickerLang.list[pickerLang.index]}})</text>
+        </view>
+        <icon class='icons ico_tri'></icon>
+    </picker>
+</view>
+
+<!-- 登录提示 -->
+<view hidden="{{isLoginPopHide}}">
+    <login-tip binduserInfo="getUserInfoFn"></login-tip>
+</view>
+
+<!------------------ tab栏菜单 ------------------>
+<view wx:if="{{langType=='en'}}" class="tab_box">
+    <tab index='3' lang-change='{{langType}}'></tab>
+</view>

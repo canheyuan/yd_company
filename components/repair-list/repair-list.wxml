@@ -1,0 +1,92 @@
+<view class="repair-progress-list"  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+  <!-- 状态 listInfo.status:
+    1：待分派、2：已派单、3：已完成-未评分、4：已完成-已评分
+   -->
+  <view 
+    class='li' 
+    wx:for="{{listInfo.list}}" wx:key="{{index}}" 
+  >
+    <view class='top' data-repair_id="{{item.repairId}}" bindtap="gotoDetailsFn">
+      <view class='h3'>{{langData.typeName}}：<text>{{item.typeName?item.typeName:''}}</text></view>
+      <view class='p'>
+
+        <!-- 描述判断是否已评论_S -->
+        <block wx:if="{{item.status==4}}">
+          <view class='fwpf_txt'>{{langData.severScore}}</view>
+          <view class='star_list'>
+            <view class='icons {{item.star>starItem?"cur":""}}' 
+              wx:for="{{[0,1,2,3,4]}}"  wx:key="{{index}}" wx:for-item="starItem"
+            ></view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='p_txt'>
+            <icon class='icons ico_q'></icon>
+            {{item.description?item.description:langData.noDes}}
+          </view>
+        </block>
+        <!-- 描述判断是否已评论_End -->
+
+      </view>
+    </view>
+    <view class='btm'>
+      <view class='time'><icon class='icons ico_time'></icon>{{item.createTime}}</view>
+
+      <!-- 底部按钮判断_S -->
+      <view class='btns' wx:if="{{item.status==1}}">
+        <view class='btn01' data-index="{{index}}" data-type="remove" bindtap='popShowFn'>{{langData.public.callOffBtn}}</view>
+      </view>
+      <view class='btns' wx:if="{{item.status==3}}">
+        <view class='btn02' data-index="{{index}}" data-type="star" bindtap='popShowFn'>{{langData.severScore}}</view>
+      </view>
+      <view class='pay_price' wx:if="{{item.status==4}}" >
+        <icon class='icons ico_money'></icon>{{langData.payMoney}}：￥{{item.repairMoney?item.repairMoney:'0.00'}}
+      </view>
+      <!-- 底部按钮判断_End -->
+
+    </view>
+
+    <view class='label icons {{item.statusClass}}'>{{item.statusName}}</view>
+
+  </view>
+
+  <!-- 底部提示文字 -->
+  <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
+    <view class='txt'>{{listInfo.tipTxt}}</view>
+  </view>  
+</view>
+
+<!-- 暂无状态 -->
+<list-nothing 
+  c-name="repair" 
+  wx:if="{{!listInfo.list.length>0 && listInfo.list}}"
+></list-nothing>
+
+<!-- 提示弹窗 -->
+<view class='mask_bg pop_show' hidden='{{tipPopShow}}'>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <form report-submit="true" bindsubmit="{{tipType=='remove'?'removeRepairFn':'starRepairFn'}}">
+                <view class='h3' wx-if="{{tipType=='remove'}}">{{langData.callOffBtn}}</view>
+                <view class='h3' wx-if="{{tipType=='star'}}">{{langData.severScore}}</view>
+                <view class='pop_ctn' style="padding:30rpx 0;">
+                    <view wx-if="{{tipType=='remove'}}" class='p'>{{langData.desTip}}</view>
+                    <view wx-if="{{tipType=='star'}}" class='star_list'>
+                    <view 
+                        class='icons {{starScore>starItem?"cur":""}}'
+                        wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}" wx:for-item="starItem" 
+                        bindtap="starChangeFn"  data-star="{{index+1}}" 
+                    ></view>
+                    </view>
+                </view>
+                <view class='btm_btn clearfix'>
+                    <view class='btn' bindtap='closeTipPop'>{{langData.public.callOffBtn}}</view>
+                    <button class='btn' form-type='submit' plain="true">{{langData.public.confirmBtn}}</button>
+                </view>
+                <view class='close_btn icons' bindtap='closeTipPop'></view>
+            </form>
+        </view>
+    </view>
+</view>
+
+

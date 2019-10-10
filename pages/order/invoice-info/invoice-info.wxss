@@ -1,0 +1,8 @@
+page{background:#f7f7f7;}
+.form_mdl .dl .dt{width:210rpx;}
+.tag_box2{margin:40rpx 40rpx 20rpx;}
+.qr_txt{font-size:26rpx; color:#de6a1c; text-align: center; margin-top:40rpx;}
+
+.fp_type{font-size:28rpx; color:#666; float:right;}
+.fp_type .radio{display:inline-block; margin-left:40rpx;}
+.fp_type radio{display:inline-block;transform:scale(0.6); vertical-align: middle;position:relative; top:-2rpx;}

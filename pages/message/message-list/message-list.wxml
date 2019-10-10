@@ -1,0 +1,32 @@
+<!-- 通知公告列表 -->
+<view class="message_list" wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    <view 
+        class='li' wx:for="{{listInfo.list}}" wx:key="{{index}}"
+        bindtap="gotoFn" data-item="{{item}}" data-obj='listInfo.list[{{index}}].isRead'
+    >
+        <view class='title'>{{item.title}}</view>
+
+        <view class='main'>
+            <image 
+                wx:if="{{item.targetType!='index'}}" class='img' 
+                src='{{domainUrl}}/images/icon/{{item.targetType}}.png'
+            ></image>
+            <image wx:else class='img' src='{{domainUrl}}/images/icon/other.png'></image>
+            
+            <view class='info'>
+                <view class="text">{{item.content}}</view>
+                <view class='time'>{{langData.public.time}}：{{item.createTime}}</view>
+            </view>
+        </view>
+
+        <view class='label icons' wx:if="{{item.isRead=='N'}}">{{langData.public.unread}}</view>
+
+    </view>
+    <!-- 底部提示文字 -->
+    <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
+        <view class='txt'>{{listInfo.tipTxt}}</view>
+    </view>  
+</view>
+<!-- 暂无状态 -->
+<list-nothing c-name="message" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>
+

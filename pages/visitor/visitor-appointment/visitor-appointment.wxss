@@ -1,0 +1,7 @@
+
+.visitor_banner{width:100%; position:relative; z-index: 1;}
+.visitor_form{display:block; margin-top:-70rpx; position:relative; z-index: 9; padding:0 20rpx;}
+.form_mdl .dl{overflow:hidden;}
+
+.check_btn{text-align: center; font-size:30rpx; color:#2a99f1; text-decoration: underline; display:inline-block; margin:30rpx 40rpx 0;}
+.form_mdl .dl .dt{width:190rpx;}

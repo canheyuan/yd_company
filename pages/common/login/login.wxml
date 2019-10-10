@@ -1,0 +1,39 @@
+<form bindsubmit="formSubmit">
+    <view class='login_mdl'>
+        <image 
+            class='per_img' 
+            src='{{userInfo.headImgs?userInfo.headImgs:domainUrl+"/images/default/df_userhead.png"}}'
+        ></image>
+        <view class="login_title more_tip"><text class="txt">园叮智慧园区管理系统</text></view>
+        <view class='login_form'>
+            <view class='input_box'>
+                <icon class='icons ico_user'></icon>
+                <input class='input' maxlength="11" type="number" placeholder="{{langData.userPl}}" name="username" />
+            </view>
+            
+            <view class='input_box'>
+                <icon class='icons ico_pwd'></icon>
+                <input class='input' type="password" placeholder="{{langData.passwordPl}}" name="password" />
+            </view>
+            <!-- <view class='tip_txt' hidden="{{tipText==''}}">{{tipText}}</view> -->
+        </view>
+        <view class='login_btm'>
+            <navigator url='/pages/common/find-password/find-password' class='forget_btn'>{{langData.forgetPassword}} ></navigator>
+            <view class='reg_btn'>
+                {{langData.loginText1}}
+                <navigator url='/pages/common/register/register' class='a'>{{langData.quickregister}}</navigator>
+            </view>
+        </view>
+        <view class='btn_wrap'>
+            <button class='blue_btn' form-type='submit'>{{langData.loginBtn}}</button>
+            <!-- <view class="more_tip"><text class="txt">或者</text></view>
+            <button 
+                class="wx_btn" plain="true" hover-class="hover"
+                open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"
+            >
+                <icon class="icons ico_wx"></icon>微信一键登录
+            </button> -->
+        </view>
+    </view>
+</form>
+

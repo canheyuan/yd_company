@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "活动报名",
+  "usingComponents": {
+    "login-tip": "/components/login-tip/login-tip"
+  }
+}

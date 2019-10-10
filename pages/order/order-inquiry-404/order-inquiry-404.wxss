@@ -1,0 +1,9 @@
+.order_banner image{width:100%;}
+.order_tag .tag_list .tag_item{width:33.3%; box-sizing: border-box;}
+
+
+.order_404{text-align: center; padding:100rpx 0 0;}
+.order_404 .img{width:210rpx; margin-bottom:50rpx;}
+.order_404 .h3{display:block; font-size:40rpx; color:#333; margin-bottom:40rpx;}
+.order_404 .p{display:block; font-size:30rpx; color:#666;}
+.order_404 .refresh_btn{  width:480rpx; position:fixed; bottom:100rpx; left:50%; margin-left:-240rpx;}

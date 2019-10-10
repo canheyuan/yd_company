@@ -1,0 +1,32 @@
+
+page{height: 100%; background: #fff;}
+
+.serve_page{padding:20rpx; background: #fff;}
+.serve_banner{margin-bottom:40rpx;}
+.serve_banner .img{width:100%; border-radius:20rpx;}
+.serve_tit{display: block;  margin-bottom:20rpx; font-weight: bold;}
+.serve_tit .h3{color:#000; font-size:34rpx; display: block; overflow: hidden;}
+.serve_tit .more{float:right;color:#2a99f1; font-size:26rpx; margin-top: 6rpx;}
+
+.recommend_mdl{margin-bottom:50rpx;}
+.recommend_list{background:#fff; border-radius:10rpx;  padding-bottom:30rpx;}
+.recommend_list .li{padding:30rpx 15rpx 0; position:relative;}
+.recommend_list .li .ico_tri{display:inline-block; width:50rpx; height:50rpx; background-position: -198rpx -60rpx; position:absolute; right:0; top:50%; margin-top:-20rpx;}
+.recommend_list .li .img{float:left; width:80rpx; height:80rpx; border-radius:100%; background:#eee; margin-right:20rpx;}
+.recommend_list .li .img.bg01{background-color:#72c1ef;}
+.recommend_list .li .img.bg02{background-color:#fbad9d;}
+.recommend_list .li .img.bg03{background-color:#f9cc7e;}
+.recommend_list .li .img.bg04{background-color:#89d478;}
+.recommend_list .li .info{overflow:hidden; padding-right:80rpx; border-bottom:1rpx solid #e5e5e5; padding-bottom:15rpx;}
+.recommend_list .li .info .h3{font-size:30rpx; color:#333333; margin-bottom:10rpx;}
+.recommend_list .li .info .p{font-size:26rpx; color:#9d9d9d;display: block; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; height:40rpx; line-height:40rpx;}
+
+.serve_mdl{margin-bottom:50rpx;}
+.serve_mdl:last-child{margin-bottom:0;}
+.serve_list {background:#fff; border-radius:10rpx; padding:10rpx 15rpx; overflow: hidden;}
+.serve_list .li{width:33.33%; float:left; padding:25rpx 0;}
+.serve_list .li .img{float:left; width:34rpx; height:34rpx; margin-right:15rpx; margin-top:3rpx;}
+.serve_list .li text{display:block; overflow: hidden; font-size:26rpx; color:#333333; line-height:40rpx; padding-right:20rpx;}
+.serve_list .line{display:block; height:0; border-bottom:1rpx solid #e5e5e5; width:100%; background:#e5e5e5; clear:both;}
+.serve_list .hover_li text{color:#2a99f1; background:none;}
+

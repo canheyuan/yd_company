@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "政策详情",
+  "usingComponents": {
+    "login-tip": "/components/login-tip/login-tip"
+  }
+}

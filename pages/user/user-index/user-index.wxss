@@ -1,0 +1,44 @@
+
+/*顶部*/
+page{background: #f7f7f7; }
+.user_head{ position:relative; text-align: center; box-sizing: border-box;  width: 100%; padding-top:70rpx; }
+.user_head .update_txt{ position:absolute; top:15rpx;  right:20rpx; line-height:40rpx;}
+.user_head .update_txt .bj_txt{display:inline-block; font-size: 26rpx; color: #fff; opacity: .8; line-height:40rpx;}
+.user_head .update_txt>image{width: 40rpx; height: 40rpx; display:inline-block;  margin-right:5rpx;vertical-align: middle;}
+
+.user_head .per_info{ display:block; overflow:hidden; box-sizing: border-box; width: 100%;}
+.user_head .per_info .per_img{ width: 160rpx; height: 160rpx; border-radius:100%; border:10rpx solid #fff; }
+.user_head .per_info .name{text-align: center;}
+.user_head .per_info .name text{font-size: 34rpx; font-weight: bold;}
+.user_head .per_info .name .ico_sex{  width: 38rpx; height: 38rpx; display: inline-block; margin-left: 10rpx;  vertical-align: middle; }
+.user_head .per_info .company_name{ display:inline-block; min-width: 315rpx;  padding:0 20rpx;  height: 42rpx;  border:  solid 1rpx #bfbfbf;  border-radius: 30rpx; font-size: 24rpx; line-height: 42rpx; text-align: center; color: #949494;  margin-top:15rpx; }
+
+/*功能卡*/
+.head_btn_list{ width: 704rpx; height: 180rpx; border-radius: 20rpx; margin: 30rpx auto 0; text-align: center; }
+.head_btn_list .a{ display: inline-block; width: 25%; font-size: 26rpx; }
+.head_btn_list .a .ico{  width: 60rpx; height: 60rpx; display: block; margin: 35rpx auto 20rpx; }
+.head_btn_list .a .txt{color:#666;}
+.head_btn_list .a.hover .txt{background:none; color:#4a7df6;}
+
+
+.menu_list{margin-bottom:20rpx;}
+.menu_list .li{height:102rpx;  background:#fff; position:relative;}
+.menu_list .li .ico_tri{width:50rpx; height:50rpx; position:absolute; right:20rpx; top:50%; margin-top:-25rpx; background-position: -198rpx -60rpx;}
+.menu_list .li .info{overflow: hidden; border-bottom:1rpx solid #e5e5e5; padding-right:90rpx; height:100prx;}
+.menu_list .li text{line-height:100rpx; font-size:30rpx; color:#333333;}
+.menu_list .li .menu_ico{width:50rpx; height:50rpx; float:left; margin:25rpx 20rpx 0; background-position: 0 -50rpx;}
+.menu_list .li .ico_coupon{background-position: 0rpx -50rpx;}
+.menu_list .li .ico_gz{background-position: -50rpx -50rpx;}
+.menu_list .li .ico_discuss{background-position: -100rpx -50rpx;}
+.menu_list .li .ico_act{background-position: -150rpx -50rpx;}
+.menu_list .li .ico_wz{background-position: -200rpx -50rpx;}
+.menu_list .li .ico_garden{background-position: -250rpx -50rpx;}
+.menu_list .li .ico_complaint{background-position: -300rpx -50rpx;}
+.menu_list .li .ico_order{background-position: -350rpx -50rpx;}
+.menu_list .li .ico_recommend{background-position: -400rpx -50rpx;}
+
+.menu_list .li.divide{margin-bottom:20rpx;}
+.menu_list .li.divide .info{border-bottom:none;}
+.menu_list .li:last-child .info{border-bottom:none;}
+.menu_list .li.hover{opacity: .8;}
+.menu_list .li.hover text{color:#2a99f1;}

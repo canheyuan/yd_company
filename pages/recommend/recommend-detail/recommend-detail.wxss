@@ -1,0 +1,111 @@
+@import "/wxParse/wxParse.wxss";
+
+page{background:#f7f7f7; padding-bottom:120rpx;}
+.recommend_title{display: block;  margin-bottom:20rpx; font-weight: bold;}
+.recommend_title text{color:#000; font-size:34rpx; display: block; overflow: hidden;}
+
+
+
+/* 幻灯片 */
+.venue_slide_box{position:relative; z-index: 9; height:360rpx;}
+.venue_slide_box .venue_slide{width:100%; height:360rpx; overflow: hidden;  }
+.venue_slide_box .slide_img{width:100%;height:360rpx;}
+.home_btn2{position:absolute; top:50rpx; right:0; height:64rpx; line-height:64rpx; background:rgba(0,0,0,.3); border-top-left-radius: 32rpx; border-bottom-left-radius: 32rpx; padding:0 20rpx; color:#fff; font-size:24rpx; z-index:99;}
+.home_btn2 .ico_home{width:30rpx; height:30rpx; vertical-align: middle; margin-right:10rpx; background-position:-150rpx -470rpx}
+
+/* 详细信息 */
+.venue_details_box{background:#fff;  border-radius:20rpx;  background:#fff;padding:20rpx; margin:-90rpx 20rpx 0; position:relative; z-index: 10;}
+
+.venue_details_box .title{font-size:34rpx;  color:#333333; margin-bottom:10rpx; }
+.venue_details_box .ico_txt{display:block;}
+.venue_details_box .ico_txt .ico_dz{background-position: -330rpx -120rpx;}
+.venue_details_box .ico_txt .ico_per{background-position: -360rpx -120rpx;}
+.venue_details_box .ico_txt .ico_mj{background-position: -390rpx -120rpx;}
+
+.price_mdl{padding-top:20rpx;}
+.price_main{height:170rpx; border-radius:10rpx; text-align: center; box-sizing: border-box; padding-top:45rpx;}
+.price_main text{display:inline-block;vertical-align: top;}
+.price_main .ico_price{color:#ff6000; font-size:40rpx; font-weight: bold; line-height:60rpx;}
+.price_main .num{font-size:86rpx; color:#333; line-height:90rpx; }
+.price_main .line{font-size:86rpx; color:#9d9d9d; line-height:80rpx; }
+
+.perList {float:right;}
+.perList .img{float:left; width:60rpx; height:60rpx; border:5rpx solid #fff;  border-radius:100%; margin-left:-30rpx;}
+
+/* 园区户型 */
+.yqhx_mdl{padding:20rpx 0 0; margin-top:30rpx;}
+.yqhx_mdl .recommend_title{margin-left:22rpx; margin-right: 24rpx;}
+.room_list_box{height:400rpx;}
+.room_list{height:100%;}
+.room_list .li{width:550rpx; height:380rpx; float:left; margin-left: 20rpx; border-radius:10rpx; overflow: hidden; background:#fff; box-shadow: 0 5rpx 24rpx rgba(0,0,0,.1);}
+.room_list .li .img{width:550rpx; height:265rpx;}
+.room_list .li .info{padding:10rpx 15rpx;}
+
+.room_list .li .info .title{font-size:30rpx; line-height:40rpx; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 1;}
+.room_list .li .info .p{color:#9d9d9d; font-size:36rpx;  line-height:40rpx; float:right;}
+.room_list .li .info .p text{display:inline-block;vertical-align: top;}
+.room_list .li .info .p .meney_ico{ display:inline-block; color:#ff6000; font-size:22rpx; line-height:28rpx; font-weight: bold;}
+.room_list .li .info .p .price{ color:#ff6000;}
+.room_list .li .ico_txt .ico_mj{background-position: -390rpx -120rpx;}
+
+/* 历史推荐 */
+.lstj_mdl{padding:20rpx;}
+.lstj_ctn{background:#fff; border-radius:20rpx; padding-top:30rpx; overflow: hidden;}
+.recommend_slide{height:400rpx; margin:0 30rpx;}
+.recommend_slide .img{float:left; width:64rpx; height:64rpx; border-radius:100%; margin-right:20rpx; }
+.recommend_slide .info{overflow:hidden;}
+.recommend_slide .info .h3{font-size:30rpx; color:#333333;}
+.recommend_slide .info .h3 text{font-size:32rpx; color:#ff6000; font-weight: bold;}
+.recommend_slide .info .time{font-size:24rpx; color:#9d9d9d;}
+.lstj_ctn .btm{font-size:28rpx; background:#fff1cf; height:100rpx; line-height:100rpx;  text-align: center; color:#8e8e8e;}
+.lstj_ctn .btm .ico_per{width:30rpx; height:30rpx; background-position: -360rpx -120rpx; vertical-align: middle; position:relative; top:-2rpx; margin-right:10rpx;}
+
+/* 服务及设施 */
+.fwss_ctn{background:#fff; border-radius:20rpx; padding:30rpx 20rpx 20rpx; overflow: hidden; margin-top:30rpx;}
+.fwss_ctn .label{display:inline-block; height:56rpx; line-height:56rpx; padding:0 20rpx; background:#f5f5fa; font-size:24rpx; color:#333; border-radius:28rpx; margin-right:10rpx; margin-bottom:10rpx;}
+
+/* .jqhd_mdl{margin-top:30rpx;}
+.jqhd_mdl .recommend_title{margin-left:20rpx; margin-bottom:0;} */
+
+
+/* 园区简介 */
+.yqjj_mdl{padding:20rpx;}
+.yqjj_ctn{background:#fff; border-radius:20rpx; padding:30rpx 20rpx; font-size:26rpx; color:#333;}
+.yqjj_ctn .p{text-indent:2em; font-size:30rpx; line-height:48rpx; color:#333333; margin-bottom:20rpx;}
+.yqjj_ctn image{max-width:100%!important; margin-bottom:20rpx;}
+.traffic_box{background:#f5f5f5; border-radius:10rpx; padding:20rpx 20rpx;}
+.traffic_box .tit{font-size:30rpx; color:#333; margin-bottom:10rpx;}
+.traffic_box .txt{font-size:28rpx; color:#7f7f7f; margin-left:115rpx; margin-bottom:20rpx; line-height:40rpx;}
+
+.fixed_btn_wrap{position:fixed; bottom:0; left:0; width:100%; box-sizing:border-box; height:110rpx; padding:15rpx 20rpx; background:#fff;}
+.orange_btn{height:80rpx; line-height:80rpx; display:block; text-align: center; color:#fff; font-size:36rpx; border-radius:40rpx; 
+background:-moz-linear-gradient(left,#ff6000,#ff8a00);/*火狐*/
+background: -webkit-linear-gradient(left, #ff6000, #ff8a00);   /*Safari5.1 Chrome 10+*/}
+
+.blue_btn02{height:80rpx; line-height:80rpx; display:inline-block; text-align: center; color:#fff; font-size:36rpx; border-radius:40rpx; background:#36c3fe; width:40%;}
+.blue_btn03{height:80rpx; line-height:80rpx; display:inline-block; text-align: center; color:#fff; font-size:36rpx; border-radius:40rpx; background:#6592fe; width:57%; float:right;}
+
+.wyytj_btn{width:120rpx; height:120rpx; border-radius:100%;  position:fixed; bottom:140rpx; right:20rpx; font-size:26rpx; color:#fff; text-align: center; padding-top:33rpx; line-height:30rpx; box-sizing: border-box;  box-shadow: 0 10rpx 34rpx rgba(255,96,0,.62);
+background:-moz-linear-gradient(left,#ff8a00,#ff6000);/*火狐*/
+background: -webkit-linear-gradient(left, #ff8a00, #ff6000);   /*Safari5.1 Chrome 10+*/}
+
+.shouquan_pop{width:70%; background:#ffff; margin:0 auto; border-radius:10rpx; position:relative; padding:50rpx 30rpx; box-sizing: border-box;}
+.shouquan_pop .h3{font-size:40rpx; color:#333; font-weight:bold; margin-bottom:50rpx;}
+.shouquan_pop .p{font-size:28rpx; color:#666; margin-bottom:80rpx; display:block; line-height:50rpx;}
+.shouquan_pop .btn{ font-size:30rpx;background:#6592fe; color:#fff; height:80rpx; line-height:80rpx; border-radius:40rpx; display:inline-block; width:400rpx;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

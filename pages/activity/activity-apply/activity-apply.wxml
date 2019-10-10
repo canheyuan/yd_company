@@ -1,0 +1,42 @@
+
+<view class='act_apply_box'>
+    <form report-submit="true" bindsubmit="submitFn">
+        <view class='title'>{{langData.public.writeInfo}}</view>
+        <view class='form_mdl'>
+            <view class='dl clearfix'>
+                <text class='dt'>{{langData.public.companyName}}</text>
+                <view class='dd'>
+                    <text class='txt'>{{detailData.entName}}</text>
+                    <!--<input type='text' class='txt' placeholder='' placeholder-class='pl_input'  />-->
+                </view>
+            </view>
+            <view class='dl clearfix'>
+                <text class='dt'>{{langData.public.contact}}</text>
+                <view class='dd'>
+                    <text class='txt'>{{detailData.contact}}</text>
+                    <!--<input type='text' class='input' placeholder='{{data.contact}}' placeholder-class='pl_input' />-->
+                </view>
+            </view>
+            <!-- <view class='dl'>
+                <text class='dt'>职位</text>
+                <view class='dd'>
+                    <text class='dt'>{{data.position}}</text>
+                </view>
+            </view> -->
+            <view class='dl clearfix '>
+                <text class='dt'>{{langData.public.contactPhone}}</text>
+                <view class='dd'>
+                    <text class='dt'>{{detailData.contactPhone}}</text>
+                    <!--<input type='text' class='input' placeholder='{{data.contactPhone}}' placeholder-class='pl_input' />-->
+                </view>
+            </view>
+        </view>
+
+        <view style="padding:100rpx 50rpx 0;">
+            <!-- <button class='blue_btn' bindtap="submit">立即提交</button> -->
+            <button class='blue_btn' form-type='submit'>{{langData.public.submitBtn}}</button>
+        </view>
+    </form>
+</view>
+<!-- 登录提示弹窗 -->
+<!-- <login-tip></login-tip> -->

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "场地预定",
+  "usingComponents": {
+    "login-tip": "/components/login-tip/login-tip"
+  }
+}

@@ -1,0 +1,12 @@
+
+<view class="default_list {{layoutClass}}">
+    <view class="li" wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="list{{index}}">
+        <view class="img"></view>
+        <view class="info">
+            <view class="h3"></view>
+            <view class="p"></view>
+            <view class="p"></view>
+            <view class="p p2"></view>
+        </view>
+    </view>
+</view>

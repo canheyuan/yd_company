@@ -1,0 +1,35 @@
+@import "/app.wxss";
+
+/* 新闻资讯列表 */
+.news_list{padding:0 20rpx 40rpx;}
+.news_list .li{padding: 40rpx 8rpx; border-bottom: 1rpx solid #e5e5e5;}
+.news_list .li .news_img{width: 280rpx; height: 193rpx; float:right; margin-left:30rpx;  border-radius: 10rpx; overflow: hidden; background:#eee;}
+
+.news_list .li .info{overflow:hidden;}
+.news_list .li .info .title{font-size: 34rpx; font-weight: bold; line-height: 48rpx; color: #333; margin-bottom:10rpx; height:144rpx; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 3;}
+
+/* 小图标带文字 */
+.news_list .li .info .btm{overflow:hidden;}
+.news_list .li .info .ico_txt.time{float: left;}
+.news_list .li .info .ico_txt.visitor{float: right;}
+.news_list .li .info .ico_txt{margin-right: 0;}
+.news_list .li .info .ico_txt .ico_time{width:30rpx; height:30rpx; background-position: -120rpx -120rpx;}
+.news_list .li .info .ico_txt .ico_eye{width:30rpx; height:30rpx; background-position: -90rpx -120rpx;}
+
+
+/* 收藏资讯列表 */
+.news_list2{padding:30rpx 20rpx;}
+.news_list2 .li{position:relative; border-radius:15rpx; padding:20rpx; background:#fff; margin-bottom:30rpx;}
+.news_list2 .li .yd_title01{margin-left:-20rpx; margin-bottom:20rpx; color:#9d9d9d;}
+.news_list2 .li .top{overflow: hidden;}
+.news_list2 .li .top .img{float:left; margin-right:20rpx; width:200rpx; height:140rpx; border-radius:10rpx;}
+.news_list2 .li .top .info{overflow:hidden; }
+.news_list2 .li .top .info .h3{ font-size:32rpx; color:#333; line-height:44rpx;display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp:2; height:88rpx;}
+.news_list2 .li .top .info .h3 .label_hot{display:inline-block; padding:0 10rpx; height:38rpx; line-height:38rpx; background:#ff3c00; border-radius:19rpx; border-bottom-right-radius: 0; color:#fff; font-size:24rpx; vertical-align: middle; margin-right:10rpx; position:relative; top:-2rpx;}
+.news_list2 .li .btm{overflow: hidden; margin-top:20rpx;}
+.news_list2 .li .btm .ico_txt .ico_time{background-position: -120rpx -120rpx;}
+.news_list2 .li .btm .ico_txt .ico_eye{background-position: -90rpx -120rpx;}
+.news_list2 .li .btm .ico_txt:first-child{float:left;}
+.news_list2 .li .btm .ico_txt:last-child{float:right; margin-right:0;}
+/* 标签 */
+.yd_label text{height:34rpx; line-height:34rpx; padding:0 15rpx; border:1rpx solid #bdbdbd; border-radius:8rpx; font-size:22rpx; color:#aeaeae; margin-right:10rpx;}

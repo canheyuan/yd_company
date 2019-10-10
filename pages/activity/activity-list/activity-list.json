@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "activity-list":"/components/activity-list/activity-list"
+  }
+}

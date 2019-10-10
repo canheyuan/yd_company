@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的预定",
+  "usingComponents": {
+    "reserve-list": "/components/reserve-list/reserve-list"
+  }
+}

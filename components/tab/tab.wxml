@@ -1,0 +1,16 @@
+
+<!-- 自定义Tab Bar -->
+<view class='tab_bar'>
+  <view class='ul'>
+    <navigator 
+        wx:for="{{tagList}}" wx:key="{{index}}" 
+        class='li {{index==tagIndex?"act":""}}' 
+        url='{{item.link}}' open-type='switchTab'
+    >
+      <icon class='{{item.icoClass}}'></icon><text>{{item.title}}</text>
+    </navigator>
+  </view>
+</view>
+
+
+

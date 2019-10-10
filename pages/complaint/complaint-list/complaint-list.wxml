@@ -1,0 +1,51 @@
+
+<view class='complaint_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+
+  <view 
+    class='li box_shadow' 
+    wx:for="{{listInfo.list}}" wx:key="{{index}}"  
+    bindtap="gotoDetail" data-id="{{item.complaintId}}"
+  >
+    <view class='status icons s_yellow' wx:if="{{item.status == langData.status1}}">{{item.status}}</view>
+    <view class='status icons s_blue' wx:if="{{item.status == langData.status2}}">{{item.status}}</view>
+    <view class='status icons s_purple' wx:if="{{item.status == langData.status3}}">{{item.status}}</view>
+    <view class='status icons s_gray' wx:if="{{item.status == langData.status4}}">{{item.status}}</view>
+
+
+    <view class='top'><icon class='icons ico_time'></icon>{{langData.public.applyTime}}：{{item.applyTime}}</view>
+    <view class='main'>
+      <view class='title'><text>{{item.title}}</text></view>
+      <view class='p'>{{item.content}}</view>
+      <!-- <view class='imgs clearfix'>
+        <image 
+          class='img'  src='{{img}}'
+          wx:for="{{item.images}}" wx:key="{{index}}" wx:for-item="img" wx:for-index="imgIndex"
+          data-index="{{imgIndex}}" data-imgs="{{item.images}}" bindtap="previewImageFn"
+        ></image>
+      </view> -->
+    </view>
+    <view class='feedback' wx:if="{{item.result}}">
+      <text>{{item.handler}}{{langData.feedback}}：
+      {{item.result}}</text>
+      <view class='time'>{{item.finishTime}}</view>
+    </view>
+    
+  </view>
+
+  <!-- <view class='li box_shadow'>
+    <view class='top'><icon class='icons ico_time'></icon>提交时间：2018-07-18 13:23:24</view>
+    <view class='main'>
+      <view class='title'><view class='label'>建议</view><text>这个小程序做得太好啦！</text></view>
+      <view class='p'>想不到这么方便，解决了很多问题，这个小程序做得太好啦！我反手就给了32赞~！！！</view>
+    </view>
+    <view class='feedback'>
+      <text>物业反馈：
+      您的情况我们已经知晓，我们会努力做得更好的，非常感谢你的反馈！</text>
+      <view class='time'>2018-07-19 13:23:24</view>
+    </view>
+  </view> -->
+</view>
+
+<!-- 暂无状态 -->
+<list-nothing c-name="complaint" wx:if="{{listInfo.length==0}}"></list-nothing>
+

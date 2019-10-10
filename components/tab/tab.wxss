@@ -1,0 +1,21 @@
+
+/* 自定义Tab Bar */
+.tab_bar{width: 100%; height: 98rpx; color: #606060; box-sizing: border-box; border-top: 1rpx solid #ddd; background: #f9f9f9; position: fixed; left: 0; bottom: 0; z-index: 10001;}
+.tab_bar .ul{display: flex;height:98rpx;}
+.tab_bar .ul .li{color: #606060; font-size: 20rpx; text-align: center; flex: auto;  position: relative;}
+/* .tab_bar .ul .li icon{width:54rpx; height:54rpx; background:url(http://192.168.0.244/yuanding/images/tab_ico.png) no-repeat; background-size:216rpx 108rpx;} */
+.tab_bar .ul .li icon{width:54rpx; height:54rpx; margin-top:5rpx; background:url(https://www.5iparks.com/static/yuanding/images/tab_ico.png) no-repeat; background-size:216rpx 108rpx;}
+
+.tab_bar .ul .li icon.ico01{background-position: 0 0;}
+.tab_bar .ul .li icon.ico02{background-position: -54rpx 0;}
+.tab_bar .ul .li icon.ico03{background-position: -108rpx 0;}
+.tab_bar .ul .li icon.ico04{background-position: -162rpx 0;}
+.tab_bar .ul .li text{display:block;}
+.tab_bar .ul .li.act{color: #4a7df6; }
+.tab_bar .ul .li.act icon.ico01{background-position: 0 -54rpx;}
+.tab_bar .ul .li.act icon.ico02{background-position: -54rpx -54rpx;}
+.tab_bar .ul .li.act icon.ico03{background-position: -108rpx -54rpx;}
+.tab_bar .ul .li.act icon.ico04{background-position: -162rpx -54rpx;}
+/* .tab_bar .ul .li text.number{color: #fff; height: 36rpx; font-size: 22rpx; line-height: 36rpx; border-radius: 18rpx; padding: 0 12rpx; background: #ff3b30; display: block; position: absolute; top: 0; left: 54%;} */
+
+

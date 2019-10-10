@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "推荐记录",
+  "usingComponents": {
+    "list-nothing": "/components/result-nothing/result-nothing"
+  }
+}

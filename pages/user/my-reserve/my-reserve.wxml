@@ -1,0 +1,21 @@
+<!-- 选项卡切换 -->
+<view class='tag_box tag_fixed'>
+  <view class='tag_list'>
+    <view 
+      wx:for="{{tagList}}" wx:key="{{index}}"
+      class='tag_item {{tagIndex==index?"act":""}}' 
+      data-index="{{index}}" 
+      bindtap='tagChangeFn'
+    >{{item.name}}</view>
+  </view>
+</view>
+
+<!-- 循环报修列表 -->
+<view hidden="{{tagIndex!=index}}" wx:for="{{tagList}}" wx:key="{{index}}">
+  <reserve-list target-page="my-reserve" reserve-type="{{item.type}}" reach-data="{{reachData[index]}}" lang="{{langType}}"></reserve-list>
+</view>
+
+<!-- 返回首页按钮 -->
+<navigator wx:if="{{isIndexBtnShow}}" class='index_btn'  url='/pages/index/index' hover-class='none' open-type='switchTab'>
+  <image src='{{domainUrl}}/images/icon/back2h_btn.png'></image>
+</navigator>

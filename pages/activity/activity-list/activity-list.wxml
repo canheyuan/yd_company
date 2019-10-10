@@ -1,0 +1,15 @@
+
+
+<!-- 活动列表 
+act-data:数组数据，对象
+target-page:目标页面（list:活动列表、collect：搜藏活动列表）
+-->
+<activity-list 
+    wx:if="{{reach}}" target-page="act_list"
+    lang="{{langType}}" reach-data="{{reach}}"
+></activity-list>
+
+<!-- 登录提示 -->
+<view hidden="{{hasUserInfo}}">
+    <login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
+</view>

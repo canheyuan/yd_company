@@ -1,0 +1,14 @@
+@import "/wxParse/wxParse.wxss";
+
+.details_mdl{padding:32rpx 0 50rpx;}
+.details_title{font-size:48rpx; padding: 0 40rpx; text-align: center;}
+.details_title text{display:inline-block; text-align: center; font-weight: 400;}
+.details_info{overflow: hidden; padding: 16rpx 40rpx; text-align: center; border-bottom: 1rpx solid #e2e2e2;}
+
+.details_info>view{display:inline-block; font-size:24rpx; color:#999;  margin-right:40rpx;}
+.details_info>view icon{width:30rpx; height:30rpx; vertical-align: middle; margin-right:10rpx; position:relative; top:-2rpx;}
+.details_info .ico_time{background-position:-120rpx -120rpx;}
+.details_info .ico_eye{ background-position:-90rpx -120rpx;}
+.details_info .ico_time{background-position:-120rpx -120rpx;}
+.details_info .ico_eye{ background-position:-90rpx -120rpx;}
+.details_ctn{ padding: 50rpx 40rpx 0;}

@@ -1,0 +1,29 @@
+page{background:#f7f7f7;}
+
+.coupon_list{padding:30rpx 0rpx;}
+.coupon_list .li{display:block; width:748rpx; height:278rpx; color:#fff; position:relative; margin-bottom:10rpx; border-radius:10rpx;}
+.coupon_list .li .status{position:absolute; left:40rpx; top:32rpx; width:120rpx; height:34rpx; line-height:34rpx; text-align: center; display:inline-block; font-size:22rpx; color:#fff;  background:#fec92f; border-radius:8rpx;}
+.coupon_list .li .tit{position:absolute; left:180rpx; top:40rpx; width:320rpx; height:50rpx; line-height:50rpx; display:block; font-size:36rpx; color:#fff; }
+.coupon_list .li .get_time{position:absolute; left:180rpx; top:104rpx; width:320rpx; height:34rpx; line-height:34rpx;  display:inline-block; font-size:24rpx; color:#fff; }
+.coupon_list .li .mf_txt{position:absolute; right:20rpx; top:64rpx; width:215rpx; line-height:60rpx;  text-align: center; display:inline-block; font-size:48rpx; color:#fff; }
+.coupon_list .li .yh_txt{position:absolute; right:20rpx; top:40rpx; width:215rpx; line-height:60rpx;  text-align: center; display:inline-block; font-size:48rpx; color:#fff; }
+.coupon_list .li .yh_txt .num{margin-bottom:5rpx;}
+.coupon_list .li .yh_txt .tip{font-size:24rpx; line-height:40rpx;}
+.coupon_list .li .use_time{position:absolute; left:40rpx; top:190rpx;  line-height:40rpx;  font-size:24rpx; color:#9d9d9d; }
+.coupon_list .li .use_time .ico_time{ width:30rpx; height:30rpx; background-position: -120rpx -120rpx; vertical-align: middle; position:relative; top:-2rpx; margin-right:5rpx;}
+.coupon_list .li .coupon_code{position:absolute; top:190rpx; right:50rpx;  line-height:40rpx;  font-size:24rpx; color:#9d9d9d;}
+.coupon_list .li .coupon_code .ico_code{ width:30rpx; height:30rpx; background-position: -120rpx -470rpx; vertical-align: middle; position:relative; top:-2rpx; margin-right:5rpx;}
+
+/* 详细信息 */
+.coupon_detail{padding:140rpx 25rpx 50rpx; background:#fff; margin-top:-160rpx;}
+.coupon_ctn{margin-top:10rpx;}
+.coupon_ctn .dl{border-bottom:1rpx solid #e5e5e5; padding:20rpx 0; overflow: hidden;}
+.coupon_ctn .dl:nth-child(3){border-bottom:none;}
+.coupon_ctn .dt{float:left; width:150rpx; margin-right:10rpx; line-height:44rpx; font-size:30rpx; color:#9d9d9d;}
+.coupon_ctn .dd{overflow:hidden; line-height:44rpx; font-size:30rpx; color:#333333;}
+.coupon_ctn .orange_btn{margin-top:40rpx;}
+
+/* 优惠券描述 */
+.coupon_tip{font-size:28rpx; color:#999999; line-height:46rpx; padding:40rpx 25rpx;}
+
+

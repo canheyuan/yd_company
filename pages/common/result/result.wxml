@@ -1,0 +1,22 @@
+<view class='result_page'>
+    <image class='img' src='{{domainUrl}}{{pageData.icon}}' mode='widthFix'></image>
+    <text class='h3'>{{pageData.title}}</text>
+    <text class='p' wx:if="{{pageData.details_btn}}">{{pageData.des}}</text>
+
+    <navigator 
+        class='check_txt' 
+        wx:if="{{pageData.details_btn}}" 
+        url='{{pageData.details_btn_url}}'
+    >
+    {{pageData.details_btn}}
+    </navigator>
+
+    <navigator 
+        class='btm_btn blue_btn' 
+        wx:if="{{pageData.btm_btn}}" 
+        url='{{pageData.btm_btn_url}}' 
+        open-type='{{pageData.btm_btn_type}}'
+    >
+    {{pageData.btm_btn}}
+    </navigator>
+</view>

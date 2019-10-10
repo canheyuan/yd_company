@@ -1,0 +1,69 @@
+
+<view class='form_box'>
+  <view class='yd_title02'>
+    <view class='txt'>填写企业信息</view>
+  </view>
+  <view class='form_mdl'>
+    <view class='dl'>
+      <text class='dt'>企业名称</text>
+      <view class='dd'>
+        <text class='txt'>广州滴滴科技有限公司</text>
+      </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>纳税人识别号</text>
+      <view class='dd'>
+        <text class='txt'>12345678x9882904HD</text>
+      </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>开户银行</text>
+      <view class='dd'>
+        <text class='txt'>中国银行</text>
+      </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>银行账号</text>
+      <view class='dd'>
+        <text class='txt'>0123456789012345</text>
+      </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>注册电话</text>
+      <view class='dd'>
+        <text class='txt'>020-34256671</text>
+      </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>注册地址</text>
+      <view class='dd'>
+        <text class='txt'>广东省广州市越秀区康王南路187号越秀大厦5楼502室</text>
+      </view>
+    </view>
+
+  </view>
+
+  <view class='yd_title02' style='margin-top:50rpx;'>
+    <view class='txt'>收票信息</view>
+  </view>
+  <view class='form_mdl'>
+    <view class='dl'>
+      <text class='dt'>联系人</text>
+      <view class='dd'>
+        <text class='txt'>刘德华</text>
+      </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>手机号码</text>
+      <view class='dd'>
+        <text class='txt'>13800138000</text>
+      </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>收票地址</text>
+      <view class='dd'>
+        <text class='txt'>广东省广州市越秀区康王南路187号越秀大厦5楼502室</text>
+      </view>
+    </view>
+  </view>
+</view>

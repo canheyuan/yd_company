@@ -1,0 +1,18 @@
+@import "/wxParse/wxParse.wxss";
+page{padding-bottom: 110rpx;}
+/* 新闻标题 */
+.news_title_box{padding: 35rpx 40rpx 18rpx; border-bottom: 1rpx solid #e2e2e2;}
+.news_title{font-size: 46rpx; font-weight: bold; line-height: 56rpx; padding-bottom: 35rpx;}
+.news_source{font-size: 24rpx; font-weight: bold; color: #555; float: left;}
+/* 小图标带文字 */
+.news_title_box .ico_txt{margin-right: 0;}
+.news_title_box .ico_txt.time{float: right; margin-right: 50rpx;}
+.news_title_box .ico_txt.visitor{float: right;}
+
+/* 新闻详情 */
+.details_ctn .news_pic{width: 100%; padding-bottom: 24rpx;}
+.details_ctn .quotes image{width: 100%; height: auto;}
+
+
+/* 清除浮动 */
+.clearfix::after {content: "."; clear: both; display: block; overflow: hidden; font-size: 0; height: 0;}

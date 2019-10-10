@@ -1,0 +1,63 @@
+<!-- 下拉刷新动画 -->
+<reach-load></reach-load>
+
+
+<view class='serve_page'>
+  <!-- 广告图 -->
+  <!-- <view class='serve_banner'>
+    <image class='img' src='{{domainUrl}}/images/services/serve_banner.jpg' mode='widthFix'></image>
+  </view> -->
+
+  <!-- 推荐 -->
+  <view class='recommend_mdl'>
+    <view class='serve_tit'>
+      <navigator class='more' url='/pages/services/services-classify/services-classify?tag=0'>{{langData.moreBtn}}</navigator>
+      <view class='h3'>{{recommendData.name}}</view>
+    </view>
+    <view class='recommend_list box_shadow'>
+
+      <navigator 
+        class='li' url='/pages/services/services-intro/services-intro?id={{item.id}}'
+        wx:for="{{recommendData.sonList}}" wx:key="{{index}}" 
+        wx:if="{{index < 4}}"
+      >
+        <icon class='icons ico_tri'></icon>
+        <image class='img bg0{{index+1}}' src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'></image>
+        <view class='info'>
+          <view class='h3'>{{item.title}}</view>
+          <view class='p'>{{item.intro?item.intro:''}}</view>
+        </view>
+      </navigator>
+      
+    </view>
+  </view>
+
+  <!-- 服务列表 -->
+  <view class='serve_mdl' wx:for="{{serveData}}" wx:key="serveData{{serveIndex}}" wx:for-item="serveItem" wx:for-index="serveIndex" wx:if="{{serveItem.sonList.length>0}}">
+    <view class='serve_tit'>
+      <navigator class='more' url='/pages/services/services-classify/services-classify?tag={{serveIndex + 1}}'>{{langData.moreBtn}}</navigator>
+      <view class='h3'>{{serveItem.name}}</view>
+    </view>
+    <view class='serve_list box_shadow'>
+
+      <block 
+        wx:if="{{index < 6}}" 
+        wx:for="{{serveItem.sonList}}" wx:key="serveItem{{serveItemIndex}}"
+      >
+        <view class='line' wx:if="{{index > 0 && index%3 == 0}}"></view>
+        <navigator class='li' url='/pages/services/services-intro/services-intro?id={{item.id}}' hover-class='hover_li'>
+          <image class='img' src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/serve_ico0"+ (serveIndex+1) +".png"}}'></image>
+          <text>{{item.title}}</text>
+        </navigator>
+      </block>
+
+    </view>
+  </view>
+
+</view>
+
+
+<!------------------ tab栏菜单 ------------------>
+<view wx:if="{{langType=='en'}}" class="tab_box">
+    <tab index='2' lang-change='{{langType}}'></tab>
+</view>

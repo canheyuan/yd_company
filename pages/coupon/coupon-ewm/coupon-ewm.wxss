@@ -1,0 +1,15 @@
+page{background:#f7f7f7;}
+.coupon_box{background:#fff; padding:20rpx; margin:40rpx 20rpx 0; border-radius:10rpx;}
+.coupon_bg{width:670rpx; height:860rpx; border-radius:15rpx; text-align: center;  padding-top:40rpx; position:relative;}
+.coupon_box .title{color:#fff; font-size:48rpx; margin-bottom:5rpx;}
+.coupon_box .p{color:#fff; font-size:28rpx; height:44rpx; line-height:44rpx;}
+.coupon_box .ewm{width:450rpx; height:450rpx; background:#fff; position:absolute; top:290rpx; left:50%; margin-left:-225rpx;}
+.coupon_box .code{ font-size:32rpx; margin-top:630rpx; color:#fff;}
+
+
+/* 优惠券描述 */
+.coupon_tip{font-size:28rpx; color:#999999; line-height:46rpx; padding:40rpx 25rpx;}
+
+
+
+

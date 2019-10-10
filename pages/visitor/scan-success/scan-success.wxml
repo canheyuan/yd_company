@@ -1,0 +1,8 @@
+<view class='result_page'>
+  <image class='img' src='{{domainUrl}}/images/visitor/result_img04.png' mode='widthFix'></image>
+  <text class='h3'>扫码成功！</text>
+  <view class='p'>感谢您使用园叮门禁系统</view>
+  <view class='p' style='margin-top:40rpx;'>{{}}</view>
+
+  <navigator class='btm_btn blue_btn' url='/pages/index/index' open-type='switchTab'>返回首页</navigator>
+</view>

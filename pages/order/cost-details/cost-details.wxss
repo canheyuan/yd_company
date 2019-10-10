@@ -1,0 +1,15 @@
+page{background:#f4f4f4;}
+.cost_tip{background:#fff1cf; height:80rpx; line-height:80rpx; padding:0 30rpx; font-size:26rpx; color:#de6a1c}
+.cost_details_top{height:300rpx; box-sizing:border-box; padding:60rpx 50rpx; color:#fff;  background:url(https://www.5iparks.com/static/yuanding/images/order/fyxq_bg.jpg) no-repeat; background-size:100% 100%;}
+.cost_details_top .h3{font-size:48rpx; font-weight:bold; margin-bottom:20rpx;}
+.cost_details_top .p{font-size:34rpx; line-height:50rpx;}
+.cost_details_top .p icon{width:30rpx; height:30rpx; margin-right:10rpx;}
+.cost_details_top .p .ico_per{background-position:-240rpx -120rpx;}
+.cost_details_top .p .ico_fz{background-position:-270rpx -120rpx;}
+
+
+.form_head .yjfy_txt{float:right; color:#666; font-size:30rpx; line-height:50rpx;}
+.form_head .yjfy_txt text{display:inline-block; color:#ff6000; font-size:48rpx; vertical-align: middle; }
+.form_mdl .dl .dd .check_pic{font-size:26rpx; color:#2a99f1; float:right; line-height:50rpx;}
+.form_mdl .dl .dd .price{font-size:48rpx; color:#ff6000;}
+.no_more{margin-top:30rpx; }

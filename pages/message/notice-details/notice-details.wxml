@@ -1,0 +1,14 @@
+<import src="/wxParse/wxParse.wxml"/>
+<view class='details_mdl'>
+  <view class='details_title'>
+    <text>{{noticeData.title}}</text>
+  </view>
+  <view class='details_info'>
+    <view class='time'><icon class='icons ico_time'></icon>{{noticeData.publishTime}}</view>
+    <view class='browse'><icon class='icons ico_eye'></icon>{{noticeData.readNum}}</view>
+  </view>
+
+  <view class='details_ctn'>
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+  </view>
+</view>

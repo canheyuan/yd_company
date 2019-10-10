@@ -1,0 +1,44 @@
+@import "/wxParse/wxParse.wxss";
+page{background:#f7f7f7;}
+
+/* 幻灯片 */
+.venue_slide_box{position:relative; z-index: 9; height:360rpx;}
+.venue_slide_box .venue_slide{width:100%; height:360rpx; overflow: hidden;  }
+.venue_slide_box .slide_img{width:100%;height:360rpx;}
+
+/* 详细信息 */
+.venue_details_box{background:#fff;  border-radius:20rpx;  background:#fff;padding:20rpx; margin:-90rpx 20rpx 0; position:relative; z-index: 10;}
+
+.venue_details_box .title{font-size:34rpx;  color:#333333; }
+.venue_details_box .ico_txt .ico_dz{background-position: -330rpx -120rpx}
+.venue_details_box .ico_txt .ico_per{background-position: -360rpx -120rpx}
+.venue_details_box .label_list{overflow:hidden; height:34rpx; font-size:0; margin-top:15rpx;}
+.venue_details_box .label_list text{display:inline-block; height:34rpx; line-height:32rpx; border:1rpx solid #e5e5e5; border-radius:8rpx; background:#fff; box-sizing: border-box; font-size:22rpx; color:#aeaeae; padding:0 10rpx; margin-right:10rpx;}
+
+.venue_details_box .des{background:#f5f5f5; padding:20rpx; border-radius:15rpx; margin-top:20rpx; font-size:28rpx; color:#555555; line-height:48rpx;}
+.venue_details_box .des .text{display: -webkit-box; -webkit-box-orient: vertical; line-height:48rpx;}
+.venue_details_box .des.row5 .text{overflow: hidden; -webkit-line-clamp: 5; height:240rpx;}
+.venue_details_box .more_btn{display:block; text-align: center; font-size:24rpx; color:#9d9d9d; height:50rpx; line-height:50rpx; padding:10rpx 0 0rpx;}
+
+.venue_details_box .more_btn icon{width:30rpx; height:30rpx; background-position: -150rpx -120rpx; vertical-align: middle; margin-left:10rpx; position:relative; top:-2rpx;}
+.venue_details_box .more_btn.up icon{transform:rotate(180deg);}
+
+/* 日期选择 */
+.picker_group {font-size:28rpx; line-height:50rpx;}
+.picker_group .date_txt{float:left; line-height:60rpx; color:#333; text-align: center;}
+.picker_group picker {color: #999;display: inline-block;width:180rpx;text-align: center;
+line-height:60rpx;}
+
+.reserve_form .dl .dt{width:170rpx; text-align: center;}
+.reserve_form .reserve_btm{padding-bottom:15rpx; }
+.reserve_form .reserve_btm_box{ background:#f5f5f5; padding:0 60rpx; position:relative;}
+.reserve_form .reserve_btm_box .ico_money{position:absolute; left:10rpx; top:18rpx; width:40rpx; height:40rpx; background-position:-240rpx -210rpx;}
+.reserve_form .reserve_btm .txt{ line-height:46rpx; padding:15rpx 0; text-align: left; color:#9d9d9d; font-size:28rpx;}
+.reserve_form .reserve_btm .txt:first-child{border-bottom:1rpx solid #e5e5e5;}
+.reserve_form .reserve_btm .txt text{color:#ff6000; font-size:48rpx; display: inline-block; line-height: 46rpx; vertical-align: top; position:relative;}
+
+
+
+
+
+

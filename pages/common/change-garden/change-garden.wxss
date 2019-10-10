@@ -1,0 +1,34 @@
+page{background-color: #f7f7f7;}
+
+/*园区背景模块*/
+.garden_head{background:url(https://www.5iparks.com/static/yuanding/images/garden_bg.jpg) no-repeat center top; background-size: 100% 100%; box-sizing:border-box;  width:100%;height:240rpx; font-size:28rpx; color:#fff;padding:65rpx 60rpx;}
+.garden_head .h3{font-size:32rpx;  font-weight:500; margin:10rpx 0;}
+
+/*已定位园区*/
+.garden_location_mdl{padding:0 20rpx;position:relative;background-color:#fff;height:290rpx;}
+.garden_location_mdl .bigtitle{padding:30rpx 0 30rpx 25rpx;color:#888;font-weight: bold;font-size: 26rpx;}
+.garden_location_mdl .clearfix{border-bottom:1rpx #dfdfdf solid;padding-bottom:25rpx;}
+.garden_location_mdl .info{overflow: hidden;}
+.garden_location_mdl .info .title{font-size: 32rpx;}
+.garden_location_mdl .info .address{font-size:28rpx;color:#888;padding-top:15rpx;}
+.garden_location_mdl .icon{float:left;padding:8rpx 10rpx  0 0; width: 30rpx;height:30rpx;}
+.garden_location_mdl .radio_box{height:80rpx; color:#888888;}
+.garden_location_mdl .radio_box radio{transform:scale(.7); font-size:40rpx; text-indent:10rpx;}
+.garden_location_mdl .gou{display:inline-block; width:60rpx; height:60rpx; background:no-repeat center top url(https://www.5iparks.com/static/yuanding/images/icon/gou_act.png);background-size: 100% 100%; right:0; bottom:0;position:absolute}
+.garden_location_mdl .iconfloat{float:right;width:40rpx;height:40rpx;padding:24rpx 15rpx 0 0;}
+/*标题*/
+.allpark_title{font-size:26rpx;font-weight:bold;color:#888;padding:40rpx 0 20rpx 25rpx;}
+
+/*园区01*/
+.allpark01{padding:0 20rpx;background:#fff; position:relative; margin-bottom:25rpx;height:220rpx;}
+.allpark01 .top{border-bottom:1rpx solid #e5e5e5;padding:30rpx 10rpx;}
+.allpark01 .top .icon{float:left; width:30rpx; margin-right:10rpx;}
+.allpark01 .top .info{overflow:hidden;}
+.allpark01 .top .info .title{font-size:32rpx; color:#333; margin-bottom:10rpx;}
+.allpark01 .top .info .address{font-size:28rpx; color:#888;}
+.allpark01 .radio_box{height:80rpx; color:#888888;}
+.allpark01 .radio_box radio{transform:scale(.7); font-size:40rpx; text-indent:10rpx;}
+.allpark01 .gou{display:inline-block; width:60rpx; height:60rpx; background:no-repeat center top url(https://www.5iparks.com/static/yuanding/images/icon/gou.png);background-size: 100% 100%; right:0; bottom:0;position:absolute}
+
+/*园区02*/
+.allpark01.act .gou{display:inline-block; width:60rpx; height:60rpx; background:no-repeat center top url(https://www.5iparks.com/static/yuanding/images/icon/gou_act.png);background-size: 100% 100%; right:0; bottom:0;position:absolute}

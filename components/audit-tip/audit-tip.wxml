@@ -1,0 +1,13 @@
+
+<!-- 企业未认证提示弹窗 -->
+<view class='mask_bg pop_show' wx:if="{{isShow}}">
+    <view class='mask_bg_ctn'>
+        <view class='login_tip_mdl' 
+            style="background:url({{domainUrl}}/images/audit_tip.png) #fff no-repeat center top; background-size:100% auto;"
+        >
+            <text class='txt'>{{langData.tipText1}}</text>
+            <text class='tip'>{{langData.tipText2}}</text>
+            <navigator class='orange_btn' url='/pages/index/index' open-type='switchTab'>{{langData.iKnowBtn}}</navigator>
+        </view>
+    </view>
+</view>

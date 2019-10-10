@@ -1,0 +1,75 @@
+
+<!--  -->
+<view class='order_month'>
+
+  <view class='order_month_top'>
+    <view class='month_btn'><icon class='icons ico_month'></icon></view>
+    <view class='info'>
+      <text class='tit'>本月</text>
+      <view class='txt_box'>
+        <view class='txt'>开票金额：  2344.23</view>
+        <view class='txt'>开票数量：  12张</view>
+      </view>
+      
+    </view>
+  </view>
+
+<!-- li那里有几种状态：默认、fapiao_li、finish_li -->
+<!-- label那里有好几种状态：l_blue、l_blue2、l_yellow、l_purple、l_gray、l_gray2 -->
+  <view class='order_list'>
+
+    <!-- 已开票 -->
+    <view class='li finish_li'>
+      <view class='label l_purple'>租金</view>
+      <view class='info'>
+        <view class='info_r'>
+          <view class='price'>￥ 433.4</view>
+          <view class='btn'>立即支付</view>
+          <image class='ykp_img' src='{{domainUrl}}/images/order/ykp_img.png' mode='widthFix'></image>
+        </view>
+        <view class='info_l'>
+          <view class='h3'>广州滴滴出行科技有限公司</view>
+          <view class='p'>收款方：广州园叮科技有限公司</view>
+          <view class='ico_txt'><icon class='icons ico_time'></icon>07-29 19:52</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 已开票 -->
+    <view class='li finish_li'>
+      <view class='label l_purple'>租金</view>
+      <view class='info'>
+        <view class='info_r'>
+          <view class='price'>￥ 433.4</view>
+          <view class='btn'>立即支付</view>
+          <image class='ykp_img' src='{{domainUrl}}/images/order/ykp_img.png' mode='widthFix'></image>
+        </view>
+        <view class='info_l'>
+          <view class='h3'>广州滴滴出行科技有限公司</view>
+          <view class='p'>收款方：广州园叮科技有限公司</view>
+          <view class='ico_txt'><icon class='icons ico_time'></icon>07-29 19:52</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 已开票 -->
+    <view class='li finish_li'>
+      <view class='label l_purple'>租金</view>
+      <view class='info'>
+        <view class='info_r'>
+          <view class='price'>￥ 433.4</view>
+          <view class='btn'>立即支付</view>
+          <image class='ykp_img' src='{{domainUrl}}/images/order/ykp_img.png' mode='widthFix'></image>
+        </view>
+        <view class='info_l'>
+          <view class='h3'>广州滴滴出行科技有限公司</view>
+          <view class='p'>收款方：广州园叮科技有限公司</view>
+          <view class='ico_txt'><icon class='icons ico_time'></icon>07-29 19:52</view>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+
+</view>

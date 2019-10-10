@@ -1,0 +1,49 @@
+<!-- 左边 -->
+<view class='col_menu'>
+  <view 
+    class='{{tagIndex==index?"act":""}}' 
+    wx:for="{{tagList}}" wx:key="{{index}}"
+    bindtap="tagChangeFn" data-index="{{index}}" data-ctn=""
+  >{{item.name}}</view>
+</view>
+
+
+<!-- 右边 -->
+<view class='col_ctn'>
+  <!-- 搜索 -->
+  <view class="search_mdl" wx:if="{{false}}">
+    <view class='search_box'>
+      <icon class='icons ico_search'></icon>
+      <input class="input" placeholder="搜个关键词试试" placeholder-class='placeholder' confirm-type="search" />
+    </view>
+  </view>
+
+  <!-- 内容 -->
+  <view class='col_main'>
+    <!-- Banner -->
+    <!-- <view class='banner_box'>
+      <image src="{{domainUrl}}/images/services/banner_pic.jpg" class="img" mode='widthFix'></image>
+    </view> -->
+
+    <!-- 个性推荐 -->
+    <block wx:for="{{tagList[tagIndex].children}}" wx:key="{{index}}">
+    <view class='list_box'>
+      <view class='title'><icon class='ind_rcmd' wx:if="{{tagIndex==0}}"></icon>{{item.name}}</view>
+      
+      <view class='ul'>
+        <block wx:for="{{item.serviceList}}" wx:key="{{index}}">
+          <view class='li'bindtap="goToIntro" data-id="{{item.id}}">
+            <view class='text'>{{item.title}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+    </block>
+  </view>
+
+</view>
+
+<!-- 成为服务商 -->
+<!-- <navigator class='btm_btn'>
+  <image src='{{domainUrl}}/images/icon/fws_btn.png'></image>
+</navigator> -->

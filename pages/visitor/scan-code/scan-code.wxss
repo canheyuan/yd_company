@@ -1,0 +1,21 @@
+
+page{background:#f7f7f7;}
+.scan_code_mdl{ margin:40rpx 20rpx 20rpx; padding:150rpx 20rpx 50rpx; border-radius:10rpx; background:#fff;}
+.scan_code{background-size:100% auto; height:880rpx; position:relative;}
+.scan_code .per_img{width:180rpx; height:180rpx;  border-radius:100%; overflow: hidden; position:absolute; left:50%; margin-left:-90rpx; top:-110rpx;}
+.scan_code .per_img .img{width:100%; height:100%; border-radius:100%;}
+.scan_code .info{text-align: center; color:#fff; padding-top:100rpx; }
+.scan_code .info .name{font-weight: bold; font-size:34rpx; height:40rpx; line-height:40rpx;}
+.scan_code .info .line{width:70rpx; height:2rpx; background:#fff; margin:15rpx auto; opacity: .6;}
+.scan_code .info .company_name{ font-size:26rpx; opacity: .6; height:40rpx; line-height:40rpx;}
+
+.scan_code .code_box{padding-top:120rpx; text-align: center;}
+.scan_code .code_box .tip{color:#fff; opacity: .6; font-size:28rpx; margin-bottom:20rpx;}
+.scan_code .code_box .ewm{width:400rpx; height:400rpx;}
+
+.check_btn{text-align: center; font-size:30rpx; color:#2a99f1; text-decoration: underline; margin-bottom:20rpx;}
+
+
+
+
+

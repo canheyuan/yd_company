@@ -1,0 +1,17 @@
+page{background:#f7f7f7;}
+.visitor_status{height:80rpx; line-height:80rpx; background:#dfeef5; padding:0 20rpx; font-size:26rpx; color:#de6a1c; position:relative; }
+.visitor_status text{color:#109b2e;}
+.visitor_status text.status4{color:#c3c3c3;}
+.overdue_img{width:145rpx; position:absolute; top:100rpx ;right:20rpx;}
+.form_box{padding:30rpx 20rpx;}
+
+/* 订单号时间 */
+.order_time{ padding:20rpx 20rpx; margin:0 30rpx 50rpx ; background:#ededed; border-radius:10rpx; line-height:40rpx;}
+.order_time .ico_txt{float: left; clear: both;}
+.order_time .ico_txt .icons{width:30rpx; height:30rpx;}
+.order_time .ico_txt .ico_order{background-position: 0rpx -470rpx;}
+.order_time .ico_txt .ico_time{background-position: -120rpx -120rpx;}
+
+.form_mdl .dl{overflow: hidden;}
+
+

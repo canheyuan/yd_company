@@ -1,0 +1,53 @@
+<!-- 
+<view class="complaint_type">
+  <view class='tit'>类型：</view>
+  <view class='type_list'>
+    <radio-group>
+      <radio class='radio' checked="true" color='#4da5f7' >表扬</radio>
+      <radio class='radio' color='#4da5f7' >投诉</radio>
+      <radio class='radio' color='#4da5f7' >建议</radio>
+    </radio-group>
+  </view>
+</view> -->
+<form  bindsubmit="submitFn">
+  <view class='complaint_box box_shadow' >
+    <view class='complaint_head'>
+      <view class='tit'>{{langData.subject}}：</view>
+      <view class='input_box'>
+        <input class='input' placeholder='{{langData.subjectPl}}' placeholder-style='color:#c2c2c2;' name="title"></input>
+      </view>
+    </view>
+    <view class='complaint_ctn'>
+      <textarea 
+        class='textarea' name='content'
+        placeholder='{{langData.feedbackPl}}'  placeholder-style='color:#c2c2c2;' 
+      ></textarea>
+
+      <view class='file_imgs clearfix'>
+        <!-- 循环预览图 -->
+        <view class='li' wx:for="{{fileImgs}}" wx:key="{{index}}">
+          <image class='img' src='{{item}}'></image>
+          <icon class='icons close_btn' bindtap='removeImageFn' data-index="{{index}}"></icon>
+        </view>
+        <view class='li' wx:if="{{fileImgsNum!=0}}">
+          <view class='add_btn' bindtap="fileImageFn">
+            <icon class='icons ico_add'></icon>
+            <text>{{langData.addPicBtn}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <navigator 
+    class='check_btn' hover-class='hover' 
+    url="/pages/complaint/complaint-list/complaint-list"
+  >{{langData.checkRecordBtn}}</navigator>
+
+  <view class='fix_btn'>
+    <button class='blue_btn' formType="submit">{{langData.public.submitBtn2}}</button>
+  </view>
+  <input style='display:none;' name="contact" value='{{userInfo.name}}'></input>
+  <input style='display:none;' name="contactPhone" value='{{userInfo.cellphone}}'></input>
+</form>
+

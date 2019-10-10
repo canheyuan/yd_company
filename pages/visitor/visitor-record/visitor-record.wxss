@@ -1,0 +1,22 @@
+page{padding-top:100rpx;}
+
+.choose_head{height:90rpx; background:#f7f7f7; border-top:1rpx solid #dddddd; border-bottom:1rpx solid #dddddd; padding:0 10rpx 0 20rpx; position:fixed; top:0; left:0; width:100%; z-index:99; box-sizing:border-box;}
+.choose_head .month_btn{float:right; width:90rpx; height:90rpx;  text-align: center; }
+.choose_head .month_btn .ico_month{width:50rpx; height:50rpx; background-position:-400rpx -60rpx;margin-top:20rpx;}
+.choose_head .info{line-height:90rpx;}
+.choose_head .info .tit{display:inline-block; color:#555555; font-size:30rpx; margin-right:20rpx;}
+
+/* 预约记录列表 */
+.visitor_record_list{padding-top:90rpx;}
+.visitor_record_list .li{padding:30rpx 0 0 30rpx; position:relative;}
+.visitor_record_list .li .img{float:left; width:114rpx; height:114rpx; border-radius:100%; margin-right:30rpx;}
+.visitor_record_list .li .label{position:absolute; right:30rpx; top:30rpx; font-size:22rpx; color:#fff; background:#17b8fb;  display: inline-block; width:100rpx; height:40rpx; line-height:40rpx; text-align: center; border-radius:6rpx;}
+.visitor_record_list .li .label.status1{background:#17b8fb;}
+.visitor_record_list .li .label.status2{background:#17b8fb;}
+.visitor_record_list .li .label.status3{background:#17b8fb;}
+.visitor_record_list .li .label.status4{background:#c3c3c3;}
+.visitor_record_list .li .info{overflow:hidden; border-bottom:1rpx solid #e5e5e5; padding-bottom:30rpx; font-size:24rpx; color:#9d9d9d; line-height:40rpx; }
+.visitor_record_list .li .info .title{font-size:30rpx;color:#333; margin-bottom:15rpx;}
+.visitor_record_list .li .info .title text{color:#9d9d9d;}
+
+.visitor_form .form_mdl .dl .dt{width:190rpx;}

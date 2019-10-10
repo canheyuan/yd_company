@@ -1,0 +1,58 @@
+
+<!-- 投诉详情 -->
+<view class='repair_list clearfix'>
+  <view class='hdr_line'>
+    <view class='yd_title01'>{{langData.subject}}：{{detailsData.title}}</view>
+    <!-- 未接单状态 -->
+    <view class='status follow'>{{detailsData.status}}</view>
+  </view>
+  <view class='repair_ctn clearfix'>
+
+    <view class='repair_txt f_30' style='min-height:120rpx;'>{{detailsData.content?detailsData.content:langData.public.noDescriptionTip}}</view>
+
+    <view class='dl'>
+      <view class='dt'>{{langData.public.contact}}</view>
+      <view class='dd'>{{detailsData.contact}}</view>
+    </view>
+
+    <view class='dl'>
+      <view class='dt'>{{langData.public.contactPhone}}</view>
+      <view class='dd'>{{detailsData.contactPhone}}</view>
+    </view>
+
+    <view class='dl' wx:if="{{detailsData.images.length>0}}">
+      <view class='dt'>{{langData.public.imgAccessory}}</view>
+      <view class='dd'>
+        <view class='pic' wx:for="{{detailsData.images}}" wx:key="{{index}}">
+          <image 
+            src='{{item}}' bindtap="bigImgFn" 
+            data-index="{{index}}" data-imgs="{{detailsData.images}}"
+          ></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 订单号时间 -->
+<view class='order_time clearfix'>
+  <view class='ico_txt'><image src='{{domainUrl}}/images/icon/ico_clock.png'></image>{{langData.public.applyTime}}：{{detailsData.applyTime}}</view>
+  <!-- <view class='ico_txt'><image src='{{domainUrl}}/images/icon/ico_clock.png'></image>完成时间：{{detailsData.finishTime}}</view> -->
+</view>
+
+<!-- 回复模块 -->
+<view class='repair_list clearfix'>
+  <view class='hdr_line'>
+    <view class='yd_title01'>{{langData.public.replyBtn}}</view>
+  </view>
+  <view class='repair_ctn clearfix'>
+
+    <textarea class='repair_txt2' placeholder='{{langData.public.myReplyPl}}'  placeholder-style='color:#c2c2c2;' name='content'></textarea>
+    
+    <view style='padding:50rpx 100rpx;'>
+      <view class='blue_btn'>{{langData.public.replyBtn}}</view>
+    </view>
+
+  </view>
+</view>
+

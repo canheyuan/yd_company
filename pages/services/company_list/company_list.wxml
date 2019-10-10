@@ -1,0 +1,23 @@
+<view class='company_list'>
+  <view class='li' wx:for="{{listInfo}}" wx:key="{{index}}">
+    <!--公司介绍-->
+    <view class='top'>
+      <image class='group_logo' mode='widthFix' src='{{domainUrl}}/images/temp/group_logo_03.png'></image>
+      <view class='info'>
+        <view class='info_title'>广州滴滴顺风车企业管理咨询有限公司</view>
+        <view class='info_type'>
+          <view class='label'>工商财税服务</view>
+          <view class='label'>工商注册</view>
+          <view class='label'>代理记账</view>
+          <view class='label'>代理记账</view>
+        </view>
+        <view class='info_content'>会议服务方面专业团队提供“一站式”服务，为每个会议度身订制会议方案并提供全天候个性化服务。</view>
+      </view>
+    </view>
+
+    <!--咨询按钮-->
+    <view class='btm'>
+      <view class="s_blue_btn">立即咨询</view>
+    </view>
+  </view>
+</view>

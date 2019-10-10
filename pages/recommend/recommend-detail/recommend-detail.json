@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "推荐有礼",
+  "usingComponents": {
+    "activity-list":"/components/activity-list/activity-list"
+  }
+}

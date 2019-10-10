@@ -1,0 +1,55 @@
+<import src="/wxParse/wxParse.wxml"/>
+
+<view class='act_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+
+    <view class='li box_shadow'  wx:for="{{listInfo.list}}" wx:key="{{index}}">
+        <view class='ico_favorite_corner {{item.isAttention==1?"act":""}}'></view>
+        <!-- 人气王标签 -->
+        <view class='status icons2'>{{langData.popularityText}}</view>
+        
+        <view class='top' bindtap="gotoDetailsFn" data-id="{{item.expertId}}">
+
+            <view class='col1'>
+                <image 
+                    src='{{item.headImg?item.headImg:domainUrl+"/images/default/df_userhead.png"}}' class="img"
+                    binderror='errorImgFn' data-obj="listInfo[{{index}}].headImg"  
+                    data-img="{{domainUrl}}/images/default/df_userhead.png" 
+                ></image>
+                <view class='icon_like'>{{item.attentionNum}}{{langData.attentionText}}</view>
+            </view>
+
+            <view class='info'>
+                <view class='h3'>{{item.expertName}}</view>
+                <view class='title'><text>{{item.positionName}}</text> | <text>{{item.serviceProvider}}</text></view>
+                <view class='news_tips yd_label'>
+                    <view class='ico_txt institution'>
+                        <image src='{{domainUrl}}/images/icon/ico_loc_sm.png'></image>{{item.cityName}}
+                    </view>
+                    <text wx:for="{{item.focusAreas}}" wx:key="{{index}}">{{item}}</text>
+                </view>
+                <!-- <view class='intro'><template is="wxParse" data="{{wxParseData:introList[index]}}" /></view> -->
+                <view class='intro'>{{item.shortIntro}}</view>
+                <view class='label'><icon class='icons ico_zd'></icon>{{langData.projectText}}<text>{{item.projectNum}}</text>{{langData.geText}}</view>
+                <!--<view class='ico_txt'><icon class='icons ico_dz'></icon>广州市海珠区广一国际电子商务产业园</view> -->
+            </view>
+            
+        </view>
+
+        <view class='btm'>
+            <!-- <button open-type="contact" class='blue_btn'>在线咨询</button> -->
+            <view class='blue_btn' bindtap="gotoChatFn" data-item="{{item}}">{{langData.referText}}</view>
+        </view>
+
+    </view>
+
+    <view class='more_tip' wx:if="{{listInfo.tipTxt}}"><view class='txt'>{{listInfo.tipTxt}}</view></view>  
+</view>
+
+
+<!-- 暂无状态 -->
+<list-nothing c-name="expert" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>
+
+<!-- 登录提示 -->
+<view hidden="{{isLoginPopHide}}">
+    <login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
+</view>

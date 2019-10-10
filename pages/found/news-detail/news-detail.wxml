@@ -1,0 +1,36 @@
+<import src="/wxParse/wxParse.wxml"/>
+<!-- 新闻标题 -->
+<view class='news_title_box clearfix'>
+    <view class='news_title'>{{newsData.newsTitle}}</view>
+    <view class='news_source'>{{newsData.author}}</view>
+    <view class='ico_txt visitor'><image src='{{domainUrl}}/images/icon/ico_eye.png'></image>{{newsData.pv}}</view>
+    <view class='ico_txt time'><image src='{{domainUrl}}/images/icon/ico_clock.png'></image>{{newsData.publishTime}}</view>
+</view>
+
+<!-- 新闻详情 -->
+<view class='details_ctn clearfix'>
+    <view class='news_pic'><image src="{{newsData.mainImgList}}" mode='widthFix'></image></view>
+    <!-- <view class='quotes'><image src='{{domainUrl}}/images/icon/quotes.png' mode='widthFix'></image></view> -->
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+</view>
+
+<!-- 评论列表 -->
+<view bindtap="loginTipShow2">
+    <discuss-list
+        lang='{{langType}}'
+        target-page="news"
+        detail-id="{{newsData.newsId}}" 
+        is-collected="{{newsData.isCollected}}"
+    ></discuss-list>
+</view>
+
+<!-- 登录提示 -->
+<!-- <view hidden="{{isLoginPopHide}}">
+    <login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
+</view> -->
+
+
+
+
+
+ 

@@ -1,0 +1,53 @@
+<!-- 搜索 -->
+<view class="search_mdl">
+  <view class='search_box'>
+    <icon class='icons ico_search'></icon>
+    <input class="input" placeholder="请输入关键词" confirm-type="search" />
+  </view>
+</view>
+
+<!-- 热门搜索 -->
+<view class='hot_search'>
+  <view class='hot_search_head'>
+    <view class='hyp_btn'><icon class='icons ico_hyp'></icon>换一批</view>
+    <text class='title'>热门搜索</text>
+  </view>
+  <view class='hot_label_list'>
+    <view class='label' wx:for="{{hotLabelList}}" wx:key="{{index}}">{{item.name}}</view>
+  </view>
+</view>
+
+<!-- 热门搜索2 -->
+<view class='hot_search'  wx:if="{{false}}">
+  <view class='hot_search_head'>
+    <view class='hyp_btn'><image src='/images/hyp_ico.png'></image>换一批</view>
+    <text class='title'>热门搜索</text>
+  </view>
+  <view class='hot_label_list2'>
+    <view class='label' wx:for="{{hotLabelList}}" wx:key="{{index}}">{{item.name}}</view>
+  </view>
+</view>
+
+<!-- 搜索历史 -->
+<view class='del_history'>
+  <view class='del_history_head'>
+    <view class='del_btn'><icon class='icons ico_del'></icon>清空历史</view>
+    <text class='title'>搜索历史</text>
+  </view>
+  <view class='del_history_list'>
+    <view class='label' wx:for="{{searchHistoryList}}" wx:key="{{index}}">{{item.name}}</view>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+

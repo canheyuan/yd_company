@@ -1,0 +1,108 @@
+ <view class='venue_info box_shadow'>
+    <!-- l_yellow、l_gray、l_blue -->
+    <view class='icons label {{detailData.order.statusClass}}' >{{detailData.order.statusName}}</view>
+    <view class='top'>
+        <view class='p'>{{langData.ydcdText}}：</view>
+        <view class='h3'>{{detailData.chamber.chamberName}}</view>
+    </view>
+
+    <view class='btm'>
+        <view class='ico_txt'><icon class='icons ico_dz'></icon>{{detailData.chamber.address}}</view>
+        <view class='ico_txt'><icon class='icons ico_per'></icon>{{langData.accommodate + detailData.chamber.capacity + langData.person}}</view>
+    </view>
+</view>
+
+<!-- 订单信息 -->
+<form bindsubmit="createOrderFn" report-submit="true" class='form_box'>
+    <view class='form_head'>
+        <view class='yd_title02' style="margin-bottom:0;"><view class='txt'>{{langData.bookingInfo}}</view></view>
+    </view>
+
+    <view class='form_mdl form_mdl2 reserve_form'>
+        <view class='pay_info_list'>
+            <!-- 订单号 -->
+            <view class='li'>
+                <text class='h3'>{{langData.public.order}}：</text>
+                <view class='p'>{{detailData.order.orderNo}}</view>
+            </view>
+            <!-- 订单创建时间 -->
+            <view class='li'>
+                <text class='h3'>{{langData.public.orderCreateTime}}：</text>
+                <view class='p'>{{detailData.order.createTime}}</view>
+            </view>
+            <!-- 支付时间 -->
+            <view class='li' wx:if="{{detailData.order.payTime}}">
+                <text class='h3'>{{langData.public.payTime}}：</text>
+                <view class='p'>{{detailData.order.payTime}}</view>
+            </view>
+            <!-- <view class='li'>
+                <text class='h3'>{{langData.public.payWay}}：</text>
+                <view class='p'><icon class="icons ico_wx"></icon>微信支付</view>
+            </view> -->
+        </view>
+        <!-- 开始时间 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.public.startTime}}</text>
+            <view class='dd'>
+                <text  class='txt'>{{detailData.order.startTime}}</text>
+            </view>
+        </view>
+        <!-- 结束时间 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.public.endTime}}</text>
+            <view class='dd'>
+                <text  class='txt'>{{detailData.order.endTime}}</text>
+            </view>
+        </view>
+        <!-- 联系人 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.public.contact}}</text>
+            <view class='dd'>
+                <text  class='txt'>{{detailData.order.contact}}</text>
+            </view>
+        </view>
+        <!-- 联系电话 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.public.contactPhone}}</text>
+            <view class='dd'>
+                <text  class='txt'>{{detailData.order.phone}}</text>
+            </view>
+        </view>
+        <!-- 费用信息 -->
+        <view class='reserve_btm'>
+            <view class="reserve_btm_box">
+                <view class='txt'>
+                    {{detailData.chamber.price + 
+                    langData.reserveText1 + 
+                    detailData.order.count + 
+                    langData.reserveText2 + 
+                    detailData.order.freeHours + 
+                    langData.reserveText3}}
+                </view>
+                <view class='txt'>
+                    {{detailData.order.payStatus==2?langData.reserveText5:langData.reserveText4}} 
+                    <text style="font-size:28rpx; top:-6rpx; margin-left:10rpx;">¥</text>
+                    <text>{{detailData.order.amount}}</text>
+                </view>
+                <icon class="icons ico_money"></icon>
+            </view>
+        </view>
+    </view>
+
+    <!-- 支付按钮 -->
+    <view 
+        style='padding:60rpx 100rpx;' 
+        wx:if="{{detailData.order.status==2 && detailData.order.payStatus==1}}"
+    >
+        <button class='blue_btn' form-type='submit'>{{langData.payBtn}}</button>
+    </view>
+</form>
+
+
+<!-- 返回首页按钮 -->
+<navigator 
+  wx:if="{{isIndexBtnShow}}" class='index_btn'  
+  url='/pages/index/index' hover-class='none' open-type='switchTab'
+>
+  <image src='{{domainUrl}}/images/icon/back2h_btn.png'></image>
+</navigator>

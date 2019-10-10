@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "注册",
+  "usingComponents": {
+    "audit-tip": "/components/audit-tip/audit-tip",
+    "list-nothing": "/components/result-nothing/result-nothing"
+  }
+}

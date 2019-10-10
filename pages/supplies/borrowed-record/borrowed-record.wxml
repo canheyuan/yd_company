@@ -1,0 +1,34 @@
+<!-- 借用列表 -->
+<view class='container' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+
+  <view class='brwed_list clearfix'  wx:for="{{listInfo.list}}" wx:key="{{index}}">
+    <view class='title'>{{langData.borrowText}}：<text>{{item.goodsName}}</text></view>
+    <view class='status act' wx:if="{{item.status==1}}">{{langData.borrowStatus1}}</view>
+    <view class='status act' wx:if="{{item.status==2}}">{{langData.borrowStatus2}}</view>
+    <view class='status' wx:if="{{item.status==4}}">{{langData.borrowStatus4}}</view>
+    <view class='status' wx:if="{{item.status==5}}">{{langData.borrowStatus5}}</view>
+    <view class='ico_txt time'>
+      <image src='{{domainUrl}}/images/icon/ico_clock.png'></image>
+      {{langData.public.applyTime}}：{{item.dateTime}}
+    </view>
+  </view>
+
+  <!-- 底部提示文字 -->
+  <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
+    <view class='txt'>{{listInfo.tipTxt}}</view>
+  </view>  
+</view>
+
+<!-- 暂无状态 -->
+<list-nothing 
+  c-name="supplies" 
+  wx:if="{{!listInfo.list.length>0 && listInfo.list}}"
+></list-nothing>
+
+<!-- 返回首页按钮 -->
+<navigator 
+  wx:if="{{isIndexBtnShow}}" class='index_btn'  
+  url='/pages/index/index' hover-class='none' open-type='switchTab'
+>
+  <image src='{{domainUrl}}/images/icon/back2h_btn.png'></image>
+</navigator>

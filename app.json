@@ -1,0 +1,184 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/common/company-housekeeper/company-housekeeper",
+        "pages/common/find-password/find-password",
+        "pages/common/result/result",
+        "pages/common/search/search",
+        "pages/common/404/404",
+        "pages/common/web-view/web-view",
+        "pages/common/register/register",
+        "pages/common/change-garden/change-garden",
+        "pages/common/login/login",
+        "pages/services/services-intro/services-intro",
+        "pages/services/company_list/company_list",
+        "pages/services/services-classify/services-classify",
+        "pages/services/services-index/services-index",
+        "pages/found/policy-detail/policy-detail",
+        "pages/found/policy_reading/policy_reading",
+        "pages/found/policy-assess-2/policy-assess-2",
+        "pages/found/policy-assess-1/policy-assess-1",
+        "pages/found/expert/expert",
+        "pages/found/found-index/found-index",
+        "pages/found/expert-detail/expert-detail",
+        "pages/found/news-detail/news-detail",
+        "pages/user/my-collect/my-collect",
+        "pages/user/my-repair/my-repair",
+        "pages/user/my-reserve/my-reserve",
+        "pages/user/my-reserve-details/my-reserve-details",
+        "pages/user/user-index/user-index",
+        "pages/user/update-info/update-info",
+        "pages/user/user-info/user-info",
+        "pages/user/my-backlog/my-backlog",
+        "pages/user/my-invoice/my-invoice",
+        "pages/user/my-activity/my-activity"
+    ],
+    "subPackages": [
+        {
+            "root": "pages/repair/",
+            "pages": [
+                "online-repair/online-repair",
+                "repair-detail/repair-detail"
+            ]
+        },
+        {
+            "root": "pages/supplies/",
+            "pages": [
+                "supplies-index/supplies-index",
+                "borrowed-record/borrowed-record"
+            ]
+        },
+        {
+            "root": "pages/coupon/",
+            "pages": [
+                "my-coupon-list/my-coupon-list",
+                "coupon-list/coupon-list",
+                "coupon-detail/coupon-detail",
+                "coupon-ewm/coupon-ewm"
+            ]
+        },
+        {
+            "root": "pages/recommend/",
+            "pages": [
+                "recommend-detail/recommend-detail",
+                "create-referrer/create-referrer",
+                "recommend-apply/recommend-apply",
+                "recommend-share/recommend-share",
+                "recommend-record-list/recommend-record-list",
+                "recommend-record/recommend-record",
+                "recommend-index/recommend-index"
+            ]
+        },
+        {
+            "root": "pages/wechat/",
+            "pages": [
+                "chat-list/chat-list",
+                "chat/chat"
+            ]
+        },
+        {
+            "root": "pages/complaint/",
+            "pages": [
+                "complaint-detail/complaint-detail",
+                "complaint-apply/complaint-apply",
+                "complaint-list/complaint-list"
+            ]
+        },
+        {
+            "root": "pages/activity/",
+            "pages": [
+                "activity-list/activity-list",
+                "activity-apply/activity-apply",
+                "activity-details/activity-details",
+                "activity-apply-details/activity-apply-details"
+            ]
+        },
+        {
+            "root": "pages/visitor/",
+            "pages": [
+                "visitor-record/visitor-record",
+                "visitor-appointment-detail/visitor-appointment-detail",
+                "visitor-appointment/visitor-appointment",
+                "history-record/history-record",
+                "visitor-success/visitor-success",
+                "scan-code/scan-code",
+                "scan-success/scan-success",
+                "visitor-operation/visitor-operation"
+            ]
+        },
+        {
+            "root": "pages/message/",
+            "pages": [
+                "message-list/message-list",
+                "repair-progress-details/repair-progress-details",
+                "notice-details/notice-details",
+                "notice-list/notice-list"
+            ]
+        },
+        {
+            "root": "pages/venue/",
+            "pages": [
+                "venue-booking-list/venue-booking-list",
+                "venue-booking-details/venue-booking-details",
+                "venue-booking-pay/venue-booking-pay"
+            ]
+        },
+        {
+            "root": "pages/order/",
+            "pages": [
+                "pay-info/pay-info",
+                "invoice-info/invoice-info",
+                "write-invoice/write-invoice",
+                "order-inquiry-404/order-inquiry-404",
+                "confirmation-info/confirmation-info",
+                "order-list/order-list",
+                "cost-details/cost-details",
+                "order-info/order-info"
+            ]
+        }
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "园叮智慧园区",
+        "navigationBarTextStyle": "black"
+    },
+    "navigateToMiniProgramAppIdList": [
+        "wx53305a846213b151",
+        "wx16b70a801be2f7d1"
+    ],
+    "tabBar": {
+        "color": "#606060",
+        "selectedColor": "#4a7df6",
+        "backgroundColor": "#f9f9f9",
+        "borderStyle": "black",
+        "position": "bottom",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "/images/nav_ico/btn1.png",
+                "selectedIconPath": "/images/nav_ico/btn1_act.png"
+            },
+            {
+                "pagePath": "pages/found/found-index/found-index",
+                "text": "发现",
+                "iconPath": "/images/nav_ico/btn2.png",
+                "selectedIconPath": "/images/nav_ico/btn2_act.png"
+            },
+            {
+                "pagePath": "pages/services/services-index/services-index",
+                "text": "服务",
+                "iconPath": "/images/nav_ico/btn3.png",
+                "selectedIconPath": "/images/nav_ico/btn3_act.png"
+            },
+            {
+                "pagePath": "pages/user/user-index/user-index",
+                "text": "我的",
+                "iconPath": "/images/nav_ico/btn4.png",
+                "selectedIconPath": "/images/nav_ico/btn4_act.png"
+            }
+        ]
+    },
+    "sitemapLocation": "sitemap.json"
+}

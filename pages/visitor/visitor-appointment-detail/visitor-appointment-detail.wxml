@@ -1,0 +1,88 @@
+
+<image wx:if="{{detailsData.status == 3}}" class='overdue_img' mode='widthFix' src='{{domainUrl}}/images/icon/ico_overdue.png'></image>
+<view class="visitor_status">{{langData.statusName}}：<text style='status{{detailsData.status}}'>{{detailsData.statusName}}</text></view>
+<view class='form_box'>
+  <view class='form_head'><text class='tit'>{{langData.vTitle}}</text></view>
+  <view class='form_mdl'>
+    <view class='dl'>
+      <text class='dt'>{{langData.vName}}</text>
+      <view class='dd'><text class='txt'>{{detailsData.visitorName}}</text></view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>{{langData.vPhone}}</text>
+      <view class='dd'><text class='txt'>{{detailsData.visitorPhone}}</text></view>
+    </view>
+
+    <view class='dl'>
+      <text class='dt'>{{langData.vPlace2}}</text>
+      <view class='dd'><text class='txt'>{{detailsData.parkName}}</text></view>
+    </view>
+
+    <view class='dl'>
+      <text class='dt'>{{langData.vAddress}}</text>
+      <view class='dd'><text class='txt'>{{detailsData.address}}</text></view>
+    </view>
+
+    <view class='dl'>
+      <text class='dt'>{{langData.vFloor}}</text>
+      <view class='dd'><text class='txt'>{{detailsData.unitName}}</text></view>
+    </view>
+
+    <view class='dl' wx:if="{{detailsData.carPlate}}">
+      <text class='dt'>{{langData.carCode}}</text>
+      <view class='dd'><text class='txt'>{{detailsData.carPlate}}</text></view>
+    </view>
+
+    <view class='dl'>
+      <text class='dt'>{{langData.vTime}}</text>
+      <view class='dd'><text class='txt'>{{detailsData.reserveTime}}</text></view>
+    </view>
+
+    <view class='dl' wx:if="{{detailsData.arriveTime}}">
+      <text class='dt'>{{langData.enterTime}}</text>
+      <view class='dd'><text class='txt'>{{detailsData.arriveTime}}</text></view>
+    </view>
+
+    <view class='dl' wx:if="{{detailsData.leaveTime}}">
+      <text class='dt'>{{langData.leaveTime}}</text>
+      <view class='dd'><text class='txt'>{{detailsData.leaveTime}}</text></view>
+    </view>
+    
+  </view>
+</view>
+
+<view class='form_box'>
+  <view class='form_head'><text class='tit'>{{langData.relName}}</text></view>
+  <view class='form_mdl'>
+    <view class='dl'>
+      <text class='dt'>{{langData.public.name}}</text>
+      <view class='dd'><text class='txt'>{{detailsData.inviterName}}</text></view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>{{langData.public.phoneCode}}</text>
+      <view class='dd'><text class='txt'>{{detailsData.inviterPhone}}</text></view>
+    </view>
+
+    <view class='dl'>
+      <text class='dt'>{{langData.public.companyName}}</text>
+      <view class='dd'><text class='txt'>{{detailsData.entName}}</text></view>
+    </view>
+    
+  </view>
+</view>
+
+
+<!-- 订单号时间 -->
+<view class='order_time clearfix'>
+  <!-- <view class='ico_txt'><icon class='icons ico_order'></icon>订单号：{{detailsData.createTime}}</view> -->
+  <view class='ico_txt'><icon class='icons ico_time'></icon>{{langData.public.applyTime}}：{{detailsData.createTime}}</view>
+</view>
+
+
+
+
+
+
+
+
+

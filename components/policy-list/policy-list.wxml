@@ -1,0 +1,44 @@
+<view class='policy_list {{listName}}'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    <view 
+        class='li clearfix' wx:for="{{listInfo.list}}" wx:key="policy{{index}}"
+    >
+        <icon class='ico_collect act' bindtap="collectPopShow" data-id="{{item.policyId}}"></icon>
+        <view bindtap="gotoDetailsFn" data-id="{{item.policyId}}">
+
+            <view class='info'>
+                <view class='title'>{{item.policyTitle}}</view>
+                <view class='news_icon'>
+                    <view class='ico_txt institution' style="display:block;">
+                        <image src='{{domainUrl}}/images/icon/ico_building.png'></image>
+                        {{item.releaseOrganization?item.releaseOrganization:''}}
+                    </view>
+                    <view class='ico_txt time'>
+                        <image src='{{domainUrl}}/images/icon/ico_clock.png'></image>
+                        {{item.endTime}}
+                    </view>
+                </view>
+            </view>
+
+            <view class='bonus'>
+                <view class='interpret'>{{langData.bonusText01}}</view>
+                <view class='money' wx:if="{{item.highestReward}}">
+                    <text>¥</text>{{item.highestReward}}
+                </view>
+                <view class='money' wx:if="{{!item.highestReward}}">{{langData.bonusText02}}</view>
+                <view class='btn_sm orange' style='width:80%;'>{{langData.knowBtn}}</view>
+            </view>
+
+        </view>
+    </view>
+    <!-- 底部提示文字 -->
+    <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
+        <view class='txt'>{{listInfo.tipTxt}}</view>
+    </view>  
+</view>
+
+
+<!-- 暂无状态 -->
+<list-nothing 
+    c-name="{{targetName}}" 
+    wx:if="{{!listInfo.list.length>0 && listInfo.list}}"
+></list-nothing>

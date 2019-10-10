@@ -1,0 +1,26 @@
+
+page{background: #f7f7f7;}
+.tag_list .tag_item{width:33.3%; box-sizing: border-box;}
+
+.venue_info{border-radius:20rpx;  margin:40rpx 30rpx 0; background:#fff; position:relative;}
+.venue_info .label{display:inline-block; width:97rpx; height:42rpx; line-height:38rpx; text-align: center; font-size:24rpx; color:#fff; background-position: -180rpx 0;position:absolute; right:-4rpx; top:30rpx; z-index: 8;}
+.venue_info .l_yellow{background-position: -180rpx 0;  }
+.venue_info .l_blue{background-position: -70rpx 0;  }
+.venue_info .l_gray{background-position: -395rpx 0;  }
+.venue_info .top{background:url(https://www.5iparks.com/static/yuanding/images/venue_info_bg.jpg) no-repeat center center; background-size:100% 100%; color:#fff; padding:30rpx 30rpx 40rpx; border-top-left-radius: 20rpx; border-top-right-radius: 20rpx;}
+.venue_info .top .p{font-size:24rpx; margin-bottom:10rpx;}
+.venue_info .top .h3{font-size:34rpx;}
+.venue_info .btm{padding:20rpx 20rpx 30rpx;}
+.venue_info .btm .ico_txt .ico_dz{background-position: -330rpx -120rpx}
+.venue_info .btm .ico_txt .ico_per{background-position: -360rpx -120rpx}
+
+.venue_info.due .top{background:#d0d0d0;}
+
+
+.reserve_form .dl .dt{width:200rpx; padding-left:20rpx; text-align: left;}
+.reserve_form .reserve_btm{padding-bottom:15rpx; }
+.reserve_form .reserve_btm_box{ background:#f5f5f5; padding:0 60rpx; position:relative;}
+.reserve_form .reserve_btm_box .ico_money{position:absolute; left:10rpx; top:18rpx; width:40rpx; height:40rpx; background-position:-240rpx -210rpx;}
+.reserve_form .reserve_btm .txt{ line-height:46rpx; padding:15rpx 0; text-align: left; color:#9d9d9d; font-size:28rpx;}
+.reserve_form .reserve_btm .txt:first-child{border-bottom:1rpx solid #e5e5e5;}
+.reserve_form .reserve_btm .txt text{color:#ff6000; font-size:48rpx; display: inline-block; line-height: 46rpx; vertical-align: top; position:relative;}

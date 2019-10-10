@@ -1,0 +1,94 @@
+
+
+<!-- 消息列表 -->
+<view class='msg_mdl box_shadow'>
+    <navigator class='msg_item' url='/pages/message/notice-list/notice-list' hover-class='none'>
+        <image class='img' src='{{domainUrl}}/images/msg/msg_ico01.png'></image>
+        <view class='info'>
+            <view class='title'>{{langData.systemNotice}}</view>
+            <view class='p'>{{langData.systemDes}}</view>
+            <view class='num' wx:if="{{systemMsgNum > 0}}">{{systemMsgNum}}</view>
+        </view>
+    </navigator>
+
+    <navigator class='msg_item' url='/pages/message/message-list/message-list' hover-class='none'>
+        <image class='img' src='{{domainUrl}}/images/msg/msg_ico02.png'></image>
+        <view class='info'>
+            <view class='title'>{{langData.message}}</view>
+            <view class='p'>{{langData.mesDes}}</view>
+            <view class='num' wx:if="{{msgNum > 0}}">{{msgNum}}</view>
+        </view>
+    </navigator>
+</view>
+
+<!-- <view class='message_list'>
+  <navigator url='/pages/message/notice-list/notice-list' class='li clearfix'>
+    <image class="img"  src='{{domainUrl}}/images/msg/msg_img01.png'></image>
+    <view class='info'>
+      <view class='h3'>通知公告</view>
+      <view class='p'>园区的通知和公告</view>
+    </view>
+    <view class='num icons' wx:if="{{msgNum > 0}}">{{msgNum}}</view>
+  </navigator>
+</view> -->
+
+
+<!-- 用户 -->
+<view class='usermsg_box'>
+    <view 
+        class='msg_box clearfix' 
+        wx:for="{{contactList}}" wx:key="{{index}}" 
+        data-userId="{{item.To_Account}}" bindtap="gotoChat" data-item="{{item}}"
+    >
+        <view class='user_head'>
+            <image src='{{item.C2cImage?item.C2cImage:domainUrl+"/images/default/df_userhead.png"}}'></image>
+        </view>    
+        <view class='div_top'>
+            <view class='info_1'>
+                <text class='title'>{{item.C2cNick}}</text>
+                <text class='time'>{{item.MsgTimeStamp}}</text>
+            </view>
+            <view class='info_2'>
+                <view class='red' wx:if="{{item.unread}}">{{item.unread}}</view>
+                <text class='txt'>{{item.MsgShow}}</text>
+            </view>
+        </view>
+    </view>
+    <!-- <view  class='msg_box clearfix'  >
+        <view class='user_head'>
+            <image src='{{domainUrl+"/images/default/df_userhead.png"}}'></image>
+        </view>    
+        <view class='div_top'>
+            <view class='info_1'>
+                <text class='title'>111</text>
+                <text class='time'>111</text>
+            </view>
+            <view class='info_2'>
+                <view class='red' wx:if="{{item.unread}}">5</view>
+                <text class='txt'>发的水电费水电费使得水电费</text>
+            </view>
+        </view>
+    </view> -->
+</view>
+
+<!-- 登录提示 -->
+<view hidden="{{isLoginPopHide}}">
+    <login-tip></login-tip>
+</view>
+
+<!-- 返回首页按钮 -->
+<navigator wx:if="{{isIndexBtnShow}}" class='index_btn'  url='/pages/index/index' hover-class='none' open-type='switchTab'>
+  <image src='{{domainUrl}}/images/icon/back2h_btn.png'></image>
+</navigator>
+
+<!-- <block wx:for="{{contactList}}" wx:key="conversationId">
+    <template is="chat-item" data="{{item:item}}"/>
+</block> -->
+<!-- <block wx:for="{{conversations}}" wx:key="conversationId">
+    <template is="chat-item" data="{{item:item}}"/>
+</block> -->
+
+<!-- 底部导航栏 -->
+<!-- <view wx:if="{{msgNum!=0}}">
+<tab active="1" msg-num="{{msgNum}}"></tab>
+</view> -->

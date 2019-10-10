@@ -1,0 +1,29 @@
+@import '/app.wxss';
+
+/* 待办事项 */
+.dbsx_list .li .info image{width: 24rpx;height: 36rpx;float: right;}
+.dbsx_list{padding:60rpx 32rpx 0rpx 126rpx;}
+.dbsx_list .li{padding-bottom:20rpx; padding-left:30rpx; border-left:1rpx solid #e2e2e2; position:relative;}
+.dbsx_list .li:last-child{border-left:0;}
+.dbsx_list .li .time{position:absolute; left:-100rpx; top:0; width:70rpx; color:#999; font-size:24rpx; text-align: right;}
+.dbsx_list .li .time text{display:block; font-size:24rpx;}
+.dbsx_list .li .dot{display:inline-block; border:4rpx solid #fff; background:#e5e5e5; padding:3rpx; width:18rpx; height:18rpx; border-radius:100%; position:absolute; left:-13rpx; top:0;}
+.dbsx_list .li .dot .dot_in{display:inline-block; border:5rpx solid #fec92f; background:#fff; height:8rpx; width:8rpx; border-radius:100%; position:absolute; left:3rpx; top:3rpx;}
+.dbsx_list .li .info{background:#f5f5f5; padding:15rpx; border-radius:10rpx; position:relative; top:-20rpx;border-top: solid 6rpx #fec92f;}
+.dbsx_list .li .info .title{font-size:30rpx; color:#333; margin-bottom:10rpx;}
+.dbsx_list .li .info .title .label{display:inline-block; height:30rpx; line-height:30rpx; padding:0 10rpx; background:#fec92f; color:#fff; font-size:20rpx; border-radius:6rpx; margin-left:10rpx; margin-bottom: 6rpx; vertical-align: middle;}
+.dbsx_list .li .info .price{color:#9d9d9d; font-size:26rpx;}
+.dbsx_list .li .info .pay_status{display:inline-block; height:30rpx; line-height:30rpx; background:#cfcfcf; font-size:20rpx; color:#fff; padding:0 10rpx; border-radius:6rpx;}
+.dbsx_list .li .info .arrow_ico{display:inline-block; width:50rpx; height:50rpx; background-position:-200rpx -60rpx; position:absolute; right:0; top:50%; margin-top:-25rpx;}
+.dbsx_list .li_blue .info .title .label{background:#55b0bd;}
+.dbsx_list .li_blue .dot .dot_in{border-color:#55b0bd;}
+.dbsx_list .li_blue .info{border-top: solid 6rpx #55b0bd;}
+.dbsx_list .li_green .info{border-top: solid 6rpx #54bb54;}
+.dbsx_list .li_green .info .title .label{background: #54bb54;}
+.dbsx_list .li_green .dot .dot_in{border-color:#54bb54;}
+.dbsx_list .li_purple .info{border-top: solid 6rpx #676ec6;}
+.dbsx_list .li_purple .info .title .label{background: #676ec6;}
+.dbsx_list .li_purple .dot .dot_in{border-color: #676ec6;}
+.dbsx_list .li_red .info{border-top: solid 6rpx #d63a31;}
+.dbsx_list .li_red .info .title .label{background: #d63a31;}
+.dbsx_list .li_red .dot .dot_in{border-color: #d63a31;}

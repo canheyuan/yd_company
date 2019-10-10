@@ -1,0 +1,55 @@
+<block wx:if="{{targetPage=='news'}}">
+    <!-- 发现资讯 -->
+    <view class='news_list'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+        <view 
+            wx:for="{{listInfo.list}}" wx:key="listInfo{{index}}" class='li clearfix' 
+            bindtap="goToNew" data-id="{{item.newsId}}" data-index="{{index}}"
+        >
+           <image 
+                src='{{item.mainImgList[0]?item.mainImgList[0]:domainUrl+"/images/default/img_280_200.jpg"}}' 
+                class="news_img"  lazy-load="true"
+                binderror='errorImgFn' 
+                data-obj="listInfo[{{index}}].mainImgList[0]" 
+                data-img="{{domainUrl}}/images/default/img_280_200.jpg"
+            ></image>
+            <view class='info'>
+                <view class='title'>{{item.newsTitle}}</view>
+                <view class='btm'>
+                    <view class='ico_txt time'> <icon class="icons ico_time"></icon>{{item.publishTime}}</view>
+                    <view class='ico_txt visitor'><icon class="icons ico_eye"></icon>{{item.pv}}</view>
+                </view>
+            </view>
+        </view>
+        <view class='more_tip' wx:if="{{listInfo.tipTxt}}"><view class='txt'>{{listInfo.tipTxt}}</view></view>  
+    </view>
+</block>
+
+
+<block wx:if="{{targetPage=='collect'}}">
+    <!-- 收藏资讯 -->
+    <view class='news_list2 collect'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+        <view class='li box_shadow'  wx:for="{{listInfo.list}}" wx:key="listInfo{{index}}">
+            <view class='ico_collect act' bindtap="collectPopShow" data-id="{{item.newsId}}"></view>
+            <view class='yd_title01'>{{item.author}}</view>
+            <navigator class='top' url='/pages/found/news-detail/news-detail?id={{item.newsId}}'>
+                <image 
+                    class='img' src='{{item.mainImgList[0]}}'  lazy-load="true"
+                    binderror='errorImgFn' data-obj="listInfo.list[{{index}}].mainImgList[0]"
+                ></image>
+                <view class='info'>
+                    <view class='h3'>{{item.newsTitle}}</view>
+                    <view class='yd_label'><text>{{item.newsType}}</text></view>
+                </view>
+            </navigator>
+            <view class='btm'>
+                <view class='ico_txt'><icon class='icons ico_time'></icon>{{item.publishTime}}</view>
+                <view class='ico_txt'><icon class='icons ico_eye'></icon>{{item.pv}}</view>
+            </view>
+        </view>
+    </view>
+
+</block>
+
+
+<!-- 暂无状态 -->
+<list-nothing c-name="news" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>

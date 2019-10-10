@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "物资共享",
+  "navigationBarBackgroundColor": "#f7f7f7",
+  "usingComponents": {
+    "login-tip": "/components/login-tip/login-tip"
+  }
+}

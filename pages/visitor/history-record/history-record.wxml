@@ -1,0 +1,28 @@
+
+<!-- 选择月份 -->
+<view class='choose_head'>
+  <picker mode="date" value="{{dateMonth}}" fields="month" end="{{nowMonth}}"  bindchange="changeMonthFn">
+      <view class='month_btn'><icon class='icons ico_month'></icon></view>
+  </picker>
+  <view class='info'>
+    <text class='tit'>{{!dateMonth?"全部":dateMonth}}</text>
+  </view>
+</view>
+
+<view class='history_list'>
+  <view class='li' wx:for="{{[1,2]}}">
+    <view class='title'><icon class='icons ico_enter'></icon>进入园区</view>
+    <view class='info'>
+      <view class='ico_txt'><icon class='icons ico_time'></icon>时间：06-29 19:52</view>
+      <view class='ico_txt'><icon class='icons ico_order'></icon>编号：18102619523</view>
+    </view>
+  </view>
+
+  <view class='li' wx:for="{{[1,2]}}">
+    <view class='title'><icon class='icons ico_exit'></icon>离开园区</view>
+    <view class='info'>
+      <view class='ico_txt'><icon class='icons ico_time'></icon>时间：06-29 19:52</view>
+      <view class='ico_txt'><icon class='icons ico_order'></icon>编号：18102619523</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,275 @@
+<view class='tag_box2'>
+  <view class='tag_item act'>电子增值税普通发票</view>
+  <view class='tag_item'>增值税专用发票</view>
+</view>
+
+<view class='form_box' wx:if="{{false}}">
+  <view class='form_head'>
+    <view class='tit'>填写信息</view>
+  </view>
+  <view class='form_mdl'>
+    <view class='dl'>
+      <text class='dt'>企业名称</text>
+      <view class='dd'>
+        <text class='txt'>广州滴滴科技有限公司</text>
+      </view>
+    </view>
+
+    <view class='dl'>
+      <text class='dt'>纳税人识别号</text>
+      <view class='dd'>
+       <input type='text' class='input' placeholder='请填写纳税人识别号' placeholder-class='pl_input' />
+      </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>手机号码</text>
+      <view class='dd'>
+        <text  class='txt'>13800138000</text>
+      </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>电子邮箱</text>
+      <view class='dd'>
+       <input class='input' placeholder='请填写邮箱地址' placeholder-class='pl_input' />
+      </view>
+    </view>
+  </view>
+
+  <view class='form_head' style='margin-top:50rpx;'>
+    <view class='tit'>支付信息</view>
+  </view>
+
+  <view class='form_mdl form_mdl2'>
+
+    <view class='pay_info_list'>
+      <view class='li'>
+        <text class='h3'>订单号：</text>
+        <view class='p'>YXA2018071123648</view>
+      </view>
+      <view class='li'>
+        <text class='h3'>订单创建时间：</text>
+        <view class='p'>2018-07-05 12:13:14</view>
+      </view>
+      <view class='li'>
+        <text class='h3'>支付时间：</text>
+        <view class='p'>2018-07-07 16:45:34</view>
+      </view>
+      <view class='li'>
+        <text class='h3'>支付方式：</text>
+        <view class='p'><icon class="icons ico_wx"></icon>微信支付</view>
+      </view>
+    </view>
+
+    <view class='dl'>
+      <text class='dt'>计费月份</text>
+      <view class='dd'>
+        <view class='jfxm_list'>
+          <view class='li'>
+            <view class='d_btn'>详情 ></view>
+            <view class='info'>
+              <view class='h3'>6月份租金</view>
+              <view class='price'>金额：  <text>14323.43</text></view>
+            </view>
+          </view>
+          <view class='li'>
+            <view class='d_btn'>详情 ></view>
+            <view class='info'>
+              <view class='h3'>6月份租金</view>
+              <view class='price'>金额：  <text>14323.43</text></view>
+            </view>
+          </view>
+          <view class='li'>
+            <view class='d_btn'>详情 ></view>
+            <view class='info'>
+              <view class='h3'>6月份租金</view>
+              <view class='price'>金额：  <text>14323.43</text></view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+    <view class='dl'>
+      <text class='dt'>付款方</text>
+      <view class='dd'>
+        <text  class='txt'>广州滴滴出行科技有限公司</text>
+      </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>收款方</text>
+      <view class='dd'>
+        <text  class='txt'>保利1918创意园</text>
+      </view>
+    </view>
+  
+    <view class='form_btm'>
+      <view class='txt'>共4个缴费项目，已支付<text>43502.62</text></view>
+    </view>
+  </view>
+
+  <view class='qr_txt'>请与公司财务人员确认是否需要电子发票</view>
+  <view style='padding:30rpx 100rpx 50rpx;'>
+    <view class='blue_btn'>确认开票</view>
+  </view>
+</view>
+
+<view class='form_box'>
+  <view class='form_head'>
+    <view class='tit'>填写企业信息</view>
+  </view>
+  <view class='form_mdl'>
+    <view class='dl'>
+      <text class='dt'>企业名称</text>
+      <view class='dd'>
+        <text class='txt'>广州滴滴科技有限公司</text>
+      </view>
+    </view>
+
+    <view class='dl'>
+      <text class='dt'>纳税人识别号</text>
+      <view class='dd'>
+       <input type='text' class='input' placeholder='请填写纳税人识别号' placeholder-class='pl_input' />
+      </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>开户行</text>
+      <view class='dd'>
+       <picker class='picker' bindchange="bindPickerChange" value="{{index}}" range="{{lhArr}}">
+            <view>{{lhIndex?lhArr[lhIndex]:'请选择'}}</view>
+          </picker>
+          <icon class='icons ico_arrow'></icon>
+      </view>
+       
+      
+    </view>
+
+    <view class='dl'>
+      <text class='dt'>银行账号</text>
+      <view class='dd'>
+       <input type='text' class='input' placeholder='请填写银行账户' placeholder-class='pl_input' />
+       </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>注册电话</text>
+      <view class='dd'>
+       <input class='input' placeholder='请填写注册电话' placeholder-class='pl_input' />
+      </view>
+    </view>
+
+    <view class='dl'>
+      <text class='dt'>注册地址</text>
+      <view class='dd'>
+       <text class='txt'>广州大道南788号墩和路口</text>
+      </view>
+    </view>
+
+
+
+  </view>
+
+<view class='form_head'  style='margin-top:50rpx;'>
+    <view class='tit'>填写收票信息</view>
+    <radio-group class="fp_type">
+      <label class="radio"><radio color='#4da5f7' value="" checked="" name />电子发票</label>
+      <label class="radio"><radio color='#4da5f7' value="" checked=""/>纸质发票</label>
+    </radio-group>
+  </view>
+  <view class='form_mdl'>
+    <view class='dl'>
+      <text class='dt'>手机号码</text>
+      <view class='dd'>
+       <input class='input' placeholder='请填写手机号码' placeholder-class='pl_input' />
+      </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>Email地址</text>
+      <view class='dd'>
+       <input type='text' class='input' placeholder='请填Email地址' placeholder-class='pl_input' />
+       </view>
+    </view>
+
+
+
+  </view>
+
+  <view class='form_head' style='margin-top:50rpx;'>
+    <view class='tit'>支付信息</view>
+  </view>
+
+  <view class='form_mdl form_mdl2'>
+
+    <view class='pay_info_list'>
+      <view class='li'>
+        <text class='h3'>订单号：</text>
+        <view class='p'>YXA2018071123648</view>
+      </view>
+      <view class='li'>
+        <text class='h3'>订单创建时间：</text>
+        <view class='p'>2018-07-05 12:13:14</view>
+      </view>
+      <view class='li'>
+        <text class='h3'>支付时间：</text>
+        <view class='p'>2018-07-07 16:45:34</view>
+      </view>
+      <view class='li'>
+        <text class='h3'>支付方式：</text>
+        <view class='p'><icon class="icons ico_wx"></icon>微信支付</view>
+      </view>
+    </view>
+
+    <view class='dl'>
+      <text class='dt'>计费月份</text>
+      <view class='dd'>
+        <view class='jfxm_list'>
+          <view class='li'>
+            <view class='d_btn'>详情 ></view>
+            <view class='info'>
+              <view class='h3'>6月份租金</view>
+              <view class='price'>金额：  <text>14323.43</text></view>
+            </view>
+          </view>
+          <view class='li'>
+            <view class='d_btn'>详情 ></view>
+            <view class='info'>
+              <view class='h3'>6月份租金</view>
+              <view class='price'>金额：  <text>14323.43</text></view>
+            </view>
+          </view>
+          <view class='li'>
+            <view class='d_btn'>详情 ></view>
+            <view class='info'>
+              <view class='h3'>6月份租金</view>
+              <view class='price'>金额：  <text>14323.43</text></view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+    <view class='dl'>
+      <text class='dt'>付款方</text>
+      <view class='dd'>
+        <text  class='txt'>广州滴滴出行科技有限公司</text>
+      </view>
+    </view>
+    <view class='dl'>
+      <text class='dt'>收款方</text>
+      <view class='dd'>
+        <text  class='txt'>保利1918创意园</text>
+      </view>
+    </view>
+  
+    <view class='form_btm'>
+      <view class='txt'>共4个缴费项目，已支付<text>43502.62</text></view>
+    </view>
+  </view>
+
+  <view class='qr_txt'>请与公司财务人员确认是否需要电子发票</view>
+  <view style='padding:30rpx 100rpx 50rpx;'>
+    <view class='blue_btn'>确认开票</view>
+  </view>
+</view>
+
+

@@ -1,0 +1,158 @@
+<form bindsubmit="formSubmit"  report-submit="true">
+    <view class='form_mdl'>
+        
+        <!-- 选择园区 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.curPark}}</text>
+            <view class='dd' bindtap="gardenPopShow">
+                <view class='icons ico_arrow'></view>
+                <text  class='txt {{garden.name?"":"pl_input"}}'>{{garden.name?garden.name:langData.changeParkTip}}</text>
+                <input type='text' class='input'  name="parkId" value="{{garden.id}}" style='display:none;' />
+            </view>
+        </view>
+
+        <!-- 选择企业 -->
+        <view class='dl' wx:if="{{!source}}">
+            <text class='dt'>{{langData.company}}</text>
+            <view class='dd' bindtap="companyPopShow">
+                <view class='icons ico_arrow'></view>
+                <text  class='txt {{company.name?"":"pl_input"}}'>{{company.name?company.name:langData.changeCompanyTip}}</text>
+                <input type='text'  class='input' placeholder='{{langData.public.companyPl}}'  name="entId" value='{{company.id}}' style='display:none;' />
+            </view>
+        </view>
+
+        <!-- 输入姓名 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.public.name}}</text>
+            <view class='dd'>
+                <input type='text'  class='input' placeholder='{{langData.public.namePl}}'  name="name" placeholder-class='pl_input' />
+            </view>
+        </view>
+
+        <!-- 手机号 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.public.phoneCode}}</text>
+            <view class='dd'>
+                <button 
+                    class="wx_btn" plain="true" hover-class="hover" wx:if="{{wxBtnShow}}"
+                    open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"
+                >
+                    获取微信手机号
+                </button>
+                <input 
+                    type='number'  class='input' name="mobile" maxlength='11' focus="{{phoneFocus}}"
+                    placeholder='{{langData.public.phonePl}}' placeholder-class='pl_input'
+                    bindblur="blurPhoneFn"
+                    bindinput='changePhoneFn' data-phone="{{getCode.phone}}" value='{{getCode.phone}}' 
+                />
+            </view>
+        </view>
+
+        <!-- 验证码 -->
+        <view class='dl get_code_dl' hidden="{{!getCode.show}}">
+            <text class='dt'>{{langData.public.verifyCode}}</text>
+            <view class='dd'>
+                <input 
+                    type='text' class='input' placeholder-class='pl_input' 
+                    placeholder='{{langData.public.verifyCodePl}}'
+                    value="{{getCode.code}}" name="verifyCode" 
+                />
+                <input type='text' name="verificationId" value='{{getCode.verificationId}}' style='display:none;'  />
+            <view 
+                class='s_blue_btn get_code_btn {{getCode.sending?"disabled":""}}' 
+                bindtap="getCodeFn" data-phone="{{getCode.phone}}"
+            >{{getCode.text}}</view>
+            </view>
+        </view>
+
+        <!-- 密码 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.public.password}}</text>
+            <view class='dd'>
+                <input type='text' password="true" class='input' placeholder='{{langData.public.passwordTip2}}'   name="password" placeholder-class='pl_input' />
+            </view>
+        </view>
+
+        <!-- 确认密码 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.public.verifyPassword}}</text>
+            <view class='dd'>
+            <input type='text' password="true" class='input' placeholder='{{langData.public.passwordTip3}}' name="password2" placeholder-class='pl_input' />
+            </view>
+        </view>
+
+        <!-- 提交按钮 -->
+        <view class='btn_wrap'>
+            <button class='blue_btn' form-type="submit">{{langData.public.verifySubmitBtn}}</button>
+        </view>
+
+    </view>
+
+    <!-- 登录文字 -->
+    <view class='login_btm'>
+        <view class='reg_btn'>{{langData.regText1}}，<navigator url='/pages/common/login/login' class='a'>{{langData.loginBtn}}</navigator></view>
+    </view>
+
+    <input style='display:none;' name="from" value="{{source}}"></input>
+</form>
+
+<!-- 选择园区弹窗 -->
+<view class='mask_bg pop_show' hidden="{{!garden.popIsShow}}">
+    <view class='mask_bg_ctn' style=''>
+        <view class='garden_mdl'>
+            <view class='allpark_title'>{{langData.changePark}}</view>
+            <view class='garden_list'>
+                <view 
+                    class='allpark01' wx:for="{{garden.list}}" wx:key="gardenList{{index}}"
+                    bindtap='chooseGardenFn' data-id="{{item.parkId}}" data-name="{{item.parkName}}"
+                >
+                    <view class='top'>
+                    <image class='icon' mode='widthFix' src='{{domainUrl}}/images/icon/louyu.png'></image>
+                    <view class='info'>
+                        <view class='title'>{{item.parkName}}</view>
+                        <view class='address'>{{langData.changeCompany}}：{{item.address}}</view>
+                    </view>
+                    </view>
+                </view>
+            </view>
+            <view class='close_btn icons' bindtap="gardenPopShow"></view>
+        </view>
+    </view>
+</view>
+
+<!-- 选择企业弹窗 -->
+<view class='mask_bg pop_show' hidden="{{!company.popIsShow}}">
+    <view class='mask_bg_ctn' style=''>
+        <view class='garden_mdl'>
+            <view class='allpark_title'>{{langData.changeCompany}}</view>
+            <view class="search_input_box">
+                <input 
+                    class="serach_input" placeholder="{{searchPl}}" 
+                    bindinput="searchCompanyFn" bindfocus="searchFocusFn" bindblur="searchBlurFn"
+                ></input>
+            </view>
+            <view class='garden_list' wx:if="{{company.showNum>0}}" style="height:700rpx;" >
+                <view 
+                    wx:for="{{company.list}}" wx:key="companyList{{index}}" class='company_li' hidden="{{!item.isShow}}"
+                    bindtap='chooseCompanyFn' data-id="{{item.entId}}" data-name="{{item.entName}}"
+                >
+                    {{item.entName}}
+                </view>
+            </view>
+            <view class="garden_no" wx:if="{{company.showNum==0}}">
+                <!-- 暂无状态 -->
+                <list-nothing c-name="companySearchList"></list-nothing>
+            </view>
+            <view class='close_btn icons' bindtap="companyPopShow"></view>
+        </view>
+    </view>
+</view>
+
+<!-- 企业审核提示 -->
+<view hidden="{{auditTipPop}}">
+    <audit-tip></audit-tip>
+</view>
+
+
+
+  

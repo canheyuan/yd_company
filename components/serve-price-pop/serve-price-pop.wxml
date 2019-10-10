@@ -1,0 +1,34 @@
+<!-- 有偿服务价格一览表弹窗 -->
+<view class='mask_bg pop_show'>
+  <view class='mask_bg_ctn'>
+    <view class='pop_mdl fwylb_pop'>
+
+      <view class='h3'>{{langData.title}}</view>
+
+      <view class='fwylb_ctn'>
+        <view class='fwylb_list'>
+
+            <view class='li' wx:for="{{servicesList}}" wx:key="{{index}}">
+              <view class='num'>{{index}}</view>
+              <view class='price'>{{langData.cost}}： <text>¥{{item.laborCost}}</text></view>
+              <view class='info'>
+                <view class='h4'>{{item.serviceName}}</view>
+                <view class='p'>{{langData.unit}}：{{item.unit}}</view>
+              </view>
+            </view>
+
+        </view>
+
+        <view class='tip_txt'>
+          <text>{{langData.explainText}}</text>
+        </view>
+
+      </view>
+
+      <view class='btm_btn' style='margin-top:0;'>
+        <view class='btn' bindtap='closePopFn'>{{langData.iKnowBtn}}</view>
+      </view>
+
+    </view>
+  </view> 
+</view>

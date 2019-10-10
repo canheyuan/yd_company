@@ -1,0 +1,8 @@
+{
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "",
+    "usingComponents": {
+        "reach-load": "/components/reach-load/reach-load",
+        "tab": "/components/tab/tab"
+    }
+}

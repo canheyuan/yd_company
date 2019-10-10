@@ -1,0 +1,31 @@
+page{padding-bottom: 80rpx; background:#f7f7f7;}
+.form_box{padding: 28rpx 30rpx 24rpx;}
+.form_head .step{color: #555; height: 48rpx; font-size: 30rpx; font-weight: 500; line-height: 48rpx; text-align: center; background: #dcdcdc; border-radius: 24rpx; padding: 0 20rpx; float: right;}
+.form_mdl .dl{padding: 27rpx 0;}
+
+.fp_type{color: #333; font-size: 32rpx;}
+/* .fp_type .radio{display:inline-block; margin-left:40rpx;} */
+.form_mdl radio{display:inline-block;transform:scale(0.6); vertical-align: middle;position:relative; top:-2rpx;}
+
+/* 按钮区域 */
+.txtnbtn_box{color: #de6a1c; font-size: 26rpx; text-align: center;}
+/* 蓝色按钮 */
+.blue_btn{width: 64%; margin: 36rpx auto 0;}
+
+/* 评分弹出框 */
+.login_tip_mdl{width:650rpx; margin:0 auto; position:relative; background: #fff; border-radius:30rpx; padding:266rpx 40rpx 70rpx; box-sizing:border-box;}
+.login_tip_mdl .title{color: #f83735; font-size: 72rpx; font-weight: 500; line-height: 80rpx; padding-left: 50rpx;}
+.login_tip_mdl .txt{font-size:32rpx; color:#333; line-height:52rpx; display: block; margin:40rpx 0 50rpx;}
+.login_tip_mdl .txt text{font-size:36rpx; color:#e70000; font-weight: 500;}
+.login_tip_mdl .orange_btn{height:100rpx; line-height:100rpx; text-align: center; margin: 0 auto; border-radius:50rpx; color:#fff; font-size:40rpx; background: linear-gradient(to right, #ff8a00, #ff6000); box-shadow: 0 10rpx 34rpx rgba(255,96,0,.62); width:70%;}
+.btm_tip{font-size:28rpx; color:#b2b2b2;  margin-top:30rpx;}
+.btm_tip .a{color:#2a99f1;  display: inline-block; text-decoration:underline;}
+.login_tip_mdl .close_btn{width:50rpx; height:50rpx; background-position: -450rpx -60rpx; position:absolute; right:15rpx; top:15rpx;}
+/* 弹出框顶部图片 */
+.popbox_top{height: 270rpx; position: absolute; left: 0; top: -91rpx;}
+.popbox_top .img{width: 650rpx; height: 420rpx;}
+/* 低分样式 */
+.login_tip_mdl.low .popbox_top{top: -75rpx;}
+.popbox_top.low .img{height: 342rpx;}
+.login_tip_mdl .title{color: #13a5ab;}
+.login_tip_mdl.low .txt text{color:#13a5ab;}

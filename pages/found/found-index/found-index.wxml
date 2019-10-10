@@ -1,0 +1,121 @@
+<!-- 下拉刷新动画 -->
+<reach-load></reach-load>
+
+<!-- 选项卡切换 -->
+<view class='tag_box tag_fixed'>
+    <view class='tag_list'>
+        <view 
+            wx:for="{{tagList}}" wx:key="tagList{{index}}" 
+            class='tag_item {{tagIndex==index?"act":""}}'
+            data-index="{{index}}" bindtap='tagChange'
+        >{{item.title}}</view>
+    </view>
+</view>
+
+<!-- 新鲜事_S -->
+<view hidden="{{tagIndex!=0}}" wx:if="{{tagList[0].isShow}}">
+    <!-- 幻灯片 -->
+    <view class='found_slide_box' wx:if="{{newsSlideData.length>0}}">
+        <swiper class='found_slide' autoplay="true" interval="3000" duration="500">
+            <block wx:for="{{newsSlideData}}" wx:key="newsSlideData{{index}}" wx:if="{{index<10}}">
+                <swiper-item>          
+                    <view class='found_slide_item' bindtap="goToNew" data-newId="{{item.newsId}}">
+                        <view class='found_slide_cont'>
+                            <view class='found_slide_title'>{{item.newsTitle}}</view>
+                            <view class='found_slide_dot'><text class='text_big'>{{index+1}}</text>/{{newsSlideTotal>10?10:newsSlideTotal}}</view>
+                        </view>
+                        <image 
+                            src='{{item.mainImgList[0]?item.mainImgList[0]:domainUrl+"/images/default/img_730_320.jpg"}}' class="slide_img"
+                            binderror='errorImgFn' 
+                            data-obj="newsSlideData[{{index}}].mainImgList[0]" 
+                            data-img="{{domainUrl}}/images/default/img_730_320.jpg"
+                        ></image>
+                    </view>        
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+    <!-- 新闻列表 -->
+    <news-list target-page="news" reachData="{{tagList[0].reach}}" lang="{{langType}}"></news-list>
+
+</view>
+<!-- 新鲜事_End -->
+
+<!-- 政策模块_S -->
+<view hidden="{{tagIndex!=1}}"  wx:if="{{tagList[1].isShow}}">
+    <!-- 行业专家 -->
+    <view class='index_mdl04'>
+        <view class='index_title'>
+            <navigator class='more_btn' url='/pages/found/expert/expert' >{{langData.moreText}}</navigator>
+            <text>{{langData.expertTitle}}</text>
+        </view>
+        <view class='hot_act_list_box'>
+            <swiper class='hot_act_list' display-multiple-items="{{expertListTotal>2?'2.5':expertListTotal}}" >
+                <swiper-item wx:for="{{expertList}}" wx:key="{{index}}">
+                    <view class='li'>
+                        <view bindtap="goToExpert" data-exId="{{item.expertId}}">
+                            <view class='ico_favorite_corner {{item.isAttention==2?"":"act"}}'></view>
+                            <view class='user_head'>
+                                <image
+                                    src='{{item.headImg?item.headImg:domainUrl+"/images/default/df_userhead.png"}}' class="img"
+                                    binderror='errorImgFn' 
+                                    data-obj="expertList[{{index}}].headImg" 
+                                    data-img="{{domainUrl}}/images/default/df_userhead.png" 
+                                ></image>
+                            </view>
+                            <view class='info'>
+                                <view class='title'>{{item.expertName}}<text>({{item.positionName}})</text></view>
+                                <view class='office'>{{item.serviceProvider}}</view>
+                                <view class='project'>{{langData.projectText}}<text>{{item.projectNum}}</text>{{langData.geText}}</view>
+                            </view>
+                        </view>
+                        <view bindtap="gotoChatFn" data-item='{{item}}' class='btn_sm blue' style='width:80%;'>{{langData.referText}}</view>
+                        <!-- <button open-type="contact" class='btn_sm blue' style='width:80%;' >在线咨询</button> -->
+                    </view>
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
+
+    <!-- 政策列表 -->
+    <view class='policy_area'>
+        <view class='scroll_mdl'>
+            <view class='down_btn'>
+                <image class='bg' src='{{domainUrl}}/images/icon/btn_shadow.png'></image>
+                <icon class='icons ico_down'></icon>
+            </view>
+            <scroll-view class='scroll_box' scroll-x="true">
+                <view class='scroll_ctn' style='width:{{navWidth}}rpx;'>
+                    <view 
+                        wx:for="{{policyTitleList}}" wx:key="{{index}}"
+                        class='txt {{item.indTypeKey==policyType?"act":""}}' 
+                        bindtap="policyTag" data-key="{{item.indTypeKey}}"
+                    >
+                        <icon class='icons ico_tj' wx:if="{{index==0}}"></icon>{{item.indTypeName}}
+                        <text>({{item.policyNum}})</text>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <policy-list 
+            wx:if="{{policyType && tagList[1].reach}}"
+            target-page="policy" policy-type="{{policyType}}"  lang="{{langType}}" 
+            reachData="{{tagList[1].reach}}" bindrecommendTotal="recommendTotalFn"
+        ></policy-list>
+  </view>
+
+</view>
+<!-- 政策模块_End -->
+
+
+<!-- 登录提示 -->
+<view hidden="{{isLoginPopHide}}">
+    <login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
+</view>
+
+<!------------------ tab栏菜单 ------------------>
+<view wx:if="{{langType=='en'}}" class="tab_box">
+    <tab index='1' lang-change='{{langType}}'></tab>
+</view>
+

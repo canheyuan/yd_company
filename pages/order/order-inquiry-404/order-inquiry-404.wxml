@@ -1,0 +1,17 @@
+<view class='order_banner'><image mode='widthFix' src='{{domainUrl}}/images/order/order_banner.png'></image></view>
+<!-- 选项卡切换 -->
+<view class='tag_box order_tag'>
+  <view class='tag_list'>
+    <view class='tag_item act'>待支付</view>
+    <view class='tag_item'>未开票</view>
+    <view class='tag_item'>全部</view>
+  </view>
+</view>
+
+<!-- 暂无账单查询 -->
+<view class='order_404'>
+  <image class='img' src='{{domainUrl}}/images/order/zdcx_img.png' mode='widthFix'></image>
+  <text class='h3'>没有待支付的费用！</text>
+  <text class='p'>内容详情，根据实际文案安排</text>
+  <view class='refresh_btn blue_btn'>返回首页</view>
+</view>

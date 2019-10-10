@@ -1,0 +1,53 @@
+<view class='act_apply_box'>
+
+  <view class='title'>{{langData.applyInfo}}</view>
+
+  <view class='form_mdl'>
+    <view class='dl clearfix'>
+      <text class='dt'>{{langData.public.companyName}}</text>
+      <view class='dd'>
+        <text class='txt'>{{detailData.entName}}</text>
+      </view>
+    </view>
+    <view class='dl clearfix'>
+      <text class='dt'>{{langData.public.contact}}</text>
+      <view class='dd'>
+        <text class='txt'>{{detailData.contact}}</text>
+      </view>
+    </view>
+    <!-- <view class='dl'>
+      <text class='dt'>职位</text>
+      <view class='dd'>
+        <text class='txt'>{{applyInfo.position}}</text>
+      </view>
+    </view> -->
+    <view class='dl clearfix'>
+      <text class='dt'>{{langData.public.contactPhone}}</text>
+      <view class='dd'>
+        <text class='txt'>{{detailData.contactPhone}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!--<view class='title' style='margin-top:50rpx;'>上传附件</view>
+
+  <view class='form_mdl' style="padding:20rpx 15rpx 0;">
+    <view class='file_imgs clearfix'>
+      <view class='li'><image class='img' src='{{domainUrl}}/images/index/c_img.png'></image></view>
+      <view class='li'><image class='img' src='{{domainUrl}}/images/index/c_img.png'></image></view>
+    </view>
+  </view>-->
+
+  <view style="padding:100rpx 100rpx 50rpx;">
+    <navigator 
+        class='blue_btn' bindtap="returnPage" 
+        url='/pages/activity/activity-details/activity-details?id={{detailData.activityId}}'
+    >{{langData.returnActDetail}}</navigator>
+  </view>
+
+</view>
+
+<!-- 返回首页按钮 -->
+<navigator wx:if="{{isIndexBtnShow}}" class='index_btn'  url='/pages/index/index' hover-class='none' open-type='switchTab'>
+    <image src='{{domainUrl}}/images/icon/back2h_btn.png'></image>
+</navigator>

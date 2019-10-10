@@ -1,0 +1,78 @@
+page{background:#f7f7f7; padding-bottom:120rpx;}
+/* head */
+.repair_details_head{position:relative; height:240rpx; width:100%; color:#fff;}
+.repair_details_head .img{width:100%;}
+.repair_details_head .info{position:absolute; top:60rpx; left:70rpx;}
+.repair_details_head .info .h3{font-size:30rpx; margin-bottom:5px;}
+.repair_details_head .info .time{font-size:24rpx;}
+
+
+/* 当前进度 */
+.progress_now{margin:-50rpx 30rpx 60rpx; background:#fff; box-shadow:0 3rpx 10rpx 3rpx #eeeeee; border-radius:10rpx; position:relative; z-index: 9;}
+.progress_now_top{height:100rpx; line-height:100rpx; background:#5a82ff; color:#fff; font-size:30rpx; border-top-left-radius: 10rpx; border-top-right-radius: 10rpx; padding-left:30rpx;}
+.progress_now_top .tit{float:left; color:#e6e7ff;}
+.progress_now_top .tit text{color:#fff;}
+.progress_now_top .label{ width:97rpx; height:42rpx;line-height:38rpx; background-position:-70rpx 0; text-align: center;  color:#fff; font-size:24rpx; float:right; margin-right:-5rpx; margin-top:24rpx;}
+.progress_now_top .label.l_yellow{background-position:-180rpx 0; }
+.progress_now_top .label.l_blue2{background-position:-70rpx 0; }
+.progress_now_top .label.l_blue{background-position:-285rpx 0; }
+.progress_now_top .label.l_gray{background-position:-395rpx 0; }
+.progress_now_ctn{padding:30rpx; font-size:30rpx; color:#333; border-bottom:1rpx solid #e5e5e5; line-height:50rpx; text-align: center;}
+.progress_now_btm{height:90rpx; line-height:90rpx; padding:0 30rpx;color:#9d9d9d; font-size:24rpx;}
+.progress_now_btm .time{float:left; color:#9d9d9d; }
+.progress_now_btm .time icon{width:30rpx; height:30rpx; vertical-align: middle; margin-right:10rpx; position:relative; top:-2rpx;background-position:-120rpx -120rpx;}
+.progress_now_btm .btns{float:right; text-align: right;}
+.progress_now_btm .btns>view{display:inline-block; height:50rpx; line-height:50rpx; padding:0 30rpx; border-radius:26rpx; border:1rpx solid #c2c2c2; margin-left:15rpx;}
+.progress_now_btm .btns>view.btn02{border-color:#22a5f9; color:#22a5f9;}
+.fwpf_txt{text-align: center; margin-bottom:10rpx; font-size:28rpx;}
+
+
+/* 进度详情 */
+.jdxq_list{background:#fff; box-shadow:0 0 24rpx 5rpx #eeeeee; border-radius:10rpx;  background:#fff; margin:0 30rpx; padding:60rpx 20rpx 0rpx 120rpx; margin-bottom:50rpx;}
+.jdxq_list .li{padding:50rpx 0 40rpx 30rpx; border-left:1rpx solid #e2e2e2; position:relative;}
+.jdxq_list .li:last-child{border-left:0;}
+.jdxq_list .li .time{position:absolute; left:-100rpx; top:0; width:70rpx; color:#999; font-size:20rpx; text-align: right;}
+.jdxq_list .li .time text{display:block; font-size:24rpx;}
+.jdxq_list .li .dot{display:inline-block; border:4rpx solid #fff; background:#e5e5e5; padding:3rpx; width:18rpx; height:18rpx; border-radius:100%; position:absolute; left:-13rpx; top:0;}
+.jdxq_list .li .dot .dot_in{display:inline-block; border:5rpx solid #cacaca; background:#fff; height:8rpx; width:8rpx; border-radius:100%; position:absolute; left:3rpx; top:3rpx;}
+.jdxq_list .li .label{position:absolute; top:-9rpx; left:30rpx; background:#a5a5a5; font-size:24rpx; height:48rpx; line-height:48rpx; padding:0 20rpx; border-radius:6rpx; color:#fff;}
+.jdxq_list .li .label::before{content:''; display:inline-block;width:0px; height:0px; overflow:hidden; font-size:0px; border-style:solid; border-width:8rpx 13rpx 8rpx 0rpx; border-color:transparent  #a5a5a5 transparent transparent; position:absolute; left:-12rpx; top:16rpx; }
+.jdxq_list .li .l_blue{background:#36c3fe;}
+.jdxq_list .li .l_blue::before{ border-color:transparent  #36c3fe transparent transparent;}
+.jdxq_list .li .l_yellow{background:#fec92f;}
+.jdxq_list .li .l_yellow::before{ border-color:transparent  #fec92f transparent transparent;}
+.jdxq_list .li .l_purple{background:#6059f7;}
+.jdxq_list .li .l_purple::before{ border-color:transparent  #6059f7 transparent transparent;}
+.jdxq_list .li .info{background:#f5f5f5; padding:15rpx; border-radius:10rpx;}
+.jdxq_list .li .info .title{font-size:30rpx; color:#333; margin-bottom:10rpx;}
+.jdxq_list .li .info .time2{font-size:24rpx; color:#9d9d9d;}
+.jdxq_list .li_yellow .dot .dot_in{border-color:#fec92f;}
+
+/* 报修内容 */
+.bxnr_tit{ text-align: center; font-size:30rpx; color:#777777; line-height:40rpx; height:40rpx; margin-bottom:30rpx;}
+.bxnr_tit::before{content:'——————'; color:#e5e5e5; display:inline-block; font-size:24rpx; line-height:40rpx; margin-right:30rpx;}
+.bxnr_tit::after{content:'——————'; color:#e5e5e5; display:inline-block; font-size:24rpx; line-height:40rpx; margin-left:30rpx; vertical-align: middle;}
+.bxnr_ctn{margin:0 30rpx; background:#fff; border-radius:10rpx; padding:20rpx 20rpx 100rpx; position:relative;}
+.bxnr_ctn .gray_box{background:#f5f5f5; padding:20rpx; border-radius:10rpx; font-size:30rpx; color:#333; line-height:44rpx; margin-bottom:30rpx; min-height:88rpx;}
+.bxnr_dl{overflow: hidden; margin-bottom:20rpx;}
+.bxnr_dl .dt{float:left; width:150rpx; margin-right:15rpx; font-size:30rpx; color:#9d9d9d; line-height:44rpx;}
+.bxnr_dl .dd{font-size:30rpx; line-height:44rpx; overflow: hidden;}
+.bxnr_dl .dd .imgs image{display:inline-block; width:150rpx; height:150rpx; margin-right:10rpx; background:#eee;}
+.bxnr_ctn .btm{height:80rpx; line-height:80rpx; color:#999; font-size:30rpx; text-align: center; border-top:1rpx solid #e5e5e5; position:absolute; bottom:0; left:0; width:100%;}
+.bxnr_ctn .btm .ico_arrow{width:30rpx; height:30rpx; background-position:-150rpx -120rpx; vertical-align: middle; transition:all .3s;}
+.bxnr_ctn .btm .ico_arrow_up{transform:rotate(180deg);}
+/* 底部按钮 */
+.ylb_txt{font-size:26rpx; color:#2a99f1; text-decoration: underline; padding:20rpx 30rpx; line-height:40rpx;}
+.ylb_txt icon{width:40rpx; height:40rpx; background-position:0 -160rpx; margin-right:10rpx; vertical-align: top;}
+.fix_btm{position:fixed; left:0; bottom:0; width:100%; height:110rpx; background:#fff;border-top:1rpx solid #e5e5e5; text-align: center;box-sizing:border-box; padding:0 30rpx;}
+.fix_btm .btn{height:80rpx; width:35%; line-height:80rpx; box-sizing:border-box; border:1rpx solid #6592fe; color:#6592fe; font-size:30rpx; border-radius:40rpx; text-align: center; display: inline-block;  margin:15rpx 15rpx 0;}
+.fix_btm .btn02{background:#6592fe; color:#fff;}
+.fix_btm .price{float:left; line-height:110rpx; font-size:30rpx;}
+.fix_btm .price text{color:#ff6000; font-size:34rpx;}
+
+/* 弹窗 */
+.pop_mdl .p{line-height:50rpx; font-size:32rpx; color:#666;}
+.pop_mdl .price_input{display:inline-block; width:440rpx; height:100rpx; line-height:100rpx;  background:#fafafa; border:1rpx solid #e5e5e5; color:#333; border-radius:20rpx; margin-top:20rpx; font-size:32rpx; box-sizing:border-box; padding:0 40rpx; text-align: left;}
+.pop_mdl .price_input::placeholder{color:#c2c2c2;}
+
+

@@ -1,0 +1,18 @@
+.choose_head{height:90rpx; background:#f7f7f7; border-top:1rpx solid #dddddd; border-bottom:1rpx solid #dddddd; padding:0 10rpx 0 20rpx; position:fixed; top:0; left:0; width:100%; z-index:99; box-sizing:border-box;}
+.choose_head .month_btn{float:right; width:90rpx; height:90rpx;  text-align: center; }
+.choose_head .month_btn .ico_month{width:50rpx; height:50rpx; background-position:-400rpx -60rpx;margin-top:20rpx;}
+.choose_head .info{line-height:90rpx;}
+.choose_head .info .tit{display:inline-block; color:#555555; font-size:30rpx; margin-right:20rpx;}
+
+/* 预约记录列表 */
+.history_list{padding-top:90rpx;}
+.history_list .li{padding:35rpx 30rpx 30rpx; position:relative; border-bottom:1rpx solid #e5e5e5; }
+.history_list .li .title{font-size:30rpx; color:#333; height:40rpx; line-height:40rpx; font-weight: bold; margin-bottom:15rpx;}
+.history_list .li .title .icons{width:80rpx; height:40rpx;  float:left; margin-right:20rpx;}
+.history_list .li .title .ico_enter{background-position: -320rpx -370rpx;}
+.history_list .li .title .ico_exit{background-position: -230rpx -370rpx;}
+.history_list .li .info{overflow:hidden;}
+.history_list .li .info .ico_txt{float:left;}
+.history_list .li .info .ico_txt:last-child{float:right; width:300rpx;}
+.history_list .li .info .ico_time{width:30rpx; height:30rpx; background-position: -120rpx -120rpx;}
+.history_list .li .info .ico_order{width:30rpx; height:30rpx; background-position: 0 -470rpx;}

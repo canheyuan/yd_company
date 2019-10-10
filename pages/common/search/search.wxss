@@ -1,0 +1,35 @@
+.search_mdl{border-bottom:1rpx solid #dddddd; padding:20rpx;}
+.search_box{height:60rpx; line-height:60rpx; background:#f1f1f1; border-radius:30rpx;}
+.search_box .ico_search{ width:40rpx; height:40rpx; background-position:-80rpx -160rpx; float:left; margin:10rpx 20rpx 0 30rpx;}
+.search_box .input{display:block; height:60rpx; line-height:60rpx; color:#808080; font-size:28rpx;}
+
+/* 热门搜索 */
+.hot_search{padding:30rpx;}
+.hot_search_head{overflow: hidden; margin-bottom:30rpx;}
+.hot_search_head .hyp_btn{float:right; color:#2a99f1; font-size:26rpx;  line-height:40rpx;}
+.hot_search_head .hyp_btn .ico_hyp{width:40rpx; height:40rpx; background-position:-120rpx -160rpx; vertical-align: middle; margin-right:10rpx; position:relative; top:-2rpx;}
+.hot_search_head .title{display:block; font-size:24rpx; color:#9d9d9d; line-height:40rpx; overflow: hidden;}
+.hot_label_list .label{display:inline-block; height:64rpx; line-height:60rpx; background:#f1f1f1; border-radius:30rpx; margin-right:15rpx; padding:0 30rpx; font-size:28rpx; margin-bottom:15rpx;}
+
+.hot_label_list2 .label{display:block; line-height:60rpx;  font-size:28rpx; color:#333;}
+
+/* 搜索历史 */
+.del_history{padding:30rpx; border-top:30rpx solid #f7f7f7;}
+.del_history_head{overflow: hidden; margin-bottom:30rpx; height:40rpx; line-height:40rpx;}
+.del_history_head .del_btn{float:right; color:#777777; font-size:26rpx;  line-height:40rpx;}
+.del_history_head .del_btn .ico_del{ width:40rpx; height:40rpx; background-position: -160rpx -160rpx; vertical-align: top; margin-right:10rpx;}
+.del_history_head .title{display:block; font-size:24rpx; color:#9d9d9d; line-height:40rpx; overflow: hidden;}
+.del_history_list .label{display:block; line-height:60rpx;  font-size:28rpx; color:#333;}
+
+
+
+
+
+
+
+
+
+
+
+
+

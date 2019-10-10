@@ -1,0 +1,61 @@
+page{background:#f7f7f7;}
+.tjrs_head{background:#fff; padding:30rpx;}
+.tjrs_head .ico_txt .ico_per{background-position: -360rpx -120rpx;}
+.perList {float:right;}
+.perList .img{float:left; width:60rpx; height:60rpx; border:5rpx solid #fff;  border-radius:100%; margin-left:-30rpx;}
+.tjrs_head .label_btn {margin-top:30rpx; }
+.tjrs_head .label_btn .a{display:inline-block; float:left; width:150rpx; margin-right:30rpx; height:60rpx; line-height:60rpx; text-align: center; border-radius:30rpx; font-size:28rpx; color:#333; background:#f1f1f1;}
+.tjrs_head .label_btn .a:last-child{margin-right:0;}
+.tjrs_head .label_btn .a.cur{ color:#fff; box-shadow: 0 3rpx 10rpx rgba(255,96,0,.62);
+  background:-moz-linear-gradient(left,#ff9517,#ff6000);/*火狐*/
+background: -webkit-linear-gradient(left, #ff9517, #ff6000);   /*Safari5.1 Chrome 10+*/
+}
+
+.tjrs_ctn{background:#fff; margin-top:30rpx;}
+.tjrs_tag{border-bottom:1rpx solid #dddddd; height:100rpx; line-height:100rpx; text-align: center; margin-bottom:10rpx;}
+.tjrs_tag .item{font-size:30rpx; color:#999; float:left; width:50%;}
+.tjrs_tag .item.cur{color:#333; position:relative;}
+.tjrs_tag .item.cur::after{display:inline-block; content:''; width:90rpx; height:8rpx; position:absolute; left:50%; bottom:-1rpx; margin-left:-45rpx; background:#4a7df6;}
+.tjjl_list .li{padding-top:30rpx; padding-left:20rpx;}
+.tjjl_list .li .img{float:left; width:120rpx; height:120rpx; border-radius:100%; margin-right:20rpx;}
+.tjjl_list .li .info{overflow:hidden; position:relative;  border-bottom:2rpx solid #e5e5e5; padding-bottom:30rpx;}
+.tjjl_list .li .info .name{font-size:32rpx; color:#333333; margin-bottom:20rpx; height:40rpx;}
+.tjjl_list .li .info .p{font-size:28rpx; color:#777777; margin-bottom:10rpx;}
+.tjjl_list .li .info .ico_txt{font-size:24rpx; color:#9d9d9d; line-height:30rpx;display:block; margin-bottom:5rpx;}
+.tjjl_list .li .info .ico_time{width:30rpx; height:30rpx; background-position: -120rpx -120rpx; vertical-align: top;}
+.tjjl_list .li .info .ico_per{width:30rpx; height:30rpx; background-position: -360rpx -120rpx; vertical-align: top;}
+.tjjl_list .li .info .btn{position:absolute; right:20rpx; top:45rpx; width:150rpx; height:60rpx; line-height:60rpx; color:#fff; font-size:28rpx;
+border-radius:30rpx; text-align: center; 
+background:-moz-linear-gradient(left,#17b8fb,#3f90ff);/*火狐*/
+background: -webkit-linear-gradient(left, #17b8fb, #3f90ff);   /*Safari5.1 Chrome 10+*/
+}
+.tjjl_list .li .info .btn.hover{background:#3f90ff;}
+.tjjl_list .li:last-child .info{border-bottom:0;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

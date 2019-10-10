@@ -1,0 +1,13 @@
+@import "/app.wxss";
+
+/* 服务一览表弹窗 */
+.fwylb_ctn {padding:20rpx; max-height:600rpx; overflow: auto;}
+.fwylb_list{padding:10rpx;}
+.fwylb_list .li{margin-bottom:30rpx;}
+.fwylb_list .li .num{float:left; width:36rpx; height:36rpx; text-align: center; line-height:36rpx; background:#dde8ee; border-radius:100%; font-size:24rpx; margin-right:20rpx; margin-top:5rpx;}
+.fwylb_list .li .price{float:right; font-size:30rpx; color:#555555; line-height:40rpx;}
+.fwylb_list .li .price text{display:inline-block; font-size:34rpx; color:#ff6000; font-weight: bold; font-family:Arial;}
+.fwylb_list .li .info{overflow:hidden; text-align: left;}
+.fwylb_list .li .info .h4{font-size:30rpx; color:#666; margin-bottom:5rpx;}
+.fwylb_list .li .info .p{font-size:26rpx; color:#999;}
+.tip_txt{background:#f5f5f5; padding:20rpx; border-radius:15rpx; text-align: left; font-size:26rpx; line-height:44rpx; color:#666;}

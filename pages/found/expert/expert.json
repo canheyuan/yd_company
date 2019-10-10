@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "专家",
+  "usingComponents": {
+    "expert-list": "/components/expert-list/expert-list"
+  }
+}

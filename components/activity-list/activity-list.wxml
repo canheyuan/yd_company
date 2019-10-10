@@ -1,0 +1,65 @@
+
+<view class='act_list {{listName}}'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    
+    <view class='li'  wx:for="{{listInfo.list}}" wx:key="activity{{index}}">
+        <icon class='ico_collect act' bindtap="collectPopShow" data-id="{{listInfo.activityId}}"></icon>
+
+        <!-- 状态status -->
+        <view class='btns'> 
+            <view class='status icons2 {{item.statusClass}}'>{{item.statusName}}</view>
+        </view>
+
+        <navigator 
+            class='top' hover-class='none'
+            url="/pages/activity/activity-details/activity-details?id={{item.activityId}}"
+        >
+            <image class='img' src='{{item.mainImg}}' binderror="errorImgFn" data-obj="listInfo[{{index}}].mainImg"></image>
+            <view class='info'>
+                <view class='h3'>{{item.activityName}}</view>      
+                <view class='ico_txt'><icon class='icons ico_time'></icon>{{item.beginTime + langData.public.toText + item.endTime}}</view>  
+                <view class='ico_txt'><icon class='icons ico_dz'></icon><text>{{item.address}}</text></view>   
+            </view>
+        </navigator>
+
+        <view class='btm'>
+            <form  
+                wx:if="{{item.status==2 && item.isJoined!=1}}"  report-submit="true" bindsubmit="applyBtnFn" 
+                data-url='/pages/activity/activity-apply/activity-apply?id={{detailsData.activityId}}'
+            >
+                <button class='btn {{item.status==3?"disabled":""}}' hover-class='none' form-type='submit'>{{langData.iApply}}</button>
+            </form>
+            <!-- <view 
+                
+                class='btn {{item.status==3?"disabled":""}}' hover-class='none'
+                bindtap="applyBtnFn" data-url="/pages/activity/activity-apply/activity-apply?id={{item.activityId}}"
+            >
+                {{langData.iApply}}
+            </view> -->
+
+            <view class='label' wx:if='{{item.joinWay==1}}' style="width:210rpx;">
+                <icon class='icons ico_mf'></icon>{{langData.freeApply}}
+            </view>
+            <view class='label' wx:if='{{item.joinWay==2}}' style="width:210rpx;">
+                <icon class='icons ico_mf'></icon>
+                <text>￥{{item.price}}</text>
+            </view>
+            <view class='label' style='margin-left:40rpx;'>
+                <icon class='icons ico_bm'></icon>
+                <text>{{item.joinCount?item.joinCount:'0'}}</text>{{langData.applyText}}
+            </view>
+
+        </view>
+        <image wx:if="{{item.isJoined==1}}" class='status_img' src='{{domainUrl}}/images/ybm_img.png' mode='widthFix' ></image> <!-- 报名成功图标 -->
+    </view>
+
+    <view class='more_tip' wx:if="{{listInfo.tipTxt}}"><view class='txt'>{{listInfo.tipTxt}}</view></view>
+</view>
+
+
+<!-- 暂无状态 -->
+<list-nothing c-name="{{targetName}}" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>
+
+<!-- 登录提示 -->
+<view hidden="{{hasUserInfo}}">
+    <login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
+</view>

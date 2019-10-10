@@ -1,0 +1,9 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "login-tip": "/components/login-tip/login-tip",
+    "reach-load": "/components/reach-load/reach-load",
+    "backlog-list": "/components/backlog-list/backlog-list",
+    "tab": "/components/tab/tab"
+  }
+}

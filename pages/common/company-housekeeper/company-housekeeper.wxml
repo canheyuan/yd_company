@@ -1,0 +1,26 @@
+<view class="qygl_list" wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+
+    <view class='li' wx:for="{{listInfo.list}}" wx:key="listInfo{{index}}">
+        <view class='top'>
+            <image class='bg' mode='widthFix' src='{{domainUrl}}/images/qygj_bg.png'></image>
+            <image 
+                class='per' binderror='errorImgFn' data-obj="listInfo.list[{{index}}].avatar"
+                src='{{item.avatar?item.avatar:domainUrl+"/images/temp/per_img.png"}}'
+            ></image>
+            <view class='info'>
+                <text class='h3'>{{item.userName}}</text>
+                <text class='p'>{{item.posts}}</text>
+            </view>
+        </view>
+        <view class='btm'><text class='p'>{{item.remark}}</text></view>
+        <view class='tel_btn' data-tel="{{item.phonenumber}}" bindtap="makePhoneCallFn">
+            <icon class='icons'></icon>
+        </view>
+        <view class='msg_btn' data-item="{{item}}" bindtap="gotoChatFn"><icon class='icons'></icon></view>
+    </view>
+
+    <view class='more_tip' wx:if="{{listInfo.tipTxt}}"><view class='txt'>{{listInfo.tipTxt}}</view></view>  
+</view>
+
+<!-- 暂无内容时执行 -->
+<result-nothing wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></result-nothing>

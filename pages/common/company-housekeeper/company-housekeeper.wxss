@@ -1,0 +1,17 @@
+page{background:#f7f7f7;}
+.qygl_list{padding:30rpx 20rpx;}
+.qygl_list .li{height:320rpx;background:#fff; margin-bottom:40rpx; border-radius:10rpx; box-shadow:0 0 24rpx 5rpx #eeeeee; position:relative; }
+.qygl_list .li .top{ height:160rpx; overflow: hidden; position:relative; box-sizing: border-box; padding:30rpx;}
+.qygl_list .li .top .bg{width:100%; position:absolute; left:0; top:0; z-index: 0;}
+.qygl_list .li .top .per{float:left; width:100rpx; height:100rpx; position:relative; z-index: 9; margin-right:30rpx; border-radius: 100%;}
+.qygl_list .li .top .info{overflow:hidden; color:#fff; position:relative; z-index: 9; padding-top:10rpx;}
+.qygl_list .li .top .info .h3{display:block; font-size:32rpx; margin-bottom:10rpx;}
+.qygl_list .li .top .info .p{display:block; font-size:24rpx; }
+.qygl_list .li .btm{padding:35rpx 20rpx;}
+.qygl_list .li .btm .p{display:inline-block; font-size:28rpx; color:#666; line-height:44rpx;display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 2;}
+.qygl_list .li .tel_btn{width:70rpx; height:70rpx; line-height:70rpx; text-align: center; background:#6592fe; border:5rpx solid #fff; position:absolute; right:150rpx; top:120rpx; z-index: 10; border-radius:100%;}
+.qygl_list .li .msg_btn{width:70rpx; height:70rpx; line-height:70rpx; text-align: center; background:#6592fe; border:5rpx solid #fff; position:absolute; right:50rpx; top:120rpx; z-index: 10; border-radius:100%; box-sizing:content-box; display:inline-block; padding:0;}
+.qygl_list .li .tel_btn icon,
+.qygl_list .li .msg_btn icon{width:50rpx; height:50rpx; vertical-align: middle; position:relative; top:-3rpx;}
+.qygl_list .li .tel_btn icon{background-position:-300rpx -60rpx;}
+.qygl_list .li .msg_btn icon{background-position:-350rpx -60rpx;}

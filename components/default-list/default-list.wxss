@@ -1,0 +1,15 @@
+page{height:100%;}
+.default_list{padding:0 30rpx; animation:flicker 1s linear 0s infinite alternate; height:100%; overflow: hidden; }
+.default_list .li{margin-bottom:40rpx; overflow: hidden;}
+.default_list .li .img{width:150rpx; height:150rpx; background:#eee; float:left; margin-right:30rpx;}
+.default_list .li .info{overflow:hidden;}
+.default_list .li .info .h3{height:34rpx; background:#eee; margin-bottom:20rpx; width:80%}
+.default_list .li .info .p{height:26rpx; background:#eee; margin-bottom:10rpx;}
+.default_list .li .info .p2{width:50%;}
+
+.default_list.right .li .img{float:right; margin:0 0 0 30rpx;}
+
+@keyframes flicker{
+    0%{opacity: 1;}
+    100%{opacity: .4;}
+}

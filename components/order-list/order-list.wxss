@@ -1,0 +1,55 @@
+@import "/app.wxss";
+
+.order_month_top{height:90rpx; background:#f7f7f7;border-bottom:1rpx solid #dddddd; padding:0 10rpx 0 20rpx;}
+.order_month_top .month_btn{float:right; width:90rpx; height:90rpx;  text-align: center; }
+.order_month_top .month_btn .ico_month{width:50rpx; height:50rpx; background-position:-400rpx -60rpx;margin-top:20rpx;}
+.order_month_top .info{line-height:90rpx;}
+.order_month_top .info .tit{display:inline-block; color:#555555; font-size:30rpx; margin-right:20rpx;}
+.order_month_top .info .txt{display:inline-block; color:#888888; font-size:26rpx;}
+.order_month_top .info .orange{display:inline-block; color:#ff6000; font-size:28rpx; margin-right:30rpx;}
+.order_month_top .info .green{display:inline-block; color:#30a807; font-size:28rpx;}
+
+.order_list .li{padding-left:20rpx; padding-top:35rpx;}
+.order_list .li .label{float:left; width:80rpx; height:38rpx; line-height:38rpx; text-align: center; border-radius:8rpx;  font-size:22rpx;  color:#fff; margin-right:20rpx;}
+.order_list .li .l_blue{background:#17b8fb;}
+.order_list .li .l_blue2{background:#6592fe;}
+.order_list .li .l_yellow{background:#fec92f;}
+.order_list .li .l_purple{background:#6059f7;}
+.order_list .li .l_gray{background:#555555;}
+.order_list .li .l_gray2{background:#adadad;}
+.order_list .li .ico_mf{background-position:0 -370rpx;}
+.order_list .li .ico_ls{background-position:-90rpx -370rpx;}
+.order_list .li .info{overflow:hidden; border-bottom:1rpx solid #e5e5e5; padding-bottom:35rpx; padding-right:20rpx; position:relative;}
+.order_list .li .info_r{float:right; color:#ff6000; font-size:32rpx; line-height:44rpx; text-align: right; margin-left:30rpx;}
+.order_list .li .info_r .price{display:block; margin-bottom:20rpx;}
+.order_list .li .info_r .btn{background:#fff; display:inline-block;  height:50rpx; line-height:50rpx;width:160rpx; text-align: center; border:1rpx solid #ff6100; border-radius:26rpx; font-size:26rpx; }
+.order_list .li .info_l{overflow:hidden;}
+.order_list .li .info_l .h3{font-size:32rpx; line-height:44rpx; color:#333333; margin-bottom:20rpx;}
+.order_list .li .info_l .h3 text{color:#888888;}
+.order_list .li .info_l .p{font-size:24rpx; color:#9d9d9d;}
+.order_list .li .info_l .icons{width:30rpx; height:30rpx; position:relative; top:-2rpx; vertical-align: middle; margin-right:5rpx;}
+.order_list .li .info_l .ico_time{ background-position:-120rpx -120rpx;}
+.order_list .li .info_l .ico_xf{ background-position:-210rpx -120rpx;}
+.order_list .li .info_l .ico_tc{ background-position:-180rpx -120rpx;}
+/* .order_list .li:last-child .info{border:none;} */
+.order_list .li .info_r .ykp_img{display:none;}
+
+/*发票 */
+.order_list .fapiao_li .info_r .price{color:#30a807;}
+.order_list .fapiao_li .info_r .btn{color:#2a99f1; border-color:#2a99f1;}
+/*已完成 */
+.order_list .finish_li .info_r .price{color:#555555;}
+.order_list .finish_li .info_r .btn{display:none;}
+.order_list .finish_li .info_r .ykp_img{display:block; width:103rpx; position:absolute; bottom:0; right:0;}
+/* 临停 */
+.order_list .linting_li .info_r .price{color:#555555;}
+.order_list .linting_li .info_r .btn{display:none;}
+/* 月卡 */
+.order_list .month_li .info_r .price{color:#555555;}
+.order_list .month_li .info_r .btn{display:none;}
+/* 免费停车券 */
+.order_list .tcq_li .info_r .price{color:#555555;}
+.order_list .tcq_li .info_r .btn{display:none;}
+
+
+

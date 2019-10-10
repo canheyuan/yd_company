@@ -1,0 +1,74 @@
+
+<view class='tjrs_head'>
+    <view class='clearfix' style='padding-top:10rpx;'>
+        <!-- <view class='perList'>
+        <image
+            class='img' wx:for="{{listInfo}}" src='{{item.headImg?item.headImg:domainUrl+"/images/default/df_userhead.png"}}'
+            binderror='errorImgFn' 
+            data-obj="item.headImg"
+            data-img="{{domainUrl}}/images/default/df_userhead.png"
+        ></image>
+        </view> -->
+        <view class='ico_txt' style='padding-top:20rpx;'>
+        <icon class='icons ico_per'></icon>
+        <text style='color:#ff6000;'>{{visNum}}</text>{{langData.detailText1}}
+        </view>
+    </view>
+
+    <view class='label_btn clearfix'>
+        <view 
+            wx:for="{{dateTag}}" wx:key="dateTag{{index}}" 
+            class='a {{index == dateTagIndex?"cur":""}}' 
+            bindtap="dateTagFn" data-date="{{item.date}}" data-index="{{index}}"
+        >{{item.title}}</view>
+    </view>
+
+</view>
+
+<view class='tjrs_ctn'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+
+    <view class='tjrs_tag'>
+        <view 
+            class='item {{rankIndex==0?"cur":""}}' 
+            bindtap='rankFn' data-rank="last_time" data-index="0"
+        >{{langData.recordTagName1}}</view>
+        <view 
+            class='item {{rankIndex==1?"cur":""}}' 
+            bindtap='rankFn' data-rank="visit_count" data-index="1"
+        >{{langData.recordTagName2}}</view>
+    </view>
+
+    <view class='tjjl_list'>
+        <view class='li' wx:for="{{listInfo.list}}" wx:key="{{index}}">
+            <image
+                class='img' 
+                src='{{item.headImg?item.headImg:domainUrl+"/images/default/df_userhead.png"}}'
+                binderror='errorImgFn' 
+                data-obj="item.headImg"
+                data-img="{{domainUrl}}/images/default/df_userhead.png"
+            ></image>
+
+            <view class='info'>
+                <!-- <view class='btn' hover-class='hover'>联系TA</view> -->
+                <view class='name'>{{item.name?item.name:''}}</view>
+                <view class='ico_txt'>
+                    <icon class="icons ico_per"></icon>
+                    {{langData.visitNum}}：{{item.visitCount}}次
+                </view>
+                <view class='ico_txt'>
+                    <icon class="icons ico_time"></icon>
+                    {{langData.lastVisit}}：{{item.lastTime}}
+                </view>
+            </view>
+            </view>
+
+            <!-- 底部提示文字 -->
+            <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
+            <view class='txt'>{{listInfo.tipTxt}}</view>
+        </view> 
+
+    </view>
+</view>
+
+<!-- 暂无状态 -->
+<list-nothing c-name="myRecommend" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>

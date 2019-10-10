@@ -1,0 +1,10 @@
+page{background:#f7f7f7; padding-top:30rpx;}
+.form_mdl{border-radius:0;}
+.form_mdl .get_code_dl{padding:15rpx 0; height:70rpx;}
+.form_mdl .get_code_dl .dt,
+.form_mdl .get_code_dl .dd,
+.form_mdl .get_code_dl .dd .input{height:70rpx; line-height:70rpx;}
+.form_mdl .get_code_btn{width:200rpx; position:absolute; top:0; right:10rpx; z-index: 99; }
+
+.tip_txt{font-size:28rpx; color:#eb0000; text-align: left; padding:20rpx 20rpx;line-height:30rpx;}
+.btn_wrap{position:fixed; bottom:100rpx; left:0; width:100%; box-sizing:border-box; padding:0 100rpx;}

@@ -1,0 +1,26 @@
+<!-- 政策匹配 -->
+<view class='news_cgl_box'>
+</view>
+
+<!-- 政策解读 -->
+<view class='trade_box'>
+  <view class='yd_title01'>请选择行业类型</view>
+  <view class='ul'>
+    <view class='li act'>电子信息</view>
+    <view class='li'>先进制造</view>
+    <view class='li'>生物医药</view>
+    <view class='li'>资源环境</view>
+    <view class='li'>现代农业</view>
+    <view class='li'>文化产业</view>
+    <view class='li'>现代服务</view>
+    <view class='li'>电子商务</view>
+    <view class='li'>新材料</view>
+    <view class='li'>新能源</view>
+    <view class='li'>公共事务</view>
+  </view>
+</view>
+
+<!-- 按钮区域 -->
+<view class='txtnbtn_box'>
+  <view class='blue_btn'>下一步</view>
+</view>

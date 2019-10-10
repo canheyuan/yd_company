@@ -1,0 +1,5 @@
+
+
+
+<button bindtap="timer">开启定时器</button>
+<button bindtap="closeTimer">关闭定时器</button>

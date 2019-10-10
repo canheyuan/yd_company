@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "",
+    "usingComponents": {
+        "serve-price-pop": "/components/serve-price-pop/serve-price-pop"
+    }
+}

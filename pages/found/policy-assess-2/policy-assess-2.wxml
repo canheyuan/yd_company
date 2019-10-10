@@ -1,0 +1,127 @@
+<!-- 政策匹配 -->
+<view class='form_box'>
+  <view class='form_head'>
+    <view class='tit'>是否为高新技术企业</view>
+    <view class='step'>1/6</view>
+  </view>
+  <view class='form_mdl'>
+    <!-- Radio选项组 -->
+    <radio-group class="fp_type">
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />是</label>
+      </view>
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />否</label>
+      </view>
+    </radio-group>
+
+  </view>
+</view>
+
+<view class='form_box'>
+  <view class='form_head'>
+    <view class='tit'>是否为高新技术企业</view>
+    <view class='step'>2/6</view>
+  </view>
+  <view class='form_mdl'>
+    <!-- Radio选项组 -->
+    <radio-group class="fp_type">
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />有场地和设备</label>
+      </view>
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />有场地无设备</label>
+      </view>
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />无场地无设备</label>
+      </view>
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />无场地有设备</label>
+      </view>
+    </radio-group>
+
+  </view>
+</view>
+
+<view class='form_box'>
+  <view class='form_head'>
+    <view class='tit'>从业人员人数是多少</view>
+    <view class='step'>3/6</view>
+  </view>
+  <view class='form_mdl'>
+    <!-- Radio选项组 -->
+    <radio-group class="fp_type">
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />大于300人</label>
+      </view>
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />100-300人</label>
+      </view>
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />10-100人</label>
+      </view>
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />少于10人</label>
+      </view>
+    </radio-group>
+
+  </view>
+</view>
+
+<view class='form_box'>
+  <view class='form_head'>
+    <view class='tit'>公司近一年营业收入是多少？</view>
+    <view class='step'>4/6</view>
+  </view>
+  <view class='form_mdl'>
+    <!-- Radio选项组 -->
+    <radio-group class="fp_type">
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />大于10000万元</label>
+      </view>
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />1000万元-10000万元</label>
+      </view>
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />50万元-1000万元</label>
+      </view>
+      <view class='dl'>
+        <label class="radio"><radio color='#4da5f7' value="" checked="" name />小于50万元</label>
+      </view>
+    </radio-group>
+
+  </view>
+</view>
+
+<!-- 按钮区域 -->
+<view class='txtnbtn_box'>
+  <view class='blue_btn'>立即提交</view>
+</view>
+
+<!-- 高分提示弹窗 -->
+<view class='mask_bg pop_show'>
+  <view class='mask_bg_ctn'>
+      <view class='login_tip_mdl'>
+          <view class='popbox_top'><image src="{{domainUrl}}/images/found/bg_high_marks.png" class="img" mode='widthFix'></image></view>
+          <view class='title'>恭喜你！</view>
+          <view class='close_btn icons' bindtap="closePopFn"></view>
+          <text class='txt'>贵公司得分为<text>80</text>分
+            申报成功率非常高哦！</text>
+          <navigator class='orange_btn' url='/pages/login/login/login' hover-class="none">立即咨询</navigator>
+      </view>
+  </view>
+</view>
+
+<!-- 低分提示弹窗 -->
+<view class='mask_bg pop_show' wx:if="{{false}}">
+  <view class='mask_bg_ctn'>
+      <view class='login_tip_mdl low'>
+          <view class='popbox_top'><image src="{{domainUrl}}/images/found/bg_low_grade.png" class="img" mode='widthFix'></image></view>
+          <view class='title'>很遗憾！</view>
+          <view class='close_btn icons' bindtap="closePopFn"></view>
+          <text class='txt'>贵公司得分仅为<text>70</text>分
+            离申报成功还有一小段距离</text>
+          <navigator class='orange_btn' url='/pages/login/login/login' hover-class="none">提高成功率</navigator>
+      </view>
+  </view>
+</view>
