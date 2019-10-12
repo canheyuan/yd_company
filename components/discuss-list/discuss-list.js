@@ -232,23 +232,26 @@ Component({
             var _this = this;
             var targetPage = _this.properties.targetPage
             var apiActData = this.data.apiData[targetPage];
+            var message = _this.data.discussContent
             var formData = {
-                content: _this.data.discussContent
+                content: message
             };
             formData[apiActData.detailIdName] = _this.data.detailId;
-            app.requestFn({
-                isLoading:false,
-                url: apiActData.addDiscussUrl,
-                data: formData,
-                method: 'POST',
-                dataType: 'json',
-                success: (res) => {
-                    _this.setData({
-                        ['discussInfo.pageNum'] : 1,
-                        discussContent: ''   //重置输入框
-                    });
-                    _this.getDiscussList(true);
-                }
+            app.msgSecCheck(message,(res)=>{
+                app.requestFn({
+                    isLoading: false,
+                    url: apiActData.addDiscussUrl,
+                    data: formData,
+                    method: 'POST',
+                    dataType: 'json',
+                    success: (res) => {
+                        _this.setData({
+                            ['discussInfo.pageNum']: 1,
+                            discussContent: ''   //重置输入框
+                        });
+                        _this.getDiscussList(true);
+                    }
+                });
             });
         },
 

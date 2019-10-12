@@ -76,19 +76,15 @@ Page({
     //上传图片
     fileImageFn() {
         var _this = this;
-        wx.chooseImage({
+        app.chooseImg({
             count: _this.data.fileImgsNum, // 默认9
-            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function (res) {
-                // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+            success:(res)=>{
                 var tempFilePaths = res.tempFilePaths;
                 var list = _this.data.fileImgs.concat(tempFilePaths);
                 _this.setData({
                     fileImgsNum: _this.data.fileImgsNum - tempFilePaths.length,
                     fileImgs: list
                 })
-                console.log(_this.data.fileImgs);
             }
         })
     },
@@ -117,26 +113,27 @@ Page({
 
         var _this = this;
         var langData = this.data.langData;
-        var datas = e.detail.value;
+        var formData = e.detail.value;
         var formId = e.detail.formId;
-        var fileNum = 0;
+
+        var fileSuccessNum = 0;
+        var fileErrorNum = 0;
+        var fileViolationNum = 0;
         var fileImgs = this.data.fileImgs;
 
-        //console.log(datas);
-
-        if (!datas.typeId) {
+        if (!formData.typeId) {
             wx.showToast({ title: langData.repairType, icon: 'none', duration: 2000 });
             return;
         }
-        if (!datas.unitId) {
+        if (!formData.unitId) {
             wx.showToast({ title: langData.repartRoomTip, icon: 'none', duration: 2000 });
             return;
         }
-        if (datas.contact == '') {
+        if (formData.contact == '') {
             wx.showToast({ title: langData.contactTip, icon: 'none', duration: 2000 });
             return;
         }
-        if (!commonFn.phoneregFn(datas.phone)) {
+        if (!commonFn.phoneregFn(formData.phone)) {
             wx.showToast({ title: langData.phoneTip, icon: 'none', duration: 2000 });
             return;
         }
@@ -149,42 +146,36 @@ Page({
         }
         //上传图片文件
         fileImgs.forEach((item, i) => {
-            wx.uploadFile({
-                url: app.globalData.jkUrl + '/uploadImage',
-                filePath: item,
-                name: 'file',
-                header: {
-                    '5ipark-sid': app.globalData.sessionId
+            app.uploadFile({
+                imgUrl:item,
+                entityType:'estaterepair',
+                success:(res)=>{
+                    fileImgs[i] = res.filePath;
+                    fileSuccessNum++;
                 },
-                formData: {
-                    'entityId': '',
-                    'entityType': 'estaterepair',
-                    'appCode': ''
+                violation:(imgurl)=>{   //违规
+                    fileViolationNum++;
                 },
-                success(res) {
-                    console.log('头像：', res)
-                    var datas = JSON.parse(res.data);
-                    if (datas.code == 0) {
-                        const changeImg = datas.data.filePath;
-                        const changeImg2 = datas.data.urlPath;
-                        fileImgs[i] = changeImg;
-                        fileNum++;
-                    }
-                }, fail(err) {
-                    console.log(err);
+                fail:()=>{
+                    fileErrorNum++;
                 }
-            });
+            })
         });
-
+        
         var timer = setInterval(() => {
-            if (fileNum == fileImgs.length) {
+            
+            if ((fileErrorNum + fileSuccessNum) == fileImgs.length) {
                 clearInterval(timer);
+                if (fileViolationNum > 0) {  //有违规图片，终止
+                    return;
+                }
+
                 if (fileImgs.length > 0) {
-                    datas.images = this.data.fileImgs.reduce((prev, cur) => {
+                    formData.images = this.data.fileImgs.reduce((prev, cur) => {
                         return prev + ',' + cur
                     })
                 } else {
-                    datas.images = '';
+                    formData.images = '';
                 }
                 //console.log('上传的参数：', datas);
                 //提交formId
@@ -192,7 +183,7 @@ Page({
                     app.requestFn({
                         loadTitle: langData.submitRepairTip,
                         url: `/estateRepair/apply`,
-                        data: datas,
+                        data: formData,
                         header: 'application/x-www-form-urlencoded',
                         method: 'POST',
                         success: (res) => {

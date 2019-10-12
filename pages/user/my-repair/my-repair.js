@@ -29,6 +29,10 @@ Page({
             this.setData({ isIndexBtnShow: true });
         }
 
+        if (options.tag) {
+            this.setData({ tagIndex: options.tag ? options.tag : 0 });
+        }
+
         //设置语言,判断是否切换语言
         app.loadLangFn(this, 'repair', (res) => {
             wx.setNavigationBarTitle({ title: res.myRepairTitle });  //设置当前页面的title

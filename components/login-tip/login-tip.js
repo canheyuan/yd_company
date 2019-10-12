@@ -33,6 +33,7 @@ Component({
 
         //获取用户信息
         getUserInfoFn(e) {
+            this.closePopFn();
             wx.showLoading({ title: this.data.langData.public.loadingTip, mask: true });
             var _this = this;
             console.log("组件获取用户信息：", e.detail);

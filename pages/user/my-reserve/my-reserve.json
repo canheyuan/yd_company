@@ -1,6 +1,8 @@
 {
-  "navigationBarTitleText": "我的预定",
-  "usingComponents": {
-    "reserve-list": "/components/reserve-list/reserve-list"
-  }
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "",
+    "usingComponents": {
+        "reach-load": "/components/reach-load/reach-load",
+        "reserve-list": "/components/reserve-list/reserve-list"
+    }
 }

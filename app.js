@@ -1,3 +1,5 @@
+const mtjwxsdk = require('./utils/mtj-wx-sdk.js');  //百度统计
+
 //app.js
 let appConfig = require('config.js');   //不同小程序的配置信息
 let langJson = require('lang.js');   //加载语言文件包
@@ -6,8 +8,8 @@ let chatIm = require('utils/chatIm.js');    //封装腾讯云接口
 
 App({
     globalData: {
-        appVersion: '1.3.0',       //上传的版本号
-        appVersionDate: '20191010', //版本更新的日期
+        appVersion: '1.3.1',       //上传的版本号
+        appVersionDate: '20191011', //版本更新的日期
 
         langType: '',     //当前小程序的语言版本
         langData: null,
@@ -200,6 +202,101 @@ App({
         // this.globalData.myRepairReach = false;
     },
 
+    //选择图片
+    chooseImg(option){
+        var _this = this;
+        let opt = option ? option : null;
+        let opt_default = {
+            count: 1,   //个数
+            sizeType: ['original', 'compressed'],   //所选图片尺寸（原图、压缩）
+            sourceType: ['album', 'camera'],    //选择图片的来源（从相册选图、使用相机）
+            success: null,  //成功回调函数
+            fail: null,     //失败回调函数
+            complete: null   //调用接口完回调函数
+        };
+        opt = opt ? Object.assign(opt_default, opt) : opt_default;
+        wx.chooseImage({
+            count: opt.count,
+            sizeType: opt.sizeType,
+            sourceType: opt.sourceType,
+            success:(res)=>{
+                console.log('选择图片：',res);
+                var imgList = res.tempFilePaths
+                opt.success && opt.success(res);
+            },
+            fail:()=>{
+                opt.fail && opt.fail();
+            },
+            complete:()=>{
+                opt.complete && opt.complete();
+            }
+        })
+    },
+
+    //检测文字是否违规
+    msgSecCheck(msg,callback){
+        this.requestFn({
+            url:`/ma/checkMessage?message=${msg}`,
+            method:'POST',
+            // data:{
+            //     message : msg
+            // },
+            success:(res)=>{
+                if (res.data.data){ //true是不违规，false违规
+                    callback && callback(res.data.data);
+                }else{
+                    wx.showToast({ title: '您输入的文字存在敏感字眼，请重新输入！', icon: 'none', duration: 3000 });
+                }
+            }
+        })
+    },
+
+    //上传文件图片接口
+    uploadFile(option){
+        var _this = this;
+        let opt = option ? option : null;
+        let opt_default = {
+            imgUrl:'',  //上传的图片地址
+            fileName:'file',
+            entityType:'estaterepair',
+            violation:null, //违规返回函数
+            success: null,  //成功回调函数
+            fail: null,     //失败回调函数
+            complete: null   //调用接口完回调函数
+        };
+        opt = opt ? Object.assign(opt_default, opt) : opt_default;
+        wx.uploadFile({
+            url: this.globalData.jkUrl + '/uploadImage',
+            filePath: opt.imgUrl,
+            name: opt.fileName,
+            header: {
+                '5ipark-sid': this.globalData.sessionId
+            },
+            formData: {
+                'entityId': '',
+                'entityType': opt.entityType,
+                'appCode': ''
+            },
+            success(res) {
+                var datas = JSON.parse(res.data);
+                console.log('通用上传图片返回字段：',datas);
+                if (datas.code == 0) {
+                    opt.success && opt.success(datas.data);
+                } else if (datas.code == 802) {    //图片违规
+                    wx.showToast({ title: '图片存在违规信息，请重新上传！', icon: 'none', duration: 3000 });
+                    opt.violation && opt.violation(opt.imgUrl);
+                }
+            },
+            fail(err) {
+                wx.showToast({ title: '图片上传失败！', icon: 'none', duration: 3000 });
+                opt.fail && opt.fail();
+            },
+            complete:()=>{
+                opt.complete && opt.complete();
+            }
+        });
+    },
+
 
     //进入后台模式
     onHide() {
@@ -213,8 +310,7 @@ App({
 
         //从缓存获取用户信息
         var loginInfo = wx.getStorageSync('userInfo') ? wx.getStorageSync('userInfo') : null;  
-        //_this.globalData.loginInfo = loginInfo;
-
+        
         //判断是否有登录缓存信息
         if (!loginInfo || !loginInfo.userInfo.loginName) {  
             if (loginInfo && loginInfo.sessionId) {  //即使没登录也有sessionId的，先记录

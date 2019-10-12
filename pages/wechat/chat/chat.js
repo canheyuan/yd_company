@@ -196,13 +196,12 @@ Page({
     //选择图片发送
     chooseImgFn(){
         var _this = this;
-        wx.chooseImage({
+        app.chooseImg({
             count: 1, // 默认9
             sizeType: ['compressed'],
             sourceType: ['album', 'camera'],
-            success: (res) => {
-                console.log('选择图片返回：',res);
-                _this.uploadFile(res.tempFilePaths[0],(result)=>{
+            success:(res)=>{
+                _this.uploadFile(res.tempFilePaths[0], (result) => {
 
                     //设置缓存里的消息已读
                     var lastMsg = wx.getStorageSync('lastMsg') ? wx.getStorageSync('lastMsg') : [];
@@ -222,11 +221,11 @@ Page({
                     wx.setStorageSync('lastMsg', lastMsg);
 
 
-                    _this.setData({ sendType : 'image'});   //改变发送类型为图片
+                    _this.setData({ sendType: 'image' });   //改变发送类型为图片
                     _this.addNewMsg(res.tempFilePaths[0])
                 });
             }
-        });
+        })
     },
 
     // 腾讯IM 简单上传图片文件

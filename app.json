@@ -119,8 +119,7 @@
             "root": "pages/venue/",
             "pages": [
                 "venue-booking-list/venue-booking-list",
-                "venue-booking-details/venue-booking-details",
-                "venue-booking-pay/venue-booking-pay"
+                "venue-booking-details/venue-booking-details"
             ]
         },
         {
