@@ -5,7 +5,6 @@
         "pages/common/find-password/find-password",
         "pages/common/result/result",
         "pages/common/search/search",
-        "pages/common/404/404",
         "pages/common/web-view/web-view",
         "pages/common/register/register",
         "pages/common/change-garden/change-garden",

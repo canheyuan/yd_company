@@ -70,8 +70,8 @@
 				},
 				{
 					"id": 3,
-					"name": "pages/supplies/supplies-index/supplies-index",
-					"pathName": "pages/supplies/supplies-index/supplies-index",
+					"name": "在线报修",
+					"pathName": "pages/repair/online-repair/online-repair",
 					"query": "",
 					"scene": null
 				}

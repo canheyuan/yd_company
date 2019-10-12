@@ -1,3 +1,4 @@
+var appConfig = require('../config.js');   //不同小程序的配置信息
 /**
  * @file 百度移动统计配置文件
  */
@@ -7,7 +8,7 @@ module.exports = {
      * 从百度移动统计获取的AppKey
      * @type {string}
      */
-    appKey: 'b61ade2f8c',
+    appKey: appConfig.mtjAppKey,
 
     /**
      * 是否使用了插件

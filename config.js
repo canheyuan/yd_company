@@ -24,6 +24,8 @@ module.exports = {
         lang        : true,  //语言切换
     },
 
+    mtjAppKey: 'cb5e07b28d',    //百度统计appKey
+
     //腾讯云Im的一些配置信息
     COSv5: {
         appid: '01254126397', // Bucket 所属的项目 ID

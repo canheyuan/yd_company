@@ -1,7 +1,7 @@
 const mtjwxsdk = require('./utils/mtj-wx-sdk.js');  //百度统计
 
 //app.js
-let appConfig = require('config.js');   //不同小程序的配置信息
+var appConfig = require('config.js');   //不同小程序的配置信息
 let langJson = require('lang.js');   //加载语言文件包
 let webim = require('utils/webim_wx.js');   //腾讯云IM
 let chatIm = require('utils/chatIm.js');    //封装腾讯云接口

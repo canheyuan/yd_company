@@ -8,6 +8,7 @@ Page({
         domainUrl: app.globalData.domainUrl,
         contactsName: '',  //联系人
         contactsPhone: '', //联系人电话
+
         bxTypeList: [],  //报修类型数组
         bxTypeIndex: null,
         roomList: [],  //房间号数组
@@ -35,6 +36,7 @@ Page({
     //获取报修信息
     getRepairInfo() {
         var _this = this;
+        var loginInfo = app.globalData.loginInfo;
         //加载完页面获取数据
         app.requestFn({
             url: `/estateRepair/info`,
@@ -45,39 +47,28 @@ Page({
                     bxTypeList: datas.types,
                     roomList: datas.rooms,
                     servicesList: datas.services,
-                    contactsName: app.globalData.loginInfo.userInfo.name,
-                    contactsPhone: app.globalData.loginInfo.userInfo.cellphone
-                    // contactsName: datas.contact,
-                    // contactsPhone: datas.phone
+                    contactsName: loginInfo.userInfo.name,
+                    contactsPhone: loginInfo.userInfo.cellphone
                 });
-                // if (!datas.rooms) {
-                //     wx.showToast({ title: _this.data.langData.noRepairTip, icon: 'none', duration: 3000 });
-                // }
             }
         });
     },
 
     //选择报修类型
     bxTypeListFn(e) {
-        console.log(e);
-        this.setData({
-            bxTypeIndex: e.detail.value
-        })
+        this.setData({ bxTypeIndex: e.detail.value })
     },
 
     //选择房间号
     roomListFn(e) {
-        console.log(e);
-        this.setData({
-            roomIndex: e.detail.value
-        })
+        this.setData({ roomIndex: e.detail.value })
     },
 
-    //上传图片
+    //选择图片
     fileImageFn() {
         var _this = this;
         app.chooseImg({
-            count: _this.data.fileImgsNum, // 默认9
+            count: _this.data.fileImgsNum,
             success:(res)=>{
                 var tempFilePaths = res.tempFilePaths;
                 var list = _this.data.fileImgs.concat(tempFilePaths);
@@ -93,7 +84,6 @@ Page({
     removeImageFn(e) {
         var removeIndex = e.currentTarget.dataset.index;
         var imgArr = this.data.fileImgs;
-        console.log(removeIndex);
         imgArr.splice(removeIndex, 1);
         this.setData({
             fileImgsNum: 3 - imgArr.length,
@@ -102,10 +92,8 @@ Page({
     },
 
     //打开关闭服务价格一览表弹窗
-    popFn() {
-        this.setData({
-            popIsShow: !this.data.popIsShow
-        })
+    servePopFn() {
+        this.setData({ popIsShow: !this.data.popIsShow })
     },
 
     //提交报修
@@ -140,9 +128,7 @@ Page({
         if (this.data.formSubmitStatus) {    //控制不重复提交
             return;
         } else {
-            _this.setData({
-                formSubmitStatus: true
-            })
+            _this.setData({ formSubmitStatus: true })
         }
         //上传图片文件
         fileImgs.forEach((item, i) => {
@@ -153,7 +139,7 @@ Page({
                     fileImgs[i] = res.filePath;
                     fileSuccessNum++;
                 },
-                violation:(imgurl)=>{   //违规
+                violation:(imgurl)=>{   //违规回调函数
                     fileViolationNum++;
                 },
                 fail:()=>{
@@ -164,12 +150,11 @@ Page({
         
         var timer = setInterval(() => {
             
-            if ((fileErrorNum + fileSuccessNum) == fileImgs.length) {
+            if ((fileErrorNum + fileViolationNum + fileSuccessNum) == fileImgs.length) {
                 clearInterval(timer);
                 if (fileViolationNum > 0) {  //有违规图片，终止
                     return;
                 }
-
                 if (fileImgs.length > 0) {
                     formData.images = this.data.fileImgs.reduce((prev, cur) => {
                         return prev + ',' + cur
