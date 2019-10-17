@@ -49,6 +49,7 @@
 .menu_list .a .icon.ico12{background-position:-130rpx -260rpx;}
 .menu_list .a .icon.ico13{background-position:-260rpx -260rpx;}
 .menu_list .a .icon.ico14{background-position:-390rpx -260rpx;}
+.menu_list .a .icon.ico15{background-position:-520rpx -260rpx;}
 .menu_list .a .title{font-size:26rpx; color:#333333; display: block;}
 .menu_list .a.hover .title{color:#2a99f1;}
 .more_menu{position:absolute; bottom:0; left:50%; margin-left:-45rpx; background:#f0f0f0; width:90rpx; height:50rpx; border-top-left-radius: 45rpx; border-top-right-radius: 45rpx; text-align: center; padding-top:10rpx; box-sizing: border-box;}

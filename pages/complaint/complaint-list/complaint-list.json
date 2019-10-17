@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "",
   "usingComponents": {
-    "list-nothing": "/components/result-nothing/result-nothing"
+    "complaint-list": "/components/complaint-list/complaint-list"
   }
 }

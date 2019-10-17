@@ -84,7 +84,6 @@ Page({
         var newDate = new Date();
         var weekNow = newDate.getDay();    //当前星期几：0-6
         var hour = newDate.getHours();
-        console.log('hour',hour)
         if (weekNow == 0 || weekNow == 6 || hour <= 9 || hour >= 16){
             b = false;
         }else{

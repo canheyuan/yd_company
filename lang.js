@@ -231,6 +231,7 @@ module.exports = {
                 visitor: '访客预约',
                 orderfood: '在线订餐',
                 coupon: '领券中心',
+                complaint:'投诉建议'
             },
             defaultParkText: '园叮智慧园区',
             newText: '最新',
@@ -319,7 +320,7 @@ module.exports = {
             activityBtn: '我的活动',
             orderBtn: '我的订单',
             borrowedBtn: '我的物资',
-            complaintBtn: '投诉建议',
+            complaintBtn: '我的投诉',
             recommendBtn2: '我的推荐',
             changeGardenBtn: '切换园区',
             discussBtn: '我的评论',
@@ -547,7 +548,7 @@ module.exports = {
             subject: '主题',
             subjectPl: '请填写主题',
             subjectTip: '请输入主题！',
-            feedback: '反馈',
+            feedback: '反馈结果',
             feedbackPl: '请输入您的反馈描述…',
             feedbackTip: '请输入反馈内容！',
             addPicBtn: '添加图片',
@@ -556,6 +557,9 @@ module.exports = {
             status2: '已指派',
             status3: '处理中',
             status4: '已完成',
+            applyTime: '发起时间：',
+            processTime: '受理时间：',
+            finishTime: '完成时间：'
         },
 
         //优惠券
@@ -1141,6 +1145,7 @@ module.exports = {
                 visitor: 'Visitor',
                 orderfood: 'Food Online',
                 coupon: 'Coupon',
+                complaint: 'Complaint'
             },
             defaultParkText: 'Garden Park Smart Park',
             newText: 'new',
@@ -1229,7 +1234,7 @@ module.exports = {
             activityBtn: 'My activity',
             orderBtn: 'My order',
             borrowedBtn: 'My borrowed',
-            complaintBtn: 'complaint',
+            complaintBtn: 'My complaint',
             recommendBtn2: 'My recommend',
             changeGardenBtn: 'Change Park',
             discussBtn: 'My discuss',
@@ -1462,6 +1467,9 @@ module.exports = {
             status2: 'Assigned',
             status3: 'Processing',
             status4: 'completed',
+            applyTime: 'Apply Time',
+            processTime: 'Process Time',
+            finishTime: 'Finish Time',
         },
 
         //优惠券

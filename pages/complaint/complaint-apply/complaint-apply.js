@@ -1,4 +1,6 @@
 const app = getApp();  //获取应用实例
+const formTip = require('../../../utils/validateForm.js');   //验证
+
 Page({
 
     data: {
@@ -6,6 +8,7 @@ Page({
         userInfo: null,
         fileImgs: [],  //上传图片
         fileImgsNum: 3,  //可以上传的图片个数，最多三张
+        formSubmitStatus: false, //提交状态，控制不重复提交（true：提交中，false：未提交）
 
         langData: null,  //语言数据
         langType: '',    //语言类型
@@ -43,7 +46,6 @@ Page({
     removeImageFn(e) {
         var removeIndex = e.currentTarget.dataset.index;
         var imgArr = this.data.fileImgs;
-        console.log(removeIndex);
         imgArr.splice(removeIndex, 1);
         this.setData({
             fileImgsNum: 3 - imgArr.length,
@@ -53,51 +55,53 @@ Page({
 
     //提交表单
     submitFn(e) {
+        var _this = this;
         var langData = this.data.langData;
         var formData = e.detail.value;
-        var fileNum = 0;
-        var fileImgs = this.data.fileImgs;
-        if (formData.title == '') {
-            wx.showToast({ title: langData.subjectTip, icon: 'none', duration: 2000 });
-            return;
-        }
-        if (formData.content == '') {
-            wx.showToast({ title: langData.feedbackTip, icon: 'none', duration: 2000 });
-            return;
-        }
+        var formId = e.detail.formId;
 
+        var fileSuccessNum = 0;
+        var fileErrorNum = 0;
+        var fileViolationNum = 0;
+        var fileImgs = this.data.fileImgs;
+
+        //验证
+        var isTip = formTip([
+            { name: 'empty', verifyText: formData.title, tipText: langData.subjectTip },
+            { name: 'empty', verifyText: formData.content, tipText: langData.feedbackTip }
+        ]);
+        if (isTip) { return; } //若有提示，就终止下面程序
+
+        if (this.data.formSubmitStatus) {    //控制不重复提交
+            return;
+        } else {
+            _this.setData({ formSubmitStatus: true })
+        }
         //上传图片文件
         fileImgs.forEach((item, i) => {
-            wx.uploadFile({
-                url: app.globalData.jkUrl + '/uploadImage',
-                filePath: item,
-                name: 'file',
-                header: {
-                    '5ipark-sid': app.globalData.sessionId
+            app.uploadFile({
+                imgUrl: item,
+                entityType: 'estateComplaint',
+                success: (res) => {
+                    fileImgs[i] = res.filePath;
+                    fileSuccessNum++;
                 },
-                formData: {
-                    'entityId': '',
-                    'entityType': 'estateComplaint',
-                    'appCode': ''
+                violation: (imgurl) => {   //违规回调函数
+                    fileViolationNum++;
                 },
-                success(res) {
-                    var datas = JSON.parse(res.data);
-                    if (datas.code == 0) {
-                        const changeImg = datas.data.filePath;
-                        const changeImg2 = datas.data.urlPath;
-                        fileImgs[i] = changeImg;
-                        fileNum++;
-                    }
-                }, fail(err) {
-                    console.log(err);
+                fail: () => {
+                    fileErrorNum++;
                 }
-            });
+            })
         });
 
-
         var timer = setInterval(() => {
-            if (fileNum == fileImgs.length) {
+
+            if ((fileErrorNum + fileViolationNum + fileSuccessNum) == fileImgs.length) {
                 clearInterval(timer);
+                if (fileViolationNum > 0) {  //有违规图片，终止
+                    return;
+                }
                 if (fileImgs.length > 0) {
                     formData.images = this.data.fileImgs.reduce((prev, cur) => {
                         return prev + ',' + cur
@@ -105,21 +109,23 @@ Page({
                 } else {
                     formData.images = '';
                 }
-                console.log('上传的参数：', formData);
+                //console.log('上传的参数：', datas);
                 //提交formId
-                app.requestFn({
-                    loadTitle: langData.public.submit,
-                    url: `/estateComplaint/add`,
-                    //header: 'application/x-www-form-urlencoded',
-                    data: formData,
-                    method: 'POST',
-                    success: (res) => {
-
-                        wx.navigateTo({ url: '/pages/common/result/result?page=complaint' });
-
-                    }
-                });
-
+                app.getFormIdFn(formId, () => {
+                    app.requestFn({
+                        loadTitle: langData.public.submit,
+                        url: `/estateComplaint/add`,
+                        data: formData,
+                        //header: 'application/x-www-form-urlencoded',
+                        method: 'POST',
+                        success: (res) => {
+                            wx.redirectTo({ url: '/pages/common/result/result?page=complaint' })
+                        },
+                        complete() {
+                            _this.setData({ formSubmitStatus: false })
+                        }
+                    });
+                })
             }
         }, 300);
 

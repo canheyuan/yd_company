@@ -1,86 +1,94 @@
 
 <!-- 模板图一 -->
 <view 
-  class='share_page' hidden="{{shareImgIndex!=0}}"
-  style='background:url({{domainUrl}}/images/share/bg01.jpg) no-repeat center top; background-size:100% auto; height:2280rpx;'
+    class='share_page' hidden="{{shareImgIndex!=0}}"
+    style='background:url({{domainUrl}}/images/share/bg01.jpg) no-repeat center top; background-size:100% auto; height:2280rpx;'
 >
-  <view class='head_txt'>
-    <view class='text01'>{{detailData.shareTitle}}</view>
-    <view class='text02'>{{detailData.shareTitle}}</view>
-  </view> 
-  <image 
-    class='img01' src='{{detailData.parkImg[0]?detailData.parkImg[0]:domainUrl+"/images/default/df_vbd_pic.jpg"}}'
-    binderror='errorImgFn'  data-obj="detailData.parkImg[0]"  data-img="{{domainUrl}}/images/default/df_vbd_pic.jpg"
-  ></image>
-  <view class='rule_txt'>{{detailData.shareRule}}</view>
-  <view class='data_info'>
-    <image
-      class='per_img' src='{{userInfo.headImgs?userInfo.headImgs:domainUrl+"/images/default/df_userhead.png"}}'
-      binderror='errorImgFn' 
-      data-obj="userInfo.headImgs"
-      data-img="{{domainUrl}}/images/default/df_userhead.png"
+    <view class='head_txt'>
+        <view class='text01'>{{detailData.shareTitle}}</view>
+        <view class='text02'>{{detailData.shareTitle}}</view>
+    </view> 
+    <image 
+        class='img01' src='{{detailData.parkImg[0]?detailData.parkImg[0]:domainUrl+"/images/default/df_vbd_pic.jpg"}}'
+        binderror='errorImgFn'  data-obj="detailData.parkImg[0]"  data-img="{{domainUrl}}/images/default/df_vbd_pic.jpg"
     ></image>
-    <view class='info'>
-      <view class='name'><text>{{userInfo.name}}</text> {{langData.shareText1}}</view>
-      <view class='c_name'>{{detailData.parkName}}</view>
-      <image class='ewm' src='{{imgsInfo.ewm.path}}'></image>
+    <view class='rule_txt'>{{detailData.shareRule}}</view>
+    <view class='data_info'>
+        <image
+            class='per_img' src='{{userInfo.headImgs?userInfo.headImgs:domainUrl+"/images/default/df_userhead.png"}}'
+            binderror='errorImgFn' 
+            data-obj="userInfo.headImgs"
+            data-img="{{domainUrl}}/images/default/df_userhead.png"
+        ></image>
+        <view class='info'>
+            <view class='name'><text>{{userInfo.name}}</text> {{langData.shareText1}}</view>
+            <view class='c_name'>{{detailData.parkName}}</view>
+            <image class='ewm' src='{{imgsInfo.ewm.path}}'></image>
+        </view>
     </view>
-  </view>
-  
-  <view class='btn_wrap'>
-    <view class='btn' hover-class='hover' bindtap='previewImgFn'>{{langData.previewImgBtn}}</view>
-    <view class='btn' hover-class='hover' bindtap='downImg'>{{langData.saveImgBtn}}</view>
-  </view>
+    
+    <view class='btn_wrap'>
+        <view class='btn' hover-class='hover' bindtap='previewImgFn'>{{langData.previewImgBtn}}</view>
+        <view class='btn' hover-class='hover' bindtap='downImg'>{{langData.saveImgBtn}}</view>
+    </view>
 
 </view>
 
 <!-- 模板图二 -->
 <view 
-  class='share_page2'  hidden="{{shareImgIndex!=1}}"
-  style='background:url({{domainUrl}}/images/share/bg02.jpg) no-repeat center top; background-size:100% auto; height:2460rpx;'
+    class='share_page2'  hidden="{{shareImgIndex!=1}}"
+    style='background:url({{domainUrl}}/images/share/bg02.jpg) no-repeat center top; background-size:100% auto; height:2460rpx;'
 >
-  <view class='box01'>
-    <image 
-      class='s_img' src='{{detailData.parkImg[0]?detailData.parkImg[0]:domainUrl+"/images/default/df_vbd_pic.jpg"}}'
-      binderror='errorImgFn'  data-obj="detailData.parkImg[0]"  data-img="{{domainUrl}}/images/default/df_vbd_pic.jpg"
-    ></image>
-    <image class='img_tri' src='{{domainUrl}}/images/share/tri_bg.png'></image>
-    <view class='txt01' style='background:url({{domainUrl}}/images/share/tit_bg01.png) no-repeat center top; background-size:100% auto;'>{{detailData.parkName}}</view>
-  </view>
-
-  <view class='box02'>
-    <view class='tit02' style='background:url({{domainUrl}}/images/share/tit_bg02.png) no-repeat center top; background-size:100% auto;'>{{langData.shareText2}}</view>
-    <view class='img_box'>
-      <image 
-        class='s_img' src='{{detailData.unitList[0].image?detailData.unitList[0].image:domainUrl+"/images/default/df_vbd_pic.jpg"}}'
-        binderror='errorImgFn'  data-obj="detailData.unitList[0].image"  data-img="{{domainUrl}}/images/default/df_vbd_pic.jpg"
-      ></image>
-      <view class='mask_btm'>
-        <text class=''>{{detailData.unitList[0].name}}</text>
-        <text class=''>{{detailData.unitList[0].smallestArea}}m²～{{detailData.unitList[0].biggestArea}}m²</text>
-      </view>
+    <view class='box01'>
+        <image 
+            class='s_img' src='{{detailData.parkImg[0]?detailData.parkImg[0]:domainUrl+"/images/default/df_vbd_pic.jpg"}}'
+            binderror='errorImgFn'  data-obj="detailData.parkImg[0]"  data-img="{{domainUrl}}/images/default/df_vbd_pic.jpg"
+        ></image>
+        <image class='img_tri' src='{{domainUrl}}/images/share/tri_bg.png'></image>
+        <view 
+            class='txt01' 
+            style='background:url({{domainUrl}}/images/share/tit_bg01.png) no-repeat center top; background-size:100% auto;'
+        >{{detailData.parkName}}</view>
     </view>
-  </view>
 
-  <view class='box03'>
-    <view class='img_box'>
-      <image 
-        class='s_img' src='{{detailData.unitList[1].image?detailData.unitList[1].image:domainUrl+"/images/default/df_vbd_pic.jpg"}}'
-        binderror='errorImgFn'  data-obj="detailData.unitList[1].image"  data-img="{{domainUrl}}/images/default/df_vbd_pic.jpg"
-      ></image>
-      <view class='mask_btm' wx:if="{{detailData.unitList[1]}}">
-        <text class=''>{{detailData.unitList[1].name}}</text>
-        <text class=''>{{detailData.unitList[1].smallestArea}}m²～{{detailData.unitList[1].biggestArea}}m²</text>
-      </view>
-       <image class='img_tri' src='{{domainUrl}}/images/share/tri_bg02.png'></image>
+    <view class='box02'>
+        <view 
+            class='tit02' 
+            style='background:url({{domainUrl}}/images/share/tit_bg02.png) no-repeat center top; background-size:100% auto;'
+        >{{langData.shareText2}}</view>
+        <view class='img_box'>
+            <image 
+                class='s_img' 
+                src='{{detailData.unitList[0].image?detailData.unitList[0].image:domainUrl+"/images/default/df_vbd_pic.jpg"}}'
+                binderror='errorImgFn'  data-obj="detailData.unitList[0].image"  data-img="{{domainUrl}}/images/default/df_vbd_pic.jpg"
+            ></image>
+            <view class='mask_btm'>
+                <text class=''>{{detailData.unitList[0].name}}</text>
+                <text class=''>{{detailData.unitList[0].smallestArea}}m²～{{detailData.unitList[0].biggestArea}}m²</text>
+            </view>
+        </view>
     </view>
+
+    <view class='box03'>
+        <view class='img_box'>
+            <image 
+                class='s_img' 
+                src='{{detailData.unitList[1].image?detailData.unitList[1].image:domainUrl+"/images/default/df_vbd_pic.jpg"}}'
+                binderror='errorImgFn'  data-obj="detailData.unitList[1].image"  data-img="{{domainUrl}}/images/default/df_vbd_pic.jpg"
+            ></image>
+            <view class='mask_btm' wx:if="{{detailData.unitList[1]}}">
+                <text class=''>{{detailData.unitList[1].name}}</text>
+                <text class=''>{{detailData.unitList[1].smallestArea}}m²～{{detailData.unitList[1].biggestArea}}m²</text>
+            </view>
+            <image class='img_tri' src='{{domainUrl}}/images/share/tri_bg02.png'></image>
+        </view>
+        
     
-   
-    <view class='txt03' style='background:url({{domainUrl}}/images/share/tit_bg03.png) no-repeat center top; background-size:100% auto;'>
-        <text class='money'>￥</text>
-        <text class='num'>{{detailData.lowestPrice}}</text> <text>{{langData.shareText3}}</text>
+        <view class='txt03' style='background:url({{domainUrl}}/images/share/tit_bg03.png) no-repeat center top; background-size:100% auto;'>
+            <text class='money'>￥</text>
+            <text class='num'>{{detailData.lowestPrice}}</text> <text>{{langData.shareText3}}</text>
+        </view>
     </view>
-  </view>
 
     <view class='box04'>
         <view class='data_info2 clearfix'>
@@ -94,11 +102,11 @@
                 <view class='title'>{{detailData.shareTitle}}</view>
                 <view class='c_name'>{{detailData.parkName}}</view>
             </view>
-            </view>
+        </view>
 
-            <view class='ewm_tip_txt'><text class='txt'>{{langData.shareText6}}</text></view>
+        <view class='ewm_tip_txt'><text class='txt'>{{langData.shareText6}}</text></view>
 
-            <view class='clearfix' style='padding:40rpx 70rpx;'>
+        <view class='clearfix' style='padding:40rpx 70rpx;'>
             <image class='ewm' src='{{imgsInfo.ewm.path}}'></image>
             <view class='btn_wrap'>
                 <view class='btn' hover-class='hover' style='margin-top:30rpx;' bindtap='previewImgFn'>{{langData.previewImgBtn}}</view>
@@ -110,72 +118,66 @@
 
 <!-- 户型图片下载模板 -->
 <view class='share_page3' hidden="{{shareImgIndex!=2}}" >
-  <view class='unit_title'><image src='{{domainUrl}}/images/share/unit_title.png' mode='widthFix'></image></view>
-  <view class='download_imgs' style='background-image:url({{domainUrl}}/images/share/unit_img_bg.png);'>
-    <block  wx:for="{{unitImgs}}" wx:key="unitImgs{{index}}">
-      <view class='img item1' wx:if="{{index%4==0}}">
-        <view class='box1'></view>
-        <view class='box2'></view>
-        <image src='{{item}}' mode='widthFix' bindtap='previewImg' data-img='{{item}}'></image>
-      </view>
+    <view class='unit_title'><image src='{{domainUrl}}/images/share/unit_title.png' mode='widthFix'></image></view>
+    <view class='download_imgs' style='background-image:url({{domainUrl}}/images/share/unit_img_bg.png);'>
+        <block  wx:for="{{unitImgs}}" wx:key="unitImgs{{index}}">
+            <view class='img item1' wx:if="{{index%4==0}}">
+                <view class='box1'></view>
+                <view class='box2'></view>
+                <image src='{{item}}' mode='widthFix' bindtap='previewImg' data-img='{{item}}'></image>
+            </view>
 
-      <view class='img item2' wx:if="{{index%2==1}}">
-        <view class='box1'></view>
-        <image src='{{item}}' mode='widthFix' bindtap='previewImg' data-img='{{item}}'></image>
-      </view>
+            <view class='img item2' wx:if="{{index%2==1}}">
+                <view class='box1'></view>
+                <image src='{{item}}' mode='widthFix' bindtap='previewImg' data-img='{{item}}'></image>
+            </view>
 
-      <view class='img item3' wx:if="{{index%4==2}}">
-        <view class='box1'></view>
-        <view class='box2'></view>
-        <image src='{{item}}' mode='widthFix' bindtap='previewImg' data-img='{{item}}'></image>
-      </view>
-    </block>
-  </view>
-  
-  <view class='s_blue_btn' bindtap='downLoadImgFn'>{{langData.saveImgBtn}}</view>
+            <view class='img item3' wx:if="{{index%4==2}}">
+                <view class='box1'></view>
+                <view class='box2'></view>
+                <image src='{{item}}' mode='widthFix' bindtap='previewImg' data-img='{{item}}'></image>
+            </view>
+        </block>
+    </view>
+
+    <view class='s_blue_btn' bindtap='downLoadImgFn'>{{langData.saveImgBtn}}</view>
 </view>
 
 <!-- 底部固定按钮 -->
 <view class='share_btm'>
-  <view class='tjy_tit' bindtap='tjyPopFn'><icon class='icons ico_tjy'></icon><text>{{langData.recommendLang}}</text></view>
-  <view class='small_imgs'>
-    <view
-      wx:for="{{shareTagList}}" wx:key="shareTagList{{index}}" 
-      class='img {{shareImgIndex==index?"act":""}}' bindtap="imgTag" data-index="{{index}}"
-    >
-      <image src="{{domainUrl}}/images/share/{{item}}"></image>
-      <view class='mask' style='background:url({{domainUrl}}/images/share/img_act.png) no-repeat; background-size:100% 100%;'></view>
+    <view class='tjy_tit' bindtap='tjyPopFn'><icon class='icons ico_tjy'></icon><text>{{langData.recommendLang}}</text></view>
+    <view class='small_imgs'>
+        <view
+            wx:for="{{shareTagList}}" wx:key="shareTagList{{index}}" 
+            class='img {{shareImgIndex==index?"act":""}}' bindtap="imgTag" data-index="{{index}}"
+        >
+            <image src="{{domainUrl}}/images/share/{{item}}"></image>
+            <view class='mask' style='background:url({{domainUrl}}/images/share/img_act.png) no-repeat; background-size:100% 100%;'></view>
+        </view>
     </view>
-  </view>
 </view>
 
-<view class='mask_bg pop_show' hidden="{{tjyHide}}">
-  <view class='mask_bg_ctn' style=' vertical-align:bottom;'>
-    <view class='tjy_pop'>
-      <view class='head'>
-        <icon class='icons ico_pyq'></icon>{{langData.shareText7}}
-        <view class='close_btn icons'  bindtap='tjyPopFn'></view>
-      </view>
-      <view class='tjy_txt'>
-        <text>{{copyTxt}}</text>
-      </view>
-      <view class='rel_btn' bindtap="replaceTxtFn"><icon class='icons ico_rel'></icon><text>{{langData.nextOne}}</text></view>
-      <view class='copy_btn' bindtap="copyTxtFn">{{langData.copyBtn}}</view>
+<!-- 推荐语弹窗 -->
+ <view class='mask_bg pop_show' hidden="{{tjyHide}}">
+    <view class='mask_bg_ctn' style=' vertical-align:bottom;'>
+        <view class='tjy_pop'>
+            <view class='head'>
+                <icon class='icons ico_pyq'></icon>{{langData.shareText7}}
+                <view class='close_btn icons'  bindtap='tjyPopFn'></view>
+            </view>
+            <view class='tjy_txt'><text>{{copyTxt}}</text></view>
+            <view class='rel_btn' bindtap="replaceTxtFn"><icon class='icons ico_rel'></icon><text>{{langData.nextOne}}</text></view>
+            <view class='copy_btn' bindtap="copyTxtFn">{{langData.copyBtn}}</view>
+        </view>
     </view>
-  </view>
 </view>
 
-<!-- <view>
-  <canvas 
-    canvas-id="shareCanvas"
-    style='width:{{canvas[shareImgIndex].width*scaleNum}}px; height:{{canvas[shareImgIndex].height*scaleNum}}px; '
-  ></canvas>
-</view> -->
+<!-- canvas生成图片 -->
 <view  style='position:fixed; right:-2000px; top:0;'>
-  <canvas 
-    canvas-id="shareCanvas"
-    style='width:{{canvas[shareImgIndex].width*scaleNum}}px; height:{{canvas[shareImgIndex].height*scaleNum}}px; background:#eee; '
-  ></canvas>
+    <canvas 
+        canvas-id="shareCanvas"
+        style='width:{{canvas[shareImgIndex].width*scaleNum}}px; height:{{canvas[shareImgIndex].height*scaleNum}}px; background:#eee; '
+    ></canvas>
 </view>
 
 

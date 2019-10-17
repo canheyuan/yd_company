@@ -1,7 +1,5 @@
 {
   "component": true,
   "usingComponents": {
-    "list-nothing": "/components/result-nothing/result-nothing",
-    "login-tip": "/components/login-tip/login-tip"
   }
 }

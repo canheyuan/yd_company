@@ -16,7 +16,7 @@ page{background:#f7f7f7; padding-bottom:120rpx;}
 /* 详细信息 */
 .venue_details_box{background:#fff;  border-radius:20rpx;  background:#fff;padding:20rpx; margin:-90rpx 20rpx 0; position:relative; z-index: 10;}
 
-.venue_details_box .title{font-size:34rpx;  color:#333333; margin-bottom:10rpx; }
+.venue_details_box .title{font-size:34rpx; height:50rpx; line-height:50rpx; color:#333333; margin-bottom:10rpx; }
 .venue_details_box .ico_txt{display:block;}
 .venue_details_box .ico_txt .ico_dz{background-position: -330rpx -120rpx;}
 .venue_details_box .ico_txt .ico_per{background-position: -360rpx -120rpx;}

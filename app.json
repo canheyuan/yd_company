@@ -178,5 +178,11 @@
             }
         ]
     },
+    "usingComponents":{
+        "list-nothing": "/components/result-nothing/result-nothing",
+        "default-list": "/components/default-list/default-list",
+        "reach-load": "/components/reach-load/reach-load",
+        "login-tip": "/components/login-tip/login-tip"
+    },
     "sitemapLocation": "sitemap.json"
 }

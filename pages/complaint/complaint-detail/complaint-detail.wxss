@@ -1,24 +1,37 @@
-page{background: #f7f7f7;}
+page{background: #f7f7f7; padding-bottom:120rpx;}
 
 /* 内容列表 */
-.repair_list{margin-top: 32rpx; background: #fff; position: relative;}
-.repair_list .hdr_line{height: 58rpx; padding: 22rpx 32rpx 0 16rpx; border-bottom: 1rpx solid #e2e2e2;}
-.repair_list .yd_title01{float: left;}
-.repair_list .status{color: #f28d09; font-size: 28rpx; float: right;}
-.repair_list .status.follow{color: #2f9cac;}
-.repair_list .status.done{color: #a5a5a5; width: 126rpx; height: 126rpx; position: absolute; top: -10rpx; right: 6rpx; background:url(https://www.5iparks.com/static/wuye/images/stamp_done.png) no-repeat top left; background-size: 126rpx;}
-.repair_list .repair_ctn{padding: 10rpx 32rpx 32rpx; }
-.repair_ctn .dl{font-size: 30rpx; line-height: 81rpx; clear: both;}
-.repair_ctn .dl:after {visibility:hidden; display:block; font-size:0; content: " "; clear:both; height:0;}
-.repair_ctn .dl .dt{color: #888; width: 120rpx; float: left;}
-.repair_ctn .dl .dd{color: #333; padding-left: 40rpx; float: left;}
-.repair_ctn .dl .dd .pic{width: 160rpx; height: 160rpx; margin: 20rpx 0 0 20rpx; float: left;}
-.repair_ctn .dl .dd .pic:first-child{margin-left: 0;}
-.repair_ctn .dl .dd .pic image{width: 100%; height: 100%; background:#eee; }
-.repair_ctn .repair_txt{color: #555; line-height: 42rpx;height:150rpx; padding: 20rpx 26rpx; margin: 6rpx 0; border-radius: 8rpx; background: #f5f5f5; clear: both; font-size:30rpx;}
-.repair_ctn .repair_txt2{color: #555; line-height: 40rpx;height:200rpx; padding: 20rpx 26rpx; width:100%; box-sizing:border-box; border-radius: 8rpx; background: #f5f5f5; clear: both; font-size:26rpx; margin-top:20rpx;}
-.ylb_txt{font-size:26rpx; color:#2f9cac; text-decoration: underline; padding:16rpx 30rpx; line-height:40rpx;}
-.ylb_txt icon{width:40rpx; height:40rpx; background-position:0 -160rpx; margin-right:10rpx; vertical-align: top;}
+.complaint_detail{margin-top: 32rpx; background: #fff; position: relative;}
+.complaint_detail .head{padding: 15rpx 30rpx; border-bottom: 1rpx solid #e5e5e5;}
+.complaint_detail .head .status{color: #f28d09; font-size: 28rpx; float: right; margin-left:40rpx;}
+.complaint_detail .head .status.follow{color: #2f9cac;}
+.complaint_detail .head .status.done{color: #a5a5a5; width: 126rpx; height: 126rpx; position: absolute; top: -10rpx; right: 6rpx; background:url(https://www.5iparks.com/static/wuye/images/stamp_done.png) no-repeat top left; background-size: 126rpx 126rpx; font-size:0;}
+.complaint_detail .head .title{line-height:40rpx; font-size:28rpx; font-weight:500; color:#333; padding-left:20rpx; position:relative;}
+.complaint_detail .head .title::before{position:absolute; left:0; top:8rpx; content:''; display:inline-block; width:8rpx; height:26rpx; background:#066f89; border-radius: 4rpx;}
+
+.complaint_ctn{padding: 30rpx 30rpx 10rpx; border-bottom: 1rpx solid #e5e5e5;}
+.complaint_ctn .des{color: #555; line-height: 40rpx; min-height:100rpx; padding: 20rpx; border-radius: 8rpx; background: #f5f5f5;  font-size:30rpx; margin-bottom:10rpx;}
+.complaint_ctn .dl{font-size: 30rpx;  clear: both;}
+.complaint_ctn .dl:after {visibility:hidden; display:block; font-size:0; content: " "; clear:both; height:0;}
+.complaint_ctn .dl .dt{color: #888; width: 120rpx; float: left; margin-right:40rpx; line-height:80rpx;}
+.complaint_ctn .dl .dd{color: #333;  overflow: hidden;}
+.complaint_ctn .dl .dd .text{line-height:40rpx; padding:20rpx 0;}
+.complaint_ctn .dl .dd .pic{width: 160rpx; height: 160rpx; margin: 20rpx 0 0 20rpx; float: left;}
+.complaint_ctn .dl .dd .pic:first-child{margin-left: 0;}
+.complaint_ctn .dl .dd .pic image{width: 100%; height: 100%; background:#eee; }
+
+/* 订单号时间 */
+.order_time{padding: 20rpx 30rpx; }
+.order_time .ico_txt{float:none; display: block; margin-bottom:10rpx;}
+.order_time .ico_txt .ico_time{display:none;}
+
+/* 底部按钮 */
+.fixed_btm_btn{position:fixed; bottom:0; left:0; width:100%;}
+
+/* 处理结果弹窗 */
+.textarea_box {margin:0 30rpx;}
+.textarea_box .textarea{color: #555; line-height: 40rpx; min-height:100rpx; max-height:200rpx; padding: 20rpx; border-radius: 10rpx; background: #f5f5f5;  font-size:26rpx; width:100%; box-sizing: border-box; text-align: left;}
+.textarea_box .textarea_pl{font-size:26rpx; color:#ccc; line-height:40rpx;}
 
 /* 维修人员 */
 .repair_person{font-size: 30rpx; line-height: 64rpx; margin-top: 32rpx; padding: 18rpx 32rpx; background: #fff;}
@@ -37,11 +50,7 @@ page{background: #f7f7f7;}
 .repair_price .dl .dd text{font-size: 60%;}
 .repair_price .dl .dd .star_list{margin-top: 16rpx;}
 
-/* 订单号时间 */
-.order_time{margin-top: 5rpx; padding: 18rpx 32rpx; background: #fff;}
-.order_time .ico_txt{float: left; clear: both;}
-.order_time .ico_txt.order_num{padding-left: 8rpx; float: left; clear: none;}
-.order_time .ico_txt.noicon{margin-left: 36rpx;}
+
 
 /* 底部按钮 */
 .yd_title02{margin-top: 32rpx;}

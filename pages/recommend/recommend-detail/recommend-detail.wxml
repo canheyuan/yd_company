@@ -2,7 +2,9 @@
 
 <!-- 幻灯片 -->
 <view class='venue_slide_box'>
-    <navigator url="/pages/index/index" class="home_btn2" open-type="switchTab"><icon class="icons ico_home"></icon>{{langData.homeText}}</navigator>
+    <navigator url="/pages/index/index" class="home_btn2" open-type="switchTab">
+        <icon class="icons ico_home"></icon>{{langData.homeText}}
+    </navigator>
     <image 
         wx:if="{{!(detailData.parkImg.length > 0)}}" 
         src='{{domainUrl}}/images/default/df_vbd_pic.jpg' class="slide_img"
@@ -32,7 +34,7 @@
     <view class='title'>{{detailData.parkName}}</view>
     <view class=''>
         <view class='ico_txt'><icon class='icons ico_dz'></icon>{{detailData.address}}</view>
-        <view class='ico_txt'><icon class='icons ico_mj'></icon>{{langData.totalArea}}：{{detailData.totalArea}}m²</view>
+        <view class='ico_txt'><icon class='icons ico_mj'></icon>{{langData.totalArea}}：{{detailData.totalArea?detailData.totalArea:0}}m²</view>
     </view>
 
     <view class='price_mdl'>
@@ -50,7 +52,10 @@
         <!-- <view class='perList'>
         <image class='img' wx:for="{{[1,2,3,4,5,6]}}" wx:key="{{index}}" src='{{domainUrl}}/images/temp/expert.jpg'></image>
         </view> -->
-        <view class='ico_txt' style='padding-top:20rpx;'><icon class='icons ico_per'></icon><text style='color:#ff6000;'>{{detailData.pv}}</text>{{langData.detailText1}} </view>
+        <view class='ico_txt' style='padding-top:20rpx;'>
+            <icon class='icons ico_per'></icon>
+            <text style='color:#ff6000;'>{{detailData.pv?detailData.pv:0}}</text>{{langData.detailText1}} 
+        </view>
     </view>
 
 </view>

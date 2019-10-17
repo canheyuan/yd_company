@@ -113,7 +113,6 @@ Component({
                                 listItem.statusName = langData.status6;
                                 break;
                         }
-
                     }
                     return listItem;
                 },

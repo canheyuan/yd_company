@@ -46,6 +46,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 3,
 			"list": [
@@ -70,8 +74,8 @@
 				},
 				{
 					"id": 3,
-					"name": "在线报修",
-					"pathName": "pages/repair/online-repair/online-repair",
+					"name": "投诉建议",
+					"pathName": "pages/complaint/complaint-apply/complaint-apply",
 					"query": "",
 					"scene": null
 				}

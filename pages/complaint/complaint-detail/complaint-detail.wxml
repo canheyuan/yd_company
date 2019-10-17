@@ -1,58 +1,73 @@
 
+
+
+<form report-submit="true" bindsubmit="{{detailData.setFnName}}">
 <!-- 投诉详情 -->
-<view class='repair_list clearfix'>
-  <view class='hdr_line'>
-    <view class='yd_title01'>{{langData.subject}}：{{detailsData.title}}</view>
-    <!-- 未接单状态 -->
-    <view class='status follow'>{{detailsData.status}}</view>
-  </view>
-  <view class='repair_ctn clearfix'>
-
-    <view class='repair_txt f_30' style='min-height:120rpx;'>{{detailsData.content?detailsData.content:langData.public.noDescriptionTip}}</view>
-
-    <view class='dl'>
-      <view class='dt'>{{langData.public.contact}}</view>
-      <view class='dd'>{{detailsData.contact}}</view>
+<view class='complaint_detail clearfix'>
+    <view class='head'>
+        <view class='status {{detailData.statusClass}}'>{{detailData.status}}</view>   <!-- 未接单状态 -->
+        <view class='title'>{{langData.subject}}：{{detailData.title}}</view>
     </view>
 
-    <view class='dl'>
-      <view class='dt'>{{langData.public.contactPhone}}</view>
-      <view class='dd'>{{detailsData.contactPhone}}</view>
-    </view>
-
-    <view class='dl' wx:if="{{detailsData.images.length>0}}">
-      <view class='dt'>{{langData.public.imgAccessory}}</view>
-      <view class='dd'>
-        <view class='pic' wx:for="{{detailsData.images}}" wx:key="{{index}}">
-          <image 
-            src='{{item}}' bindtap="bigImgFn" 
-            data-index="{{index}}" data-imgs="{{detailsData.images}}"
-          ></image>
+    <view class='complaint_ctn clearfix'>
+        <!-- 描述 -->
+        <view class='des'>{{detailData.content}}</view>
+        <!-- 企业 -->
+        <view class='dl' wx:if="{{detailData.entName}}">
+            <view class='dt'>{{langData.public.companyName}}</view>
+            <view class='dd'><view class="text">{{detailData.entName}}</view></view>
         </view>
-      </view>
+        <!-- 联系人 -->
+        <view class='dl' wx:if="{{detailData.contact}}">
+            <view class='dt'>{{langData.public.contact}}</view>
+            <view class='dd'><view class="text">{{detailData.contact}}{{'、'+detailData.contactPhone}}</view></view>
+        </view>
+        <!-- 受理人 -->
+        <view class='dl' wx:if="{{detailData.handler}}">
+            <view class='dt'>{{langData.receiver}}</view>
+            <view class='dd'><view class="text">{{detailData.handler}}、{{detailData.contactPhone}}</view></view>
+        </view>
+        <!-- 图片 -->
+        <view class='dl' wx:if="{{detailData.images.length>0}}">
+            <view class='dt'>{{langData.public.imgAccessory}}</view>
+            <view class='dd'>
+                <view class='pic' wx:for="{{detailData.images}}" wx:key="{{index}}">
+                    <image 
+                        src='{{item}}' bindtap="previewImg" data-index="{{index}}" data-imgs="{{detailData.images}}"
+                    ></image>
+                </view>
+            </view>
+        </view>
     </view>
-  </view>
+
+    <!-- 订单号时间 -->
+    <view class='order_time clearfix'>
+        <view class='ico_txt' wx:if="{{detailData.applyTime}}">
+            <icon class="icons ico_time"></icon>{{langData.applyTime}}{{detailData.applyTime}}
+        </view>
+        <view class='ico_txt' wx:if="{{detailData.processTime}}">
+            <icon class="icons ico_time"></icon>{{langData.processTime}}{{detailData.processTime}}
+        </view>
+        <view class='ico_txt' wx:if="{{detailData.finishTime}}">
+            <icon class="icons ico_time"></icon>{{langData.finishTime}}{{detailData.finishTime}}
+        </view>
+    </view>
 </view>
 
-<!-- 订单号时间 -->
-<view class='order_time clearfix'>
-  <view class='ico_txt'><image src='{{domainUrl}}/images/icon/ico_clock.png'></image>{{langData.public.applyTime}}：{{detailsData.applyTime}}</view>
-  <!-- <view class='ico_txt'><image src='{{domainUrl}}/images/icon/ico_clock.png'></image>完成时间：{{detailsData.finishTime}}</view> -->
-</view>
+</form>
 
 <!-- 回复模块 -->
-<view class='repair_list clearfix'>
-  <view class='hdr_line'>
-    <view class='yd_title01'>{{langData.public.replyBtn}}</view>
-  </view>
-  <view class='repair_ctn clearfix'>
-
-    <textarea class='repair_txt2' placeholder='{{langData.public.myReplyPl}}'  placeholder-style='color:#c2c2c2;' name='content'></textarea>
-    
-    <view style='padding:50rpx 100rpx;'>
-      <view class='blue_btn'>{{langData.public.replyBtn}}</view>
+<view class='repair_list clearfix' wx:if="{{false}}">
+    <view class='hdr_line'>
+        <view class='yd_title01'>{{langData.public.replyBtn[lang]}}</view>
     </view>
+    <view class='repair_ctn clearfix'>
 
-  </view>
+        <textarea class='repair_txt2' placeholder='{{langData.public.myReplyPl[lang]}}'  placeholder-style='color:#c2c2c2;' name='content'></textarea>
+        
+        <view style='padding:50rpx 100rpx;'>
+            <view class='blue_btn'>{{langData.public.replyBtn[lang]}}</view>
+        </view>
+    </view>
 </view>
 

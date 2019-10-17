@@ -34,6 +34,10 @@ Page({
 
     },
 
+    onResize(){
+        console.log('页面尺寸裱花')
+    },
+
     onShow() {
         //保存当前页面地址，登录页后回到这个页面
         var backUrl = { url: '/' + commonFn.getCurrentPageUrl(), type: 'switchTab' };
@@ -75,10 +79,7 @@ Page({
                 this.getExperList();  //获取专家列表
             }
         }
-
-        
     },
-
 
     //选项卡切换
     tagChange(e) {
@@ -126,7 +127,6 @@ Page({
         wx.stopPullDownRefresh(); //下拉刷新后页面上移
     },
 
-
     //获取顶部幻灯片数据
     getnewsSlide() {
         app.requestFn({
@@ -144,7 +144,6 @@ Page({
             }
         });
     },
-
 
     //记录后跳转到新闻详情
     goToNew(e) {
@@ -205,7 +204,6 @@ Page({
             wx.navigateTo({ url: `/pages/wechat/chat/chat` });
         });
     },
-
 
     //获取政策行业title类型列表
     getTitleList() {

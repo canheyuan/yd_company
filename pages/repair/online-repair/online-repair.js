@@ -2,6 +2,7 @@
 
 const app = getApp();  //获取应用实例
 const commonFn = require('../../../utils/common.js'); //一些通用的函数
+const formTip = require('../../../utils/validateForm.js');   //验证
 Page({
 
     data: {
@@ -24,13 +25,11 @@ Page({
     },
 
     onLoad: function (options) {
-
         //设置语言,判断是否切换语言
         app.loadLangFn(this, 'repair', (res) => {
             wx.setNavigationBarTitle({ title: res.repairTitle });  //设置当前页面的title
             this.getRepairInfo();
         });
-
     },
 
     //获取报修信息
@@ -108,23 +107,16 @@ Page({
         var fileErrorNum = 0;
         var fileViolationNum = 0;
         var fileImgs = this.data.fileImgs;
+        
+        //验证
+        var isTip = formTip([
+            { name: 'empty', verifyText: formData.typeId, tipText: langData.repairTypeTip},
+            { name: 'empty', verifyText: formData.unitId, tipText: langData.repartRoomTip },
+            { name: 'empty', verifyText: formData.contact, tipText: langData.contactTip },
+            { name: 'phone', verifyText: formData.phone, tipText: langData.phoneTip }
+        ]);
+        if (isTip) { return; } //若有提示，就终止下面程序
 
-        if (!formData.typeId) {
-            wx.showToast({ title: langData.repairType, icon: 'none', duration: 2000 });
-            return;
-        }
-        if (!formData.unitId) {
-            wx.showToast({ title: langData.repartRoomTip, icon: 'none', duration: 2000 });
-            return;
-        }
-        if (formData.contact == '') {
-            wx.showToast({ title: langData.contactTip, icon: 'none', duration: 2000 });
-            return;
-        }
-        if (!commonFn.phoneregFn(formData.phone)) {
-            wx.showToast({ title: langData.phoneTip, icon: 'none', duration: 2000 });
-            return;
-        }
         if (this.data.formSubmitStatus) {    //控制不重复提交
             return;
         } else {

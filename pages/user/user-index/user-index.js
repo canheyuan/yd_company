@@ -41,7 +41,7 @@ Page({
             { title: langData.activityBtn, ico_class: 'ico_act', link: '/pages/user/my-activity/my-activity', isShow: moduleSwitch.activity },
             { title: langData.orderBtn, ico_class: 'ico_order', link: '/pages/order/order-list/order-list', isShow: moduleSwitch.order && bOrder },
             { title: langData.borrowedBtn, ico_class: 'ico_wz', link: '/pages/supplies/borrowed-record/borrowed-record', isShow: moduleSwitch.supplies },
-            { title: langData.complaintBtn, ico_class: 'ico_complaint', link: '/pages/complaint/complaint-apply/complaint-apply', isShow: moduleSwitch.complaint },
+            { title: langData.complaintBtn, ico_class: 'ico_complaint', link: '/pages/complaint/complaint-list/complaint-list', isShow: moduleSwitch.complaint },
             { title: langData.recommendBtn2, ico_class: 'ico_recommend', link: '/pages/recommend/recommend-record/recommend-record', isShow: recommendShow },
 
             // { title: langData.changeGardenBtn, ico_class: 'ico_garden', link: '/pages/common/change-garden/change-garden', isShow: true },

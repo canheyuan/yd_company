@@ -258,6 +258,16 @@ Page({
                 visit: 0,
                 isShow: moduleSwitch.orderFood,
             },
+            {   //投诉建议
+                image: 'ico15',
+                title: langMenuData.complaint,
+                typeName: 'complaint',
+                link: '/pages/complaint/complaint-apply/complaint-apply',
+                skipType: 'navigate',
+                islogin: true,
+                visit: 0,
+                isShow: moduleSwitch.complaint,
+            },
         ];
 
         //菜单栏排序

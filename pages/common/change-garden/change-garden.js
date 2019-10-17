@@ -20,16 +20,8 @@ Page({
             wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
         });
 
-        //判断sessionId是否已经获取到了
-        var timer = setInterval(() => {
-            if (app.globalData.sessionId) {
-                clearInterval(timer);
-                this.setData({
-                    loginInfo: wx.getStorageSync('userInfo')
-                });
-                this.getListInfo(); //获取用户列表
-            }
-        }, 300);
+        this.setData({ loginInfo: app.globalData.loginInfo  });
+        this.getListInfo(); //获取用户列表
 
     },
 
