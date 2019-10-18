@@ -22,7 +22,6 @@ Page({
 
   onLoad: function (options) {
     this.setData({ tagIndex : options.tag });
-
       //设置语言,判断是否切换语言
       app.loadLangFn(this, 'services', (res) => {
           wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title

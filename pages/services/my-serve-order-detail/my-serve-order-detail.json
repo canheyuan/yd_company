@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+      "my-serve-order-list":"components/my-serve-order-list/my-serve-order-list"
+  }
+}

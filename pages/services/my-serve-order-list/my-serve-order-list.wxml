@@ -1,0 +1,15 @@
+
+<!-- 选项卡切换 -->
+<view class='tag_box tag_fixed'>
+    <view class='tag_list'>
+        <view 
+            wx:for="{{tagList}}" wx:key="{{index}}" class='tag_item {{tagIndex==index?"act":""}}' 
+            bindtap='tagChangeFn'  data-index="{{index}}" 
+        >{{item.name}}</view>
+    </view>
+</view>
+
+<!-- 循环列表 -->
+<view wx:for="{{tagList}}" wx:key="tagList{{index}}"  hidden="{{tagIndex!=index}}" wx:if="{{item.show}}">
+    <my-serve-order-list target-page="myServeOrderList" tag-type="{{item.type}}" reach-data="{{item.reach}}"></my-serve-order-list>
+</view>

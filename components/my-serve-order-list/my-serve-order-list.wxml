@@ -1,0 +1,13 @@
+
+<!-- 数据未加载时显示的默认列表 -->
+<!-- <default-list wx:if="{{!listInfo.isFinish}}"></default-list> -->
+
+
+<view 
+    wx:for="{{listInfo.list}}" wx:key="{{index}}"
+    style="font-size:26rpx; color:#333; margin-bottom:20rpx;"
+>
+    <view>类别：{{tagType}}</view>
+    <view>服务订单数据{{index+1}}</view>
+</view>
+<default-list></default-list>

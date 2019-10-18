@@ -30,7 +30,13 @@
         "pages/user/user-info/user-info",
         "pages/user/my-backlog/my-backlog",
         "pages/user/my-invoice/my-invoice",
-        "pages/user/my-activity/my-activity"
+        "pages/user/my-activity/my-activity",
+        "pages/services/serve-list/serve-list",
+        "pages/services/serve-index/serve-index",
+        "pages/services/serve-detail/serve-detail",
+        "pages/services/serve-order/serve-order",
+        "pages/services/my-serve-order-list/my-serve-order-list",
+        "pages/services/my-serve-order-detail/my-serve-order-detail"
     ],
     "subPackages": [
         {
@@ -178,7 +184,7 @@
             }
         ]
     },
-    "usingComponents":{
+    "usingComponents": {
         "list-nothing": "/components/result-nothing/result-nothing",
         "default-list": "/components/default-list/default-list",
         "reach-load": "/components/reach-load/reach-load",

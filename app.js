@@ -668,10 +668,13 @@ App({
     },
 
     //预览图片（当前图片地址，图片地址列表）
-    previewImgFn(currentImg, imgList) {
+    previewImgFn(currentImg, imgList,cbOk) {
         wx.previewImage({
             current: currentImg,  // 当前显示图片的http链接
-            urls: imgList         // 需要预览的图片http链接列表
+            urls: imgList,        // 需要预览的图片http链接列表
+            success:(res)=>{
+                cbOk && cbOk(res);
+            }
         })
     },
 
