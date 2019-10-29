@@ -15,9 +15,10 @@ App({
         langData: null,
 
         domainUrlDev: 'http://192.168.0.244/yuanding',        //接口测试机
-        domainUrl: 'https://www.5iparks.com/static/yuanding', //图片正式机
+        domainUrl:'http://192.168.5.148:8080',
+        //domainUrl: 'https://www.5iparks.com/static/yuanding', //图片正式机
         jkDevUrl: 'http://192.168.0.244:8080/api',  //图片开发板
-        jkUrl: 'https://www.5iparks.com/api',       //接口正式版
+        
 
         //判断页面是否刷新参数（刷新：true，不刷新：false）
         foundTag: 0,        //进入发现页，0新鲜事，1政策
@@ -67,6 +68,7 @@ App({
         //在globalData加入功能开关
         this.globalData.appApi = appConfig.appApi
         this.globalData.moduleSwitch = appConfig.moduleSwitch;
+        this.globalData.jkUrl = appConfig.jkUrl;
 
         //获取语言
         this.globalData.langData = langJson;
@@ -297,11 +299,19 @@ App({
         });
     },
 
+    onShow(){
+        //审核中的话，进入小程序会重新加载wxLogin
+        var loginInfo = this.globalData.loginInfo;
+        if (loginInfo && loginInfo.userInfo && loginInfo.userInfo.approveStatus == 'APPROVING') {
+            wx.removeStorageSync('userInfo'); //清除之前缓存
+            this.getWxLoginInfo();
+        }
+    },
 
     //进入后台模式
     onHide() {
         //切换后台后，防止进来拿不到数据
-        this.globalData.indexReach = true;     //进入首页是否刷新
+        this.resetAllReach();
     },
 
     //获取用户登录信息
@@ -390,7 +400,7 @@ App({
             method: 'post',
             header:'application/x-www-form-urlencoded',
             data: userData,
-            success(res){
+            success:(res)=>{
                 var loginInfo = res.data.data;
                 wx.setStorageSync('userInfo', loginInfo); //设置缓存用户信息
                 _this.globalData.loginInfo = loginInfo;
@@ -399,7 +409,11 @@ App({
                 _this.globalData.isWxLogin = false;
                 if (loginInfo && loginInfo.loginName) {
                     _this.globalData.isLogin = true; //登录状态
+                    if (!_this.chatData.fromUser) { //登录状态下无Im信息就需要调用Im接口（这里主要是因为清除缓存后通过openid记录登录的情况下）
+                        _this.getImUserInfo();
+                    }
                 }
+                
                 console.log('wxLogin接口获取用户信息：', loginInfo);
                 callback && callback(loginInfo); //回调函数
             },
@@ -417,13 +431,10 @@ App({
         this.requestFn({
             url: '/info4im',
             success: (res) => {
-                if (this.globalData.apiMsgSwitch) { console.log("聊天接口：", res.data); }
+                console.log("聊天接口：", res.data); 
                 this.chatData.fromUser = res.data.data;
                 if (this.globalData.isChatLogin) {
-                    setTimeout(()=>{
-                        _this.chatLogin()
-                    },3000)
-                   
+                    setTimeout(()=>{ _this.chatLogin() },3000)
                 }
             }
         })

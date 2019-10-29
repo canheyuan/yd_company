@@ -29,18 +29,25 @@
     <!-- 幻灯片 -->
     <view class='index_slide_box'>
         <swiper 
-            class='index_slide' indicator-dots="true" 
+            class='index_slide' bindchange="indexSlideChange"
             autoplay="true" interval="5000" duration="500" 
-            indicator-color="#ffffff" indicator-active-color="#4e8bff"
         >
             <swiper-item wx:for="{{indexSlide}}" wx:key="indexSlide{{index}}">
                 <image 
-                    src='{{item.advertImg?item.advertImg:domainUrl+"/images/default/img_730_320.jpg"}}'  class="slide_img" lazy-load="true"
-                    bindtap="goToLink" data-advId='{{item.advertId}}' data-tarId='{{item.targetAddress}}' data-type='{{item.targetType}}'
-                    binderror='errorImgFn'  data-obj="indexSlide[{{index}}].advertImg" data-img="{{domainUrl}}/images/default/img_730_320.jpg"
+                    src='{{item.advertImg}}'  class="slide_img" lazy-load="true"
+                    bindtap="goToLink" data-item="{{item}}"
+                    binderror='errorImgFn' 
+                    data-obj="indexSlide[{{index}}].advertImg" 
+                    data-img="{{domainUrl}}/images/default/img_730_320.jpg"
                 ></image>
             </swiper-item>
         </swiper>
+    </view>
+    <view class="slide_nav">
+        <view 
+            wx:for="{{indexSlide}}" wx:key="dot{{index}}" 
+            class="dot {{index==indexSlideIndex?'act':''}}"
+        ></view>
     </view>
 </view>
 <!------------------ 头部模块_End ------------------>
@@ -130,95 +137,6 @@
         <text>{{langData.backlogTitle}}</text>
     </view>
     <backlog-list target-page="index" reach-data="{{backLogReach}}" bindgetTotalFn="getBackLogTotal"></backlog-list>
-
-    <view class='dbsx_list' wx:if="{{false}}">
-        <block wx:for="{{backLogList}}" wx:key="{{index}}">
-            <!-- 报修 -->
-            <view 
-                wx:if="{{item.entityType=='estaterepair'}}" class='li li_yellow' 
-                bindtap="goToBackLog" data-blID='{{item.entityId}}' data-blType='{{item.entityType}}'
-            >
-                <view class='time'><text>{{item.date}}</text>{{item.time}}</view>
-                <view class='dot'><text class='dot_in'></text></view>
-                <view class='info'>
-                    <view class='title'>{{item.title}}<text class='label'>{{langData.repairText}}</text></view>
-                    <view class='price' wx:if="{{item.remark}}">{{item.remark}}</view>
-                    <view class='pay_status'>{{langData.pending}}</view>
-                    <view class='arrow_ico icons'></view>
-                </view>
-            </view>
-
-            <!-- 物资共享 -->
-            <view 
-                wx:if="{{item.entityType=='estaterentdetail'}}" class='li li_green' 
-                bindtap="goToBackLog" data-blID='{{item.entityId}}' data-blType='{{item.entityType}}'
-            >
-                <view class='time'><text>{{item.date}}</text>{{item.time}}</view>
-                <view class='dot'><text class='dot_in'></text></view>
-                <view class='info'>
-                    <view class='title'>{{item.title}}<text class='label'>{{langData.goodsText}}</text></view>
-                    <view class='price' wx:if="{{item.remark}}">{{item.remark}}</view>
-                    <view class='pay_status'>{{langData.pending}}</view>
-                    <view class='arrow_ico icons'></view>
-                </view>
-            </view>
-
-            <!-- 订单 -->
-            <view 
-                wx:if="{{item.entityType=='financebill'}}" class='li li_blue' 
-                bindtap="goToBackLog" data-blID='{{item.entityId}}' data-blType='{{item.entityType}}'
-            >
-                <view class='time'><text>{{item.date}}</text>{{item.time}}</view>
-                <view class='dot'><text class='dot_in'></text></view>
-                <view class='info'>
-                    <view class='title'>{{item.title}}<text class='label'>{{langData.billText}}</text></view>
-                    <view class='price'>{{langData.costText}}：￥{{item.toPay}}</view>
-                    <view class='pay_status'>{{langData.pending}}</view>
-                    <view class='arrow_ico icons'></view>
-                </view>
-            </view>
-
-            <!-- 装修 -->
-            <view 
-                wx:if="{{item.entityType=='estatedecorationbooking'}}" class='li li_purple' 
-                bindtap="goToBackLog" data-blID='{{item.entityId}}' data-blType='{{item.entityType}}'
-            >
-                <view class='time'><text>{{item.date}}</text>{{item.time}}</view>
-                <view class='dot'><text class='dot_in'></text></view>
-                <view class='info'>
-                    <view class='title'>{{item.title}}<text class='label'>{{langData.fixturesText}}</text></view>
-                    <view class='pay_status'>{{langData.pending}}</view>
-                    <view class='arrow_ico icons'></view>
-                </view>
-            </view>
-
-            <!--场地预定 -->
-            <view 
-                wx:if="{{item.entityType=='chamberorder'}}" class='li li_purple' 
-                bindtap="goToBackLog" data-blID='{{item.entityId}}' data-blType='{{item.entityType}}'
-            >
-                <view class='time'><text>{{item.date}}</text>{{item.time}}</view>
-                <view class='dot'><text class='dot_in'></text></view>
-                <view class='info'>
-                    <view class='title'>{{item.title}}<text class='label'>{{langData.billText}}</text></view>
-                    <!-- <view class='price'>装修房间：{{item.toPay}}</view> -->
-                    <view class='pay_status'>{{langData.pending}}</view>
-                    <view class='arrow_ico icons'></view>
-                </view>
-            </view>
-
-        <!-- <view class='li {{item.backlogType!="bill"?"li_blue":""}}' bindtap="goToBackLog" data-blID='{{item.backlogId}}'data-blType='{{item.backlogType}}'>
-            <view class='time'><text>{{item.date}}</text>{{item.year}}</view>
-            <view class='dot'><text class='dot_in'></text></view>
-            <view class='info'>
-            <view class='title'>{{item.title}}<text class='label'>账单</text></view>
-            <view class='price'>金额：¥{{item.toPay}}</view>
-            <view class='pay_status'>待处理</view>
-            <view class='arrow_ico icons'></view>
-            </view>
-        </view> -->
-        </block>
-    </view>
 </view>
 <!------------------ 待办事项_End ------------------>
 
@@ -231,64 +149,69 @@
     </view>
     <view class='policy_list_box'>
         <scroll-view class='scroll_box' scroll-x="true" style='height:100%; width:100%;'>
-            <view class='policy_list' style='width:{{policyList.length*440}}rpx;'>
-            <block wx:for="{{policyList}}" wx:key="{{index}}">
-                
-                <view class='li' bindtap="goToPolicy" data-id="{{item.policyId}}">
+            <view class='policy_list' style='width:{{policyList.length*430+20}}rpx;'>
+                <view 
+                    wx:for="{{policyList}}" wx:key="{{index}}"
+                    class='li' bindtap="goToPolicy" data-id="{{item.policyId}}"
+                >
                     <image 
                         class='img' lazy-load="true"
                         src='{{item.mainImg?item.mainImg:domainUrl+"/images/default/img_410_285.jpg"}}' 
-                        binderror='errorImgFn' 
-                        data-obj="policyList[{{index}}].mainImg"
+                        binderror='errorImgFn' data-obj="policyList[{{index}}].mainImg"
                         data-img="{{domainUrl}}/images/default/img_410_285.jpg"
                     ></image>
                     <view class='info'>
                         <view class='title'>{{item.policyTitle}}</view>
                         <view class='btm'>
-                            <view><icon class='icons ico_cgl' ></icon>{{langData.successRateText}}<text>{{item.probability}}%</text></view>
-                            <view wx:if="{{item.highestReward}}"><icon class='icons ico_zg' ></icon>{{langData.highestText}} <text>{{item.highestReward}}</text></view>
+                            <view>
+                                <icon class='icons ico_cgl' ></icon>
+                                {{langData.successRateText}}<text>{{item.probability}}%</text>
+                            </view>
+                            <view wx:if="{{item.highestReward}}">
+                                <icon class='icons ico_zg' ></icon>
+                                {{langData.highestText}} <text>{{item.highestReward}}</text>
+                            </view>
                         </view> 
                     </view>
                 </view>
-                
-            </block>
             </view>
         </scroll-view>
-
     </view>
 </view>
 <!------------------ 申报政策_End ------------------>
 
 
 <!------------------ 热门活动_Start ------------------>
-<view class='index_mdl06' wx:if="{{hotActivityList.length>0 &&  moduleSwitch.activity}}">
+<view class='index_mdl06' wx:if="{{hotActList.length>0 &&  moduleSwitch.activity}}">
     <view class='index_title'>
-        <navigator class='more_btn' hover-class='hover' url="/pages/activity/activity-list/activity-list">{{langData.moreText}}</navigator>
+        <navigator 
+            class='more_btn' hover-class='hover' url="/pages/activity/activity-list/activity-list"
+        >{{langData.moreText}}</navigator>
         <text>{{langData.activityTitle}}</text>
     </view>
     <view class='hot_act_list_box'>
-
         <scroll-view class='scroll_box' scroll-x="true" style='height:100%; width:100%;'>
-            <view class='hot_act_list' style='width:{{hotActivityList.length*325}}rpx;'>
+            <view class='hot_act_list' style='width:{{hotActList.length*320+20}}rpx;'>
                 <navigator  
-                    class='li' url='/pages/activity/activity-details/activity-details?id={{hotActivityList.activityId}}' 
-                    wx:for="{{hotActivityList}}" wx:key="{{index}}" wx:for-item="hotActivityList" 
+                    class='li' url='/pages/activity/activity-details/activity-details?id={{item.activityId}}' 
+                    wx:for="{{hotActList}}" wx:key="{{index}}"
                 >
                     <image 
-                        class='img' src='{{hotActivityList.mainImg?hotActivityList.mainImg:domainUrl+"/images/default/img_300_227.jpg"}}'  lazy-load="true"
-                        binderror='errorImgFn' data-obj="hotActivityList[{{index}}].mainImg" data-img="{{domainUrl}}/images/default/img_300_227.jpg"
+                        class='img' lazy-load="true"
+                        src='{{item.mainImg?item.mainImg:domainUrl+"/images/default/img_300_227.jpg"}}'
+                        binderror='errorImgFn' data-obj="hotActList[{{index}}].mainImg" 
+                        data-img="{{domainUrl}}/images/default/img_300_227.jpg"
                     ></image>
                     <view class='info'>
-                        <view class='title'>{{hotActivityList.activityName}}</view>
+                        <view class='title'>{{item.activityName}}</view>
                         <view class='btm'>
-                            <view><icon class='icons ico_eye'></icon><text>{{hotActivityList.pv}}</text></view>
-                            <view><icon class='icons ico_msg'></icon><text>{{hotActivityList.commentCount}}</text></view>
+                            <view><icon class='icons ico_eye'></icon><text>{{item.pv}}</text></view>
+                            <view><icon class='icons ico_msg'></icon><text>{{item.commentCount}}</text></view>
                         </view> 
                     </view>
                 </navigator>
             </view> 
         </scroll-view>
-        
     </view>
 </view>
 <!------------------ 热门活动_End ------------------>
@@ -297,19 +220,19 @@
 <!------------------ 线上图书_Start ------------------>
 <view class='index_mdl05' wx:if="{{moduleSwitch.indexBook}}">
     <view class='index_title'>
-    <navigator class='more_btn' hover-class='hover'>{{langData.moreText}}</navigator>
-    <text>{{langData.lineBooksTitle}}</text>
-  </view>
-  <view class='xsts_ctn clearfix'>
-    <view class='xsts_list'>
-      <navigator
-        wx:for="{{lineBooksList}}" wx:key="{{index}}" 
-        class='a' url=""
-      >
-        <image class='img' src='{{domainUrl}}{{item.image}}'  lazy-load="true"></image>
-      </navigator>
+        <navigator class='more_btn' hover-class='hover'>{{langData.moreText}}</navigator>
+        <text>{{langData.lineBooksTitle}}</text>
     </view>
-  </view>
+    <view class='xsts_ctn clearfix'>
+        <view class='xsts_list'>
+        <navigator
+            wx:for="{{lineBooksList}}" wx:key="{{index}}" 
+            class='a' url=""
+        >
+            <image class='img' src='{{domainUrl}}{{item.image}}'  lazy-load="true"></image>
+        </navigator>
+        </view>
+    </view>
 </view>
 <!------------------ 线上图书_End ------------------>
 

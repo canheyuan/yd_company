@@ -84,13 +84,13 @@
 <!-- 底部提示文字 -->
 <view 
     class='more_tip' style="margin-top:0;"
-    wx:if="{{listInfo.tipTxt && listInfo.list && listInfo.list.length>0}}">
+    wx:if="{{listInfo.tipTxt && listInfo.list && listInfo.list.length>0  && targetPage!='index'}}">
     <view class='txt'>{{listInfo.tipTxt}}</view>
 </view>  
 
 <!-- 暂无状态 -->
 <list-nothing 
   c-name="backlog" 
-  wx:if="{{!listInfo.list.length>0 && listInfo.list}}"
+  wx:if="{{!listInfo.list.length>0 && listInfo.list  && targetPage!='index'}}"
 ></list-nothing>
 </block>

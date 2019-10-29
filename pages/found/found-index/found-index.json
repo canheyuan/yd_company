@@ -4,8 +4,6 @@
   "usingComponents": {
     "news-list":"/components/news-list/news-list",
     "policy-list": "/components/policy-list/policy-list",
-    "login-tip": "/components/login-tip/login-tip",
-    "reach-load": "/components/reach-load/reach-load",
     "tab": "/components/tab/tab"
   }
 }

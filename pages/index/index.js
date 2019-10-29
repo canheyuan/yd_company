@@ -9,13 +9,14 @@ Page({
         isLoginPopHide: true,  //是否隐藏登录提示
         loginInfo: '', //登录用户信息
         indexSlide: [], //幻灯片数据
+        indexSlideIndex:0,
         noticeData: null, //通知公告数据
         msgNum: 0,  //未读消息数
         backLogIsShow:false,    //待办模块是否显示
         backLogReach:0, //刷新待办字段
         backLogList: [],  //待办事项
         policyList: [],  //申报政策
-        hotActivityList: [],  //热门活动
+        hotActList: [],  //热门活动
 
         //菜单栏
         menuData: null,
@@ -100,26 +101,32 @@ Page({
             bOrder = loginInfo.userInfo.parkKeeper || loginInfo.userInfo.entAdmin;
         }
         this.setData({
-            topParkName: parkName,
-            zgjAppData: app.globalData.app_zgj,
-            orderIsShow: bOrder,
-            loginInfo: loginInfo,
-            backLogReach:Math.random()+1   //刷新加载待办
+            topParkName : parkName,
+            zgjAppData  : app.globalData.app_zgj,
+            orderIsShow : bOrder,
+            loginInfo   : loginInfo,
+            backLogReach: Math.random()+1   //刷新加载待办
         });
 
         this.loadMenuListFn();  //加载菜单
         this.getNoticeData(); //顶部消息个数
         this.getNotification(); //获取通知公告数据消息数量
         this.getIndexSlide(); //顶部幻灯片
-        //this.getUserBackLog();  //待办事项
         this.getPolicyList(); //申报政策
         this.getHotActivityList();  //热门活动
+
     },
 
     //下拉刷新
     onPullDownRefresh: function () {
         console.log('待办显示字段：', this.data.backLogIsShow)
         this.reachFn();  //页面刷新
+        //审核中的话，刷新小程序首页会重新加载wxLogin
+        var loginInfo = app.globalData.loginInfo;
+        if (loginInfo && loginInfo.userInfo && loginInfo.userInfo.approveStatus == 'APPROVING'){
+            wx.removeStorageSync('userInfo'); //清除之前缓存
+            app.getWxLoginInfo();
+        }
         wx.stopPullDownRefresh(); //下拉刷新后页面上移
     },
 
@@ -220,10 +227,10 @@ Page({
             },
             {   //新鲜事
                 image: 'ico10',
-                title: langMenuData.news,
-                typeName: 'news',
-                link: '/pages/found/found-index/found-index',
-                skipType: 'switchTab',
+                title: langMenuData.companyNews,
+                typeName: 'companyNews',
+                link: '/pages/found/company-news-list/company-news-list',
+                skipType: 'navigate',
                 islogin: false,
                 visit: 0,
                 isShow: true,
@@ -385,6 +392,12 @@ Page({
         this.setData({ isLoginPopHide: true });
     },
 
+    //顶部幻灯片切换导航点变化
+    indexSlideChange(e){
+        var curIndex = e.detail.current;
+        this.setData({ indexSlideIndex: curIndex });
+    },
+
     //获取幻灯片信息
     getIndexSlide() {
         app.requestFn({
@@ -394,6 +407,9 @@ Page({
             },
             success: (res) => {
                 var slideData = res.data.data;
+                slideData.forEach(item=>{
+                    item.advertImg = item.advertImg ? item.advertImg : this.data.domainUrl + "/images/default/img_730_320.jpg"
+                })
                 this.setData({ indexSlide: slideData });
             }
         });
@@ -402,46 +418,34 @@ Page({
     //幻灯片先记录，后跳转详情
     goToLink(e) {
         var _this = this;
-        var advId = e.currentTarget.dataset.advid;  //记录id
-        var tarId = e.currentTarget.dataset.tarid;  //跳转id
-        var tarType = e.currentTarget.dataset.type;  //跳转类型
-        var tarUrl = '';  //不同类型，跳转到不同的详情页
-        if (tarType == 'notice') { tarUrl = '/pages/message/notice-details/notice-details?id=' + tarId; }
-        if (tarType == 'activity') { tarUrl = '/pages/activity/activity-details/activity-details?id=' + tarId; }
-        if (tarType == 'news') { tarUrl = '/pages/found/news-detail/news-detail?id=' + tarId; }
-        if (tarType == 'policy') { tarUrl = '/pages/found/policy-detail/policy-detail?id=' + tarId; }
-        if (tarType == 'url') { tarUrl = '/pages/common/web-view/web-view?url=' + tarId; }  //调换h5地址
+        var slideItem = e.currentTarget.dataset.item;
+        var gotoUrl = '';  //不同类型，跳转到不同的详情页
+        switch (slideItem.targetType){  //类型
+            case 'notice':
+                gotoUrl = '/pages/message/notice-details/notice-details?id=' + slideItem.targetAddress;
+                break;
+            case 'activity':
+                gotoUrl = '/pages/activity/activity-details/activity-details?id=' + slideItem.targetAddress;
+                break;
+            case 'news':
+                gotoUrl = '/pages/found/news-detail/news-detail?id=' + slideItem.targetAddress;
+                break;
+            case 'policy':
+                gotoUrl = '/pages/found/policy-detail/policy-detail?id=' + slideItem.targetAddress;
+                break;
+            case 'url':
+                gotoUrl = '/pages/common/web-view/web-view?url=' + slideItem.targetAddress;  //调换h5地址
+                break;
+        }
         app.requestFn({
-            url: `/advert/click?advertId=${advId}`,
+            url: `/advert/click?advertId=${slideItem.advertId}`,
             isLoading: false,
             method: 'POST',
             complete: (res) => {
-                wx.navigateTo({ url: tarUrl });
+                wx.navigateTo({ url: gotoUrl });
             }
         });
     },
-
-    //获取待办事项信息
-    // getUserBackLog(isReach) {
-    //     var _this = this;
-    //     app.requestFn({
-    //         isLoading: false,
-    //         url: `/userBacklog/list`,
-    //         data: {
-    //             pageNum: 1,
-    //             pageSize: 4
-    //         },
-    //         success: (res) => {
-    //             var list = res.data.data.rows;
-    //             list.forEach(function (e) {
-    //                 e.time = e.updateTime.substr(11, 5);
-    //                 e.date = e.updateTime.substr(5, 5);
-    //             });
-    //             this.setData({ backLogList: list });
-    //         }
-    //     });
-    // },
-
 
     //获取通知公告列表数据
     getNoticeData() {
@@ -522,7 +526,7 @@ Page({
             success: (res) => {
                 var list = res.data.rows;
                 list = list.slice(0, 5);
-                this.setData({ hotActivityList: list });
+                this.setData({ hotActList: list });
             }
         });
     },

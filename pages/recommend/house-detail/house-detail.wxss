@@ -1,0 +1,10 @@
+page{background:#f7f7f7;}
+.house_head{padding:30rpx; background:#fff; margin-bottom:20rpx;}
+.house_head .title{font-size:36rpx; color:#333; text-align: left; line-height:50rpx; margin-bottom:40rpx; font-weight: bold;}
+.house_head .info .ico_txt{display:block; margin-bottom:20rpx;}
+.house_head .info .ico_txt .icons{width:30rpx; height:30rpx;}
+.house_head .info .ico_txt .ico_time{background-position: -120rpx -120rpx;}
+.house_ctn{padding:30rpx;  background:#fff; }
+.house_ctn .house_imgs{font-size:0;}
+.house_ctn .house_imgs .img{width:100%; margin-bottom:5rpx;}
+.house_ctn .house_des{display:block; background:#eee; border-radius:10rpx; padding:20rpx; font-size:24rpx; line-height:40rpx; color:#888; margin-bottom:50rpx;}

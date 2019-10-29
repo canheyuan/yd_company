@@ -5,7 +5,7 @@ Page({
     data: {
         domainUrl: app.globalData.domainUrl,
         recommendData: null, //推荐信息
-        serveData: null,  //选项卡切换title列表
+        serveList: null,  //选项卡切换title列表
         tagIndex: 0, //选项卡切换索引
 
         langData: null,  //语言数据
@@ -48,36 +48,47 @@ Page({
         app.requestFn({
             url: '/enterpriseService/categoryList',
             success: (res) => {
-                var datas = res.data.data;
-                datas.forEach(item => {
-                    //把每一项的三级列表整合成一个
-                    var serve_son = [];
+                var serveList = res.data.data;
+                serveList.forEach(item => {
+                    
+                    var serveSonList = [];  //把每一项的三级列表整合成一个
                     item.children.forEach(item2 => {
-                        //给三级继承一级的图标
-                        if (item.iconImg) {
+                        
+                        if (item.iconImg) { //给三级继承一级的图标
                             item2.serviceList = item2.serviceList.map(item3 => {
                                 item3.mainImg = item3.mainImg ? item3.mainImg : item.iconImg;
                                 return item3;
                             });
                         }
-                        serve_son = serve_son.concat(item2.serviceList);
+                        serveSonList = serveSonList.concat(item2.serviceList);
                     });
-                    item.sonList = serve_son;
+
+                    //筛选掉没推荐的(isRecommended=Y)
+                    serveSonList = serveSonList.filter(sonItem => { 
+                        return sonItem.isRecommended == "Y"
+                    }).map((sonItem, sonIndex) => {
+                        sonItem.link = `/pages/services/services-intro/services-intro?id=${sonItem.id}`
+                        sonItem.iconImg =   sonItem.mainImg ? sonItem.mainImg : 
+                                            this.data.domainUrl + `/images/services/serve_ico0${sonIndex + 1}.png`
+                        return sonItem;
+                    });
+                    item.sonList = serveSonList;
                 });
 
-                //筛选掉没推荐的
-                datas.forEach(item => {
-                    item.sonList = item.sonList.filter(item2 => {
-                        return item2.isRecommended == "Y"
-                    });
-                });
+                //筛选掉没推荐的(isRecommended=Y)
+                // serveList.forEach(item => {
+                //     item.sonList = item.sonList.filter(item2 => {
+                //         return item2.isRecommended == "Y"
+                //     });
+                // });
 
-                var recommendData = datas[0];
-                datas.shift();
+                var recommendData = serveList[0];
+                serveList.shift();
                 this.setData({
                     recommendData: recommendData,
-                    serveData: datas
+                    serveList: serveList
                 });
+                console.log(recommendData, serveList)
             }
         });
     }

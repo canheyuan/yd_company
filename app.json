@@ -36,7 +36,10 @@
         "pages/services/serve-detail/serve-detail",
         "pages/services/serve-order/serve-order",
         "pages/services/my-serve-order-list/my-serve-order-list",
-        "pages/services/my-serve-order-detail/my-serve-order-detail"
+        "pages/services/my-serve-order-detail/my-serve-order-detail",
+        "pages/found/company-news-list/company-news-list",
+        "pages/wechat/chat-list/chat-list",
+        "pages/wechat/chat/chat"
     ],
     "subPackages": [
         {
@@ -71,14 +74,9 @@
                 "recommend-share/recommend-share",
                 "recommend-record-list/recommend-record-list",
                 "recommend-record/recommend-record",
-                "recommend-index/recommend-index"
-            ]
-        },
-        {
-            "root": "pages/wechat/",
-            "pages": [
-                "chat-list/chat-list",
-                "chat/chat"
+                "recommend-index/recommend-index",
+                "house-detail/house-detail",
+                "house-list/house-list"
             ]
         },
         {

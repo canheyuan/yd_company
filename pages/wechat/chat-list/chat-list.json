@@ -1,4 +1,5 @@
 {
+    "enablePullDownRefresh": true,
   "navigationBarTitleText": "",
   "usingComponents": {
     "login-tip": "/components/login-tip/login-tip"

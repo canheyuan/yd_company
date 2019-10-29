@@ -37,7 +37,7 @@
     </view>
 
     <!-- 新闻列表 -->
-    <news-list target-page="news" reachData="{{tagList[0].reach}}" lang="{{langType}}"></news-list>
+    <news-list target-page="news" reach-data="{{tagList[0].reach}}" lang="{{langType}}" type-show="true"></news-list>
 
 </view>
 <!-- 新鲜事_End -->

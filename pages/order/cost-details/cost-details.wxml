@@ -1,79 +1,86 @@
 <view class="cost_tip">{{langData.costTip}}</view>
 
 <view class='cost_details_top'>
-  <view class='h3'>{{langData.costDetail}}</view>
-  <view class='p'><icon class='icons ico_per'></icon>{{userInfo.name}}  |  {{userInfo.cellphone}}</view>
-  <view class='p'><icon class='icons ico_fz'></icon>{{userInfo.enterpriseInfo.entName}}</view>
+    <view class='h3'>{{langData.costDetail}}</view>
+    <view class='p'><icon class='icons ico_per'></icon>{{userInfo.name}}  |  {{userInfo.cellphone}}</view>
+    <view class='p'><icon class='icons ico_fz'></icon>{{userInfo.enterpriseInfo.entName}}</view>
 </view>
 
 <view class='form_box'>
-  <view class='form_head'>
-    <view class='tit'>{{detailsData.fee.feeName}}</view>
-    <view class='yjfy_txt'>{{langData.shouldCost}}：<text>￥{{detailsData.fee.totalAmount}}</text></view>
-  </view>
-
-  <view class='form_mdl'>
-    <view class='dl'>
-      <text class='dt'>{{langData.month}}</text>
-      <view class='dd'><text class='txt'>{{detailsData.month}}月份</text></view>
-    </view>
-    <view class='dl'>
-      <text class='dt'>{{langData.room}}</text>
-      <view class='dd'><text class='txt'>{{detailsData.fee.unitName}}</text></view>
+    <view class='form_head'>
+        <view class='tit'>{{detailsData.fee.feeName}}</view>
+        <view class='yjfy_txt'>{{langData.shouldCost}}：<text>￥{{detailsData.fee.totalAmount}}</text></view>
     </view>
 
-    <!-- 租金 -->
-    <block wx:if="{{detailsData.fee.feeType == 'rent'}}">
-      <view class='dl'>
-        <text class='dt'>{{langData.priceName}}</text>
-        <view class='dd'><text class='txt'>{{detailsData.fee.price}}{{langData.unitPrice}}</text></view>
-      </view>
-      <view class='dl'>
-        <text class='dt'>{{langData.countName}}</text>
-        <view class='dd'><text class='txt'>{{detailsData.fee.count}}{{langData.unitCount}}</text></view>
-      </view>
-    </block>
-    
-    <!-- 水电费 -->
-    <block wx:if="{{detailsData.fee.feeType == 'water' || detailsData.fee.feeType == 'electric'}}">
-      <view class='dl'>
-        <text class='dt'>{{langData.prevMeter}}</text>
-        <view class='dd'><text class='txt'>{{detailsData.meter.previousTime}}</text></view>
-      </view>
-      <view class='dl'>
-        <text class='dt'>{{langData.currentMeter}}</text>
-        <view class='dd'><text class='txt'>{{detailsData.meter.currentTime}}</text></view>
-      </view>
-      <view class='dl'>
-        <text class='dt'>{{langData.prevReading}}</text>
-        <view class='dd'>
-          <view class='check_pic'>{{langData.checkPic}}</view>
-          <text class='txt'>{{detailsData.meter.previousReading}}{{detailsData.fee.feeType == 'water'?langData.fangUnit:langData.duUnit}}</text>
+    <view class='form_mdl'>
+        <view class='dl'>
+            <text class='dt'>{{langData.month}}</text>
+            <view class='dd'><text class='txt'>{{detailsData.month}}月份</text></view>
         </view>
-      </view>
-      <view class='dl'>
-        <text class='dt'>{{langData.currentReading}}</text>
-        <view class='dd'>
-          <view class='check_pic'>{{langData.checkPic}}</view>
-          <text class='txt'>{{detailsData.meter.currentReading}}{{detailsData.fee.feeType == 'water'?langData.fangUnit:langData.duUnit}}</text>
+        <view class='dl'>
+            <text class='dt'>{{langData.room}}</text>
+            <view class='dd'><text class='txt'>{{detailsData.fee.unitName}}</text></view>
         </view>
-      </view>
-      <view class='dl' wx:if="{{detailsData.meter.sharedFee}}">
-        <text class='dt'>{{langData.sharedFee}}</text>
-        <view class='dd'><text class='txt'>{{detailsData.meter.sharedFee}}{{detailsData.fee.feeType == 'water'?langData.fangUnit:langData.duUnit}}</text></view>
-      </view>
-      <view class='dl'>
-        <text class='dt'>{{langData.realityCount}}</text>
-        <view class='dd'><text class='txt'>{{detailsData.meter.count}}{{detailsData.fee.feeType == 'water'?langData.fangUnit:langData.duUnit}}</text></view>
-      </view>
-      <view class='dl'>
-        <text class='dt'>{{langData.priceName}}</text>
-        <view class='dd'><text class='txt'>¥{{detailsData.fee.price}}</text></view>
-      </view>
-    </block>
 
-  </view>
+        <!-- 租金 -->
+        <block wx:if="{{detailsData.fee.feeType == 'rent'}}">
+            <!-- <view class='dl'>
+                <text class='dt'>{{langData.priceName}}</text>
+                <view class='dd'><text class='txt'>{{detailsData.fee.price}}{{langData.unitPrice}}</text></view>
+            </view> -->
+            <view class='dl'>
+                <text class='dt'>{{langData.countName}}</text>
+                <view class='dd'><text class='txt'>{{detailsData.fee.count}}{{langData.unitCount}}</text></view>
+            </view>
+        </block>
+        
+        <!-- 水电费 -->
+        <block wx:if="{{detailsData.fee.feeType == 'water' || detailsData.fee.feeType == 'electric'}}">
+            <!-- 上月抄表 -->
+            <view class='dl'>
+                <text class='dt'>{{langData.prevMeter}}</text>
+                <view class='dd'><text class='txt'>{{detailsData.meter.previousTime}}</text></view>
+            </view>
+            <!-- 本次抄表 -->
+            <view class='dl'>
+                <text class='dt'>{{langData.currentMeter}}</text>
+                <view class='dd'><text class='txt'>{{detailsData.meter.currentTime}}</text></view>
+            </view>
+            <!-- 上月读数 -->
+            <view class='dl'>
+                <text class='dt'>{{langData.prevReading}}</text>
+                <view class='dd'>
+                    <view class='check_pic'>{{langData.checkPic}}</view>
+                    <text class='txt'>{{detailsData.meter.previousReading}}{{detailsData.fee.feeType == 'water'?langData.fangUnit:langData.duUnit}}</text>
+                </view>
+            </view>
+            <!-- 本月读数 -->
+            <view class='dl'>
+                <text class='dt'>{{langData.currentReading}}</text>
+                <view class='dd'>
+                    <view class='check_pic'>{{langData.checkPic}}</view>
+                    <text class='txt'>{{detailsData.meter.currentReading}}{{detailsData.fee.feeType == 'water'?langData.fangUnit:langData.duUnit}}</text>
+                </view>
+            </view>
+            <!-- 本月公摊 -->
+            <view class='dl' wx:if="{{detailsData.meter.sharedFee}}">
+                <text class='dt'>{{langData.sharedFee}}</text>
+                <view class='dd'><text class='txt'>{{detailsData.meter.sharedFee}}{{detailsData.fee.feeType == 'water'?langData.fangUnit:langData.duUnit}}</text></view>
+            </view>
+            <!-- 实际用量 -->
+            <view class='dl'>
+                <text class='dt'>{{langData.realityCount}}</text>
+                <view class='dd'><text class='txt'>{{detailsData.meter.count}}{{detailsData.fee.feeType == 'water'?langData.fangUnit:langData.duUnit}}</text></view>
+            </view>
+            <!-- 单价 -->
+            <!-- <view class='dl'>
+                <text class='dt'>{{langData.priceName}}</text>
+                <view class='dd'><text class='txt'>¥{{detailsData.fee.price}}</text></view>
+            </view> -->
+        </block>
 
-  <view class='yd_title02 no_more'><text class='txt'>{{langData.public.noMoreText}}</text></view>
+    </view>
+
+    <view class='yd_title02 no_more'><text class='txt'>{{langData.public.noMoreText}}</text></view>
 
 </view>

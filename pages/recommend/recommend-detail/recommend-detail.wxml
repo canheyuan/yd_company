@@ -205,7 +205,7 @@ isReferrer  是否成为推荐人
     <view class='shouquan_pop'>
       <view class='h3'>{{langData.authentication}}</view>
       <text class='p'>{{langData.authenticationDes}}</text>
-      <button class='btn' open-type='getUserInfo' bindgetuserinfo="getUserInfoFn">>{{langData.authenticationBtn}}</button>
+      <button class='btn' open-type='getUserInfo' bindgetuserinfo="getUserInfoFn">{{langData.authenticationBtn}} ></button>
     </view>
   </view>
 </view>

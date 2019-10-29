@@ -39,6 +39,25 @@ Page({
         });
     },
 
+    //签收
+    signFn(e){
+        var _this = this;
+        var orderId = this.data.detailsData.billId
+        console.log('orderId', orderId)
+        app.requestFn({
+            url: `/bill/sign/${orderId}`,
+            header: 'application/x-www-form-urlencoded',
+            method: 'POST',
+            success: (res) => {
+                wx.showToast({ title: '已签收', icon: 'none', duration: 2000 });
+                setTimeout(()=>{
+                    _this.getDetaisFn(orderId)
+                },1500)
+                
+            }
+        });
+    },
+
     //支付
     payFn(e) {
         var openId = app.globalData.openId;   //清除之前缓存

@@ -57,7 +57,7 @@ function pageDataFn() {
         },
         order: {
             icon: '/images/order/zdcx_img.png',
-            title: langData.activity,
+            title: langData.order,
             des: ''
         },
         repair: {

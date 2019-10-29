@@ -35,10 +35,8 @@ Page({
     //生命周期函数--监听页面加载
     onLoad: function (options) {
         var _this = this;
-        
         //设置语言,判断是否切换语言
         app.loadLangFn(this, 'chat');
-
         var systemInfo = wx.getSystemInfoSync();    //获取系统信息
         _this.setData({
             scrollHeight: systemInfo.windowHeight - 78, //聊天框高度
@@ -47,7 +45,6 @@ Page({
         //进入页面清除最后时间key的缓存
         wx.removeStorageSync('lastMsgTime');
         wx.removeStorageSync('msgKey');
-
         //设置title
         wx.setNavigationBarTitle({ title: app.chatData.toUser.nick });
 

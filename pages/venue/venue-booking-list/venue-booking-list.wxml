@@ -3,64 +3,63 @@
 <view class='venue_top'>
     <!-- <view class='venue_date'><icon class='icons ico_date'></icon></view> -->
     <scroll-view class='scroll_box' scroll-x="true">
-      <view class='venue_date_slide' style='width:{{navWidth}}rpx;'>
-        <view 
-          class="li {{dateIndex==index?'act':''}}" 
-          wx:for="{{dateList}}" wx:key="{{index}}" 
-          bindtap='changeDateFn' 
-          data-index="{{index}}"
-        >
-          <text class='txt'>{{item.week}}</text><text class='num'>{{item.day}}</text>
+        <view class='venue_date_slide' style='width:{{navWidth}}rpx;'>
+            <view 
+                class="li {{dateIndex==index?'act':''}}" 
+                wx:for="{{dateList}}" wx:key="{{index}}" 
+                bindtap='changeDateFn' data-index="{{index}}"
+            >
+                <text class='txt'>{{item.week}}</text><text class='num'>{{item.day}}</text>
+            </view>
         </view>
-      </view>
     </scroll-view>
 </view>
 
 <view class='venue_ctn'>
-  <view class='venue_list'   wx:if="{{listInfo.list.length>0 && listInfo.list}}">
-    <navigator
-        wx:for="{{listInfo.list}}" wx:key="{{index}}" wx:for-item="venueItem" 
-        class='li box_shadow' 
-        url='/pages/venue/venue-booking-details/venue-booking-details?id={{venueItem.chamberId}}&date={{startDate}}'
-    >
-      <view class='top'>
-        <image class='img' 
-          src='{{venueItem.imageList[0]?venueItem.imageList[0]:domainUrl+"/images/default/df_vbd_pic.jpg"}}'
-          binderror='errorImgFn' data-obj="venueList[{{index}}].imageList[0]" data-img="{{domainUrl}}/images/default/df_vbd_pic.jpg"
-        ></image>
-        <view class='info'>
-          <view class='h3'>{{venueItem.chamberName}}</view>
-          <view class='ico_txt'><icon class='icons ico_dz'></icon>{{venueItem.address}}</view>
-          <view class='ico_txt'><icon class='icons ico_per'></icon>{{langData.accommodate + venueItem.capacity + langData.person}}</view>
-          <view class='label_list'>
-            <text wx:for="{{venueItem.serviceTagList}}" wx:key="{{index}}">{{item}}</text>
-          </view>
+    <view class='venue_list'   wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+        <navigator
+            wx:for="{{listInfo.list}}" wx:key="{{index}}" wx:for-item="venueItem" 
+            class='li box_shadow' 
+            url='/pages/venue/venue-booking-details/venue-booking-details?id={{venueItem.chamberId}}&date={{startDate}}'
+        >
+        <view class='top'>
+            <image class='img' 
+                src='{{venueItem.imageList[0]?venueItem.imageList[0]:domainUrl+"/images/default/df_vbd_pic.jpg"}}'
+                binderror='errorImgFn' data-obj="venueList[{{index}}].imageList[0]" data-img="{{domainUrl}}/images/default/df_vbd_pic.jpg"
+            ></image>
+            <view class='info'>
+                <view class='h3'>{{venueItem.chamberName}}</view>
+                <view class='ico_txt'><icon class='icons ico_dz'></icon>{{venueItem.address}}</view>
+                <view class='ico_txt'><icon class='icons ico_per'></icon>{{langData.accommodate + venueItem.capacity + langData.person}}</view>
+                <view class='label_list'>
+                    <text wx:for="{{venueItem.serviceTagList}}" wx:key="{{index}}">{{item}}</text>
+                </view>
+            </view>
         </view>
-      </view>
-      <view class='des'>
-        <view class='text'><template is="wxParse" data="{{wxParseData:desList[index]}}" /></view>
-      </view>
-
-      <view class='times'>
-        <text class='time_tit'> AM
-          PM</text>
-        <view class='hour_list'>
-          <block wx:for="{{venueItem.hourList}}" wx:key="{{index}}" >
-              <text wx:if="{{item.status==0}}" class='gray'>{{item.num}}</text>
-              <text wx:if="{{item.status==1}}">{{item.num}}</text>
-              <text wx:if="{{item.status==2}}" class='red'>{{item.num}}</text>
-          </block>
+        <view class='des'>
+            <view class='text'><template is="wxParse" data="{{wxParseData:desList[index]}}" /></view>
         </view>
-      </view>
 
-      <view class='btm clearfix'>
-        <view class='blue_btn'>{{langData.reserveBtn}}</view>
-        <view class='price'><text>￥{{venueItem.price}}</text>/{{langData.hour}}</view>
-      </view>
+        <view class='times'>
+            <text class='time_tit'> AM
+            PM</text>
+            <view class='hour_list'>
+                <block wx:for="{{venueItem.hourList}}" wx:key="{{index}}" >
+                    <text wx:if="{{item.status==0}}" class='gray'>{{item.num}}</text>
+                    <text wx:if="{{item.status==1}}">{{item.num}}</text>
+                    <text wx:if="{{item.status==2}}" class='red'>{{item.num}}</text>
+                </block>
+            </view>
+        </view>
 
-    </navigator>
-    <view class='more_tip' wx:if="{{listInfo.tipTxt}}"><view class='txt'>{{listInfo.tipTxt}}</view></view>
-  </view>
-  <!-- 暂无状态 -->
+        <view class='btm clearfix'>
+            <view class='blue_btn'>{{langData.reserveBtn}}</view>
+            <view class='price'><text>￥{{venueItem.price}}</text>/{{langData.hour}}</view>
+        </view>
+
+        </navigator>
+        <view class='more_tip' wx:if="{{listInfo.tipTxt}}"><view class='txt'>{{listInfo.tipTxt}}</view></view>
+    </view>
+    <!-- 暂无状态 -->
     <list-nothing c-name="" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>
 </view>

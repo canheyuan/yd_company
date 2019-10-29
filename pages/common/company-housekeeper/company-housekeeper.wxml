@@ -9,7 +9,7 @@
             ></image>
             <view class='info'>
                 <text class='h3'>{{item.userName}}</text>
-                <text class='p'>{{item.posts}}</text>
+                <text class='p'>{{item.intro}}</text>
             </view>
         </view>
         <view class='btm'><text class='p'>{{item.remark}}</text></view>

@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -74,8 +74,15 @@
 				},
 				{
 					"id": 3,
-					"name": "111111",
-					"pathName": "pages/services/my-serve-order-list/my-serve-order-list",
+					"name": "服务首页",
+					"pathName": "pages/services/serve-index/serve-index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/services/services-index/services-index",
+					"pathName": "pages/services/services-index/services-index",
 					"query": "",
 					"scene": null
 				}

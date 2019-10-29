@@ -33,3 +33,5 @@
 .news_list2 .li .btm .ico_txt:last-child{float:right; margin-right:0;}
 /* 标签 */
 .yd_label text{height:34rpx; line-height:34rpx; padding:0 15rpx; border:1rpx solid #bdbdbd; border-radius:8rpx; font-size:22rpx; color:#aeaeae; margin-right:10rpx;}
+
+.scroll_ctn .txt{width:135rpx;}

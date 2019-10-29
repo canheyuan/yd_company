@@ -35,28 +35,38 @@ Page({
         //判断是否已经授权，是否弹窗
         wx.getSetting({
             success: res => {
-                if (!res.authSetting['scope.userInfo']) {
+                if (!res.authSetting['scope.userInfo'] && !app.globalData.isLogin) {
                     _this.setData({ tipPopShow: true });
                 }
             }
         });
 
-        var timer = setInterval(() => {
-            if (app.globalData.sessionId) {
-                clearInterval(timer);
-                if (!this.data.shareId) {
-                    this.getDetailFn({
-                        url: '/houseDistribution/myParkDist'
-                    });
-                } else {
-                    this.getDetailFn({
-                        url: '/houseDistribution/detail',
-                        data: { shareId: this.data.shareId }
-                    });
+        if (app.globalData.sessionId) {
+            this.firstLoad();
+        } else {
+            //sessionId是通过异步请求的，所以加了个定时器监听sessionid是否获取到了
+            var timer = setInterval(() => {
+                if (app.globalData.sessionId) {
+                    clearInterval(timer);
+                    this.firstLoad();
                 }
-            }
-        }, 300);
+            }, 300);
+        }
 
+    },
+
+    //判断加载详情
+    firstLoad(){
+        if (!this.data.shareId) {
+            this.getDetailFn({
+                url: '/houseDistribution/myParkDist'
+            });
+        } else {
+            this.getDetailFn({
+                url: '/houseDistribution/detail',
+                data: { shareId: this.data.shareId }
+            });
+        }
     },
 
     //获取用户信息
@@ -78,20 +88,18 @@ Page({
             data: opt.data,
             success: (res) => {
                 console.log("分销详情：", res);
-                var datas = res.data.data ? res.data.data : null;
-                if (datas) {
-                    datas.serviceTags = datas.serviceTags.split(',');
-                    datas.parkImg = datas.parkImg.split(',');
-                    datas.intro = commonFn.replaceTxt(datas.intro);//富文本去掉<o:p>等标签
-                    datas.traffic = commonFn.replaceTxt(datas.traffic);//富文本去掉<o:p>等标签
+                var detailData = res.data.data ? res.data.data : null;
+                if (detailData) {
+                    detailData.serviceTags = detailData.serviceTags.split(',');
+                    detailData.parkImg = detailData.parkImg.split(',');
+                    detailData.intro = commonFn.replaceTxt(detailData.intro);//富文本去掉<o:p>等标签
+                    detailData.traffic = commonFn.replaceTxt(detailData.traffic);//富文本去掉<o:p>等标签
 
-                    WxParse.wxParse('intro', 'html', datas.intro, _this, 0);
-                    WxParse.wxParse('traffic', 'html', datas.traffic, _this, 0);
+                    WxParse.wxParse('intro', 'html', detailData.intro, _this, 0);
+                    WxParse.wxParse('traffic', 'html', detailData.traffic, _this, 0);
 
-                    wx.setStorageSync('recomendDetail', datas); //设置缓存用户信息
-                    _this.setData({
-                        detailData: datas
-                    });
+                    wx.setStorageSync('recomendDetail', detailData); //设置缓存用户信息
+                    _this.setData({ detailData: detailData });
                 }
 
             }
@@ -101,12 +109,14 @@ Page({
     //跳转到推广二维码页
     gotoUrlFn(e) {
         var url = '';
+        var distId = this.data.detailData.distId;
+        var shareId = this.data.shareId;
         if (app.globalData.isLogin) {
-            url = `/pages/recommend/recommend-share/recommend-share?dist_id=${this.data.detailData.distId}&share_id=${this.data.shareId}`;
+            url = `/pages/recommend/recommend-share/recommend-share?dist_id=${distId}&share_id=${shareId}`;
         } else {
-            var backUrl = { url: `/pages/recommend/recommend-share/recommend-share?dist_id=${this.data.detailData.distId}&share_id=${this.data.shareId}` };
+            var backUrl = { url: `/pages/recommend/recommend-share/recommend-share?dist_id=${distId}&share_id=${shareId}` };
             wx.setStorageSync('backUrl', backUrl);
-            url = `/pages/recommend/create-referrer/create-referrer?dist_id=${this.data.detailData.distId}&share_id=${this.data.shareId}`;
+            url = `/pages/recommend/create-referrer/create-referrer?dist_id=${distId}&share_id=${shareId}`;
         }
         wx.navigateTo({ url: url });
     },
@@ -114,14 +124,7 @@ Page({
     //拨打电话
     makePhoneCallFn(e) {
         var phone = e.currentTarget.dataset.phone;
-        wx.makePhoneCall({
-            phoneNumber: phone //电话号码
-        })
-    },
-
-    //页面上拉触底事件的处理函数
-    onReachBottom: function () {
-
+        wx.makePhoneCall({ phoneNumber: phone })
     },
 
     //图片加载失败显示默认图

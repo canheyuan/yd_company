@@ -1,0 +1,36 @@
+<import src="/wxParse/wxParse.wxml"/>
+
+<view class="house_head">
+    <view class="title">广佛一期二号楼303房</view>
+
+    <view class='info'>
+        <view class='ico_txt'>
+            <icon class='icons ico_time'></icon>
+            <text>发布时间：2019-10-21 14:20:00</text>
+        </view>
+        <view class='ico_txt'>
+            <icon class='icons ico_time'></icon>
+            <text>面积：200平方米</text>
+        </view>
+        <view class='ico_txt'>
+            <icon class='icons ico_time'></icon>
+            <text>价格：100元/平方米</text>
+        </view>
+        <view class='ico_txt '>
+            <icon class='icons ico_time'></icon>
+            <text>地址：广佛数字创意园二号楼一楼</text>
+        </view>
+    </view>
+
+</view>
+
+<view class="house_ctn">
+    <view class='yd_title01' style="margin-bottom:20rpx;">户型描述</view>
+    <view class="house_des">户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述</view>
+    <view class='yd_title01' style="margin-bottom:20rpx;">实拍效果图</view>
+    <view class="house_imgs">
+        <image wx:for="{{houseImgs}}" wx:key="houseImg{{index}}" src="{{item}}" class="img" mode="widthFix"></image>
+    </view>
+    <view class='more_tip'><view class='txt'>没有更多了</view></view>  
+</view>
+

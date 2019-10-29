@@ -20,6 +20,9 @@
 .index_slide_box{position:relative; z-index: 9; border-radius: 0rpx;  overflow:hidden;}
 .index_slide{width:100%; height:340rpx; overflow: hidden; border-radius: 0rpx; }
 .index_slide .slide_img{width:730rpx; height:320rpx; border-radius:20rpx; margin:0 10rpx; box-shadow: 0 5rpx 20rpx rgba(0,0,0,.24);}
+.slide_nav{position:absolute; bottom:50rpx; left:0; z-index:20; text-align: center; font-size:0; width:100%;}
+.slide_nav .dot{display:inline-block; width:20rpx; height:20rpx; border-radius:100%; overflow: hidden; background:#fff; margin:0 6rpx;}
+.slide_nav .dot.act{background:#4e8bff;}
 
 .index_mdl02{background:#fff; box-shadow:0 0 24rpx 5rpx #eeeeee; border-radius:20rpx;  background:#fff;padding:20rpx; position:relative; padding-bottom:50rpx;}
 /* ------------- 通知公告 ------------- */
@@ -97,7 +100,7 @@
 .policy_list_box{height:470rpx;}
 .policy_list{height:100%;}
 .policy_list .li{width:410rpx; height:450rpx; float:left; margin-left: 20rpx; border-radius:10rpx; overflow: hidden; background:#fff; box-shadow: 0 5rpx 24rpx rgba(0,0,0,.1);}
-.policy_list .li .img{width:100%; height:285rpx;}
+.policy_list .li .img{width:100%; height:285rpx; background:#eee;}
 .policy_list .li .info{padding:10rpx 15rpx;}
 .policy_list .li .info .title{display:block; font-size:30rpx; line-height:40rpx; margin-bottom:15rpx; height:80rpx;display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 2;}
 .policy_list .li .info .btm{overflow:hidden; font-size:24rpx; color:#9d9d9d; }
@@ -112,7 +115,7 @@
 .hot_act_list_box{height:400rpx;}
 .hot_act_list {height:100%;}
 .hot_act_list .li{width:300rpx; height:380rpx;  float:left; margin-left: 20rpx; border-radius:10rpx; background:#fff; box-shadow: 0 5rpx 24rpx rgba(0,0,0,.1);}
-.hot_act_list .li .img{width:100%; height:227rpx;  border-top-left-radius: 10rpx; border-top-right-radius: 10rpx;}
+.hot_act_list .li .img{width:100%; height:227rpx;  border-top-left-radius: 10rpx; border-top-right-radius: 10rpx; background:#eee;}
 .hot_act_list .li .info{padding:5rpx 15rpx;}
 .hot_act_list .li .info .title{font-size:30rpx;line-height:40rpx; margin-bottom:15rpx; height:80rpx;display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 2;}
 .hot_act_list .li .info .btm{overflow:hidden; font-size:24rpx; color:#9d9d9d;}

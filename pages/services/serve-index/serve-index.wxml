@@ -1,2 +1,180 @@
-<!--pages/services/serve-index/serve-index.wxml-->
-<text>pages/services/serve-index/serve-index.wxml</text>
+
+<!-- 顶部 -->
+<view class="serve_top" style="background-image:url({{domainUrl}}/images/services/serve_top_bg.png);">
+    <!-- 搜索 -->
+    <view class="search_mdl">
+        <view class='search_box'>
+            <icon class='icons ico_search'></icon>
+            <input 
+                class="input" confirm-type="search" 
+                placeholder="请输入关键词" placeholder-style="color:#fff;" 
+            />
+        </view>
+    </view>
+
+    <!-- 幻灯片 -->
+    <view class='banner_box'>
+        <swiper  class='banner_slide' bindchange="serveSlideChange"  autoplay="true" interval="5000" duration="500">
+            <swiper-item wx:for="{{serveSlideList}}" wx:key="serveSlideList{{index}}">
+                <image 
+                    src='{{item.img}}'  class="slide_img" lazy-load="true"
+                    bindtap="goToLink" data-item="{{item}}"
+                    binderror='errorImgFn' data-obj="serveSlideList[{{index}}].img" 
+                    data-img="{{domainUrl}}/images/default/img_730_320.jpg"
+                ></image>
+            </swiper-item>
+        </swiper>
+        <view class="slide_nav">
+            <view  wx:for="{{serveSlideList}}" wx:key="dot{{index}}"  class="dot {{index==serveSlideList?'act':''}}"></view>
+        </view>
+    </view>
+</view>
+
+<!-- 菜单栏 -->
+<view class="serve_menu">
+    <navigator 
+        class="li" hover-class="hover" wx:for="{{serveMenuList}}" wx:key="serveMenuList{{index}}" url="{{item.link}}"
+    >
+        <image class="ico" src="{{domainUrl+item.icon}}"></image>
+        <view class="text">{{item.title}}</view>
+    </navigator>
+</view>
+
+<!-- 热门服务供应商 -->
+<view class="gys_mdl">
+    <view class='serve_tit'>
+        <navigator class='more' url=''>{{langData.moreBtn}}</navigator>
+        <view class='h3'>热门服务供应商</view>
+    </view>
+    <view class="gys_list">
+        <view class="item">
+            <image class="headimg" src="{{domainUrl}}/images/services/gys_img01.jpg"></image>
+            <view class="info">
+                <view class="btn">服务 ></view>
+                <view class='h3'>{{item.title}}</view>
+                <view class="rzxx">
+                    <view class="ptrz_label"><icon class="icons ico_rz"></icon>平台认证</view>
+                    <view class="star_box">
+                        <view wx:for="{{[1,2,3,4,5]}}" class="star"></view>
+                    </view>
+                </view>
+                <view class='p'>
+                    <view class="label"><icon class="icons ico_xl"></icon>销量：{{item.xiaoliang}}</view>
+                    <view class="label"><icon class="icons ico_zx"></icon>咨询：{{item.zixun}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 最近浏览 -->
+<view class="zjll_mdl box_shadow">
+    <view class="title"><image class="img" src="{{domainUrl}}/images/services/zjll_title.png"></image></view>
+    <view class="zjll_list">
+        <view class="li">
+            <view class="top">
+                <text class="user">用户13800138000</text>
+                <text class="time">20分钟前浏览了</text>
+            </view>
+            <view class="btm">
+                <view class="u_serve">服务</view>
+                <view class="type">商标注册</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 推荐服务 -->
+<view class='recommend_mdl'>
+    <view class='serve_tit'>
+        <navigator class='more' url='/pages/services/services-classify/services-classify?tag=0'>{{langData.moreBtn}}</navigator>
+        <view class='h3'>推荐服务</view>
+    </view>
+    <view class='recommend_list box_shadow'>
+        <navigator 
+            class='li' url='/pages/services/services-intro/services-intro?id={{item.id}}'
+            wx:for="{{recommendData}}" wx:key="{{index}}" wx:if="{{index < 4}}"
+        >
+            <image class='img bg0{{index+1}}' src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'></image>
+            <view class='info'>
+                <view class="price_box">
+                    <view class="price">￥1000</view>
+                    <view class="y_price">￥1200</view>
+                </view>
+                <view class='h3'>{{item.title}}</view>
+                <view class='p'>
+                    <view class="label"><icon class="icons ico_xl"></icon>销量：{{item.xiaoliang}}</view>
+                    <view class="label"><icon class="icons ico_zx"></icon>咨询：{{item.zixun}}</view>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</view>
+
+<!-- 我要开公司 -->
+<view class="wykgs_mdl">
+    <view class="wykgs_title">
+        <icon class="icons ico_dp"></icon>
+        <text class="tit1">我要开公司</text>
+        <text class="tit2">/ 创业第一步，注册梦想起点</text>
+    </view>
+    <view class="wykgs_list clearfix">
+        <view class="item" style="background-image:url({{domainUrl}}/images/services/kgs_img01.png);">
+            <view class="title">公司注册</view>
+            <view class="p">一站式开公司服务</view>
+        </view>
+        <view class="item" style="background-image:url({{domainUrl}}/images/services/kgs_img02.png);">
+            <view class="title">公司注册</view>
+            <view class="p">一站式开公司服务</view>
+        </view>
+        <view class="item" style="background-image:url({{domainUrl}}/images/services/kgs_img03.png);">
+            <view class="title">公司注册</view>
+            <view class="p">一站式开公司服务一站式开</view>
+        </view>
+    </view>
+</view>
+
+<!-- 推荐服务 -->
+<view class='recommend_mdl'>
+    <view class='serve_tit'>
+        <navigator class='more' url='/pages/services/services-classify/services-classify?tag=0'>{{langData.moreBtn}}</navigator>
+        <view class='h3'>推荐服务</view>
+    </view>
+    <view class='recommend_list box_shadow'>
+        <navigator 
+            class='li' url='/pages/services/services-intro/services-intro?id={{item.id}}'
+            wx:for="{{recommendData}}" wx:key="{{index}}" wx:if="{{index < 4}}"
+        >
+            <image class='img bg0{{index+1}}' src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'></image>
+            <view class='info'>
+                <view class="price_box">
+                    <view class="price">￥1000</view>
+                    <view class="y_price">￥1200</view>
+                </view>
+                <view class='h3'>{{item.title}}</view>
+                <view class='p'>
+                    <view class="label"><icon class="icons ico_xl"></icon>销量：{{item.xiaoliang}}</view>
+                    <view class="label"><icon class="icons ico_zx"></icon>咨询：{{item.zixun}}</view>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</view>
+
+
+
+
+<!-- 消息提醒 -->
+<!-- <view class='notice_mdl' >
+    <icon class="icons ico_notice"></icon>
+    <view class='notice_main'>
+        <view class="text_roll" style="width:{{400*4}}rpx; animation: roll linear 20s infinite;">
+            <view class="text" wx:for="{{[1,2,3,4]}}" style="width:350rpx; margin-right:50rpx;">告文字公告文字公告文字公告文字</view>
+        </view>
+    </view>
+    <view class='notice_close' bindtap='bindtapNewClose'>x</view>
+</view> -->
+
+
+
+

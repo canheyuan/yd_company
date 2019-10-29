@@ -1,2 +1,31 @@
-<!--pages/services/serve-list/serve-list.wxml-->
-<text>pages/services/serve-list/serve-list.wxml</text>
+
+<!-- 筛选头部 -->
+<view class="screen_head">
+    <view class="item" 
+        wx:for="{{screenList}}" wx:key="screenList{{index}}" 
+        wx:for-item="screenItem" wx:for-index="screenIndex"
+    >
+        <view class="title" bindtap="changeScreenFn" data-index="{{screenIndex}}">
+            {{screenItem.son[screenItem.index].name}}
+            <view class="tri" wx:if="{{screenItem.son.length>1}}"></view>
+        </view>
+        <view class="pop" hidden="{{screenItem.popHide}}" wx:if="{{screenItem.son.length>1}}">
+            <text 
+                class="option" wx:for="{{screenItem.son}}" wx:key="screenSon{{index}}"
+                bindtap="changeScreenSonFn" data-pindex="{{screenIndex}}" data-index="{{index}}"
+            >{{item.name}}</text>
+        </view>
+    </view>
+    <!-- <view class="item">
+        <view class="title">销量</view>
+    </view>
+    <view class="item">
+        <view class="title">价格</view>
+    </view> -->
+</view>
+
+
+<!-- 循环列表 -->
+<view wx:for="{{tagList}}" wx:key="tagList{{index}}"  hidden="{{tagIndex!=index}}" wx:if="{{item.show}}">
+    <my-serve-order-list target-page="myServeOrderList" tag-type="{{item.type}}" reach-data="{{item.reach}}"></my-serve-order-list>
+</view>

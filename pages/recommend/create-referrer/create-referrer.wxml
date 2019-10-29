@@ -1,26 +1,33 @@
 <form bindsubmit="formSubmit"  report-submit="true">
-  <view class='form_mdl'>
+    <view class='form_mdl'>
 
-    <view class='dl'>
-      <text class='dt'>{{langData.public.phoneCode}}</text>
-      <view class='dd'>
-      <input type='number'  class='input' placeholder='{{langData.public.phonePl}}'  name="mobile" placeholder-class='pl_input' maxlength='11' bindinput='changePhoneFn' data-phone="{{getCode.phone}}" value='{{getCode.phone}}' />
-      </view>
+        <view class='dl'>
+            <text class='dt'>{{langData.public.phoneCode}}</text>
+            <view class='dd'>
+            <input 
+                type='number' class='input' name="mobile" maxlength='11' value='{{getCode.phone}}'
+                placeholder='{{langData.public.phonePl}}' placeholder-class='pl_input' 
+                bindinput='changePhoneFn' data-phone="{{getCode.phone}}"  
+            />
+            </view>
+        </view>
+        <view class='dl get_code_dl'>
+            <text class='dt'>{{langData.public.verifyCode}}</text>
+            <view class='dd'>
+                <input 
+                    type='text' class='input' name="verifyCode"
+                    placeholder='{{langData.public.verifyCodePl}}' placeholder-class='pl_input' 
+                />
+                <input type='text' name="verificationId" value='{{verificationId}}' style='display:none;'  />
+            <view 
+                class='s_blue_btn get_code_btn {{getCode.sending?"disabled":""}}' 
+                bindtap="getCodeFn" data-phone="{{getCode.phone}}"
+            >{{getCode.text}}</view>
+            </view>
+        </view>
+    
+        <view class='btn_wrap'>
+            <button class='blue_btn' form-type="submit">{{langData.public.confirmBtn}}</button>
+        </view>
     </view>
-    <view class='dl get_code_dl'>
-      <text class='dt'>{{langData.public.verifyCode}}</text>
-      <view class='dd'>
-        <input type='text' class='input' placeholder='{{langData.public.verifyCodePl}}'  name="verifyCode"  placeholder-class='pl_input' />
-        <input type='text' name="verificationId" value='{{verificationId}}' style='display:none;'  />
-      <view 
-        class='s_blue_btn get_code_btn {{getCode.sending?"disabled":""}}' 
-        bindtap="getCodeFn" data-phone="{{getCode.phone}}"
-      >{{getCode.text}}</view>
-      </view>
-    </view>
-  
-    <view class='btn_wrap'>
-      <button class='blue_btn' form-type="submit">{{langData.public.confirmBtn}}</button>
-    </view>
-  </view>
 </form>

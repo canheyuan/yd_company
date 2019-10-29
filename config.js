@@ -1,4 +1,5 @@
 module.exports = {
+    jkUrl: 'https://www.5iparks.com/api',       //接口正式版
     appApi: {
         channel: '',  //园叮不传，小招传cmb
         aid: 'F9ZHVYCYS1'   //后台获取数据的唯一标识

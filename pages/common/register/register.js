@@ -339,7 +339,10 @@ Page({
                         app.resetAllReach();    //重置所有刷新状态
                         app.globalData.isLogin = true;  //登录状态
                         app.getImUserInfo();
-                        _this.setData({ auditTipPop: false }); //注册成功弹窗
+                        wx.redirectTo({
+                            url: '/pages/common/result/result?page=reg'
+                        })
+                        //_this.setData({ auditTipPop: false }); //注册成功弹窗
                     });
 
                 },

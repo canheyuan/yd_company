@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "户型详情",
+    "usingComponents": {
+        "discuss-list": "/components/discuss-list/discuss-list",
+        "login-tip": "/components/login-tip/login-tip"
+    }
+}

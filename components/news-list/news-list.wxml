@@ -1,4 +1,22 @@
-<block wx:if="{{targetPage=='news'}}">
+<block wx:if="{{targetPage=='news' || targetPage=='companyNews'}}">
+    <view class='scroll_mdl' style="margin-top:20rpx;" wx:if="{{typeShow}}">
+        <view class='down_btn'>
+            <image class='bg' src='{{domainUrl}}/images/icon/btn_shadow.png'></image>
+            <icon class='icons ico_down'></icon>
+        </view>
+        <scroll-view class='scroll_box' scroll-x="true">
+            <view class='scroll_ctn' style='width:{{newsTypeList.length*135}}rpx;'>
+                <view 
+                    wx:for="{{newsTypeList}}" wx:key="newsTypeIndex{{index}}"
+                    class='txt {{index == newsTypeIndex?"act":""}}' 
+                    bindtap="newsTypeTagFn" data-index="{{index}}"
+                >
+                    {{item.name}}
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+
     <!-- 发现资讯 -->
     <view class='news_list'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
         <view 

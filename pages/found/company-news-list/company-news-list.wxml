@@ -1,0 +1,10 @@
+
+
+
+<!-- 新闻列表 -->
+<news-list target-page="companyNews" reach-data="{{reach}}"></news-list>
+
+
+
+
+

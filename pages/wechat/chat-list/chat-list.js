@@ -94,6 +94,14 @@ Page({
         app.chatData.chatPage = '';
     },
 
+    //下拉刷新
+    onPullDownRefresh: function () {
+        var _this = this;
+        _this.initRecentContactList(); //获取会话列表
+        _this.getNotification();  //获取通知公告数据消息数量
+        wx.stopPullDownRefresh(); //下拉刷新后页面上移
+    },
+
     //获取通知公告数据消息数量
     getNotification() {
         var _this = this;

@@ -1,0 +1,41 @@
+
+page{background:#f7f7f7;}
+
+/* 户型列表 */
+.house_list{padding:20rpx;}
+.house_list .li{background:#fff; border-radius:15rpx; padding:15rpx; margin-bottom:30rpx; }
+.house_list .li .top{overflow:hidden;}
+.house_list .li .top .img{float:left; width:280rpx; height:200rpx; margin-right:20rpx; border-radius:10rpx;}
+.house_list .li .top .info{overflow: hidden;}
+.house_list .li .top .h3{font-size:34rpx;  color:#333333; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 1; margin-bottom:20rpx;}
+.house_list .li .top .info .ico_txt{display:block; margin-bottom:10rpx;}
+.house_list .li .top .ico_dz{background-position: -330rpx -120rpx}
+.house_list .li .top .ico_area{background-position: -390rpx -120rpx}
+.house_list .li .top .ico_price{background-position: 0rpx -120rpx}
+.house_list .li .top .orange_txt{font-size:30rpx; color:#ff6000; line-height:30rpx;}
+
+.house_list .li .des{background:#f5f5f5; padding:15rpx 30rpx; border-radius:10rpx; margin-top:20rpx; font-size:26rpx; color:#888; line-height:40rpx; }
+.house_list .li .des .text{display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 2;}
+
+.house_list .li .btm{padding-bottom:20rpx; padding-right: 10rpx;}
+.house_list .li .btm .blue_btn{height:80rpx; line-height:80rpx; width:240rpx; float:right; font-size:34rpx; box-shadow: 0 6rpx 20rpx rgba(101,146,254,.5);}
+.house_list .li .btm .price{float:right; font-size:28rpx; color:#c2c2c2; line-height:80rpx; margin-right:40rpx;}
+.house_list .li .btm .price text{display:inline-block; font-size:40rpx; color:#ff6000; line-height:80rpx;}
+
+
+
+
+/* 顶部选择日期 */
+.scroll_box{height:100rpx;}
+.venue_top{height:100rpx; background:#fff; border-top:1rpx solid #e5e5e5;border-bottom:1rpx solid #e5e5e5; overflow: hidden; position:fixed; top:0; left:0; width:100%; z-index: 99;}
+.venue_top .venue_date{float:right; width:100rpx; height:100rpx; position:relative; text-align: center; padding-top:25rpx; box-sizing:border-box;}
+.venue_top .venue_date::before{content:''; display:inline-block; width:40rpx; height:100rpx; background:url(https://www.5iparks.com/static/yuanding/images/jb_line.png) repeat-y center top; background-size:40rpx auto; position:absolute; left:-40rpx; top:0;}
+.venue_top .venue_date .ico_date{width:50rpx; height:50rpx; background-position: -400rpx -60rpx;}
+.venue_date_slide .li{float:left; width:110rpx; padding:10rpx; box-sizing:border-box;}
+.venue_date_slide .li text{text-align: center;  display: block; line-height:40rpx;}
+.venue_date_slide .li .txt{font-size:28rpx;  color:#555555; }
+.venue_date_slide .li .num{font-size:24rpx;  color:#9d9d9d }
+.venue_date_slide .li.act{background:#37c3fe;}
+.venue_date_slide .li.act .txt{ color:#fff; }
+.venue_date_slide .li.act .num{ color:#fff }
+

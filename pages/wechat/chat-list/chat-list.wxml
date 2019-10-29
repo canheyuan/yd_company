@@ -1,4 +1,5 @@
-
+<!-- 下拉刷新动画 -->
+<reach-load></reach-load>
 
 <!-- 消息列表 -->
 <view class='msg_mdl box_shadow'>
