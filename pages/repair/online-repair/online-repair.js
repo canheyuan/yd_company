@@ -102,7 +102,7 @@ Page({
         var langData = this.data.langData;
         var formData = e.detail.value;
         var formId = e.detail.formId;
-
+        
         var fileSuccessNum = 0;
         var fileErrorNum = 0;
         var fileViolationNum = 0;

@@ -80,9 +80,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/services/services-index/services-index",
-					"pathName": "pages/services/services-index/services-index",
+					"id": 4,
+					"name": "确认服务",
+					"pathName": "pages/services/confirm-order/confirm-order",
 					"query": "",
 					"scene": null
 				}

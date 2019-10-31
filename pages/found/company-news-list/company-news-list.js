@@ -17,7 +17,6 @@ Page({
 
     //下拉刷新
     onPullDownRefresh: function () {
-        
         wx.stopPullDownRefresh(); //下拉刷新后页面上移
     },
 

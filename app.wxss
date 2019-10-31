@@ -22,7 +22,7 @@ image{width:auto; height:auto;}
 .disabled{background:#ccc!important; box-shadow:none!important; border-color:#ccc!important; color:#fff!important;}
 
 /* 通用弹窗遮罩 */
-.mask_bg{background:rgba(0,0,0,.5); height:100%; width:100%; position:fixed; top:0; left:0; display:table;z-index: 10000; opacity:0; -webkit-transition:all .3s; transition:all .3s;}
+.mask_bg{background:rgba(0,0,0,.5); height:100%; width:100%; position:fixed; top:0; left:0; display:table;z-index: 10000; opacity:1; -webkit-transition:all .3s; transition:all .3s;}
 .mask_bg_ctn{display:table-cell; vertical-align:middle; text-align:center;}
 .mask_bg.pop_show{opacity:1;}
 .pop_mdl{width:650rpx; margin:0 auto; background:#fff; border-radius:20rpx; padding-top:30rpx; position:relative;}

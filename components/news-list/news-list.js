@@ -55,7 +55,7 @@ Component({
             var targetPage = this.properties.targetPage
             var newsType = null
             switch (targetPage){
-                case 'companyNews':
+                case 'companyNews': 
                     newsType = 25;
                     break;
                 case 'news':

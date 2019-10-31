@@ -1,0 +1,41 @@
+<!-- 供应商信息 -->
+<view class="gys_box">
+    <view class="gys_item clearfix">
+        <image class="headimg" src="{{domainUrl}}/images/services/gys_img02.jpg"></image>
+        <view class="info">
+            <navigator url="/pages/services/supplier-list/supplier-list" class="btn">服务 ></navigator>
+            <view class='h3'>广州五行教育科技有限公司</view>
+            <view class="rz_info">
+                <view class="label1"><icon class="icons ico_rz"></icon>平台认证</view>
+                <view class="label2">自营</view>
+                <view class="star_box">
+                    <view wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" class="star {{index<4?'act':''}}"></view>
+                </view>
+            </view>
+            <view class='tj_data'>
+                <view class="label"><icon class="icons ico_xl"></icon>累计销量：123</view>
+                <view class="label"><icon class="icons ico_zx"></icon>累计咨询：123</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="supplier_detail_ctn">
+    <!-- 企业介绍 -->
+    <view class="jxfw_title"><view class="yd_title01">企业介绍</view></view>
+    <view class="details_ctn">
+        <view class="introduce">云宏信息科技股份有限公司（以下简称“云宏”）创始人、广州市天河区创业领军人才。作为国内云计算、大数据关键技术企业领军人物，张为杰带领云宏率先打破国外企业对云计算关键技术的垄断，取得300余项云计算、大数据关键技术知识产权及专利，并主持多个千万级资金规模的国家及省市级课题项目。 2015年，在张为杰的带领下，云宏仅创立5年便成功挂牌新三板，并获新三板最具投资价值企业；2016年，云宏成为首批进入创新层的企业。</view>
+    </view>
+    <!-- 服务介绍 -->
+    <view class="jxfw_title"><view class="yd_title01">服务介绍</view></view>
+    <view class="details_ctn">
+        <image mode="widthFix" src="{{domainUrl}}/images/services/s_img01.jpg"></image>
+    </view>
+    <!-- 服务案例 -->
+    <view class="jxfw_title"><view class="yd_title01">服务案例</view></view>
+    <view class="details_ctn">
+        <image mode="widthFix" src="{{domainUrl}}/images/services/s_img02.jpg"></image>
+        <image mode="widthFix" src="{{domainUrl}}/images/services/s_img03.jpg"></image>
+    </view>
+</view>
+

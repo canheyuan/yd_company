@@ -1,31 +1,30 @@
 
 <!-- 筛选头部 -->
 <view class="screen_head">
-    <view class="item" 
-        wx:for="{{screenList}}" wx:key="screenList{{index}}" 
-        wx:for-item="screenItem" wx:for-index="screenIndex"
-    >
-        <view class="title" bindtap="changeScreenFn" data-index="{{screenIndex}}">
-            {{screenItem.son[screenItem.index].name}}
-            <view class="tri" wx:if="{{screenItem.son.length>1}}"></view>
-        </view>
-        <view class="pop" hidden="{{screenItem.popHide}}" wx:if="{{screenItem.son.length>1}}">
-            <text 
-                class="option" wx:for="{{screenItem.son}}" wx:key="screenSon{{index}}"
-                bindtap="changeScreenSonFn" data-pindex="{{screenIndex}}" data-index="{{index}}"
-            >{{item.name}}</text>
+    <view class="screen_list">
+        <view 
+            wx:for="{{screenList}}" wx:key="screenList{{index}}" 
+            wx:for-item="screenItem" wx:for-index="sIndex"
+            class="item {{screenIndex==sIndex?'act':''}}"
+            bindtap="tagChangeFn"  data-index="{{sIndex}}"
+        >
+            <view class="title">
+                {{screenItem.son[screenItem.index].name}}
+                <icon class="{{screenItem.son.length==1?'icons ico_sort '+ screenItem.sortClass :'tri'}}"></icon>
+            </view>
         </view>
     </view>
-    <!-- <view class="item">
-        <view class="title">销量</view>
+    <view class="pop" hidden="{{screenPopHide}}" >
+        <view 
+            class="option" wx:for="{{screenList[screenIndex].son}}" wx:key="screenPop{{index}}"
+            bindtap="tagChangeSonFn" data-pindex="{{screenIndex}}" data-index="{{index}}"
+        ><icon class="icons ico_gou {{screenList[screenIndex].index==index?'show':''}}"></icon>{{item.name}}</view>
     </view>
-    <view class="item">
-        <view class="title">价格</view>
-    </view> -->
+    <view class="mask_bg screen_mask" bindtap="closeMaskFn" hidden="{{screenPopHide}}"></view>
 </view>
 
 
 <!-- 循环列表 -->
 <view wx:for="{{tagList}}" wx:key="tagList{{index}}"  hidden="{{tagIndex!=index}}" wx:if="{{item.show}}">
-    <my-serve-order-list target-page="myServeOrderList" tag-type="{{item.type}}" reach-data="{{item.reach}}"></my-serve-order-list>
+    <serve-list target-page="serveList" tag-type="{{item.type}}" reach-data="{{item.reach}}"></serve-list>
 </view>

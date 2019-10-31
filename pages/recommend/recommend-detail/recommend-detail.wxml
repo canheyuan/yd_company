@@ -100,25 +100,25 @@
 
 <!-- 他们都在推荐 -->
 <view class='lstj_mdl' wx:if="{{false}}">
-  <view class='recommend_title'>
-    <text>他们都在推荐</text>
-  </view>
-  <view class='lstj_ctn box_shadow'>
-    <swiper class='recommend_slide' autoplay="true" interval="3000" duration="500" vertical="true" circular="true" display-multiple-items="4" >
-        <block wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="{{index}}" >
-          <swiper-item class="clearfix">
-            <image class='img' src='{{domainUrl}}/images/temp/expert.jpg'></image>
-            <view class='info'>
-              <view class='h3'>139****1234 用户通过推荐获得 <text>500</text> 元</view>
-              <view class='time'>2018-07-11  14:45:32</view>
-            </view>
-          </swiper-item>
-        </block>
-      </swiper>
-      <view class='btm'>
-        <icon class='icons ico_per'></icon>当前已有 <text class='color:#ff6000;'>563</text> 人获得奖励金
-      </view>
-  </view>
+    <view class='recommend_title'>
+        <text>他们都在推荐</text>
+    </view>
+    <view class='lstj_ctn box_shadow'>
+        <swiper class='recommend_slide' autoplay="true" interval="3000" duration="500" vertical="true" circular="true" display-multiple-items="4" >
+            <block wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="{{index}}" >
+                <swiper-item class="clearfix">
+                    <image class='img' src='{{domainUrl}}/images/temp/expert.jpg'></image>
+                    <view class='info'>
+                        <view class='h3'>139****1234 用户通过推荐获得 <text>500</text> 元</view>
+                        <view class='time'>2018-07-11  14:45:32</view>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class='btm'>
+            <icon class='icons ico_per'></icon>当前已有 <text class='color:#ff6000;'>563</text> 人获得奖励金
+        </view>
+    </view>
 </view>
       
 <!-- 服务及设施 -->
@@ -167,23 +167,23 @@
 </view>
 
 <view class='fixed_btn_wrap'  wx:if="{{shareId && !isLogin && detailData.hasPhone==0}}">
-  <view 
-    class='blue_btn02'  wx:if="{{detailData.contactPhone}}"
-    bindtap='makePhoneCallFn' data-phone="{{detailData.contactPhone}}"
-  >{{langData.kefuBtn}}</view>
-  <navigator 
-    url='/pages/recommend/recommend-apply/recommend-apply?dist_id={{detailData.distId}}&share_id={{shareId}}' 
-    class='blue_btn03'
-  >{{langData.yycgBtn}}</navigator>
+    <view 
+        class='blue_btn02'  wx:if="{{detailData.contactPhone}}"
+        bindtap='makePhoneCallFn' data-phone="{{detailData.contactPhone}}"
+    >{{langData.kefuBtn}}</view>
+    <navigator 
+        url='/pages/recommend/recommend-apply/recommend-apply?dist_id={{detailData.distId}}&share_id={{shareId}}' 
+        class='blue_btn03'
+    >{{langData.yycgBtn}}</navigator>
 </view>
 
 <view 
-  wx:if="{{shareId && !isLogin && detailData.hasPhone==0}}"  bindtap="gotoUrlFn"  class='wyytj_btn' 
+    wx:if="{{shareId && !isLogin && detailData.hasPhone==0}}"  bindtap="gotoUrlFn"  class='wyytj_btn' 
 ><text>{{langData.wyytjBtn}}</text></view>
 
 <navigator 
-  wx:if="{{detailData.hasPhone==1}}"  class='wyytj_btn'
-  url='/pages/recommend/recommend-record/recommend-record?dist_id={{detailData.distId}}&share_id={{shareId}}'
+    wx:if="{{detailData.hasPhone==1}}"  class='wyytj_btn'
+    url='/pages/recommend/recommend-record/recommend-record?dist_id={{detailData.distId}}&share_id={{shareId}}'
 ><text>{{langData.myshareBtn}}</text></navigator>
 
 
@@ -201,12 +201,12 @@ isReferrer  是否成为推荐人
 
 <!-- 授权弹窗 -->
 <view class='mask_bg pop_show' wx:if="{{tipPopShow}}">
-  <view class='mask_bg_ctn'>
-    <view class='shouquan_pop'>
-      <view class='h3'>{{langData.authentication}}</view>
-      <text class='p'>{{langData.authenticationDes}}</text>
-      <button class='btn' open-type='getUserInfo' bindgetuserinfo="getUserInfoFn">{{langData.authenticationBtn}} ></button>
+    <view class='mask_bg_ctn'>
+        <view class='shouquan_pop'>
+            <view class='h3'>{{langData.authentication}}</view>
+            <text class='p'>{{langData.authenticationDes}}</text>
+            <button class='btn' open-type='getUserInfo' bindgetuserinfo="getUserInfoFn">{{langData.authenticationBtn}} ></button>
+        </view>
     </view>
-  </view>
 </view>
 

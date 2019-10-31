@@ -1,0 +1,7 @@
+@import '/style/serve.wxss';
+
+page{background:#f7f7f7;}
+.gys_box{padding:40rpx 25rpx; background:#fff; position:relative; z-index:100;}
+.jxfw_title{padding:35rpx 25rpx 25rpx; position:relative; z-index:100;background:#f7f7f7;}
+.details_ctn{background:#fff;}
+.introduce{text-indent:2em; }

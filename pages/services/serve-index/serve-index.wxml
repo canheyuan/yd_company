@@ -40,32 +40,6 @@
     </navigator>
 </view>
 
-<!-- 热门服务供应商 -->
-<view class="gys_mdl">
-    <view class='serve_tit'>
-        <navigator class='more' url=''>{{langData.moreBtn}}</navigator>
-        <view class='h3'>热门服务供应商</view>
-    </view>
-    <view class="gys_list">
-        <view class="item">
-            <image class="headimg" src="{{domainUrl}}/images/services/gys_img01.jpg"></image>
-            <view class="info">
-                <view class="btn">服务 ></view>
-                <view class='h3'>{{item.title}}</view>
-                <view class="rzxx">
-                    <view class="ptrz_label"><icon class="icons ico_rz"></icon>平台认证</view>
-                    <view class="star_box">
-                        <view wx:for="{{[1,2,3,4,5]}}" class="star"></view>
-                    </view>
-                </view>
-                <view class='p'>
-                    <view class="label"><icon class="icons ico_xl"></icon>销量：{{item.xiaoliang}}</view>
-                    <view class="label"><icon class="icons ico_zx"></icon>咨询：{{item.zixun}}</view>
-                </view>
-            </view>
-        </view>
-    </view>
-</view>
 
 <!-- 最近浏览 -->
 <view class="zjll_mdl box_shadow">
@@ -90,19 +64,22 @@
         <navigator class='more' url='/pages/services/services-classify/services-classify?tag=0'>{{langData.moreBtn}}</navigator>
         <view class='h3'>推荐服务</view>
     </view>
-    <view class='recommend_list box_shadow'>
+    <view class='serve_list box_shadow'>
         <navigator 
             class='li' url='/pages/services/services-intro/services-intro?id={{item.id}}'
-            wx:for="{{recommendData}}" wx:key="{{index}}" wx:if="{{index < 4}}"
+            wx:for="{{recommendData}}" wx:key="recommendData{{index}}"
         >
-            <image class='img bg0{{index+1}}' src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'></image>
+            <image 
+                class='icon bg0{{index+1}}' 
+                src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
+            ></image>
             <view class='info'>
                 <view class="price_box">
                     <view class="price">￥1000</view>
                     <view class="y_price">￥1200</view>
                 </view>
                 <view class='h3'>{{item.title}}</view>
-                <view class='p'>
+                <view class='tj_data'>
                     <view class="label"><icon class="icons ico_xl"></icon>销量：{{item.xiaoliang}}</view>
                     <view class="label"><icon class="icons ico_zx"></icon>咨询：{{item.zixun}}</view>
                 </view>
@@ -140,19 +117,22 @@
         <navigator class='more' url='/pages/services/services-classify/services-classify?tag=0'>{{langData.moreBtn}}</navigator>
         <view class='h3'>推荐服务</view>
     </view>
-    <view class='recommend_list box_shadow'>
+    <view class='serve_list box_shadow'>
         <navigator 
             class='li' url='/pages/services/services-intro/services-intro?id={{item.id}}'
-            wx:for="{{recommendData}}" wx:key="{{index}}" wx:if="{{index < 4}}"
+            wx:for="{{recommendData}}" wx:key="recommendData{{index}}"
         >
-            <image class='img bg0{{index+1}}' src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'></image>
+            <image 
+                class='icon bg0{{index+1}}' 
+                src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
+            ></image>
             <view class='info'>
                 <view class="price_box">
                     <view class="price">￥1000</view>
                     <view class="y_price">￥1200</view>
                 </view>
                 <view class='h3'>{{item.title}}</view>
-                <view class='p'>
+                <view class='tj_data'>
                     <view class="label"><icon class="icons ico_xl"></icon>销量：{{item.xiaoliang}}</view>
                     <view class="label"><icon class="icons ico_zx"></icon>咨询：{{item.zixun}}</view>
                 </view>
@@ -161,6 +141,49 @@
     </view>
 </view>
 
+<!-- 热门服务供应商 -->
+<view class="gys_mdl">
+    <view class='serve_tit'>
+        <navigator class='more' url=''>{{langData.moreBtn}}</navigator>
+        <view class='h3'>热门服务供应商</view>
+    </view>
+    <view class="gys_list box_shadow">
+        <view class="gys_item clearfix">
+            <image class="headimg" src="{{domainUrl}}/images/services/gys_img01.jpg"></image>
+            <view class="info">
+                <view class="btn">服务 ></view>
+                <view class='h3'>广州园叮互联网服务有限公司</view>
+                <view class="rz_info">
+                    <view class="label2">自营</view>
+                    <view class="star_box">
+                        <view wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" class="star {{index<4?'act':''}}"></view>
+                    </view>
+                </view>
+                <view class='tj_data'>
+                    <view class="label"><icon class="icons ico_xl"></icon>销量：123</view>
+                    <view class="label"><icon class="icons ico_zx"></icon>咨询：123</view>
+                </view>
+            </view>
+        </view>
+        <view class="gys_item clearfix">
+            <image class="headimg" src="{{domainUrl}}/images/services/gys_img02.jpg"></image>
+            <view class="info">
+                <view class="btn">服务 ></view>
+                <view class='h3'>广州五行教育科技有限公司</view>
+                <view class="rz_info">
+                    <view class="label1"><icon class="icons ico_rz"></icon>平台认证</view>
+                    <view class="star_box">
+                        <view wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" class="star {{index<4?'act':''}}"></view>
+                    </view>
+                </view>
+                <view class='tj_data'>
+                    <view class="label"><icon class="icons ico_xl"></icon>销量：123</view>
+                    <view class="label"><icon class="icons ico_zx"></icon>咨询：123</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
 
 
 

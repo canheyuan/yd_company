@@ -13,30 +13,31 @@ Page({
         ],
         tagIndex: 0,
         
+        //筛选头部数据
         screenList:[
             { 
-                index: 0, type: 1, reach: 1, popHide: true, sort:0,
-                son:[
+                index: 0, type: 1, reach: 1, popHide: true, sortClass:'', //sortClass，升序：up，降序：down
+                son:[   
                     { name: '默认排序' , type: 1 },
                     { name: '发布时间' , type: 1},
                     { name: '咨询量' , type: 1 }
                 ]
             },
             { 
-                index: 0, type: 1, reach: 1, popHide: true, sort: 0,
+                index: 0, type: 1, reach: 1, popHide: true, sortClass: '',
                 son:[
-                    { name: '销量', type: 1 },
-                    { name: '咨询量', type: 1 }
+                    { name: '销量', type: 1 }
                 ]
             },
             {
-                index: 0, type: 1, reach: 1, popHide: true, sort: 0,
+                index: 0, type: 1, reach: 1, popHide: true, sortClass: '',
                 son: [
                     { name: '价格', type: 1 },
                 ]
             },
-
         ],
+        screenIndex:0,
+        screenPopHide:true,
 
     },
 
@@ -44,7 +45,7 @@ Page({
     onLoad: function (options) {
         //设置语言,判断是否切换语言
         app.loadLangFn(this, 'services', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+            //wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
         });
     },
 
@@ -53,47 +54,40 @@ Page({
         
     },
 
-    //所有选项卡弹窗关闭
-    allScreenPopHide(i){
-        var screenList = this.data.screenList;
-        screenList.forEach((item,index)=>{
-            item.popHide = (i == index) ? !item.popHide : true;
-        })
-        this.setData({ screenList: screenList })
-    },
-
-    //点击选项卡
-    changeScreenFn(e){
-        var index = e.currentTarget.dataset.index;
-        var screenItem = this.data.screenList[index];
-        if (screenItem.son.length>1){   //子项一个以上
-            this.allScreenPopHide(index);
-        } else if (screenItem.son.length = 1){
-            this.allScreenPopHide();
-            console.log('执行刷新页面')
+    //筛选选项卡
+    tagChangeFn(e) {
+        var pIndex = e.currentTarget.dataset.index;
+        var parentItem = this.data.screenList[pIndex];
+        if (parentItem.son.length > 1) {   //子项一个以上
+            var screenPopHide = !this.data.screenPopHide;
+        } else if (parentItem.son.length == 1) {
+            var screenPopHide = true;
+            parentItem.sortClass = parentItem.sortClass == 'down' ? 'up' : 'down';
         }
+        this.setData({
+            ['screenList[' + pIndex + ']']: parentItem,
+            screenIndex: pIndex,
+            screenPopHide: screenPopHide,
+        })
     },
 
-    //点击选项卡子选项
-    changeScreenSonFn(e){
+    //筛选子选项卡
+    tagChangeSonFn(e) {
         var pIndex = e.currentTarget.dataset.pindex;
         var index = e.currentTarget.dataset.index;
-        var screenItem = this.data.screenList[pIndex];
-        screenItem.popHide = true;
-        screenItem.index = index;
+        var parentItem = this.data.screenList[pIndex];
+        parentItem.index = index;
         this.setData({
-            ['screenList[' + pIndex + ']']: screenItem
+            screenPopHide: true,
+            ['screenList[' + pIndex + ']']: parentItem
         })
     },
 
-    //选项卡切换
-    tagChangeFn(e) {
-        var index = e.currentTarget.dataset.index;
-        this.setData({
-            ['tagList[' + index + '].show']: true,
-            tagIndex: index
-        });
+    //关闭弹窗
+    closeMaskFn(e) {
+        this.setData({ screenPopHide: true })
     },
+
 
     //上拉加载更多
     onReachBottom: function (e) {

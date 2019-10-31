@@ -1,16 +1,6 @@
-page{padding-top:100rpx;}
-
-.screen_head{height:80rpx; display:flex; display:-webkit-flex; flex-wrap:wrap; text-align: center;  position:fixed; top:0; left:0; z-index:999; width:100%; border-bottom:1rpx solid #eee; background:#fff;}
-.screen_head .item{width:33.3%; height:80rpx;  position: relative;}
-.screen_head .item .title{display:block; font-size:26rpx; color:#333; line-height:80rpx;}
-.screen_head .item .title .tri{width:0px; height:0px; overflow:hidden; font-size:0px; display:inline-block; border-style:solid; border-width:10rpx 8rpx 0rpx 8rpx; border-color: #666 transparent transparent transparent; margin-left:10rpx; position:relative; top:-4rpx;}
-.screen_head .item .pop{position:absolute; top:80rpx; left:0; width:100%; background:#eee;}
-.screen_head .item .pop .option{display:block; height:60rpx; line-height:60rpx; font-size:24rpx; color:#666;}
-
-
-
-
-
+@import '/style/serve.wxss';
+page{padding-top:80rpx;}
+.screen_head{position:fixed; top:0; left:0;}
 
 
 

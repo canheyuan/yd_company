@@ -1,0 +1,81 @@
+<!-- 左边 -->
+<view class='serve_menu'>
+    <view 
+        class='li {{tagIndex==index?"act":""}}' 
+        wx:for="{{tagList}}" wx:key="{{index}}"
+        bindtap="tagChangeFn" data-index="{{index}}"
+    >{{item.name}}</view>
+</view>
+
+
+<!-- 右边 -->
+<view class='serve_ctn'>
+    <!-- 搜索 -->
+    <view class="search_mdl" wx:if="{{false}}">
+        <view class='search_box'>
+            <icon class='icons ico_search'></icon>
+            <input class="input" placeholder="搜个关键词试试" placeholder-class='placeholder' confirm-type="search" />
+        </view>
+    </view>
+
+    <!-- 内容 -->
+    <view class='serve_main'>
+        <!-- Banner -->
+        <!-- <view class='banner_box'>
+        <image src="{{domainUrl}}/images/services/banner_pic.jpg" class="img" mode='widthFix'></image>
+        </view> -->
+
+        <!-- 二级列表 -->
+        <view  wx:for="{{tagList[tagIndex].children}}" wx:key="{{index}}" class='list_box'>
+            <view class='title'><icon class='icons ico_tj' wx:if="{{tagIndex==0}}"></icon>{{item.name}}</view>
+             <!-- 三级列表 -->
+            <view class='ul'>
+                <view  
+                    wx:for="{{item.serviceList}}" wx:key="{{index}}"
+                    class='li' bindtap="goToIntro" data-id="{{item.id}}"
+                >
+                    <view class='text'>{{item.title}}</view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 二级列表 -->
+        <view class='list_box'>
+            <view class='title'><icon class='icons ico_hot'></icon>热门服务</view>
+             <!-- 三级列表 -->
+            <view class='third_list'>
+                <view class='li'>
+                    <image class="icon" src="{{domainUrl}}/images/services/s_ico11.png"></image>
+                    <view class='text'>商标注册</view>
+                </view>
+                <view class='li'>
+                    <image class="icon" src="{{domainUrl}}/images/services/s_ico12.png"></image>
+                    <view class='text'>专利申请</view>
+                </view>
+                <view class='li'>
+                    <image class="icon" src="{{domainUrl}}/images/services/s_ico13.png"></image>
+                    <view class='text'>项目申报</view>
+                </view>
+                <view class='li'>
+                    <image class="icon" src="{{domainUrl}}/images/services/s_ico14.png"></image>
+                    <view class='text'>企业团建</view>
+                </view>
+                <view class='li'>
+                    <image class="icon" src="{{domainUrl}}/images/services/s_ico15.png"></image>
+                    <view class='text'>中期抵押贷</view>
+                </view>
+                <view class='li'>
+                    <image class="icon" src="{{domainUrl}}/images/services/s_ico16.png"></image>
+                    <view class='text'>企业社保开通</view>
+                </view>
+            </view>
+        </view>
+
+    </view>
+
+</view>
+
+<!-- 成为服务商 -->
+<!-- <navigator class='btm_btn'>
+  <image src='{{domainUrl}}/images/icon/fws_btn.png'></image>
+</navigator> -->

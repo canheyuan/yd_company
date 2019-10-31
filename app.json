@@ -39,7 +39,11 @@
         "pages/services/my-serve-order-detail/my-serve-order-detail",
         "pages/found/company-news-list/company-news-list",
         "pages/wechat/chat-list/chat-list",
-        "pages/wechat/chat/chat"
+        "pages/wechat/chat/chat",
+        "pages/services/supplier-list/supplier-list",
+        "pages/services/supplier-detail/supplier-detail",
+        "pages/services/serve-category/serve-category",
+        "pages/services/confirm-order/confirm-order"
     ],
     "subPackages": [
         {

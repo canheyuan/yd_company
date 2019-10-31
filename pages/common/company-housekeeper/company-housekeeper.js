@@ -73,7 +73,7 @@ Page({
             var tel = e.currentTarget.dataset.tel;
             wx.makePhoneCall({ phoneNumber: tel });
         }else{
-            wx.showToast({ title: '请在工作时间9：00 ~ 17:00进行联系', icon: 'none', duration: 3000})
+            wx.showToast({ title: '请在工作时间9:00 ~ 17:00进行联系', icon: 'none', duration: 3000})
         }
     },
 
@@ -83,7 +83,7 @@ Page({
         var newDate = new Date();
         var weekNow = newDate.getDay();    //当前星期几：0-6
         var hour = newDate.getHours();
-        if (weekNow == 0 || weekNow == 6 || hour <= 9 || hour >= 17){
+        if (weekNow == 0 || weekNow == 6 || hour <= 8 || hour >= 17){
             b = false;
         }else{
             b = true;

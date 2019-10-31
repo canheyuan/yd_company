@@ -1,0 +1,76 @@
+
+<!-- 供应商信息 -->
+<view class="gys_box">
+    <view class="gys_item clearfix">
+        <image class="headimg" src="{{domainUrl}}/images/services/gys_img02.jpg"></image>
+        <view class="info">
+            <navigator url="/pages/services/supplier-detail/supplier-detail" class="btn">关于 ></navigator>
+            <view class='h3'>广州五行教育科技有限公司</view>
+            <view class="rz_info">
+                <view class="label1"><icon class="icons ico_rz"></icon>平台认证</view>
+                <view class="label2">自营</view>
+                <view class="star_box">
+                    <view wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" class="star {{index<4?'act':''}}"></view>
+                </view>
+            </view>
+            <view class='tj_data'>
+                <view class="label"><icon class="icons ico_xl"></icon>累计销量：123</view>
+                <view class="label"><icon class="icons ico_zx"></icon>累计咨询：123</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="jxfw_mdl">
+    <!-- 精选服务 -->
+    <view class="jxfw_title">
+        <view class="yd_title01">精选服务</view>
+    </view>
+    <!-- 筛选头部 -->
+    <view class="screen_head">
+        <view class="screen_list">
+            <view 
+                wx:for="{{screenList}}" wx:key="screenList{{index}}" 
+                wx:for-item="screenItem" wx:for-index="sIndex"
+                class="item {{screenIndex==sIndex?'act':''}}"
+                bindtap="tagChangeFn"  data-index="{{sIndex}}"
+            >
+                <view class="title">
+                    {{screenItem.son[screenItem.index].name}}
+                    <icon class="{{screenItem.son.length==1?'icons ico_sort '+ screenItem.sortClass :'tri'}}"></icon>
+                </view>
+            </view>
+        </view>
+        <view class="pop" hidden="{{screenPopHide}}" >
+            <view 
+                class="option" wx:for="{{screenList[screenIndex].son}}" wx:key="screenPop{{index}}"
+                bindtap="tagChangeSonFn" data-pindex="{{screenIndex}}" data-index="{{index}}"
+            ><icon class="icons ico_gou {{screenList[screenIndex].index==index?'show':''}}"></icon>{{item.name}}</view>
+        </view>
+        <view class="mask_bg screen_mask" bindtap="closeMaskFn" hidden="{{screenPopHide}}"></view>
+    </view>
+    
+    <!-- 服务列表 -->
+    <view class='serve_list box_shadow'>
+        <navigator 
+            class='li' url='/pages/services/services-intro/services-intro?id={{item.id}}'
+            wx:for="{{serveList}}" wx:key="serveList{{index}}"
+        >
+            <image 
+                class='icon bg0{{index%4+1}}' 
+                src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
+            ></image>
+            <view class='info'>
+                <view class="price_box">
+                    <view class="price">￥1000</view>
+                    <view class="y_price">￥1200</view>
+                </view>
+                <view class='h3'>{{item.title}}</view>
+                <view class='tj_data'>
+                    <view class="label"><icon class="icons ico_xl"></icon>销量：{{item.xiaoliang}}</view>
+                    <view class="label"><icon class="icons ico_zx"></icon>咨询：{{item.zixun}}</view>
+                </view>
+            </view>
+        </navigator>
+    </view>
+</view>

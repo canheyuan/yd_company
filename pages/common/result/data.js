@@ -161,6 +161,32 @@ function pageDataFn(){
             btm_btn_url: '/pages/index/index',
             btm_btn_type: 'switchTab'
         },
+        //服务下单成功
+        serveOrder: {
+            page_title: '下单成功',
+            icon: '/images/visitor/zfcg_img.png',
+            title: '下单成功！',
+            des: '请保持联系方式畅通，以便工作人员进行联系。',
+            details_btn: '查看订单 >>',
+            details_btn_url: '',
+            details_btn_type: '',
+            btm_btn: langData.backIndexBtn,
+            btm_btn_url: '/pages/index/index',
+            btm_btn_type: 'switchTab'
+        },
+        //服务咨询提交成功
+        serveConsult: {
+            page_title: '提交成功',
+            icon: '/images/visitor/result_reg.png',
+            title: '您的咨询已提交！',
+            des: '请保持联系方式畅通，以便工作人员进行联系。',
+            details_btn: '查看服务详情 >>',
+            details_btn_url: '',
+            details_btn_type: '',
+            btm_btn: langData.backIndexBtn,
+            btm_btn_url: '/pages/index/index',
+            btm_btn_type: 'switchTab'
+        },
     }
     return page_data
 }

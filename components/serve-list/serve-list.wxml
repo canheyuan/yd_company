@@ -1,0 +1,61 @@
+<!-- 服务列表 -->
+<view class='serve_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    <navigator 
+        class='li' url=''
+        wx:for="{{listInfo.list}}" wx:key="serve{{index}}"
+    >
+        <image 
+            class='icon bg0{{index%4+1}}' 
+            src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
+        ></image>
+        <view class='info'>
+            <view class="price_box">
+                <view class="price">￥1000</view>
+                <view class="y_price">￥1200</view>
+            </view>
+            <view class='h3'>{{item.title}}</view>
+            <view class='tj_data'>
+                <view class="label"><icon class="icons ico_xl"></icon>销量：{{item.xiaoliang}}</view>
+                <view class="label"><icon class="icons ico_zx"></icon>咨询：{{item.zixun}}</view>
+            </view>
+            <view class="rz_info" wx:if="{{!item.ziying}}">
+                <view class="label1"><icon class="icons ico_rz"></icon>平台认证</view>
+                <text class="txt">广州五行教育科技有限公司</text>
+            </view>
+            <view class="rz_info" wx:if="{{item.ziying}}">
+                 <view class="label2">平台自营服务</view>
+            </view>
+        </view>
+    </navigator>
+</view>
+<!-- 服务列表 -->
+<view class='serve_list' wx:if="{{listInfo.list.length>0 && listInfo.list && false}}">
+    <navigator 
+        class='li' url=''
+        wx:for="{{listInfo.list}}" wx:key="serve{{index}}"
+    >
+        <image class='img bg0{{index%4+1}}' src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'></image>
+        <view class='info'>
+            <view class="price_box">
+                <view class="price">￥1000</view>
+                <view class="y_price">￥1200</view>
+            </view>
+            <view class='h3'>{{item.title}}</view>
+            <view class='p'>
+                <view class="label"><icon class="icons ico_xl"></icon>销量：{{item.xiaoliang}}</view>
+                <view class="label"><icon class="icons ico_zx"></icon>咨询：{{item.zixun}}</view>
+            </view>
+            <view class="rzxx" wx:if="{{!item.ziying}}">
+                <view class="ptrz_label"><icon class="icons ico_rz"></icon>平台认证</view>
+                <view class="c_name">广州五行教育科技有限公司</view>
+            </view>
+            <view class="rzxx" wx:if="{{item.ziying}}">
+                <view class="label">平台自营服务</view>
+            </view>
+        </view>
+    </navigator>
+    <view class='more_tip' wx:if="{{listInfo.tipTxt}}"><view class='txt'>{{listInfo.tipTxt}}</view></view>
+</view>
+
+<!-- 暂无状态 -->
+<list-nothing c-name="serve" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>

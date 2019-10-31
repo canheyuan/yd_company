@@ -1,5 +1,6 @@
 {
+    "navigationBarTitleText": "商标注册",
     "usingComponents": {
-        "my-serve-order-list": "/components/my-serve-order-list/my-serve-order-list"
+        "serve-list": "/components/serve-list/serve-list"
     }
 }
