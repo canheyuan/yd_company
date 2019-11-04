@@ -1,0 +1,57 @@
+
+<!-- 数据未加载时显示的默认列表 -->
+<!-- <default-list wx:if="{{!listInfo.isFinish}}"></default-list> -->
+
+<view class='my_serve_list'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    <view class='li' wx:for="{{listInfo.list}}" wx:key="serve{{index}}">
+        <view class="company">
+            <view class="status s_bg0{{index+1}}">待确认</view>
+            <view class="label1"><icon class="icons ico_rz"></icon>平台认证</view>
+            <text class="txt">广州五行教育科技有限公司</text>
+        </view>
+        <view class="gys_info">
+            <image 
+                class='icon bg01' 
+                src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
+            ></image>
+            <view class='info'>
+                <view class="price_box">
+                    <view class="price">￥1000</view>
+                    <view class="price"> x 1</view>
+                </view>
+                <view class='h3'>商标注册服务</view>
+                <view class="p">服务地区：广东 广州</view>
+                <view class="p">服务期限：一次性</view>
+                <view class="price_box2">
+                    合计金额：<text class="f_orange">￥323.58</text>
+                </view>
+            </view>
+        </view>
+        <view class="btm">
+            <view class="btn btn01">取消服务</view>
+            <view class="btn btn02">服务评价</view>
+        </view>
+    </view>
+</view>
+
+<!-- 提示弹窗 -->
+<view class='mask_bg pop_show' hidden='{{!popData.show}}'>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{popData.title}}</view>
+            <text class='alert'>{{popData.des}}</text>
+            <view class='star_list'>
+                <view 
+                    class='icons {{starScore>starItem?"cur":""}}'
+                    wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}" wx:for-item="starItem" 
+                    bindtap="starChangeFn"  data-star="{{index+1}}" 
+                ></view>
+            </view>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap="{{popData.callOffFnName}}">取消</view>
+                <view class='btn' bindtap='{{popData.confirmFnName}}'>确定</view>
+            </view>
+            <view class='close_btn icons' bindtap="{{popData.callOffFnName}}" ></view>
+        </view>
+    </view>
+</view>

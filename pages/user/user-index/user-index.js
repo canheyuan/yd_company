@@ -36,13 +36,13 @@ Page({
             var bOrder = loginInfo.userInfo.parkKeeper || loginInfo.userInfo.entAdmin;
         }
         var menuList = [
-            { title: langData.couponBtn, ico_class: 'ico_coupon', link: '/pages/coupon/my-coupon-list/my-coupon-list', isShow: moduleSwitch.coupon },
-            { title: langData.collectBtn, ico_class: 'ico_gz', link: '/pages/user/my-collect/my-collect', isShow: true },
-            { title: langData.activityBtn, ico_class: 'ico_act', link: '/pages/user/my-activity/my-activity', isShow: moduleSwitch.activity },
-            { title: langData.orderBtn, ico_class: 'ico_order', link: '/pages/order/order-list/order-list', isShow: moduleSwitch.order && bOrder },
-            { title: langData.borrowedBtn, ico_class: 'ico_wz', link: '/pages/supplies/borrowed-record/borrowed-record', isShow: moduleSwitch.supplies },
-            { title: langData.complaintBtn, ico_class: 'ico_complaint', link: '/pages/complaint/complaint-list/complaint-list', isShow: moduleSwitch.complaint },
-            { title: langData.recommendBtn2, ico_class: 'ico_recommend', link: '/pages/recommend/recommend-record/recommend-record', isShow: recommendShow },
+            { title: langData.couponBtn, ico_class: 'ico_coupon', link: '/pages/coupon/my-coupon-list/my-coupon-list', isShow: moduleSwitch.coupon,isLast:true },
+            { title: langData.collectBtn, ico_class: 'ico_gz', link: '/pages/user/my-collect/my-collect', isShow: true, isLast: false },
+            { title: langData.activityBtn, ico_class: 'ico_act', link: '/pages/user/my-activity/my-activity', isShow: moduleSwitch.activity, isLast: false },
+            { title: langData.orderBtn, ico_class: 'ico_order', link: '/pages/order/order-list/order-list', isShow: moduleSwitch.order && bOrder, isLast: false},
+            { title: langData.borrowedBtn, ico_class: 'ico_wz', link: '/pages/supplies/borrowed-record/borrowed-record', isShow: moduleSwitch.supplies, isLast: false},
+            { title: langData.complaintBtn, ico_class: 'ico_complaint', link: '/pages/complaint/complaint-list/complaint-list', isShow: moduleSwitch.complaint, isLast: true},
+            { title: langData.recommendBtn2, ico_class: 'ico_recommend', link: '/pages/recommend/recommend-record/recommend-record', isShow: recommendShow, isLast: true},
 
             // { title: langData.changeGardenBtn, ico_class: 'ico_garden', link: '/pages/common/change-garden/change-garden', isShow: true },
             // { title: langData.discussBtn, ico_class: 'ico_discuss', link: '', isShow: true },

@@ -187,6 +187,19 @@ function pageDataFn(){
             btm_btn_url: '/pages/index/index',
             btm_btn_type: 'switchTab'
         },
+        //取消服务
+        serveCancel:{
+            page_title: '取消服务',
+            icon: '/images/visitor/result_reg.png',
+            title: '提交成功',
+            des: '请保持联系方式畅通，以便工作人员进行联系。',
+            details_btn: '查看订单 >>',
+            details_btn_url: '',
+            details_btn_type: '',
+            btm_btn: langData.backIndexBtn,
+            btm_btn_url: '/pages/index/index',
+            btm_btn_type: 'switchTab'
+        }
     }
     return page_data
 }

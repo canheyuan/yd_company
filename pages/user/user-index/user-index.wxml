@@ -23,49 +23,54 @@
         </image>
         <view class='name'>
             <text>{{userInfo.name}}</text>
-            <image wx:if="{{userInfo.sex==1 || userInfo.sex==2}}" class='ico_sex' src='{{domainUrl}}/images/me/{{userInfo.sex == 1?"man":"woman"}}.png'></image>
+            <image 
+                wx:if="{{userInfo.sex==1 || userInfo.sex==2}}" class='ico_sex' 
+                src='{{domainUrl}}/images/me/{{userInfo.sex == 1?"man":"woman"}}.png'
+            ></image>
         </view>
          <view class='company_name' wx:if="{{userInfo.enterpriseInfo.entName}}">{{userInfo.enterpriseInfo.entName}}</view>
     </view>
    
     <!-- 顶部功能按钮 -->
-    <view class='head_btn_list'>
-        <navigator 
-            class='a' hover-class='hover'  wx:if="{{moduleSwitch.repair}}"
-            url='/pages/user/my-repair/my-repair'
-        >
-            <image class='ico' src='{{domainUrl}}/images/me/ico_repair.png'></image>
-            <text class='txt'>{{langData.repairBtn}}</text>
-        </navigator>
-        
-        <navigator 
-            class='a' hover-class='hover' wx:if="{{moduleSwitch.venue}}"
-            url='/pages/user/my-reserve/my-reserve' 
-        >
-            <image class='ico' src='{{domainUrl}}/images/me/ico_venue.png'></image>
-            <text class='txt'>{{langData.venueBtn}}</text>
-        </navigator>
+    <view class="head_btn_box" style="background-image:url({{domainUrl}}/images/me/user_btn_bg.png);">
+        <view class='head_btn_list'>
+            <navigator 
+                class='a' hover-class='hover'  wx:if="{{moduleSwitch.repair}}"
+                url='/pages/user/my-repair/my-repair'
+            >
+                <image class='ico' src='{{domainUrl}}/images/me/ico_repair.png'></image>
+                <text class='txt'>{{langData.repairBtn}}</text>
+            </navigator>
+            
+            <navigator 
+                class='a' hover-class='hover' wx:if="{{moduleSwitch.venue}}"
+                url='/pages/user/my-reserve/my-reserve' 
+            >
+                <image class='ico' src='{{domainUrl}}/images/me/ico_venue.png'></image>
+                <text class='txt'>{{langData.venueBtn}}</text>
+            </navigator>
 
-        <navigator class='a' hover-class='hover' url='' bindtap="fapiaoTip">
-            <image class='ico' src='{{domainUrl}}/images/me/ico_invoice.png'></image>
-            <text class='txt'>{{langData.invoiceBtn}}</text>
-        </navigator>
+            <navigator class='a' hover-class='hover' url='' bindtap="fapiaoTip">
+                <image class='ico' src='{{domainUrl}}/images/me/ico_invoice.png'></image>
+                <text class='txt'>{{langData.invoiceBtn}}</text>
+            </navigator>
 
-        <navigator 
-            class='a' hover-class='hover' wx:if="{{moduleSwitch.recommend && isRecommendInfo==1}}"
-            url='/pages/recommend/recommend-index/recommend-index' bindtap='recommendGotoUrl' 
-        >
-            <image class='ico' src='{{domainUrl}}/images/me/ico_recommend.png'></image>
-            <text class='txt'>{{langData.recommendBtn}}</text>
-        </navigator>
+            <navigator 
+                class='a' hover-class='hover' wx:if="{{moduleSwitch.recommend && isRecommendInfo==1}}"
+                url='/pages/recommend/recommend-index/recommend-index' bindtap='recommendGotoUrl' 
+            >
+                <image class='ico' src='{{domainUrl}}/images/me/ico_recommend.png'></image>
+                <text class='txt'>{{langData.recommendBtn}}</text>
+            </navigator>
+        </view>
     </view>
 </view>
 
 <!-- 菜单按钮列表 -->
 <view class='menu_list'>
     <navigator 
-        wx:for="{{menuList}}" wx:key="menuList{{index}}"  wx:if="{{item.isShow}}"
-        class='li {{item.ico_class=="ico_coupon"?"divide":""}}' hover-class='hover' 
+        wx:for="{{menuList}}" wx:key="menuList{{index}}" wx:if="{{item.isShow}}"
+        class='li {{item.isLast?"last":""}}' hover-class='hover' 
         url='{{item.link}}'
     >
         <icon class='icons2 menu_ico {{item.ico_class}}'></icon>

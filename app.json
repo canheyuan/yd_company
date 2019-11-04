@@ -34,16 +34,18 @@
         "pages/services/serve-list/serve-list",
         "pages/services/serve-index/serve-index",
         "pages/services/serve-detail/serve-detail",
-        "pages/services/serve-order/serve-order",
-        "pages/services/my-serve-order-list/my-serve-order-list",
-        "pages/services/my-serve-order-detail/my-serve-order-detail",
+        "pages/services/serve-order-list/serve-order-list",
+        "pages/services/serve-order-detail/serve-order-detail",
+        "pages/services/serve-consult/serve-consult",
         "pages/found/company-news-list/company-news-list",
         "pages/wechat/chat-list/chat-list",
         "pages/wechat/chat/chat",
         "pages/services/supplier-list/supplier-list",
         "pages/services/supplier-detail/supplier-detail",
         "pages/services/serve-category/serve-category",
-        "pages/services/confirm-order/confirm-order"
+        "pages/services/serve-order/serve-order",
+        "pages/temp/layout/layout",
+        "pages/services/serve-cancel/serve-cancel"
     ],
     "subPackages": [
         {

@@ -1,10 +1,12 @@
-page{background:#f7f7f7;}
+/* 布局样式 */
+@import '/style/layout.wxss';
 
+page{background:#f7f7f7;}
+/* 头部信息 */
 .confirm_head .company{background:#f6fcff; padding:20rpx;}
 .confirm_head .company .label1{ display:inline-block; height:34rpx; line-height:34rpx; border-radius:19rpx; border:2rpx solid #f87602; font-size:22rpx; padding:0 15rpx 0 10rpx; color:#f87602; margin-right:20rpx; vertical-align: top;}
 .confirm_head .company .label1 .ico_rz{width:30rpx; height:30rpx; background-position: -240rpx -470rpx; vertical-align: top; margin-right:6rpx; position:relative; top:3rpx; }
 .confirm_head .company .txt{font-size:26rpx; color:#333; line-height:38rpx; display: inline-block; vertical-align: top;}
-
 .gys_info{padding:35rpx 20rpx; position:relative; background:#fff;}
 .gys_info .icon{float:left; width:80rpx; height:80rpx; border-radius:100%; background:#eee; margin-right:30rpx;}
 .gys_info .icon.bg01{background-color:#72c1ef;}
@@ -18,8 +20,8 @@ page{background:#f7f7f7;}
 .gys_info .info .p{font-size:24rpx; color:#9d9d9d; line-height:36rpx;}
 .gys_info:last-child .info{border-bottom:0;}
 
-
-
+/* 底部按钮 */
+.wrap_btn{padding:30rpx 100rpx;}
 
 
 

@@ -8,6 +8,8 @@ Page({
         tagList: null,
         tagIndex: 0, //选项卡切换索引
 
+        serveData:{},
+
         langData: null,  //语言数据
         langType: '',    //语言类型
     },
@@ -26,7 +28,7 @@ Page({
         app.loadLangFn(this, 'services', (res) => {
             wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
         });
-        this.getServiceList();
+        this.getlistInfoFn(1);
     },
 
     //下拉刷新
@@ -36,13 +38,19 @@ Page({
     },
 
     //获取服务数据
-    getServiceList() {
+    getlistInfoFn(level) {
         var _this = this;
         app.requestFn({
-            url: '/enterpriseService/categoryList',
+            url: '/serviceCategory/list',
+            data:{
+                level:level
+            },
             success: (res) => {
-                var tag = res.data.data;
-                this.setData({ tagList: tag });
+                console.log('服务数据列表：'+ level + '级,' + res.data);
+                var serveData = _this.data.serveData;
+
+                this.setData({ serveData: serveData });
+                console.log('服务数据列表处理后：' + level + '级,' + res.data);
             }
         });
     },

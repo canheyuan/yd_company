@@ -81,40 +81,40 @@
 
 <!-- 报修内容 -->
 <view class='bxnr_mdl'>
-  <view class='bxnr_tit'>{{langData.repairInfo}}</view>
-  <view class='bxnr_ctn'>
-    <view class='gray_box'>{{detailsData.description}}</view>
-    <view class='bxnr_dl'>
-      <view class='dt'>{{langData.room}}</view>
-      <view class='dd'>{{detailsData.roomName}}</view>
-    </view>
-    <view hidden="{{infoShow}}">
-      <view class='bxnr_dl'>
-        <view class='dt'>{{langData.public.contact}}</view>
-        <view class='dd'>{{detailsData.contact}}</view>
-      </view>
-      <view class='bxnr_dl'>
-        <view class='dt'>{{langData.public.contactPhone}}</view>
-        <view class='dd'>{{detailsData.phone}}</view>
-      </view>
-      <view class='bxnr_dl' wx:if="{{detailsImgs.length>0}}">
-        <view class='dt'>{{langData.public.imgAccessory}}</view>
-        <view class='dd'>
-          <view class='imgs'>
-            <image 
-              wx:for="{{detailsImgs}}" wx:key="{{index}}" 
-              src='{{item}}' binderror='errorImgFn' data-obj="detailsImgs[{{index}}]"
-            ></image>
-          </view>
+    <view class='bxnr_tit'>{{langData.repairInfo}}</view>
+    <view class='bxnr_ctn'>
+        <view class='gray_box'>{{detailsData.description}}</view>
+        <view class='bxnr_dl'>
+        <view class='dt'>{{langData.room}}</view>
+        <view class='dd'>{{detailsData.roomName}}</view>
         </view>
-      </view>
+        <view hidden="{{infoShow}}">
+        <view class='bxnr_dl'>
+            <view class='dt'>{{langData.public.contact}}</view>
+            <view class='dd'>{{detailsData.contact}}</view>
+        </view>
+        <view class='bxnr_dl'>
+            <view class='dt'>{{langData.public.contactPhone}}</view>
+            <view class='dd'>{{detailsData.phone}}</view>
+        </view>
+        <view class='bxnr_dl' wx:if="{{detailsImgs.length>0}}">
+            <view class='dt'>{{langData.public.imgAccessory}}</view>
+            <view class='dd'>
+            <view class='imgs'>
+                <image 
+                wx:for="{{detailsImgs}}" wx:key="{{index}}" 
+                src='{{item}}' binderror='errorImgFn' data-obj="detailsImgs[{{index}}]"
+                ></image>
+            </view>
+            </view>
+        </view>
+        </view>
+        <!-- <view class='btm' bindtap='infoShowFn'>
+        <text>{{infoShow?'展开':'收起'}}</text> 
+        <icon class='icons ico_arrow {{infoShow?"":"ico_arrow_up"}}'></icon>
+        </view> -->
     </view>
-    <!-- <view class='btm' bindtap='infoShowFn'>
-      <text>{{infoShow?'展开':'收起'}}</text> 
-      <icon class='icons ico_arrow {{infoShow?"":"ico_arrow_up"}}'></icon>
-    </view> -->
-  </view>
-  <view class='ylb_txt' bindtap="popFn"><icon class="icons"></icon>{{langData.severPopBtn}}</view>
+    <view class='ylb_txt' bindtap="popFn"><icon class="icons"></icon>{{langData.severPopBtn}}</view>
 </view>
 
 <!-- 底部按钮 -->

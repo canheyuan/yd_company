@@ -74,15 +74,15 @@
 				},
 				{
 					"id": 3,
-					"name": "服务首页",
-					"pathName": "pages/services/serve-index/serve-index",
+					"name": "pages/temp/layout/layout",
+					"pathName": "pages/temp/layout/layout",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": 4,
-					"name": "确认服务",
-					"pathName": "pages/services/confirm-order/confirm-order",
+					"name": "服务订单详情",
+					"pathName": "pages/services/serve-category/serve-category",
 					"query": "",
 					"scene": null
 				}

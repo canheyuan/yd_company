@@ -309,7 +309,7 @@ module.exports = {
 
         //我的页面
         userIndex: {
-            title: '我的',
+            title: '个人中心',
             editBtn: '编辑资料',
             repairBtn: '我的报修',
             venueBtn: '我的预定',

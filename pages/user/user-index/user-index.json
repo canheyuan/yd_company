@@ -1,6 +1,6 @@
 {
     "enablePullDownRefresh": true,
-    "navigationBarTitleText": "我的",
+    "navigationBarTitleText": "",
     "usingComponents": {
         "login-tip": "/components/login-tip/login-tip",
         "reach-load": "/components/reach-load/reach-load",

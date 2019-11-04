@@ -1,4 +1,3 @@
-
 <!-- 选项卡切换 -->
 <view class='tag_box tag_fixed'>
     <view class='tag_list'>
@@ -11,5 +10,5 @@
 
 <!-- 循环列表 -->
 <view wx:for="{{tagList}}" wx:key="tagList{{index}}"  hidden="{{tagIndex!=index}}" wx:if="{{item.show}}">
-    <my-serve-order-list target-page="myServeOrderList" tag-type="{{item.type}}" reach-data="{{item.reach}}"></my-serve-order-list>
+    <serve-order-list target-page="myServeOrderList" tag-type="{{item.type}}" reach-data="{{item.reach}}"></serve-order-list>
 </view>

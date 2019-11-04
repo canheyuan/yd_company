@@ -50,24 +50,6 @@
                 </view>
             </view>
         </view>
-
-        <view class="company_info clearfix" wx:if="{{false}}">
-            <image class="headimg" src="{{domainUrl}}/images/services/gys_img02.jpg"></image>
-            <view class="info">
-                <view class="btn">服务 ></view>
-                <view class='h3'>广州五行教育科技有限公司</view>
-                <view class="rzxx">
-                    <view class="ptrz_label"><icon class="icons ico_rz"></icon>平台认证</view>
-                    <view class="star_box">
-                        <view wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" class="star {{index<3?'act':''}}"></view>
-                    </view>
-                </view>
-                <view class='p'>
-                    <view class="label"><icon class="icons ico_xl"></icon>销量：123</view>
-                    <view class="label"><icon class="icons ico_zx"></icon>咨询：123</view>
-                </view>
-            </view>
-        </view>
     </view>
 
     <!-- 详情 -->

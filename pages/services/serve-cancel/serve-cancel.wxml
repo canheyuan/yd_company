@@ -1,0 +1,45 @@
+
+<!-- 取消原因 -->
+<view class="cause_box box_shadow">
+    <view class="yd_title01">请选择取消服务的原因：</view>
+    <view class="cause_list">
+        <view class="li act"><text class="txt">原因1原因1原因1</text></view>
+        <view class="li"><text class="txt">原因2</text></view>
+        <view class="li"><text class="txt">原因3333</text></view>
+        <view class="li">
+            <text class="txt">其他</text>
+            <textarea class="textarea" placeholder="请填写取消服务的原因…" placeholder-class="placeholder"></textarea>
+        </view>
+    </view>
+</view>
+
+<!-- 上传附件 -->
+<view class="accessory_mdl">
+    <view class="title">上传附件</view>
+    <view class='file_imgs clearfix box_shadow'>
+        <!-- 循环预览图 -->
+        <view class='li' wx:for="{{fileImgs}}" wx:key="fileImgs{{index}}">
+            <image class='img' src='{{item}}'></image>
+            <icon class='icons close_btn' bindtap='removeImageFn' data-index="{{index}}"></icon>
+        </view>
+        <view class='li' wx:if="{{fileImgsNum!=0}}">
+            <view class='add_btn' bindtap="fileImageFn">
+                <icon class='icons ico_add'></icon>
+                <text>{{langData.public.addAccessory}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="u_btn_wrap">
+    <button class="u_btn blue w100" hover-class="hover">立即提交</button>
+</view>
+
+
+
+
+
+
+
+
+

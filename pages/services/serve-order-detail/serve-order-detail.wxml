@@ -2,8 +2,9 @@
 <!-- 头部 -->
 <view class="confirm_head">
     <view class="company">
+        <view class="status s_bg01">待确认</view>
         <view class="label1"><icon class="icons ico_rz"></icon>平台认证</view>
-        <text class="txt">广州五行教育科技有限公司</text>
+        <text class="txt">广州五行教育科技有限公司广州五行教育科技有限公司</text>
     </view>
     <view class="gys_info">
         <image 
@@ -13,6 +14,7 @@
         <view class='info'>
             <view class="price_box">
                 <view class="price">￥1000</view>
+                <view class="price"> x 1</view>
             </view>
             <view class='h3'>商标注册服务</view>
             <view class="p">服务地区：广东 广州</view>
@@ -29,10 +31,7 @@
         <view class='dl'>
             <view class='dt'>用户姓名</view>
             <view class='dd'>
-                <input 
-                    class='input' type='text' name="contact" value=''
-                    placeholder='请填写姓名' placeholder-class='pl_input'  
-                />
+                <text class="txt">张生</text>
             </view>
         </view>
 
@@ -40,10 +39,7 @@
         <view class='dl'>
             <view class='dt'>{{langData.public.contactPhone}}</view>
             <view class='dd'>
-                <input 
-                    class='input' type='number' name="phone" value='{{contactsPhone}}'
-                    placeholder='{{langData.public.contactPhonePl}}' placeholder-class='pl_input'  
-                />
+                <text class="txt">13800138000</text>
             </view>
         </view>
 
@@ -51,10 +47,7 @@
         <view class='dl bor_no' style="padding-bottom:0;">
             <view class='dt fl_none'>备注信息</view>
             <view class='dd'>
-                <textarea 
-                    class="textarea" placeholder="需进行物流配送的服务商品请备注配送地址(100字以内)" placeholder-class="placeholder"
-                    maxlength="100"
-                ></textarea>
+                <text class="textarea">备注信息备注信息备注信息备注信息备注信息备注信息备注信息</text>
             </view>
         </view>
 
@@ -62,31 +55,44 @@
         <view class='dl'>
             <view class='dt'>购买数量</view>
             <view class='dd'>
-                <view class="buy_num">
-                    <icon class="icons ico_minus"></icon>
-                    <text class="num">999</text>
-                    <icon class="icons ico_add"></icon>
-                </view>
+                <text class="txt">1</text>
+            </view>
+        </view>
+
+        <!-- 支付金额 -->
+        <view class='dl'>
+            <view class='dt'>支付金额</view>
+            <view class='dd'>
+                <text class="pay_price txt f_orange">￥1000</text>
             </view>
         </view>
        
     </view>
-    <!-- 服务声明 -->
-     <view class="statement">提交订单即视为阅读并同意<text class="f_blue">《园叮服务平台第三方服务声明》</text></view>
+
+    <!-- 订单其他信息 -->
+    <view class="order_other">
+        <view class="p">
+            <icon class="icons ico_bill"></icon>
+            <text class="txt">订单号</text>YXA2018071123648
+        </view>
+        <view class="p">
+            <icon class="icons ico_time"></icon>
+            <text class="txt">下单时间</text>2018-04-29  12:14:15
+        </view>
+        <view class="p">
+            <icon></icon>
+            <text class="txt">完成时间</text>2018-04-29  12:14:15
+        </view>
+    </view>
+
+    <view class="more_tip"><text class="txt">没有更多了</text></view>
+
 </view>
 
 <!-- 底部按钮 -->
 <view class="confirm_btm box_shadow">
-    <button class="s_blue_btn" hover-class="hover">确认下单</button>
-    <view class="price">应付总额：<text class="f_orange">￥1000.00</text></view>
+    <button class="u_btn small white" hover-class="hover">取消订单</button>
 </view>
-
-
-
-
-
-
-
 
 
 

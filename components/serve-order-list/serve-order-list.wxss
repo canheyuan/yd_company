@@ -1,0 +1,32 @@
+@import '/app.wxss';   
+.my_serve_list .li{background:#fff;  margin-top:30rpx; position:relative;}
+.my_serve_list .li .company{background:#f6fcff; padding:20rpx;}
+.my_serve_list .li .company .status{float:right; font-size:24rpx; color:#fff;  height:38rpx; line-height:38rpx; padding:0 10rpx 0 15rpx; text-align: center; min-width:75rpx; background:url(http://192.168.5.148:8080/images/status_icons.png) no-repeat 0 0; background-size:200rpx 400rpx; position:absolute; top:20rpx; right:0;}
+.my_serve_list .li .company .status.s_bg02{background-position: 0 -40rpx;}
+.my_serve_list .li .company .status.s_bg03{background-position: 0 -80rpx;}
+.my_serve_list .li .company .status.s_bg04{background-position: 0 -120rpx; color:#f87616;}
+.my_serve_list .li .company .status.s_bg05{background-position: 0 -160rpx; color:#c1c1c1; }
+.my_serve_list .li .company .label1{ display:inline-block; height:34rpx; line-height:34rpx; border-radius:19rpx; border:2rpx solid #f87602; font-size:22rpx; padding:0 15rpx 0 10rpx; color:#f87602; margin-right:20rpx; vertical-align: top; float:left;}
+.my_serve_list .li .company .label1 .ico_rz{width:30rpx; height:30rpx; background-position: -240rpx -470rpx; vertical-align: top; margin-right:6rpx; position:relative; top:3rpx; }
+.my_serve_list .li .company .label2{display:inline-block; padding:0 20rpx; height:38rpx; line-height:38rpx; font-size:24rpx; color:#fff; background:#6592fe; border-radius:19rpx; vertical-align: top;  margin-right:20rpx; float:left;}
+.my_serve_list .li .company .txt{font-size:26rpx; color:#333; line-height:38rpx; display: block; overflow:hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1;}
+
+.my_serve_list .li .gys_info{padding:35rpx 20rpx 20rpx; position:relative;}
+.my_serve_list .li .gys_info .icon{float:left; width:80rpx; height:80rpx; border-radius:100%; background:#eee; margin-right:30rpx;}
+.my_serve_list .li .gys_info .icon.bg01{background-color:#72c1ef;}
+.my_serve_list .li .gys_info .icon.bg02{background-color:#fbad9d;}
+.my_serve_list .li .gys_info .icon.bg03{background-color:#f9cc7e;}
+.my_serve_list .li .gys_info .icon.bg04{background-color:#89d478;}
+.my_serve_list .li .gys_info .price_box{float:right;  text-align:right; line-height:40rpx; margin-left:20rpx;}
+.my_serve_list .li .gys_info .price_box .price{font-size:28rpx; color:#888888; }
+.my_serve_list .li .gys_info .price_box2{text-align: right; font-size:24rpx; line-height:40rpx; color:#777777; margin-top:15rpx; clear:both;}
+.my_serve_list .li .gys_info .price_box2 text{font-size:32rpx; line-height:40rpx; font-weight: bold; display: inline-block; vertical-align: top;}
+.my_serve_list .li .gys_info .info{overflow:hidden;  padding-right:15rpx;}
+.my_serve_list .li .gys_info .info .h3{font-size:30rpx; line-height:40rpx; color:#333333; margin-bottom:15rpx;display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 2; font-weight: bold;}
+.my_serve_list .li .gys_info .info .p{font-size:24rpx; color:#9d9d9d; line-height:36rpx;}
+
+.my_serve_list .li .btm{height:50rpx; border-top:2rpx solid #dddddd; padding:20rpx; text-align: right;}
+.my_serve_list .li .btm .btn{display:inline-block; padding:0 25rpx; height:46rpx; line-height:46rpx; border:2rpx solid #c2c2c2; font-size:28rpx; color:#777777; border-radius:25rpx; margin-left:20rpx;}
+.my_serve_list .li .btm .btn02{border-color:#6592fe; color:#6592fe;}
+
+

@@ -12,7 +12,7 @@ Page({
     onLoad: function (options) {
         //设置语言,判断是否切换语言
         app.loadLangFn(this, 'services', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+            //wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
         });
     },
 
@@ -24,7 +24,7 @@ Page({
 
     //页面相关事件处理函数--监听用户下拉动作
     onPullDownRefresh: function () {
-        
+
     },
 
     //页面上拉触底事件的处理函数

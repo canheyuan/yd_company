@@ -14,7 +14,7 @@ page{background: #f7f7f7; }
 .user_head .per_info .company_name{ display:inline-block; min-width: 315rpx;  padding:0 20rpx;  height: 42rpx;  border:  solid 1rpx #bfbfbf;  border-radius: 30rpx; font-size: 24rpx; line-height: 42rpx; text-align: center; color: #949494;  margin-top:15rpx; }
 
 /*功能卡*/
-.head_btn_list{ width: 704rpx; height: 180rpx; border-radius: 20rpx; margin: 30rpx auto 0; text-align: center; }
+.head_btn_box{  height: 180rpx; padding: 30rpx 25rpx 0; background:#fff no-repeat center top; background-size:100% auto;text-align: center;  }
 .head_btn_list .a{ display: inline-block; width: 25%; font-size: 26rpx; }
 .head_btn_list .a .ico{  width: 60rpx; height: 60rpx; display: block; margin: 35rpx auto 20rpx; }
 .head_btn_list .a .txt{color:#666;}
@@ -37,8 +37,8 @@ page{background: #f7f7f7; }
 .menu_list .li .ico_order{background-position: -350rpx -50rpx;}
 .menu_list .li .ico_recommend{background-position: -400rpx -50rpx;}
 
-.menu_list .li.divide{margin-bottom:20rpx;}
-.menu_list .li.divide .info{border-bottom:none;}
+.menu_list .li.last{margin-bottom:20rpx;}
+.menu_list .li.last .info{border-bottom:none;}
 .menu_list .li:last-child .info{border-bottom:none;}
 .menu_list .li.hover{opacity: .8;}
 .menu_list .li.hover text{color:#2a99f1;}
