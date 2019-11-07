@@ -4,31 +4,12 @@ Page({
     data: {
         domainUrl: app.globalData.domainUrl,
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
 
+        detailData:null,
+        
         //筛选头部数据
-        screenList: [
-            {
-                index: 0, type: 1, reach: 1, popHide: true, sortClass: '', //sortClass，升序：up，降序：down
-                son: [
-                    { name: '默认排序', type: 1 },
-                    { name: '发布时间', type: 1 },
-                    { name: '咨询量', type: 1 }
-                ]
-            },
-            {
-                index: 0, type: 1, reach: 1, popHide: true, sortClass: '',
-                son: [
-                    { name: '销量', type: 1 }
-                ]
-            },
-            {
-                index: 0, type: 1, reach: 1, popHide: true, sortClass: '',
-                son: [
-                    { name: '价格', type: 1 },
-                ]
-            },
-        ],
+        screenList: null,
         screenIndex: 0,
         screenPopHide: true,
         
@@ -47,14 +28,50 @@ Page({
     //生命周期函数--监听页面加载
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'services', (res) => {
-            //wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+        app.loadLangNewFn(this, 'serve', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
+            this.setData({
+                screenList: [
+                    {
+                        index: 0, type: 1, reach: 1, popHide: true, sortClass: '', show: true, //sortClass，升序：up，降序：down
+                        son: [
+                            { name: res.tagName01[lang], type: 1 },
+                            { name: res.tagName02[lang], type: 1 },
+                            { name: res.tagName03[lang], type: 1 }
+                        ]
+                    },
+                    {
+                        index: 0, type: 1, reach: 1, popHide: true, sortClass: '', show: false,
+                        son: [
+                            { name: res.tagName04[lang], type: 1 }
+                        ]
+                    },
+                    {
+                        index: 0, type: 1, reach: 1, popHide: true, sortClass: '', show: false,
+                        son: [
+                            { name: res.tagName05[lang], type: 1 },
+                        ]
+                    },
+                ]
+            })
         });
     },
 
     //生命周期函数--监听页面显示
     onShow: function () {
 
+    },
+
+    //获取详情
+    getDetailFn(id) {
+        var _this = this;
+        app.requestFn({
+            url: `${id}`,
+            success: (res) => {
+                var detailData = res.data.data;
+                this.setData({ detailData: detailData });
+            }
+        })
     },
 
     //筛选选项卡

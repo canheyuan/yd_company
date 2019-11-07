@@ -4,9 +4,9 @@
 
 page{background:#f7f7f7; padding-bottom:100rpx;}
 /* 头部信息 */
-.confirm_head{background:#fff;  margin-top:30rpx; position:relative;}
+.confirm_head{background:#fff; position:relative;}
 .confirm_head .company{background:#f6fcff; padding:20rpx;}
-.confirm_head .company .status{float:right; font-size:24rpx; color:#fff;  height:38rpx; line-height:38rpx; padding:0 10rpx 0 15rpx; text-align: center; min-width:75rpx; background:url(http://192.168.5.148:8080/images/status_icons.png) no-repeat 0 0; background-size:200rpx 400rpx; position:absolute; top:20rpx; right:0;}
+.confirm_head .company .status{float:right; font-size:24rpx; color:#fff;  height:38rpx; line-height:38rpx; padding:0 10rpx 0 15rpx; text-align: center; min-width:75rpx; background:url(https://www.5iparks.com/static/yuanding/images/status_icons.png) no-repeat 0 0; background-size:200rpx 400rpx; position:absolute; top:20rpx; right:0;}
 .confirm_head .company .status.s_bg02{background-position: 0 -40rpx;}
 .confirm_head .company .status.s_bg03{background-position: 0 -80rpx;}
 .confirm_head .company .status.s_bg04{background-position: 0 -120rpx; color:#f87616;}

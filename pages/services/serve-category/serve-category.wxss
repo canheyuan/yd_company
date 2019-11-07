@@ -23,7 +23,7 @@ page{height: 100%; background: #fff;}
 
 /* 服务项目 */
 .list_box{ margin-top: 40rpx;}
-.list_box .title{color: #666; font-size: 26rpx; line-height: 40rpx; padding: 0 4rpx; margin-bottom: 22rpx;}
+.list_box .title{color: #666; font-size: 26rpx; line-height: 40rpx; padding: 0 4rpx; margin-bottom: 22rpx; font-weight: bold;}
 .list_box .title icon{width: 40rpx; height: 40rpx; margin-right: 2rpx; display: block; float: left;}
 .list_box .title icon.ico_tj{background-position:-400rpx -160rpx;}
 .list_box .title icon.ico_hot{background-position:-360rpx -210rpx;}

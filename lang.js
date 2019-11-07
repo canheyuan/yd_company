@@ -209,7 +209,7 @@ module.exports = {
             userName:'请输入用户名',
             park:'请选择园区',
             ent:'请选择企业',
-            name:'请输入您的名字',
+            name:'请输入您的姓名',
             date:'请选择预约日期',
             time:'请选择预约时间'
         },

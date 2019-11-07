@@ -7,18 +7,18 @@
         <view class="money">
             <text class="price">￥1200.00</text>
             <text class="y_price">￥1800.00</text>
-            <view class="label">促销</view>
+            <view class="label">{{langData.promotionLabel[lang]}}</view>
         </view>
         <view class='data_list'>
-            <view class="label"><icon class="icons ico_xl"></icon>销量：120</view>
-            <view class="label"><icon class="icons ico_zx"></icon>咨询：140</view>
+            <view class="label"><icon class="icons ico_xl"></icon>{{langData.salesLabel[lang]}}：120</view>
+            <view class="label"><icon class="icons ico_zx"></icon>{{langData.consultLabel[lang]}}：140</view>
         </view>
     </view>
     
     <view class="choose_list">
         <!-- 服务地区 -->
         <view class="item">
-            <view class="tit">服务地区</view>
+            <view class="tit">{{langData.regionTitle[lang]}}</view>
             <icon class='icons ico_tri'></icon>
             <view class='info'>
                 <view class="txt">广东 广州</view>
@@ -26,7 +26,7 @@
         </view>
         <!-- 服务期限 -->
         <view class="item">
-            <view class="tit">服务期限</view>
+            <view class="tit">{{langData.deadlineTitle[lang]}}</view>
             <view class='info'>
                 <view class="txt">一次性服务</view>
             </view>
@@ -35,18 +35,18 @@
         <view class="gys_item clearfix">
             <image class="headimg" src="{{domainUrl}}/images/services/gys_img02.jpg"></image>
             <view class="info">
-                <view class="btn">服务 ></view>
+                <navigator url="/pages/services/supplier-list/supplier-list" class="btn">{{langData.serveBtn[lang]}}</navigator>
                 <view class='h3'>广州五行教育科技有限公司</view>
                 <view class="rz_info">
-                    <view class="label1"><icon class="icons ico_rz"></icon>平台认证</view>
-                    <view class="label2">自营</view>
+                    <view class="label1"><icon class="icons ico_rz"></icon>{{langData.attestationLabel[lang]}}</view>
+                    <view class="label2">{{langData.selfsupportLabel[lang]}}</view>
                     <view class="star_box">
                         <view wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" class="star {{index<4?'act':''}}"></view>
                     </view>
                 </view>
                 <view class='tj_data'>
-                    <view class="label"><icon class="icons ico_xl"></icon>累计销量：123</view>
-                    <view class="label"><icon class="icons ico_zx"></icon>累计咨询：123</view>
+                    <view class="label"><icon class="icons ico_xl"></icon>{{langData.salesLabel2[lang]}}：123</view>
+                    <view class="label"><icon class="icons ico_zx"></icon>{{langData.consultLabel2[lang]}}：123</view>
                 </view>
             </view>
         </view>
@@ -56,7 +56,7 @@
     <view class="serve_detail_ctn">
         <view class="title">
             <image src="{{domainUrl}}/images/services/fwxq_tit_l.png"></image>
-            <text>服务详情</text>
+            <text>{{langData.serveDetailTitle[lang]}}</text>
             <image src="{{domainUrl}}/images/services/fwxq_tit_r.png"></image>
         </view>
         <view class="details_ctn">
@@ -69,8 +69,8 @@
 </view>
 
 <view class="serve_btm_wrap box_shadow">
-    <view class="blue_btn">留言咨询</view>
-    <view class="orange_btn">立即下单</view>
+    <navigator class="blue_btn" url="/pages/services/serve-consult/serve-consult">{{langData.consultBtn[lang]}}</navigator>
+    <view class="orange_btn">{{langData.payOrderBtn[lang]}}</view>
 </view>
 
 

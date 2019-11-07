@@ -6,12 +6,7 @@ Component({
     //组件的属性列表
     properties: {
         targetPage: String,
-        tagType: {
-            type: String,
-            observer: function (newVal, oldVal, changedPath) {  //动态改变属性时执行
-                this.setData({ tagType: newVal });
-            }
-        },
+        tagType: String,
         reachData: {
             type: Number,
             observer: function (newVal, oldVal, changedPath) {
@@ -30,38 +25,41 @@ Component({
     //组件的初始数据
     data: {
         domainUrl: app.globalData.domainUrl,
-        tagType: '',    //类型
         isFirst: true,
 
         handleType: '',  //操作类型
-        popData: {
-            show: true, //弹窗是否显示
-            title: '服务完成',  //标题
-            des: '感谢您对我们的支持！\n本次服务已经完成？',  //提示文字
-            tipText: '已完成',
-            callOffFnName: 'closeTipPop',   //取消函数名
-            confirmFnName: 'handleFn',  //确定函数名
-        },   //弹窗里当前的数据
+        popData: null,   //当前弹窗里的数据
         tipPopData: {
-            approve: {
+            finish: {   //服务完成
                 show: true, //弹窗是否显示
                 title: '服务完成',  //标题
                 des: '感谢您对我们的支持！\n本次服务已经完成？',  //提示文字
                 tipText: '已完成',
+                isScore:false,  //是否评分
                 callOffFnName: 'closeTipPop',   //取消函数名
                 confirmFnName: 'handleFn',  //确定函数名
             },
-            reject: {
+            withdraw: { //撤回申请
                 show: true,
                 title: '撤回申请',
                 des: '感谢您对我们的支持！\n是否撤回取消服务的申请？',
                 tipText: '已撤回',
+                isScore: false,
                 callOffFnName: 'closeTipPop',
                 confirmFnName: 'handleFn',
             },
-        },  //弹窗数据
-        starScore:3,    //星星评分
+            evaluation: { //服务评价
+                show: true,
+                title: '服务评价',
+                des: '请为我们的服务评分！',
+                tipText: '已评分',
+                isScore: true,
+                callOffFnName: 'closeTipPop',
+                confirmFnName: 'handleFn',
+            }
 
+        },  //弹窗数据
+        starScore:0,    //星星评分
 
         listInfo: {
             list:[1,2,3,4,5,6]
@@ -73,11 +71,11 @@ Component({
         //获取列表
         getListInfo(isReach){
             var _this = this;
-            var c_status = this.properties.tagType;
+            var cType = this.properties.tagType;
             listFn.listPage({
                 url: `/estateComplaint/list`,
                 data: {
-                    status: c_status   //1-待处理 2-处理中 3-已完成
+                    type: cType   //
                 },
                 isReach: isReach,
                 page: _this,
@@ -98,7 +96,7 @@ Component({
                     return listItem;
                 },
                 success: () => {
-                    console.log("投诉建议列表接口：", _this.data.listInfo);
+                    console.log("我的服务订单列表：", _this.data.listInfo);
                 }
             });
         },
@@ -118,18 +116,23 @@ Component({
             })
         },
 
+        //跳转到详情页
+        gotoDetailFn(e){
+            var id = e.currentTarget.dataset.id;
+            wx.navigateTo({ url: `/pages/services/serve-order-detail/serve-order-detail?id=${id}` })
+        },
+
         //评分星星
         starChangeFn(e) {
             var star = e.currentTarget.dataset.star;
-            this.setData({
-                starScore: star
-            });
+            this.setData({ starScore: star });
         },
 
         //打开提示弹窗
         openTipPop(e) {
             var handleType = e.currentTarget.dataset.type;
             var popData = this.data.tipPopData[handleType];
+            console.log('打开提示弹窗:', handleType, popData)
             this.setData({
                 handleType: handleType,
                 popData: popData
@@ -149,17 +152,14 @@ Component({
             var apiUrl = '';
             if (!handleType) { return; }
             switch (handleType) {
-                case 'approve': //审核通过
-                    apiUrl = `/manage/bill/approve/${orderId}`
+                case 'finish': //服务完成
+                    apiUrl = `${orderId}`
                     break;
-                case 'reject':  //审核拒绝
-                    apiUrl = `/manage/bill/reject/${orderId}`
+                case 'withdraw':  //撤回申请
+                    apiUrl = `${orderId}`
                     break;
-                case 'ignore':    //忽略异常
-                    apiUrl = `/manage/bill/ignore/${orderId}`
-                    break;
-                case 'generate':    //重新生成
-                    apiUrl = `/manage/bill/generate/${orderId}`
+                case 'evaluation':    //服务评价
+                    apiUrl = `${orderId}`
                     break;
             }
 
@@ -171,10 +171,13 @@ Component({
                     wx.showToast({ title: _this.data.popData.tipText, icon: 'success', duration: 2000 });
                     _this.closeTipPop();
                     setTimeout(() => {
-                        _this.getFeeDetail(orderId);
+                        _this.setData({ ['listInfo.pageNum']: 1 });
+                        _this.loadMoreListFn();
                     }, 1500)
                 }
             });
         },
+
+        
     }
 })

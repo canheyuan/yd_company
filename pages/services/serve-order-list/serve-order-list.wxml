@@ -9,6 +9,13 @@
 </view>
 
 <!-- 循环列表 -->
-<view wx:for="{{tagList}}" wx:key="tagList{{index}}"  hidden="{{tagIndex!=index}}" wx:if="{{item.show}}">
-    <serve-order-list target-page="myServeOrderList" tag-type="{{item.type}}" reach-data="{{item.reach}}"></serve-order-list>
+<view 
+    wx:for="{{tagList}}" wx:key="tagList{{index}}" 
+    hidden="{{tagIndex!=index}}" wx:if="{{item.show}}"
+>
+    <serve-order-list 
+        target-page="myServeOrderList" 
+        tag-type="{{item.type}}" 
+        reach-data="{{item.reach}}"
+    ></serve-order-list>
 </view>

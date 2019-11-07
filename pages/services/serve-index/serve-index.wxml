@@ -1,3 +1,5 @@
+<!-- 下拉刷新动画 -->
+<reach-load></reach-load>
 
 <!-- 顶部 -->
 <view class="serve_top" style="background-image:url({{domainUrl}}/images/services/serve_top_bg.png);">
@@ -7,7 +9,7 @@
             <icon class='icons ico_search'></icon>
             <input 
                 class="input" confirm-type="search" 
-                placeholder="请输入关键词" placeholder-style="color:#fff;" 
+                placeholder="{{langData.searchPl[lang]}}" placeholder-style="color:#fff;" 
             />
         </view>
     </view>
@@ -25,18 +27,22 @@
             </swiper-item>
         </swiper>
         <view class="slide_nav">
-            <view  wx:for="{{serveSlideList}}" wx:key="dot{{index}}"  class="dot {{index==serveSlideList?'act':''}}"></view>
+            <view wx:for="{{serveSlideList}}" wx:key="dot{{index}}" class="dot {{index==serveSlideIndex?'act':''}}"></view>
         </view>
     </view>
+
 </view>
 
+
 <!-- 菜单栏 -->
-<view class="serve_menu">
+<default m-name="serveMenu" m-num="5" wx:if="{{!serveMenuFinish && !serveMenuList}}"></default>
+<view class="serve_menu" wx:if="{{serveMenuFinish && serveMenuList}}">
     <navigator 
-        class="li" hover-class="hover" wx:for="{{serveMenuList}}" wx:key="serveMenuList{{index}}" url="{{item.link}}"
+        class="li" hover-class="hover" url="{{item.link}}"
+        wx:for="{{serveMenuList}}" wx:key="serveMenuList{{index}}" 
     >
-        <image class="ico" src="{{domainUrl+item.icon}}"></image>
-        <view class="text">{{item.title}}</view>
+        <image class="ico" src="{{item.icon}}"></image>
+        <view class="text">{{item.name}}</view>
     </navigator>
 </view>
 
@@ -44,44 +50,50 @@
 <!-- 最近浏览 -->
 <view class="zjll_mdl box_shadow">
     <view class="title"><image class="img" src="{{domainUrl}}/images/services/zjll_title.png"></image></view>
-    <view class="zjll_list">
-        <view class="li">
-            <view class="top">
-                <text class="user">用户13800138000</text>
-                <text class="time">20分钟前浏览了</text>
+    <swiper
+        class='zjll_list' autoplay="true" 
+        interval="4000" duration="500" 
+        vertical="true" circular="true" display-multiple-items="1" 
+    >
+        <swiper-item class="li" wx:for="{{[1,2,3,4]}}" wx:key="zjll{{index}}">
+        <view class="top">
+                <text class="user">{{langData.browseText1[lang]}}13800138000</text>
+                <text class="time">20{{langData.browseText2[lang]}}</text>
             </view>
             <view class="btm">
-                <view class="u_serve">服务</view>
+                <view class="u_serve">{{langData.serveLabel[lang]}}</view>
                 <view class="type">商标注册</view>
             </view>
-        </view>
-    </view>
+        </swiper-item>
+    </swiper>
 </view>
 
 <!-- 推荐服务 -->
 <view class='recommend_mdl'>
     <view class='serve_tit'>
-        <navigator class='more' url='/pages/services/services-classify/services-classify?tag=0'>{{langData.moreBtn}}</navigator>
-        <view class='h3'>推荐服务</view>
+        <!-- <navigator class='more' url='/pages/services/serve-list/serve-list'>{{langData.public.moreBtn[lang]}}</navigator> -->
+        <view class='h3'>{{langData.recommendTitle[lang]}}</view>
     </view>
-    <view class='serve_list box_shadow'>
+    <!-- <default m-name="recList" m-num="4" ></default> -->
+    <view class='serve_list box_shadow' >
         <navigator 
-            class='li' url='/pages/services/services-intro/services-intro?id={{item.id}}'
-            wx:for="{{recommendData}}" wx:key="recommendData{{index}}"
+            class='li' url='{{item.link}}'
+            wx:for="{{serveRecommendList}}" wx:key="serveRecommendList{{index}}"
         >
-            <image 
+            <!-- <image 
                 class='icon bg0{{index+1}}' 
                 src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
-            ></image>
+            ></image> -->
+            <image class="icon" src="{{item.mainImg}}"></image>
             <view class='info'>
                 <view class="price_box">
-                    <view class="price">￥1000</view>
-                    <view class="y_price">￥1200</view>
+                    <view class="price">￥{{item.price}}</view>
+                    <view class="y_price">￥{{item.originalPrice}}</view>
                 </view>
-                <view class='h3'>{{item.title}}</view>
+                <view class='h3'>{{item.name}}</view>
                 <view class='tj_data'>
-                    <view class="label"><icon class="icons ico_xl"></icon>销量：{{item.xiaoliang}}</view>
-                    <view class="label"><icon class="icons ico_zx"></icon>咨询：{{item.zixun}}</view>
+                    <view class="label"><icon class="icons ico_xl"></icon>{{langData.salesLabel[lang]}}：{{item.saleCount}}</view>
+                    <view class="label"><icon class="icons ico_zx"></icon>{{langData.consultLabel[lang]}}：{{item.consultCount}}</view>
                 </view>
             </view>
         </navigator>
@@ -92,8 +104,8 @@
 <view class="wykgs_mdl">
     <view class="wykgs_title">
         <icon class="icons ico_dp"></icon>
-        <text class="tit1">我要开公司</text>
-        <text class="tit2">/ 创业第一步，注册梦想起点</text>
+        <text class="tit1">{{langData.companyTitle[lang]}}</text>
+        <text class="tit2">/ {{langData.companyDes[lang]}}</text>
     </view>
     <view class="wykgs_list clearfix">
         <view class="item" style="background-image:url({{domainUrl}}/images/services/kgs_img01.png);">
@@ -112,15 +124,16 @@
 </view>
 
 <!-- 推荐服务 -->
-<view class='recommend_mdl'>
+<view class='recommend_mdl' style="margin-top:10rpx;">
     <view class='serve_tit'>
-        <navigator class='more' url='/pages/services/services-classify/services-classify?tag=0'>{{langData.moreBtn}}</navigator>
-        <view class='h3'>推荐服务</view>
+        <view class="yd_title01" style="font-weight:bold;">{{langData.recommendTitle[lang]}}</view>
     </view>
+    <!-- <default m-name="dfList" m-num="3" wx:if="{{!serveRecommendFinish && !serveRecommendList}}"></default> 
+    <view class='serve_list box_shadow'  wx:if="{{serveRecommendFinish && serveRecommendList}}">-->
     <view class='serve_list box_shadow'>
         <navigator 
-            class='li' url='/pages/services/services-intro/services-intro?id={{item.id}}'
-            wx:for="{{recommendData}}" wx:key="recommendData{{index}}"
+            class='li' url='/pages/services/serve-detail/serve-detail?id={{item.id}}'
+            wx:for="{{serveRecommendList}}" wx:key="serveRecommendList{{index}}"
         >
             <image 
                 class='icon bg0{{index+1}}' 
@@ -133,8 +146,8 @@
                 </view>
                 <view class='h3'>{{item.title}}</view>
                 <view class='tj_data'>
-                    <view class="label"><icon class="icons ico_xl"></icon>销量：{{item.xiaoliang}}</view>
-                    <view class="label"><icon class="icons ico_zx"></icon>咨询：{{item.zixun}}</view>
+                    <view class="label"><icon class="icons ico_xl"></icon>{{langData.salesLabel[lang]}}：{{item.xiaoliang}}</view>
+                    <view class="label"><icon class="icons ico_zx"></icon>{{langData.consultLabel[lang]}}：{{item.zixun}}</view>
                 </view>
             </view>
         </navigator>
@@ -142,49 +155,72 @@
 </view>
 
 <!-- 热门服务供应商 -->
-<view class="gys_mdl">
+<view class="gys_mdl" wx:if="{{!supplierFinish || supplierList.length>0}}">
     <view class='serve_tit'>
-        <navigator class='more' url=''>{{langData.moreBtn}}</navigator>
-        <view class='h3'>热门服务供应商</view>
+        <view class='h3'>{{langData.gysTitle[lang]}}</view>
     </view>
-    <view class="gys_list box_shadow">
-        <view class="gys_item clearfix">
-            <image class="headimg" src="{{domainUrl}}/images/services/gys_img01.jpg"></image>
+    <!-- 未加载时显示 -->
+    <view class="gys_list box_shadow"  wx:if="{{!supplierFinish && !supplierList}}">
+        <default m-name="recList" m-num="2"></default>
+    </view>
+    <view class="gys_list box_shadow" wx:if="{{supplierFinish && supplierList.length>0}}">
+        <navigator 
+            class="gys_item clearfix" hover-class="hover"
+            wx:for="{{supplierList}}" wx:key="supplierList{{index}}"
+            url="/pages/services/supplier-list/supplier-list?id={{item.id}}"
+        >   
+            <image class="headimg" src="{{item.logo}}"></image>
             <view class="info">
-                <view class="btn">服务 ></view>
-                <view class='h3'>广州园叮互联网服务有限公司</view>
+                <view class="btn">{{langData.serveBtn[lang]}}</view>
+                <view class='h3'>{{item.name}}</view>
+                <!-- 认证、评分 -->
                 <view class="rz_info">
-                    <view class="label2">自营</view>
+                    <view class="label1" wx:if="{{item.type==1}}">
+                        <icon class="icons ico_rz"></icon>{{langData.attestationLabel[lang]}}
+                    </view>
+                    <view class="label2" wx:if="{{item.type==2}}">{{langData.selfsupportLabel[lang]}}</view>
                     <view class="star_box">
-                        <view wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" class="star {{index<4?'act':''}}"></view>
+                        <view 
+                            wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" 
+                            class="star {{index < item.star?'act':''}}"
+                        ></view>
                     </view>
                 </view>
+                <!-- 销量、咨询量 -->
                 <view class='tj_data'>
-                    <view class="label"><icon class="icons ico_xl"></icon>销量：123</view>
-                    <view class="label"><icon class="icons ico_zx"></icon>咨询：123</view>
+                    <view class="label">
+                        <icon class="icons ico_xl"></icon>
+                        {{langData.salesLabel[lang]}}：{{item.saleCount}}
+                    </view>
+                    <view class="label">
+                        <icon class="icons ico_zx"></icon>
+                        {{langData.consultLabel[lang]}}：{{item.consultCount}}
+                    </view>
                 </view>
             </view>
-        </view>
-        <view class="gys_item clearfix">
+        </navigator>
+        <!-- <view class="gys_item clearfix">
             <image class="headimg" src="{{domainUrl}}/images/services/gys_img02.jpg"></image>
             <view class="info">
-                <view class="btn">服务 ></view>
+                <view class="btn">{{langData.serveBtn[lang]}}</view>
                 <view class='h3'>广州五行教育科技有限公司</view>
                 <view class="rz_info">
-                    <view class="label1"><icon class="icons ico_rz"></icon>平台认证</view>
+                    <view class="label1"><icon class="icons ico_rz"></icon>{{langData.attestationLabel[lang]}}</view>
                     <view class="star_box">
-                        <view wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" class="star {{index<4?'act':''}}"></view>
+                        <view wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" class="star {{index<item.star?'act':''}}"></view>
                     </view>
                 </view>
                 <view class='tj_data'>
-                    <view class="label"><icon class="icons ico_xl"></icon>销量：123</view>
-                    <view class="label"><icon class="icons ico_zx"></icon>咨询：123</view>
+                    <view class="label"><icon class="icons ico_xl"></icon>{{langData.salesLabel[lang]}}：123</view>
+                    <view class="label"><icon class="icons ico_zx"></icon>{{langData.consultLabel[lang]}}：123</view>
                 </view>
             </view>
-        </view>
+        </view> -->
     </view>
 </view>
 
+<!-- 返回顶部 -->
+<default m-name="backTop" m-top="60" is-show="{{backTopShow}}"></default>
 
 
 <!-- 消息提醒 -->

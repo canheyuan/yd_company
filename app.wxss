@@ -12,11 +12,9 @@ image{width:auto; height:auto;}
 .f_orange{color:#ff6000!important;}
 
 /* 小图标背景 */
-/* .icons {display:inline-block; background:url(https://www.5iparks.com/static/yuanding/images/icons.png?v=1) no-repeat; background-size:500rpx 500rpx;}
-.icons2 {display:inline-block; background:url(https://www.5iparks.com/static/yuanding/images/icons2.png?v=1) no-repeat; background-size:500rpx 500rpx;} */
+.icons {display:inline-block; background:url(https://www.5iparks.com/static/yuanding/images/icons.png?v=1) no-repeat; background-size:500rpx 500rpx;}
+.icons2 {display:inline-block; background:url(https://www.5iparks.com/static/yuanding/images/icons2.png?v=1) no-repeat; background-size:500rpx 500rpx;}
 
-.icons {display:inline-block; background:url(http://192.168.5.148:8080/images/icons.png?v=2) no-repeat; background-size:500rpx 500rpx;}
-.icons2 {display:inline-block; background:url(http://192.168.5.148:8080/images/icons2.png?v=2) no-repeat; background-size:500rpx 500rpx;}
 
 /* 通用按钮 */
 .blue_btn{height:100rpx; line-height:100rpx; text-align: center; border-radius:50rpx; background:#6592fe; color:#fff; font-size:40rpx; box-shadow: 0 10rpx 34rpx rgba(101,146,254,.62);}

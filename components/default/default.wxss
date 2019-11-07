@@ -1,0 +1,69 @@
+@import '/app.wxss';
+
+/* 返回顶部 */
+.back_top{width:80rpx; height:80rpx; text-align: center; background:#fff; border:4rpx solid #dcdcdc; border-radius:100%; position:fixed; bottom:20rpx; right:20rpx; z-index:99; box-sizing:border-box;}
+.back_top .ico_top{width:50rpx; height:50rpx; background-position: -146rpx -64rpx; margin-top:15rpx;}
+
+/* 通用列表 */
+.default_list{padding:0 0rpx; animation:flicker 1s linear 0s infinite alternate; height:100%; overflow: hidden; }
+.default_list .li{margin-bottom:40rpx; overflow: hidden;}
+.default_list .li .img{width:150rpx; height:150rpx; background:#eee; float:left; margin-right:30rpx; border-radius:10rpx;}
+.default_list .li .info{overflow:hidden;}
+.default_list .li .info .h3{height:34rpx; background:#eee; margin-bottom:20rpx; width:80%}
+.default_list .li .info .p{height:26rpx; background:#eee; margin-bottom:10rpx;}
+.default_list .li .info .p2{width:50%;}
+.default_list.right .li .img{float:right; margin:0 0 0 30rpx;}
+@keyframes flicker{
+    0%{opacity: 1;}
+    100%{opacity: .4;}
+}
+
+/* 服务市场菜单 */
+.menu_list{ display: flex; flex-wrap: wrap; width:100%; padding:0rpx 0 10rpx;  margin:10rpx 0;}
+.menu_list .a{ width:20%; text-align: center; padding:25rpx 0; font-size:0;}
+.menu_list .a .icon{display:inline-block; width:70rpx; height:70rpx; background:#eee; margin-bottom:10rpx; border-radius:100%;}
+.menu_list .a .text{display:block; width:70%; height:26rpx; background:#eee; margin:0 auto;}
+
+
+/* 服务市场推荐服务 */
+.rec_li{height:80rpx; padding:26rpx 15rpx; overflow: hidden;}
+.rec_li .icon{width:80rpx; height:80rpx; background:#eee; float:left; margin-right:30rpx; border-radius:10rpx;}
+.rec_li .info{overflow:hidden;}
+.rec_li .info .h3{height:34rpx; background:#eee; margin-bottom:20rpx; width:80%}
+.rec_li .info .p{height:26rpx; background:#eee; margin-bottom:10rpx;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -53,7 +53,7 @@
     <!-- 服务列表 -->
     <view class='serve_list box_shadow'>
         <navigator 
-            class='li' url='/pages/services/services-intro/services-intro?id={{item.id}}'
+            class='li' url='/pages/services/serve-detail/serve-detail?id={{item.id}}'
             wx:for="{{serveList}}" wx:key="serveList{{index}}"
         >
             <image 

@@ -46,6 +46,7 @@ Page({
         wx.removeStorageSync('lastMsgTime');
         wx.removeStorageSync('msgKey');
         //设置title
+        
         wx.setNavigationBarTitle({ title: app.chatData.toUser.nick });
 
         chatIm.getMsgFn(function (res) {
@@ -93,7 +94,6 @@ Page({
 
     //文本框获得焦点
     inputFocusFn(e) {
-        console.log('获得焦点', e);
         this.setData({ inputFocus: true });
     },
 

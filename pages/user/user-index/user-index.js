@@ -41,6 +41,7 @@ Page({
             { title: langData.activityBtn, ico_class: 'ico_act', link: '/pages/user/my-activity/my-activity', isShow: moduleSwitch.activity, isLast: false },
             { title: langData.orderBtn, ico_class: 'ico_order', link: '/pages/order/order-list/order-list', isShow: moduleSwitch.order && bOrder, isLast: false},
             { title: langData.borrowedBtn, ico_class: 'ico_wz', link: '/pages/supplies/borrowed-record/borrowed-record', isShow: moduleSwitch.supplies, isLast: false},
+            { title: '我的服务', ico_class: 'ico_serve', link: '/pages/services/serve-order-list/serve-order-list', isShow: moduleSwitch.serve, isLast: false },
             { title: langData.complaintBtn, ico_class: 'ico_complaint', link: '/pages/complaint/complaint-list/complaint-list', isShow: moduleSwitch.complaint, isLast: true},
             { title: langData.recommendBtn2, ico_class: 'ico_recommend', link: '/pages/recommend/recommend-record/recommend-record', isShow: recommendShow, isLast: true},
 
@@ -116,7 +117,8 @@ Page({
         } else {
             wx.showTabBar();
         }
-        app.globalData.langType = langType;;
+        app.globalData.langType = langType
+        app.globalData.lang = langType
         wx.setStorageSync('langtype', langType);
         //设置语言,判断是否切换语言
         app.loadLangFn(this, 'userIndex', (res) => {

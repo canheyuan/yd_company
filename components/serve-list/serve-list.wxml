@@ -1,60 +1,37 @@
 <!-- 服务列表 -->
 <view class='serve_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
     <navigator 
-        class='li' url=''
+        class='li' url='/pages/services/serve-detail/serve-detail?id={{item.id}}'
         wx:for="{{listInfo.list}}" wx:key="serve{{index}}"
     >
-        <image 
-            class='icon bg0{{index%4+1}}' 
-            src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
-        ></image>
+        <image class='icon' src='{{item.mainImg}}'></image>
         <view class='info'>
-            <view class="price_box">
-                <view class="price">￥1000</view>
-                <view class="y_price">￥1200</view>
+            <view class="price_box" wx:if="{{item.priceType==3}}">
+                <view class="price">面议</view>
             </view>
-            <view class='h3'>{{item.title}}</view>
+            <view class="price_box" wx:if="{{item.priceType==2}}">
+                <view class="price">￥{{item.price}}</view>
+                <view class="y_price" style="text-decoration:none;">订金</view>
+            </view>
+            <view class="price_box" wx:if="{{item.priceType==1}}">
+                <view class="price">￥{{item.price}}</view>
+                <view class="y_price">￥{{item.originalPrice}}</view>
+            </view>
+
+            <view class='h3'>{{item.name}}</view>
             <view class='tj_data'>
-                <view class="label"><icon class="icons ico_xl"></icon>销量：{{item.xiaoliang}}</view>
-                <view class="label"><icon class="icons ico_zx"></icon>咨询：{{item.zixun}}</view>
+                <view class="label"><icon class="icons ico_xl"></icon>{{langData.salesLabel[lang]}}：{{item.saleCount}}</view>
+                <view class="label"><icon class="icons ico_zx"></icon>{{langData.consultLabel[lang]}}：{{item.consultCount}}</view>
             </view>
-            <view class="rz_info" wx:if="{{!item.ziying}}">
-                <view class="label1"><icon class="icons ico_rz"></icon>平台认证</view>
-                <text class="txt">广州五行教育科技有限公司</text>
+            <view class="rz_info" wx:if="{{item.supplier.type==1}}">
+                <view class="label1"><icon class="icons ico_rz"></icon>{{langData.attestationLabel[lang]}}</view>
+                <text class="txt">{{item.supplier.name}}</text>
             </view>
-            <view class="rz_info" wx:if="{{item.ziying}}">
-                 <view class="label2">平台自营服务</view>
-            </view>
-        </view>
-    </navigator>
-</view>
-<!-- 服务列表 -->
-<view class='serve_list' wx:if="{{listInfo.list.length>0 && listInfo.list && false}}">
-    <navigator 
-        class='li' url=''
-        wx:for="{{listInfo.list}}" wx:key="serve{{index}}"
-    >
-        <image class='img bg0{{index%4+1}}' src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'></image>
-        <view class='info'>
-            <view class="price_box">
-                <view class="price">￥1000</view>
-                <view class="y_price">￥1200</view>
-            </view>
-            <view class='h3'>{{item.title}}</view>
-            <view class='p'>
-                <view class="label"><icon class="icons ico_xl"></icon>销量：{{item.xiaoliang}}</view>
-                <view class="label"><icon class="icons ico_zx"></icon>咨询：{{item.zixun}}</view>
-            </view>
-            <view class="rzxx" wx:if="{{!item.ziying}}">
-                <view class="ptrz_label"><icon class="icons ico_rz"></icon>平台认证</view>
-                <view class="c_name">广州五行教育科技有限公司</view>
-            </view>
-            <view class="rzxx" wx:if="{{item.ziying}}">
-                <view class="label">平台自营服务</view>
+            <view class="rz_info" wx:if="{{item.supplier.type==2}}">
+                 <view class="label2">{{langData.selfsupportLabel2[lang]}}</view>
             </view>
         </view>
     </navigator>
-    <view class='more_tip' wx:if="{{listInfo.tipTxt}}"><view class='txt'>{{listInfo.tipTxt}}</view></view>
 </view>
 
 <!-- 暂无状态 -->

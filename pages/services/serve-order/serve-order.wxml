@@ -1,3 +1,4 @@
+<form bindsubmit="formSubmit" report-submit="true">
 
 <!-- 头部 -->
 <view class="confirm_head">
@@ -30,7 +31,7 @@
             <view class='dt'>用户姓名</view>
             <view class='dd'>
                 <input 
-                    class='input' type='text' name="contact" value=''
+                    class='input' type='text' name="name" value=''
                     placeholder='请填写姓名' placeholder-class='pl_input'  
                 />
             </view>
@@ -52,8 +53,9 @@
             <view class='dt fl_none'>备注信息</view>
             <view class='dd'>
                 <textarea 
-                    class="textarea" placeholder="需进行物流配送的服务商品请备注配送地址(100字以内)" placeholder-class="placeholder"
-                    maxlength="100"
+                    class="textarea" maxlength="100" name="remark"
+                    placeholder="需进行物流配送的服务商品请备注配送地址(100字以内)" 
+                    placeholder-class="placeholder"
                 ></textarea>
             </view>
         </view>
@@ -63,9 +65,9 @@
             <view class='dt'>购买数量</view>
             <view class='dd'>
                 <view class="buy_num">
-                    <icon class="icons ico_minus"></icon>
-                    <text class="num">999</text>
-                    <icon class="icons ico_add"></icon>
+                    <icon class="icons ico_minus" bindtap="changeNumFn" data-type="minus"></icon>
+                    <text class="num">{{payNum}}</text>
+                    <icon class="icons ico_add" bindtap="changeNumFn" data-type="add"></icon>
                 </view>
             </view>
         </view>
@@ -77,10 +79,10 @@
 
 <!-- 底部按钮 -->
 <view class="confirm_btm box_shadow">
-    <button class="s_blue_btn" hover-class="hover">确认下单</button>
+    <button class="s_blue_btn" hover-class="hover" form-type="submit">确认下单</button>
     <view class="price">应付总额：<text class="f_orange">￥1000.00</text></view>
 </view>
-
+</form>
 
 
 

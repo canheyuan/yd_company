@@ -61,7 +61,7 @@
     <view class='title'>{{langData.accessoryArea}}</view>
     <view class='ul'>
         <navigator 
-            class='li' url='{{filePath}}
+            class='li' url='{{filePath}}'
             wx:for="{{policyData.attachmentList}}" wx:key="{{index}}" 
         >{{langData.accessory}}{{index}}：{{item.fileName}}</navigator>
     </view>

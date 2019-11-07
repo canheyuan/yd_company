@@ -10,14 +10,16 @@
         >
             <view class="title">
                 {{screenItem.son[screenItem.index].name}}
-                <icon class="{{screenItem.son.length==1?'icons ico_sort '+ screenItem.sortClass :'tri'}}"></icon>
+                <icon class="{{screenItem.son.length==1?'icons ico_sort '+ (screenIndex==sIndex?screenItem.sortClass:'') :'tri'}}"></icon>
             </view>
         </view>
     </view>
+    <!-- 菜单下拉弹窗 -->
     <view class="pop" hidden="{{screenPopHide}}" >
         <view 
             class="option" wx:for="{{screenList[screenIndex].son}}" wx:key="screenPop{{index}}"
-            bindtap="tagChangeSonFn" data-pindex="{{screenIndex}}" data-index="{{index}}"
+            bindtap="tagChangeSonFn" data-pindex="{{screenIndex}}" 
+            data-index="{{index}}" data-type="{{item.orderType}}"
         ><icon class="icons ico_gou {{screenList[screenIndex].index==index?'show':''}}"></icon>{{item.name}}</view>
     </view>
     <view class="mask_bg screen_mask" bindtap="closeMaskFn" hidden="{{screenPopHide}}"></view>
@@ -25,6 +27,12 @@
 
 
 <!-- 循环列表 -->
-<view wx:for="{{tagList}}" wx:key="tagList{{index}}"  hidden="{{tagIndex!=index}}" wx:if="{{item.show}}">
-    <serve-list target-page="serveList" tag-type="{{item.type}}" reach-data="{{item.reach}}"></serve-list>
-</view>
+<serve-list 
+    wx:if="{{listReach}}"
+    target-page="serveList
+    reach-data="{{listReach}}"
+    order-type="{{screenList[screenIndex].orderType}}"
+    is-asc="{{screenList[screenIndex].isAsc}}"
+    category-id="{{categoryId}}"
+    supplier-id="{{supplierId}}"
+></serve-list>

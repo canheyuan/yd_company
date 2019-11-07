@@ -7,7 +7,7 @@ Page({
         langType: '',    //语言类型
         tagList: [
             { name: '全部', type: 1, reach: 1, show: true },
-            { name: '已支付', type: 2, reach: 1, show: false },
+            { name: '已下单', type: 2, reach: 1, show: false },
             { name: '已完成', type: 3, reach: 1, show: false },
             { name: '取消/售后', type: 4, reach: 1, show: false }
         ],
@@ -18,13 +18,13 @@ Page({
     onLoad: function (options) {
         //设置语言,判断是否切换语言
         app.loadLangFn(this, 'services', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+            //wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
         });
     },
 
     //生命周期函数--监听页面显示
     onShow: function () {
-
+        
     },
 
     //选项卡切换

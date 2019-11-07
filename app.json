@@ -189,6 +189,7 @@
         ]
     },
     "usingComponents": {
+        "default":"/components/default/default",
         "list-nothing": "/components/result-nothing/result-nothing",
         "default-list": "/components/default-list/default-list",
         "reach-load": "/components/reach-load/reach-load",

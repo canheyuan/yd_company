@@ -1,10 +1,8 @@
 <!-- 下拉刷新动画 -->
 <reach-load></reach-load>
 
-<!------------------ 返回顶部按钮 ------------------>
-<view class='back_top box_shadow' bindtap="backTopFn"  hidden="{{!backTopShow}}">
-    <icon class='icons ico_top'></icon>
-</view>
+<!-- 返回顶部 -->
+<default m-name="backTop" m-top="20" is-show="{{backTopShow}}"></default>
 
 <!------------------ 登录提示弹窗 ------------------>
 <view hidden="{{isLoginPopHide}}">
@@ -62,28 +60,31 @@
 <view class='index_mdl02'>
     <!------------------ 通知公告_Start ------------------>
     <view class='notice_mdl'>
-        <image wx:if="{{langData}}" class='notice_img' lazy-load="true" src='{{domainUrl}}/images/index/{{langData.noticeImg}}'></image>
+        <image 
+            wx:if="{{langData}}" class='notice_img' lazy-load="true" 
+            src='{{domainUrl}}/images/index/{{langData.noticeImg}}'
+        ></image>
         <view class='notice_ctn'>
-        
-        <view class='notice_slide' wx:if="{{noticeData.newest}}">
-            <view class='label l_orange'>{{langData.newText}}</view>
-            <navigator 
-                class='a' 
-                url="/pages/message/notice-details/notice-details?id={{noticeData.newest.noticeId}}"
-            >{{noticeData.newest.title}}</navigator>
-        </view>
-        
-        <swiper
-            wx:if="{{noticeData.list>0}}" class='notice_slide' autoplay="true" 
-            interval="3000" duration="500" 
-            vertical="true" circular="true" display-multiple-items="1" 
-        >
-            <swiper-item wx:for="{{noticeData.list}}" wx:key="noticeData{{index}}">
-                <view class='label l_blue'>{{langData.recentText}}</view>
-                <navigator class='a' url="/pages/message/notice-details/notice-details?id={{item.noticeId}}">{{item.title}}</navigator>
-            </swiper-item>
-        </swiper>
-
+            <view class='notice_slide' wx:if="{{noticeData.newest}}">
+                <view class='label l_orange'>{{langData.newText}}</view>
+                <navigator 
+                    class='a' 
+                    url="/pages/message/notice-details/notice-details?id={{noticeData.newest.noticeId}}"
+                >{{noticeData.newest.title}}</navigator>
+            </view>
+            <swiper
+                wx:if="{{noticeData.list>0}}" class='notice_slide' autoplay="true" 
+                interval="3000" duration="500" 
+                vertical="true" circular="true" display-multiple-items="1" 
+            >
+                <swiper-item wx:for="{{noticeData.list}}" wx:key="noticeData{{index}}">
+                    <view class='label l_blue'>{{langData.recentText}}</view>
+                    <navigator 
+                        class='a' 
+                        url="/pages/message/notice-details/notice-details?id={{item.noticeId}}"
+                    >{{item.title}}</navigator>
+                </swiper-item>
+            </swiper>
         </view>
     </view>
     <!------------------ 通知公告_End ------------------>

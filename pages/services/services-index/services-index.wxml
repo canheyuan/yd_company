@@ -1,7 +1,6 @@
 <!-- 下拉刷新动画 -->
 <reach-load></reach-load>
 
-
 <view class='serve_page'>
     <!-- 广告图 -->
     <!-- <view class='serve_banner'>

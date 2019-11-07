@@ -136,12 +136,12 @@ Page({
     //初始化聊天界面最近会话列表
     initRecentContactList: function () {
         var that = this;
-        webim.getRecentContactList({//获取会话列表的方法
+        //获取会话列表的方法
+        webim.getRecentContactList({
             'Count': 20   //最近的会话数 ,最大为 100
         }, function (resp) {
-            if (app.globalData.apiMsgSwitch) { console.log('获取最近会话：', resp); }
-            var sessMap = webim.MsgStore.sessMap();
 
+            var sessMap = webim.MsgStore.sessMap();
             if (resp.SessionItem) {
                 var sessionList = resp.SessionItem
                 if (sessionList.length == 0) {
@@ -151,6 +151,7 @@ Page({
                     var userId = sessionList.map((item, index) => {
                         return item.To_Account
                     })
+                    
                     that.getAvatar(userId, sessionList, function (data) {
                         var msgStorage = wx.getStorageSync('msgStorage') ? wx.getStorageSync('msgStorage') : [];
                         var lastMsg = wx.getStorageSync('lastMsg') ? wx.getStorageSync('lastMsg') : []; //最后消息，用于下次访问判断是否有未读消息

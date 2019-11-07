@@ -1,24 +1,26 @@
 const mtjwxsdk = require('./utils/mtj-wx-sdk.js');  //百度统计
 
-//app.js
 var appConfig = require('config.js');   //不同小程序的配置信息
 let langJson = require('lang.js');   //加载语言文件包
+let langNewJson = require('lang_new.js');   //加载语言文件包
 let webim = require('utils/webim_wx.js');   //腾讯云IM
 let chatIm = require('utils/chatIm.js');    //封装腾讯云接口
 
 App({
     globalData: {
         appVersion: '1.3.3',       //上传的版本号
-        appVersionDate: '20191029', //版本更新的日期
+        appVersionDate: '20191106', //版本更新的日期
 
         langType: '',     //当前小程序的语言版本
         langData: null,
 
+        //新的语言json格式
+        lang: '',    //当前小程序的语言版本
+        langNewData: null,
+
         domainUrlDev: 'http://192.168.0.244/yuanding',        //接口测试机
-        domainUrl:'http://192.168.5.148:8080',
-        //domainUrl: 'https://www.5iparks.com/static/yuanding', //图片正式机
+        domainUrl: 'https://www.5iparks.com/static/yuanding', //图片正式机
         jkDevUrl: 'http://192.168.0.244:8080/api',  //图片开发板
-        
 
         //判断页面是否刷新参数（刷新：true，不刷新：false）
         foundTag: 0,        //进入发现页，0新鲜事，1政策
@@ -34,7 +36,7 @@ App({
         loginCode: '',        //微信登录获取code
         isLogin: false,       //登录状态
         isWxLogin: false,     //控制是否正在加载获取用户信息接口
-        isChatLogin: true,    //控制是否调用聊天登录,true:开启，false:关闭
+        isChatLogin: false,    //控制是否调用聊天登录,true:开启，false:关闭
 
         sessionId: '',        //登录后会生成的一个sid
         loginInfo: null,      //缓存用户登录信息
@@ -72,13 +74,16 @@ App({
 
         //获取语言
         this.globalData.langData = langJson;
+        this.globalData.langNewData = langNewJson;
         if (this.globalData.moduleSwitch.lang){
             this.globalData.langType = wx.getStorageSync('langtype') ? wx.getStorageSync('langtype') : 'zh';
+            this.globalData.lang = wx.getStorageSync('langtype') ? wx.getStorageSync('langtype') : 'zh';
             if (this.globalData.langType == 'en') {
                 wx.hideTabBar();
             }
         }else{
             this.globalData.langType = 'zh'
+            this.globalData.lang = 'zh'
         }
 
         //判断是否是开发版本，是的话调用开发版的前缀
@@ -111,6 +116,23 @@ App({
         }
     },
 
+    //新的json格式，当前页加载语言文件包(页面this，页面对应json的字段，)
+    loadLangNewFn(pageThis, page, callback) {
+        //设置语言,判断是否切换语言
+        var langType = this.globalData.lang;
+        if (langType != pageThis.data.lang) {
+            var newLangData = this.globalData.langNewData[page];
+            var langPublicData = this.globalData.langNewData.public;
+            newLangData.public = langPublicData;
+            var setDatas = {
+                lang: langType,
+                langData: newLangData
+            }
+            pageThis.setData(setDatas);
+            callback && callback(newLangData,langType);
+        }
+    },
+
 
     //统一的调用接口函数，接口返回错误码code（206:未认证企业；207：sessionId失效；0：正常）
     requestFn(option) {
@@ -121,6 +143,7 @@ App({
             isCloseLoading  : true,  //是否关闭Loading
             loadTitle       : '数据加载中',
             isLoginTip      : false,    //是否弹出未登录提示
+            isOtherTip      : true,     //是否显示其他提示信息
             isSessionId     : true,  //是否传sessionId
             url             : '', //前缀不用写
             header          : 'application/json', //另一种（application/x-www-form-urlencoded）
@@ -176,7 +199,9 @@ App({
                     
                 } else {
                     this.globalData.indexReach = true;
-                    wx.showToast({ title: res.data.msg, icon: 'none', duration: 3000 });
+                    if(opt.isOtherTip){
+                        wx.showToast({ title: res.data.msg, icon: 'none', duration: 3000 });
+                    }
                 }
                 opt.successOther && opt.successOther(res);
 

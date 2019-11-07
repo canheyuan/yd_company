@@ -6,7 +6,6 @@ page{}
 .default_list .li .info .h3{height:34rpx; background:#eee; margin-bottom:20rpx; width:80%}
 .default_list .li .info .p{height:26rpx; background:#eee; margin-bottom:10rpx;}
 .default_list .li .info .p2{width:50%;}
-
 .default_list.right .li .img{float:right; margin:0 0 0 30rpx;}
 
 @keyframes flicker{

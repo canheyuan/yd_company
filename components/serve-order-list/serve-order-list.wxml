@@ -9,7 +9,7 @@
             <view class="label1"><icon class="icons ico_rz"></icon>平台认证</view>
             <text class="txt">广州五行教育科技有限公司</text>
         </view>
-        <view class="gys_info">
+        <view class="gys_info" bindtap="gotoDetailFn" data-id="id">
             <image 
                 class='icon bg01' 
                 src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
@@ -28,8 +28,14 @@
             </view>
         </view>
         <view class="btm">
-            <view class="btn btn01">取消服务</view>
-            <view class="btn btn02">服务评价</view>
+            <!-- 撤回申请按钮 -->
+            <view class="btn btn01" bindtap="openTipPop" data-type="withdraw">撤回申请</view>
+            <!-- 取消服务按钮 -->
+            <navigator class="btn btn01" url="/pages/services/serve-cancel/serve-cancel">取消服务</navigator>
+            <!-- 服务完成按钮 -->
+            <view class="btn btn02" bindtap="openTipPop" data-type="finish">服务完成</view>
+            <!-- 服务评价按钮 -->
+            <view class="btn btn02" bindtap="openTipPop" data-type="evaluation">服务评价</view>
         </view>
     </view>
 </view>
@@ -40,7 +46,7 @@
         <view class='pop_mdl'>
             <view class='h3'>{{popData.title}}</view>
             <text class='alert'>{{popData.des}}</text>
-            <view class='star_list'>
+            <view class='star_list' hidden="{{!popData.isScore}}">
                 <view 
                     class='icons {{starScore>starItem?"cur":""}}'
                     wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}" wx:for-item="starItem" 

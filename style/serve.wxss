@@ -19,11 +19,12 @@
 .gys_item .info .rz_info .label2{display:inline-block; padding:0 20rpx; height:38rpx; line-height:38rpx; font-size:24rpx; color:#fff; background:#6592fe; border-radius:19rpx; vertical-align: top;  margin-right:20rpx; }
 
 .gys_item .star_box{display:inline-block;vertical-align: top; line-height:0; padding:7rpx 0;}
-.gys_item .star_box .star{display:inline-block; width:25rpx; height:24rpx; margin-right:2rpx; background:url(http://192.168.5.148:8080/images/services/s_star.png) no-repeat; background-size:25rpx 24rpx; }
-.gys_item .star_box .star.act{background-image:url(http://192.168.5.148:8080/images/services/s_star_act.png);}
+.gys_item .star_box .star{display:inline-block; width:25rpx; height:24rpx; margin-right:2rpx; background:url(https://www.5iparks.com/static/yuanding/images/services/s_star.png) no-repeat; background-size:25rpx 24rpx; }
+.gys_item .star_box .star.act{background-image:url(https://www.5iparks.com/static/yuanding/images/services/s_star_act.png);}
 
 .gys_item:last-child{margin-bottom: 0;}
 .gys_item:last-child .info{border-bottom:none; padding-bottom:0; }
+.gys_item.hover .info .h3{color:#4a7df6;}
 
 /* 筛选头部 */
 /* 使用页面：supplier-list、 */
@@ -58,7 +59,7 @@
 .serve_list .li .price_box .price{font-size:32rpx; color:#ff6000; font-weight: bold;}
 .serve_list .li .price_box .y_price{font-size:24rpx; color:#9d9d9d; text-decoration: line-through;}
 .serve_list .li .info{overflow:hidden; border-bottom:1rpx solid #e5e5e5; padding-bottom:25rpx; padding-right:15rpx;}
-.serve_list .li .info .h3{font-size:30rpx; line-height:40rpx; color:#333333; margin-bottom:15rpx;display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 2;}
+.serve_list .li .info .h3{font-size:30rpx; line-height:40rpx; color:#333333; margin-bottom:15rpx;display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 1;}
 .serve_list .li:last-child .info{border-bottom:0;}
 .serve_list .li .info .rz_info{margin-top:20rpx;}
 .serve_list .li .info .rz_info .label1{ display:inline-block; height:34rpx; line-height:34rpx; border-radius:19rpx; border:2rpx solid #f87602; font-size:22rpx; padding:0 15rpx 0 10rpx; color:#f87602; margin-right:20rpx; vertical-align: top;}

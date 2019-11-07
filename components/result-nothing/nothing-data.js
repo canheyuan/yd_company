@@ -114,6 +114,11 @@ function pageDataFn() {
             icon: '/images/icon/result_nothing.png',
             title: langData.companySearchList,
             des: ''
+        },
+        serve:{
+            icon: '/images/icon/result_nothing.png',
+            title: '暂无服务',
+            des: ''
         }
     }
     return page_data;

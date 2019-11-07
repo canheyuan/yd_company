@@ -1,2 +1,3 @@
-<!--pages/temp/layout/layout.wxml-->
-<text>pages/temp/layout/layout.wxml</text>
+
+<!-- 返回顶部 -->
+<default m-name="backTop" m-top="20" is-show="{{backTopShow}}"></default>

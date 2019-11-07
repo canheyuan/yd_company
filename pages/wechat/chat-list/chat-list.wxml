@@ -38,8 +38,8 @@
 <view class='usermsg_box'>
     <view 
         class='msg_box clearfix' 
-        wx:for="{{contactList}}" wx:key="{{index}}" 
-        data-userId="{{item.To_Account}}" bindtap="gotoChat" data-item="{{item}}"
+        wx:for="{{contactList}}" wx:key="contactList{{index}}" 
+        bindtap="gotoChat" data-userId="{{item.To_Account}}" data-item="{{item}}"
     >
         <view class='user_head'>
             <image src='{{item.C2cImage?item.C2cImage:domainUrl+"/images/default/df_userhead.png"}}'></image>
@@ -55,21 +55,6 @@
             </view>
         </view>
     </view>
-    <!-- <view  class='msg_box clearfix'  >
-        <view class='user_head'>
-            <image src='{{domainUrl+"/images/default/df_userhead.png"}}'></image>
-        </view>    
-        <view class='div_top'>
-            <view class='info_1'>
-                <text class='title'>111</text>
-                <text class='time'>111</text>
-            </view>
-            <view class='info_2'>
-                <view class='red' wx:if="{{item.unread}}">5</view>
-                <text class='txt'>发的水电费水电费使得水电费</text>
-            </view>
-        </view>
-    </view> -->
 </view>
 
 <!-- 登录提示 -->

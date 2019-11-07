@@ -4,15 +4,15 @@ Page({
     data: {
         domainUrl: app.globalData.domainUrl,
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
 
     },
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'services', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+        app.loadLangNewFn(this, 'serve', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
         });
     },
 
@@ -21,6 +21,17 @@ Page({
 
     },
 
+    //获取详情
+    getDetailFn(id) {
+        var _this = this;
+        app.requestFn({
+            url: `${id}`,
+            success: (res) => {
+                var detailData = res.data.data;
+                this.setData({ detailData: detailData });
+            }
+        })
+    },
 
     //页面相关事件处理函数--监听用户下拉动作
     onPullDownRefresh: function () {

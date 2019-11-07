@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "商标注册",
+    "navigationBarTitleText": "服务列表",
     "usingComponents": {
         "serve-list": "/components/serve-list/serve-list"
     }

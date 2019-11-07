@@ -24,7 +24,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.7",
-	"appid": "wx3796a1ffecc1e11e",
+	"appid": "wx89d739bab6040e66",
 	"projectname": "%E5%9B%AD%E5%8F%AE-%E4%BC%81%E4%B8%9A%E7%AB%AF",
 	"isGameTourist": false,
 	"simulatorType": "wechat",
@@ -61,28 +61,36 @@
 				},
 				{
 					"id": 1,
-					"name": "园叮开发版",
-					"pathName": "pages/index/index",
-					"query": "config=dev",
+					"name": "服务列表",
+					"pathName": "pages/services/serve-list/serve-list",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": 2,
-					"name": "园叮佳隆本地版",
-					"pathName": "pages/index/index",
-					"query": "config=local"
+					"name": "服务订单详情",
+					"pathName": "pages/services/serve-order-detail/serve-order-detail",
+					"query": "",
+					"scene": null
 				},
 				{
 					"id": 3,
-					"name": "pages/temp/layout/layout",
-					"pathName": "pages/temp/layout/layout",
+					"name": "服务确认订单",
+					"pathName": "pages/services/serve-order/serve-order",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": 4,
-					"name": "服务订单详情",
+					"name": "服务分类",
 					"pathName": "pages/services/serve-category/serve-category",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "服务市场首页",
+					"pathName": "pages/services/serve-index/serve-index",
 					"query": "",
 					"scene": null
 				}

@@ -1,9 +1,11 @@
+
+<block wx:if="{{serveData.level1.length>0}}">
 <!-- 左边 -->
 <view class='serve_menu'>
     <view 
-        class='li {{tagIndex==index?"act":""}}' 
-        wx:for="{{tagList}}" wx:key="{{index}}"
-        bindtap="tagChangeFn" data-index="{{index}}"
+        class='li {{levelId==item.id?"act":""}}' 
+        wx:for="{{serveData.level1}}" wx:key="level1{{index}}"
+        bindtap="tagChangeFn" data-id="{{item.id}}"
     >{{item.name}}</view>
 </view>
 
@@ -17,7 +19,7 @@
             <input class="input" placeholder="搜个关键词试试" placeholder-class='placeholder' confirm-type="search" />
         </view>
     </view>
-
+ 
     <!-- 内容 -->
     <view class='serve_main'>
         <!-- Banner -->
@@ -26,9 +28,8 @@
         </view> -->
 
         <!-- 二级列表 -->
-        <view  wx:for="{{tagList[tagIndex].children}}" wx:key="{{index}}" class='list_box'>
+        <!-- <view  wx:for="{{tagList[tagIndex].children}}" wx:key="{{index}}" class='list_box'>
             <view class='title'><icon class='icons ico_tj' wx:if="{{tagIndex==0}}"></icon>{{item.name}}</view>
-             <!-- 三级列表 -->
             <view class='ul'>
                 <view  
                     wx:for="{{item.serviceList}}" wx:key="{{index}}"
@@ -37,43 +38,36 @@
                     <view class='text'>{{item.title}}</view>
                 </view>
             </view>
-        </view>
+        </view> -->
 
         <!-- 二级列表 -->
-        <view class='list_box'>
-            <view class='title'><icon class='icons ico_hot'></icon>热门服务</view>
+        <view 
+            class='list_box' hidden="{{levelId != serveItem2.parentId}}"
+            wx:for="{{serveData.level2}}" wx:key="level2{{index}}"
+            wx:for-item="serveItem2" wx:for-index="serveIndex2"
+        >
+            <!-- <view class='title'><icon class='icons ico_hot'></icon>{{serveItem2.name}}</view> -->
+            <view class='title'><icon class='icons ico_hot'></icon>{{serveItem2.name}}</view>
              <!-- 三级列表 -->
-            <view class='third_list'>
-                <view class='li'>
-                    <image class="icon" src="{{domainUrl}}/images/services/s_ico11.png"></image>
-                    <view class='text'>商标注册</view>
-                </view>
-                <view class='li'>
-                    <image class="icon" src="{{domainUrl}}/images/services/s_ico12.png"></image>
-                    <view class='text'>专利申请</view>
-                </view>
-                <view class='li'>
-                    <image class="icon" src="{{domainUrl}}/images/services/s_ico13.png"></image>
-                    <view class='text'>项目申报</view>
-                </view>
-                <view class='li'>
-                    <image class="icon" src="{{domainUrl}}/images/services/s_ico14.png"></image>
-                    <view class='text'>企业团建</view>
-                </view>
-                <view class='li'>
-                    <image class="icon" src="{{domainUrl}}/images/services/s_ico15.png"></image>
-                    <view class='text'>中期抵押贷</view>
-                </view>
-                <view class='li'>
-                    <image class="icon" src="{{domainUrl}}/images/services/s_ico16.png"></image>
-                    <view class='text'>企业社保开通</view>
+            <view  class='third_list clearfix' >
+                <view 
+                    class='li' hidden="{{serveItem2.id != serveItem3.parentId}}"
+                    wx:for="{{serveData.level3}}" wx:key="level3{{index}}"
+                    wx:for-item="serveItem3" wx:for-index="serveIndex3"
+                    bindtap="gotoSeverListFn" data-id="{{serveItem3.id}}"
+                >
+                    <image class="icon" src="{{serveItem3.icon}}"></image>
+                    <view class='text'>{{serveItem3.name}}</view>
                 </view>
             </view>
         </view>
-
     </view>
 
 </view>
+</block>
+
+<!-- 暂无状态 -->
+<list-nothing c-name="serve" wx:if="{{serveData.level1.length==0}}"></list-nothing>
 
 <!-- 成为服务商 -->
 <!-- <navigator class='btm_btn'>

@@ -1,0 +1,68 @@
+
+<!-- 返回顶部 -->
+<view 
+    wx:if="{{mName=='backTop'}}" hidden="{{!isShow}}" 
+    class='back_top box_shadow' style="bottom:{{mTop?mTop:20}}rpx;" bindtap="backTopFn"
+>
+    <icon class='icons ico_top'></icon>
+</view>
+
+
+<!-- 通用列表 -->
+<view wx:if="{{mName=='dfList'}}" class="default_list {{mClass}}">
+    <view 
+        class="li" wx:if="{{mNum>index}}" 
+        wx:for="{{[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]}}" wx:key="list{{index}}"
+    >
+        <view class="img"></view>
+        <view class="info">
+            <view class="h3"></view>
+            <view class="p"></view><view class="p"></view><view class="p p2"></view>
+        </view>
+    </view>
+</view>
+
+
+<!-- 服务市场菜单 -->
+<view wx:if="{{mName=='serveMenu'}}" class="menu_list {{mClass}}">
+    <view 
+        class="a" wx:if="{{mNum>index}}" 
+        wx:for="{{[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]}}" wx:key="menulist{{index}}"
+    >
+        <view class="icon"></view><view class="text"></view>
+    </view>
+</view>
+
+
+<!-- 服务市场推荐列表 -->
+<block wx:if="{{mName=='recList'}}">
+    <view 
+        class="rec_li" wx:if="{{mNum>index}}" 
+        wx:for="{{[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]}}" wx:key="menulist{{index}}"
+    >
+        <view class="icon"></view>
+        <view class="info">
+            <view class="h3"></view>
+            <view class="p"></view>
+        </view>
+
+    </view>
+</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

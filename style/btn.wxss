@@ -2,6 +2,7 @@
 .u_btn_wrap{padding:50rpx 100rpx 30rpx;}
 /* ------- 通用按钮 -------- */
 .u_btn{display:inline-block; box-sizing:border-box; text-align: center; height:100rpx;  line-height:100rpx; padding:0 30rpx; border-radius:50rpx; font-size:40rpx;}
+
 .u_btn.w100{ width:100%;}
 .u_btn.hover{opacity: .8;}
 .u_btn.med{height:70rpx; line-height:70rpx; border-radius:35rpx;  font-size:32rpx;}
@@ -9,8 +10,13 @@
 
 .u_btn.blue{ background:#6592fe; box-shadow: 0 10rpx 34rpx rgba(101,146,254,.62); color:#fff;}
 .u_btn.orange{background: linear-gradient(to right, #ff8a00, #ff6000); box-shadow: 0 10rpx 34rpx rgba(255,96,0,.62);  color:#fff;}
-.u_btn.white{background:#fff; border:2rpx solid #c2c2c2; color:#777; line-height:46rpx;}
+.u_btn.white{background:#fff; border:2rpx solid #c2c2c2; color:#777; line-height:96rpx;}
+.u_btn.white.med{line-height:66rpx;}
+.u_btn.white.small{line-height:46rpx;}
+/* 定位在最底部 */
+.u_btn.btm_fixed{position:fixed; bottom:0; left:0; width:100%; border-radius:0;}
 /*disabled要放最后 */
 .u_btn.disabled{background:#ccc; box-shadow:none; border-color:#ccc; color:#fff}
+
 
 
