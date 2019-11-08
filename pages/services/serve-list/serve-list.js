@@ -18,12 +18,12 @@ Page({
     //生命周期函数--监听页面加载
     onLoad: function (options) {
         this.setData({
-            supplierId: options.s_id ? options.s_id:'',
             categoryId: options.c_id ? options.c_id:''
         })
         //设置语言,判断是否切换语言
         app.loadLangNewFn(this, 'serve', (res, lang) => {
-            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
+            var pageTitle = options.title ? options.title : res.listTitle[lang]
+            wx.setNavigationBarTitle({ title: pageTitle });  //设置当前页面的title
             this.setData({
                 screenList: [
                     {

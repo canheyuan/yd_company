@@ -68,8 +68,8 @@
 				},
 				{
 					"id": 2,
-					"name": "服务订单详情",
-					"pathName": "pages/services/serve-order-detail/serve-order-detail",
+					"name": "服务订单列表",
+					"pathName": "pages/services/serve-order-list/serve-order-list",
 					"query": "",
 					"scene": null
 				},

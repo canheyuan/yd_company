@@ -28,6 +28,16 @@
             </view>
         </view>
         <view class="btm">
+            <!-- 星星评价 -->
+            <view class="fwpj_box">
+                <text class="tit">服务评价：</text>
+                <view class='u_star small'>
+                    <view 
+                        class='icon {{index < 4?"act":""}}' 
+                        wx:for="{{[0,1,2,3,4]}}"  wx:key="{{index}}"
+                    ></view>
+                </view>
+            </view>
             <!-- 撤回申请按钮 -->
             <view class="btn btn01" bindtap="openTipPop" data-type="withdraw">撤回申请</view>
             <!-- 取消服务按钮 -->
@@ -36,6 +46,8 @@
             <view class="btn btn02" bindtap="openTipPop" data-type="finish">服务完成</view>
             <!-- 服务评价按钮 -->
             <view class="btn btn02" bindtap="openTipPop" data-type="evaluation">服务评价</view>
+            
+            
         </view>
     </view>
 </view>
@@ -46,9 +58,9 @@
         <view class='pop_mdl'>
             <view class='h3'>{{popData.title}}</view>
             <text class='alert'>{{popData.des}}</text>
-            <view class='star_list' hidden="{{!popData.isScore}}">
+            <view class='u_star' hidden="{{!popData.isScore}}">
                 <view 
-                    class='icons {{starScore>starItem?"cur":""}}'
+                    class='icon {{starScore>starItem?"act":""}}'
                     wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}" wx:for-item="starItem" 
                     bindtap="starChangeFn"  data-star="{{index+1}}" 
                 ></view>

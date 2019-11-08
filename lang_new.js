@@ -831,6 +831,7 @@ module.exports = {
         attestationLabel: { zh: '平台认证', en: 'bbbbbbbbbb' },
         serveBtn: { zh: '服务 >', en: 'bbbbbbbbbb' },
         //服务列表：serve-list
+        listTitle: { zh: '服务列表', en: 'bbbbbbbbbb' },
         tagName01: { zh: '默认排序', en: 'bbbbbbbbbb' },
         tagName02: { zh: '发布时间', en: 'bbbbbbbbbb' },
         tagName03: { zh: '咨询量', en: 'bbbbbbbbbb' },

@@ -1,4 +1,6 @@
-@import '/app.wxss';   
+@import '/app.wxss';
+@import '/style/component.wxss';
+
 .my_serve_list .li{background:#fff;  margin-top:30rpx; position:relative;}
 .my_serve_list .li .company{background:#f6fcff; padding:20rpx;}
 .my_serve_list .li .company .status{float:right; font-size:24rpx; color:#fff;  height:38rpx; line-height:38rpx; padding:0 10rpx 0 15rpx; text-align: center; min-width:75rpx; background:url(https://www.5iparks.com/static/yuanding/images/status_icons.png) no-repeat 0 0; background-size:200rpx 400rpx; position:absolute; top:20rpx; right:0;}
@@ -29,4 +31,9 @@
 .my_serve_list .li .btm .btn{display:inline-block; padding:0 25rpx; height:46rpx; line-height:46rpx; border:2rpx solid #c2c2c2; font-size:28rpx; color:#777777; border-radius:25rpx; margin-left:10rpx;}
 .my_serve_list .li .btm .btn02{border-color:#6592fe; color:#6592fe;}
 
-.star_list{margin-top:30rpx;}
+
+.pop_mdl .u_star{display:block; margin:30rpx auto 0;}
+
+.fwpj_box{display:inline-block; margin-top:10rpx;}
+.fwpj_box .tit{display:inline-block; color:#666; font-size:26rpx; line-height:30rpx; vertical-align: top;}
+

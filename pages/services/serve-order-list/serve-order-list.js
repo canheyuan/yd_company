@@ -7,7 +7,9 @@ Page({
         langType: '',    //语言类型
         tagList: [
             { name: '全部', type: 1, reach: 1, show: true },
-            { name: '已下单', type: 2, reach: 1, show: false },
+            { name: '待确认', type: 2, reach: 1, show: false },
+            { name: '待验收', type: 2, reach: 1, show: false },
+            { name: '待评价', type: 2, reach: 1, show: false },
             { name: '已完成', type: 3, reach: 1, show: false },
             { name: '取消/售后', type: 4, reach: 1, show: false }
         ],

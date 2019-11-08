@@ -1,4 +1,6 @@
 {
     "navigationBarTitleText": "服务供应商",
-  "usingComponents": {}
+    "usingComponents": {
+        "serve-list": "/components/serve-list/serve-list"
+    }
 }

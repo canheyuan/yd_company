@@ -7,6 +7,7 @@ Page({
         langData: null,  //语言数据
         langType: '',    //语言类型
         
+        serveId: '', //4e31b88314367e857a78bbac4147307b
         detailData:null,
         payNum : 1, //购买数量
 
@@ -14,10 +15,17 @@ Page({
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
+
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'services', (res) => {
-            //wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
-        });
+        app.loadLangNewFn(this, 'serve');
+
+        //获取缓存详情信息
+        var detailData = wx.getStorageSync('serveDetail') ? wx.getStorageSync('serveDetail'):null; 
+        this.setData({
+            detailData: detailData,
+            serveId: detailData.id
+        })
+
     },
 
     //生命周期函数--监听页面显示
@@ -29,10 +37,14 @@ Page({
     getDetailFn(id) {
         var _this = this;
         app.requestFn({
-            url: `${id}`,
+            url: `/serviceInfo/detail/${id}`,
             success: (res) => {
+                console.log('服务详情：', res.data)
                 var detailData = res.data.data;
+                detailData.supplier.star = parseInt(detailData.supplier.star);
+                WxParse.wxParse('description', 'html', detailData.description, _this, 0);
                 this.setData({ detailData: detailData });
+                wx.setNavigationBarTitle({ title: detailData.name });  //设置当前页面的title
             }
         })
     },
@@ -52,23 +64,28 @@ Page({
         var formData = e.detail.value;
         var formId = e.detail.formId;
 
+        formData['serviceId'] = this.data.serveId
+        formData['count'] = this.data.payNum
+
         //验证
         var isTip = formTip([
-            { name: 'name', verifyText: formData.name },
-            { name: 'phone', verifyText: formData.phone }
+            { name: 'name', verifyText: formData.contact },
+            { name: 'phone', verifyText: formData.contactPhone }
         ]);
         if (isTip) { return; } //若有提示，就终止下面程序
-        formData['serveNum'] = _this.data.payNum;
-
-        app.getFormIdFn(formId, () => {
+        console.log('formData', formData)
+        app.getFormIdFn(formId, () => { //获取formid
             //提交注册数据
             app.requestFn({
-                url: ``,
+                url: `/serviceOrder/createOrder`,
                 header: 'application/x-www-form-urlencoded',
                 data: formData,
                 method: 'POST',
                 success: (res) => {
-
+                    console.log('下单成功')
+                    wx.navigateTo({
+                        url: '/pages/common/result/result?page=serveOrder',
+                    })
                 }
             });
         })

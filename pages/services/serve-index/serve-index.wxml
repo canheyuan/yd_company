@@ -41,7 +41,7 @@
         class="li" hover-class="hover" url="{{item.link}}"
         wx:for="{{serveMenuList}}" wx:key="serveMenuList{{index}}" 
     >
-        <image class="ico" src="{{item.icon}}"></image>
+        <image class="ico {{item.icon?'':'none'}}" src="{{item.icon}}"></image>
         <view class="text">{{item.name}}</view>
     </navigator>
 </view>
@@ -100,26 +100,27 @@
     </view>
 </view>
 
+<!-- 分类列表 -->
+<block 
+    wx:for="{{categoryList}}" wx:key="categoryList{{index}}"
+    wx:for-item="categoryItem"
+>
 <!-- 我要开公司 -->
 <view class="wykgs_mdl">
     <view class="wykgs_title">
         <icon class="icons ico_dp"></icon>
-        <text class="tit1">{{langData.companyTitle[lang]}}</text>
-        <text class="tit2">/ {{langData.companyDes[lang]}}</text>
+        <text class="tit1">{{categoryItem.recoTitle}}</text>
+        <text class="tit2">/ {{categoryItem.recoDesc}}</text>
     </view>
     <view class="wykgs_list clearfix">
-        <view class="item" style="background-image:url({{domainUrl}}/images/services/kgs_img01.png);">
-            <view class="title">公司注册</view>
-            <view class="p">一站式开公司服务</view>
-        </view>
-        <view class="item" style="background-image:url({{domainUrl}}/images/services/kgs_img02.png);">
-            <view class="title">公司注册</view>
-            <view class="p">一站式开公司服务</view>
-        </view>
-        <view class="item" style="background-image:url({{domainUrl}}/images/services/kgs_img03.png);">
-            <view class="title">公司注册</view>
-            <view class="p">一站式开公司服务一站式开</view>
-        </view>
+        <navigator
+            wx:for="{{categoryItem.cateList}}" wx:key="cateList{{index}}"
+            class="item" style="background-image:url({{domainUrl}}/images/services/kgs_img0{{index+1}}.png);"
+            url="/pages/services/serve-list/serve-list?c_id={{item.id}}&title={{item.name}}"
+        >
+            <view class="title">{{item.name}}</view>
+            <view class="p">{{item.description}}</view>
+        </navigator>
     </view>
 </view>
 
@@ -133,26 +134,33 @@
     <view class='serve_list box_shadow'>
         <navigator 
             class='li' url='/pages/services/serve-detail/serve-detail?id={{item.id}}'
-            wx:for="{{serveRecommendList}}" wx:key="serveRecommendList{{index}}"
+            wx:for="{{categoryItem.serviceList}}" wx:key="serviceList{{index}}"
         >
-            <image 
-                class='icon bg0{{index+1}}' 
-                src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
-            ></image>
+            <image  class='icon {{item.mainImg?"":"none"}}'  src='{{item.mainImg}}' ></image>
             <view class='info'>
-                <view class="price_box">
-                    <view class="price">￥1000</view>
-                    <view class="y_price">￥1200</view>
+                <view class="price_box" wx:if="{{item.priceType==3}}">
+                    <view class="price">面议</view>
                 </view>
-                <view class='h3'>{{item.title}}</view>
+                <view class="price_box" wx:if="{{item.priceType==2}}">
+                    <view class="price">￥{{item.price}}</view>
+                    <view class="y_price" style="text-decoration:none;">订金</view>
+                </view>
+                <view class="price_box" wx:if="{{item.priceType==1}}">
+                    <view class="price">￥{{item.price}}</view>
+                    <view class="y_price">￥{{item.originalPrice}}</view>
+                </view>
+
+                <view class='h3'>{{item.name}}</view>
                 <view class='tj_data'>
-                    <view class="label"><icon class="icons ico_xl"></icon>{{langData.salesLabel[lang]}}：{{item.xiaoliang}}</view>
-                    <view class="label"><icon class="icons ico_zx"></icon>{{langData.consultLabel[lang]}}：{{item.zixun}}</view>
+                    <view class="label"><icon class="icons ico_xl"></icon>{{langData.salesLabel[lang]}}：{{item.saleCount}}</view>
+                    <view class="label"><icon class="icons ico_zx"></icon>{{langData.consultLabel[lang]}}：{{item.consultCount}}</view>
                 </view>
             </view>
         </navigator>
     </view>
 </view>
+</block>
+
 
 <!-- 热门服务供应商 -->
 <view class="gys_mdl" wx:if="{{!supplierFinish || supplierList.length>0}}">
@@ -182,7 +190,8 @@
                     <view class="star_box">
                         <view 
                             wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" 
-                            class="star {{index < item.star?'act':''}}"
+                            wx:for-item="starItem" wx:for-index="starIndex"
+                            class="star {{starIndex < item.star?'act':''}}"
                         ></view>
                     </view>
                 </view>
@@ -199,25 +208,10 @@
                 </view>
             </view>
         </navigator>
-        <!-- <view class="gys_item clearfix">
-            <image class="headimg" src="{{domainUrl}}/images/services/gys_img02.jpg"></image>
-            <view class="info">
-                <view class="btn">{{langData.serveBtn[lang]}}</view>
-                <view class='h3'>广州五行教育科技有限公司</view>
-                <view class="rz_info">
-                    <view class="label1"><icon class="icons ico_rz"></icon>{{langData.attestationLabel[lang]}}</view>
-                    <view class="star_box">
-                        <view wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" class="star {{index<item.star?'act':''}}"></view>
-                    </view>
-                </view>
-                <view class='tj_data'>
-                    <view class="label"><icon class="icons ico_xl"></icon>{{langData.salesLabel[lang]}}：123</view>
-                    <view class="label"><icon class="icons ico_zx"></icon>{{langData.consultLabel[lang]}}：123</view>
-                </view>
-            </view>
-        </view> -->
     </view>
 </view>
+
+<view class='more_tip'><view class='txt'>{{langData.public.noMoreText[lang]}}</view></view>
 
 <!-- 返回顶部 -->
 <default m-name="backTop" m-top="60" is-show="{{backTopShow}}"></default>

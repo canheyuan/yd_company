@@ -20,13 +20,17 @@ Page({
         serveMenuList:null,
         serveMenuFinish: false, //判断接口是否已经加载完成
 
+        //最近浏览
         browseList:null,    //浏览列表
         browseFinish: false,  //判断接口是否已经加载完成
-
 
         //推荐服务列表
         serveRecommendList:null,
         serveRecommendFinish: false, //判断接口是否已经加载完成
+        
+        //服务分类列表
+        categoryList:null,
+        categoryFinish:false,   
 
         //服务商列表
         supplierList: null,
@@ -48,6 +52,7 @@ Page({
         this.getServeListFn();  //服务菜单列表
         this.getRecommendListFn()   //推荐服务列表
         this.getSupplierListFn();   //服务商列表
+        this.getServiceCategoryListFn() //推荐服务分类列表
     },
 
     //生命周期函数--监听页面显示
@@ -99,6 +104,23 @@ Page({
         });
     },
 
+    //查询推荐的服务分类列表
+    getServiceCategoryListFn() {
+        var _this = this;
+        app.requestFn({
+            url: '/serviceCategory/recoList',
+            data: { serviceNum: 4 },
+            success: (res) => {
+                console.log('查询推荐的服务分类列表', res.data)
+                var categoryList = res.data.data;
+                _this.setData({
+                    categoryList: categoryList,
+                    categoryFinish: true
+                })
+            }
+        });
+    },
+    
     //获取服务商列表
     getSupplierListFn() {
         var _this = this;
@@ -109,6 +131,7 @@ Page({
                 console.log('服务商列表：',res.data)
                 var supplierList = res.data.data;
                 supplierList.forEach(item => {
+                    item.star = parseInt(item.star);
                     item.link = `/pages/services/supplier-list/supplier-list?id=${item.id}`;
                 })
                 _this.setData({

@@ -28,25 +28,11 @@
         </view> -->
 
         <!-- 二级列表 -->
-        <!-- <view  wx:for="{{tagList[tagIndex].children}}" wx:key="{{index}}" class='list_box'>
-            <view class='title'><icon class='icons ico_tj' wx:if="{{tagIndex==0}}"></icon>{{item.name}}</view>
-            <view class='ul'>
-                <view  
-                    wx:for="{{item.serviceList}}" wx:key="{{index}}"
-                    class='li' bindtap="goToIntro" data-id="{{item.id}}"
-                >
-                    <view class='text'>{{item.title}}</view>
-                </view>
-            </view>
-        </view> -->
-
-        <!-- 二级列表 -->
         <view 
             class='list_box' hidden="{{levelId != serveItem2.parentId}}"
             wx:for="{{serveData.level2}}" wx:key="level2{{index}}"
             wx:for-item="serveItem2" wx:for-index="serveIndex2"
         >
-            <!-- <view class='title'><icon class='icons ico_hot'></icon>{{serveItem2.name}}</view> -->
             <view class='title'><icon class='icons ico_hot'></icon>{{serveItem2.name}}</view>
              <!-- 三级列表 -->
             <view  class='third_list clearfix' >
@@ -56,7 +42,7 @@
                     wx:for-item="serveItem3" wx:for-index="serveIndex3"
                     bindtap="gotoSeverListFn" data-id="{{serveItem3.id}}"
                 >
-                    <image class="icon" src="{{serveItem3.icon}}"></image>
+                    <image class="icon {{serveItem3.icon?'':'none'}}" src="{{serveItem3.icon}}"></image>
                     <view class='text'>{{serveItem3.name}}</view>
                 </view>
             </view>

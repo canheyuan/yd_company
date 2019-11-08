@@ -27,6 +27,7 @@ page{background:#fff;}
 .serve_menu{ display: flex; flex-wrap: wrap; width:100%; padding:0rpx 0 10rpx; background:#ffff; margin:10rpx 0;}
 .serve_menu .li{ width:20%; text-align: center; padding:25rpx 0; font-size:0;}
 .serve_menu .li .ico{width:60rpx; height:60rpx;  margin-bottom:20rpx;}
+.serve_menu .li .ico.none{ background:#eee; border-radius:10rpx;}
 .serve_menu .li .text{font-size:26rpx; color:#333333; line-height:26rpx;}
 .serve_menu .li.hover .text{color:#4e8bff;}
 

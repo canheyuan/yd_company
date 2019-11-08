@@ -10,8 +10,8 @@
 .gys_item{overflow: hidden; margin-bottom:25rpx;}
 .gys_item .headimg{float:left; width:150rpx; height:150rpx; margin-right:15rpx;}
 .gys_item .info{overflow:hidden; border-bottom:2rpx solid #e5e5e5; padding-bottom:20rpx;}
-.gys_item .info .btn{float:right; width:90rpx; color:#9d9d9d; font-size:26rpx;}
-.gys_item .info .h3{font-size:30rpx; color:#333333; margin-bottom:20rpx; }
+.gys_item .info .btn{float:right; width:90rpx; color:#9d9d9d; font-size:26rpx; line-height:40rpx;}
+.gys_item .info .h3{font-size:30rpx; color:#333333; margin-bottom:20rpx; line-height:40rpx;}
 
 .gys_item .info .rz_info{margin-bottom:20rpx;}
 .gys_item .info .rz_info .label1{ display:inline-block; height:34rpx; line-height:34rpx; border-radius:19rpx; border:2rpx solid #f87602; font-size:22rpx; padding:0 15rpx 0 10rpx; color:#f87602; margin-right:20rpx; vertical-align: top;}
@@ -50,7 +50,8 @@
 /* 服务列表 */
 /* 使用页面：supplier-list、 */
 .serve_list .li{padding:25rpx 15rpx 0; position:relative; background:#fff;}
-.serve_list .li .icon{float:left; width:80rpx; height:80rpx; border-radius:100%; background:#eee; margin-right:30rpx;}
+.serve_list .li .icon{float:left; width:80rpx; height:80rpx;  margin-right:30rpx;}
+.serve_list .li .icon.none{background:#eee; border-radius:10rpx;}
 .serve_list .li .icon.bg01{background-color:#72c1ef;}
 .serve_list .li .icon.bg02{background-color:#fbad9d;}
 .serve_list .li .icon.bg03{background-color:#f9cc7e;}

@@ -13,12 +13,24 @@ Page({
     },
 
     onLoad: function (options) {
-        this.setData({ levelId: options.id });
+        
         //设置语言,判断是否切换语言
         app.loadLangFn(this, 'services', (res) => {
             wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
         });
-        this.getlistInfoFn(1);
+
+        //判断是否有缓存，有直接加载缓存不调用接口
+        var serveData = wx.getStorageSync('serveCategory') ? wx.getStorageSync('serveCategory'):null; //设置缓存用户信息
+        if (!serveData){
+            this.setData({ levelId: options.id });
+            this.getlistInfoFn(1);
+        }else{
+            var levelId = options.id ? options.id: serveData.level1[0].id
+            this.setData({
+                serveData : serveData,
+                levelId: levelId
+            })
+        }
     },
 
     //选项卡切换
@@ -50,8 +62,11 @@ Page({
                 if(level<3){
                     if (serveData.level1.length==0){ return }    //没有一级类目就不用继续加载
                     _this.getlistInfoFn(level + 1);
-                } else if (!_this.data.levelId){
-                    this.setData({ levelId: serveData.level1[0].id });
+                } else {
+                    wx.setStorageSync('serveCategory', _this.data.serveData); //设置缓存用户信息
+                    if (!_this.data.levelId) {
+                        this.setData({ levelId: serveData.level1[0].id });
+                    }
                 }
                 console.log('服务数据列表：', serveData);
             }
