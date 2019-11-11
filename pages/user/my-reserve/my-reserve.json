@@ -1,6 +1,6 @@
 {
     "enablePullDownRefresh": true,
-    "navigationBarTitleText": "",
+    "backgroundTextStyle": "dark",
     "usingComponents": {
         "reach-load": "/components/reach-load/reach-load",
         "reserve-list": "/components/reserve-list/reserve-list"

@@ -1,0 +1,41 @@
+
+<!-- 筛选头部 -->
+<view class="screen_head">
+    <view class="screen_list">
+        <view 
+            wx:for="{{screenList}}" wx:key="screenList{{index}}" 
+            wx:for-item="screenItem" wx:for-index="sIndex"
+            class="item {{screenIndex==sIndex?'act':''}}"
+            bindtap="tagChangeFn"  data-index="{{sIndex}}"
+        >
+            <view class="title">
+                {{screenItem.son[screenItem.index].name}}
+                <icon class="{{screenItem.son.length==1?'icons ico_sort '+ (screenIndex==sIndex?screenItem.sortClass:'') :'tri'}}"></icon>
+            </view>
+        </view>
+    </view>
+    <!-- 菜单下拉弹窗 -->
+    <view class="pop" hidden="{{screenPopHide}}" >
+        <view 
+            class="option" wx:for="{{screenList[screenIndex].son}}" wx:key="screenPop{{index}}"
+            bindtap="tagChangeSonFn" data-pindex="{{screenIndex}}" 
+            data-index="{{index}}" data-type="{{item.orderType}}"
+        ><icon class="icons ico_gou {{screenList[screenIndex].index==index?'show':''}}"></icon>{{item.name}}</view>
+    </view>
+    <view class="mask_bg screen_mask" bindtap="closeMaskFn" hidden="{{screenPopHide}}"></view>
+</view>
+
+
+<!-- 循环列表 -->
+<serve-list 
+    wx:if="{{listReach}}"
+    target-page="serveList"
+    reach-data="{{listReach}}"
+    order-type="{{screenList[screenIndex].orderType}}"
+    is-asc="{{screenList[screenIndex].isAsc}}"
+    category-id="{{categoryId}}"
+    supplier-id="{{supplierId}}"
+></serve-list>
+
+<!-- 返回顶部 -->
+<default m-name="backTop" m-top="60" is-show="{{backTopShow}}"></default>

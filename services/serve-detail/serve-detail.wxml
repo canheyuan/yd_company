@@ -1,0 +1,114 @@
+<import src="/wxParse/wxParse.wxml"/>
+
+<!-- 服务详情 -->
+<view class="serve_detail">
+    <!-- 头部 -->
+    <view class="banner_img"><image mode="widthFix" src="{{detailData.mainImg}}"></image></view>
+    <view class="serve_info">
+        <view class="money" wx:if="{{detailData.priceType==1}}">
+            <text class="price">￥{{detailData.price}}</text>
+            <text class="y_price">￥{{detailData.originalPrice}}</text>
+            <view class="label">一口价</view>
+        </view>
+        <view class="money" wx:if="{{detailData.priceType==2}}">
+            <text class="price">￥{{detailData.price}}</text>
+            <view class="label">订金</view>
+        </view>
+        <view class="money" wx:if="{{detailData.priceType==3}}">
+            <text class="price">面议</text>
+            <view class="label">面议</view>
+        </view>
+        <view class='data_list'>
+            <view class="label">
+                <icon class="icons ico_xl"></icon>
+                {{langData.salesLabel[lang]}}：{{detailData.saleCount}}
+            </view>
+            <view class="label">
+                <icon class="icons ico_zx"></icon>
+                {{langData.consultLabel[lang]}}：{{detailData.consultCount}}
+            </view>
+        </view>
+    </view>
+    
+    <view class="choose_list">
+        <!-- 服务地区 -->
+        <view class="item">
+            <view class="tit">{{langData.regionTitle[lang]}}</view>
+            <!-- <icon class='icons ico_tri'></icon> -->
+            <view class='info'>
+                <!-- <picker mode="region" bindchange="regionChangeFn" custom-item="全部">
+                    <view class="txt">{{regionName}}</view>
+                </picker> -->
+                <view class="txt">{{detailData.regionStr}}</view>
+            </view>
+        </view>
+        <!-- 服务期限 -->
+        <view class="item">
+            <view class="tit">{{langData.deadlineTitle[lang]}}</view>
+            <view class='info'>
+                <view class="txt">{{detailData.durationStr}}</view>
+            </view>
+        </view>
+        <!-- 服务商信息 -->
+        <view class="gys_item clearfix">
+            <image class="headimg" src="{{detailData.supplier.logo}}"></image>
+            <view class="info">
+                <navigator url="/services/supplier-list/supplier-list" class="btn">{{langData.serveBtn[lang]}}</navigator>
+                <view class='h3'>{{detailData.supplier.name}}</view>
+                <view class="rz_info">
+                    <view class="label1" wx:if="{{detailData.supplier.type==1}}">
+                        <icon class="icons ico_rz"></icon>
+                        {{langData.attestationLabel[lang]}}
+                    </view>
+                    <view class="label2" wx:if="{{detailData.supplier.type==2}}">
+                        {{langData.selfsupportLabel[lang]}}
+                    </view>
+                    <view class="star_box">
+                        <view 
+                            wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" 
+                            class="star {{index < detailData.supplier.star?'act':''}}"
+                        ></view>
+                    </view>
+                </view>
+                <view class='tj_data'>
+                    <view class="label">
+                        <icon class="icons ico_xl"></icon>
+                        {{langData.salesLabel2[lang]}}：{{detailData.supplier.saleCount}}
+                    </view>
+                    <view class="label">
+                        <icon class="icons ico_zx"></icon>
+                        {{langData.consultLabel2[lang]}}：{{detailData.supplier.consultCount}}
+                    </view>
+                </view>
+            </view>
+        </view>
+
+    </view>
+
+    <!-- 详情 -->
+    <view class="serve_detail_ctn">
+        <view class="title">
+            <image src="{{domainUrl}}/images/services/fwxq_tit_l.png"></image>
+            <text>{{langData.serveDetailTitle[lang]}}</text>
+            <image src="{{domainUrl}}/images/services/fwxq_tit_r.png"></image>
+        </view>
+        <view class="details_ctn">
+           <template is="wxParse" data="{{wxParseData:description.nodes}}"/>
+        </view>
+    </view>
+
+</view>
+
+<view class="serve_btm_wrap box_shadow">
+    <view 
+        class="blue_btn" 
+        bindtap="gotoUrlFn" data-url="/services/serve-consult/serve-consult"
+    >{{langData.consultBtn[lang]}}</view>
+    <view 
+        class="orange_btn" 
+        bindtap="gotoUrlFn" data-url="/services/serve-order/serve-order"
+    >{{langData.payOrderBtn[lang]}}</view>
+</view>
+
+
+

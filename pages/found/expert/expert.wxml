@@ -1,22 +1,23 @@
 
 <view class='scroll_mdl'>
-  <view class='down_btn'>
-    <image class='bg' src='{{domainUrl}}/images/icon/btn_shadow.png'></image>
-    <icon class='icons ico_down'></icon>
-  </view>
-  <scroll-view class='scroll_box' scroll-x="true">
-    <view class='scroll_ctn' style='width:{{navWidth}}rpx;'>
-      <view 
-        class='txt {{currentTagName==index?"act":""}}' 
-        wx:for="{{areaList}}" wx:key="{{index}}" wx:for-item="areaList" 
-        bindtap="tagChange" data-index="{{index}}" data-id="{{areaList.areaId}}"
-      >
-        {{areaList.areaName}}<text>({{areaList.areaId}})</text>
-      </view>
+    <view class='down_btn'>
+        <image class='bg' src='{{domainUrl}}/images/icon/btn_shadow.png'></image>
+        <icon class='icons ico_down'></icon>
     </view>
-  </scroll-view>
+    <scroll-view class='scroll_box' scroll-x="true">
+        <view class='scroll_ctn' style='width:{{navWidth}}rpx;'>
+            <view 
+                class='txt {{currentTagName==index?"act":""}}' 
+                wx:for="{{areaList}}" wx:key="{{index}}" wx:for-item="areaList" 
+                bindtap="tagChange" data-index="{{index}}" data-id="{{areaList.areaId}}"
+            >
+                {{areaList.areaName}}<text>({{areaList.areaId}})</text>
+            </view>
+        </view>
+    </scroll-view>
 </view>
 
+<!-- 专家列表 -->
 <expert-list focusArea="{{expertType}}" reachData="{{reachData}}" lang="{{langType}}"></expert-list>
 
 

@@ -1,5 +1,5 @@
 <!-- 下拉刷新动画 -->
-<reach-load></reach-load>
+<!-- <reach-load></reach-load> -->
 
 <!-- 返回顶部 -->
 <default m-name="backTop" m-top="20" is-show="{{backTopShow}}"></default>

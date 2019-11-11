@@ -1,9 +1,3 @@
 {
-    "enablePullDownRefresh": true,
-    "navigationBarTitleText": "",
-    "usingComponents": {
-        "login-tip": "/components/login-tip/login-tip",
-        "reach-load": "/components/reach-load/reach-load",
-        "tab": "/components/tab/tab"
-    }
+  "usingComponents": {}
 }

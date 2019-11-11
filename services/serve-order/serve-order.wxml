@@ -1,0 +1,139 @@
+<form bindsubmit="formSubmit" report-submit="true">
+
+<!-- 头部 -->
+<view class="confirm_head">
+    <view class="company">
+        <view class="label1" wx:if="{{detailData.supplier.type==1}}">
+            <icon class="icons ico_rz"></icon>
+            {{langData.attestationLabel[lang]}}
+        </view>
+        <view class="label2" wx:if="{{detailData.supplier.type==2}}">
+            {{langData.selfsupportLabel[lang]}}
+        </view>
+        <text class="txt">{{detailData.supplier.name}}</text>
+    </view>
+    <view class="gys_info">
+        <image  class='icon' src='{{detailData.mainImg}}' ></image>
+        <view class='info'>
+            <view class="price_box">
+                <view class="price">￥{{detailData.price}}</view>
+            </view>
+            <view class='h3'>{{detailData.name}}</view>
+            <view class="p">服务地区：{{detailData.regionStr}}</view>
+            <view class="p">服务期限：{{detailData.durationStr}}</view>
+        </view>
+    </view>
+</view>
+
+
+
+<!-- 填写订单信息 -->
+<view class='layout_box'>
+    <view class='layout_ctn'>
+        <!-- 用户姓名 -->
+        <view class='dl'>
+            <view class='dt'>用户姓名</view>
+            <view class='dd'>
+                <input 
+                    class='input' type='text' name="contact" value=''
+                    placeholder='请填写姓名' placeholder-class='pl_input'  
+                />
+            </view>
+        </view>
+
+        <!-- 联系电话 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.public.contactPhone[lang]}}</view>
+            <view class='dd'>
+                <input 
+                    class='input' type='number' name="contactPhone" value='{{contactsPhone}}'
+                    placeholder='{{langData.public.contactPhonePl[lang]}}' placeholder-class='pl_input'  
+                />
+            </view>
+        </view>
+
+        <!-- 备注信息 -->
+        <view class='dl bor_no' style="padding-bottom:0;">
+            <view class='dt fl_none'>备注信息</view>
+            <view class='dd'>
+                <textarea 
+                    class="textarea" maxlength="100" name="remark"
+                    placeholder="需进行物流配送的服务商品请备注配送地址(100字以内)" 
+                    placeholder-class="placeholder"
+                ></textarea>
+            </view>
+        </view>
+
+        <!-- 购买数量 -->
+        <view class='dl'>
+            <view class='dt'>购买数量</view>
+            <view class='dd'>
+                <view class="buy_num">
+                    <icon class="icons ico_minus" bindtap="changeNumFn" data-type="minus"></icon>
+                    <text class="num">{{payNum}}</text>
+                    <icon class="icons ico_add" bindtap="changeNumFn" data-type="add"></icon>
+                </view>
+            </view>
+        </view>
+       
+    </view>
+    <!-- 服务声明 -->
+     <view class="statement">提交订单即视为阅读并同意<text class="f_blue">《园叮服务平台第三方服务声明》</text></view>
+</view>
+
+<!-- 底部按钮 -->
+<view class="confirm_btm box_shadow">
+    <button class="s_blue_btn" hover-class="hover" form-type="submit">确认下单</button>
+
+    <view class="price" wx:if="{{detailData.priceType==1}}">
+        应付总额：<text class="f_orange">￥{{detailData.price*payNum}}</text>
+    </view>
+    <view class="price" wx:if="{{detailData.priceType==2}}">
+        应付订金：<text class="f_orange">￥{{detailData.price*payNum}}</text>
+    </view>
+    <view class="price" wx:if="{{detailData.priceType==3}}">
+        <text class="f_orange">面议</text>
+    </view>
+</view>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

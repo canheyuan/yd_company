@@ -18,7 +18,7 @@ Component({
             tagList: [
               { title: res.menuText1, link: '/pages/index/index', icoClass: 'ico01' },
               { title: res.menuText2, link: '/pages/found/found-index/found-index', icoClass: 'ico02' },
-              { title: res.menuText3, link: '/pages/services/services-index/services-index', icoClass: 'ico03' },
+              { title: res.menuText3, link: '/services/serve-index/serve-index', icoClass: 'ico03' },
               { title: res.menuText4, link: '/pages/user/user-index/user-index', icoClass: 'ico04' }
             ]
           })

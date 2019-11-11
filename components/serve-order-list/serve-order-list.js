@@ -6,18 +6,20 @@ Component({
     //组件的属性列表
     properties: {
         targetPage: String,
-        tagType: String,
+        tagType: String,    //状态类型
         reachData: {
             type: Number,
             observer: function (newVal, oldVal, changedPath) {
                 if (this.data.isFirst) {
                     this.setData({ isFirst: false })
+                    //设置语言,判断是否切换语言
+                    app.loadLangNewFn(this, 'serve');
                 }
                 //随机数大于1：刷新。小于1：上拉刷新
                 if (newVal > 1) {
                     this.setData({ ['listInfo.pageNum']: 1 });
                 };
-                //this.loadMoreListFn();
+                this.loadMoreListFn();
             }
         }
     },
@@ -60,10 +62,7 @@ Component({
 
         },  //弹窗数据
         starScore:0,    //星星评分
-
-        listInfo: {
-            list:[1,2,3,4,5,6]
-        },   //列表数据
+        listInfo: {},   //列表数据
     },
 
     //组件的方法列表
@@ -73,9 +72,9 @@ Component({
             var _this = this;
             var cType = this.properties.tagType;
             listFn.listPage({
-                url: `/estateComplaint/list`,
+                url: `/serviceOrder/list`,
                 data: {
-                    type: cType   //
+                    status: cType   //订单状态（全部-不填 1-待确认 2-待交付 3-待验收 4-待评价 5-已评价 6-已取消）
                 },
                 isReach: isReach,
                 page: _this,
@@ -83,7 +82,7 @@ Component({
                 getListDataFn: (listdata) => {
                     //返回列表数据和总数
                     return {
-                        list: listdata.rows,
+                        list: listdata.data,
                         total: listdata.total
                     }
                 },
@@ -91,7 +90,33 @@ Component({
                     //对列表循环操作改变数据
                     var listItem = listItem;
                     if (listItem) {
-                        
+                        switch (listItem.status){
+                            case 1:
+                                listItem.statusName = '待确认'
+                                listItem.statusClass = 's_bg01'
+                                break;
+                            case 2:
+                                listItem.statusName = '待交付'
+                                listItem.statusClass = 's_bg02'
+                                break;
+                            case 3:
+                                listItem.statusName = '待验收'
+                                listItem.statusClass = 's_bg02'
+                                break;
+                            case 4:
+                                listItem.statusName = '待评价'
+                                listItem.statusClass = 's_bg03'
+                                break;
+                            case 5:
+                                listItem.statusName = '已完成'
+                                listItem.statusClass = 's_bg03'
+                                break;
+                            case 6:
+                                listItem.statusName = '已取消'
+                                listItem.statusClass = 's_bg04'
+                                break;
+                        }
+                        listItem.star = listItem.star ? parseInt(listItem.star):null
                     }
                     return listItem;
                 },
@@ -119,7 +144,7 @@ Component({
         //跳转到详情页
         gotoDetailFn(e){
             var id = e.currentTarget.dataset.id;
-            wx.navigateTo({ url: `/pages/services/serve-order-detail/serve-order-detail?id=${id}` })
+            wx.navigateTo({ url: `/services/serve-order-detail/serve-order-detail?id=${id}` })
         },
 
         //评分星星

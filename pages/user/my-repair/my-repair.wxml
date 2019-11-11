@@ -1,5 +1,5 @@
 <!-- 下拉刷新动画 -->
-<reach-load></reach-load>
+<!-- <reach-load></reach-load> -->
 
 <!-- 选项卡切换 -->
 <view class='tag_box'>

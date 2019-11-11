@@ -69,7 +69,7 @@
 				{
 					"id": 2,
 					"name": "服务订单列表",
-					"pathName": "pages/services/serve-order-list/serve-order-list",
+					"pathName": "services/serve-order-list/serve-order-list",
 					"query": "",
 					"scene": null
 				},
@@ -83,14 +83,14 @@
 				{
 					"id": 4,
 					"name": "服务分类",
-					"pathName": "pages/services/serve-category/serve-category",
+					"pathName": "services/serve-category/serve-category",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "服务市场首页",
-					"pathName": "pages/services/serve-index/serve-index",
+					"id": 5,
+					"name": "服务首页",
+					"pathName": "pages/menu-tabs/serve-index/serve-index",
 					"query": "",
 					"scene": null
 				}

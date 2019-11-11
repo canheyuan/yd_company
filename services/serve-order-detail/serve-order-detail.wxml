@@ -1,0 +1,152 @@
+
+<!-- 头部 -->
+<view class="confirm_head">
+    <view class="company">
+        <view class="status {{detailData.statusClass}}">{{detailData.statusName}}</view>
+        <view class="label1" wx:if="{{detailData.supplierType==1}}">
+            <icon class="icons ico_rz"></icon>
+            {{langData.attestationLabel[lang]}}
+        </view>
+        <view class="label2" wx:if="{{detailData.supplierType==2}}">
+            {{langData.selfsupportLabel[lang]}}
+        </view>
+        <view class="txt">{{detailData.supplierName}}</view>
+    </view>
+    <view class="gys_info">
+        <image 
+            class='icon bg01' 
+            src='{{detailData.mainImg?detailData.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
+        ></image>
+        <view class='info'>
+            <view class="price_box">
+                <view class="price">￥{{detailData.unitPrice}}</view>
+                <view class="price"> x {{detailData.count}}</view>
+            </view>
+            <view class='h3'>商标注册服务</view>
+            <view class="p">服务地区：{{detailData.serviceRegionStr}}</view>
+            <view class="p">服务期限：{{detailData.serviceDurationStr}}</view>
+        </view>
+    </view>
+</view>
+
+
+<!-- 填写订单信息 -->
+<view class='layout_box'>
+    <view class='layout_ctn'>
+        <!-- 用户姓名 -->
+        <view class='dl'>
+            <view class='dt'>用户姓名</view>
+            <view class='dd'>
+                <text class="txt">{{detailData.contact}}</text>
+            </view>
+        </view>
+
+        <!-- 联系电话 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.public.contactPhone[lang]}}</view>
+            <view class='dd'>
+                <text class="txt">{{detailData.contactPhone}}</text>
+            </view>
+        </view>
+
+        <!-- 备注信息 -->
+        <view class='dl bor_no' style="padding-bottom:0;">
+            <view class='dt fl_none'>备注信息</view>
+            <view class='dd'>
+                <text class="textarea">{{detailData.remark?detailData.remark:'无备注信息！'}}</text>
+            </view>
+        </view>
+
+        <!-- 购买数量 -->
+        <view class='dl'>
+            <view class='dt'>购买数量</view>
+            <view class='dd'>
+                <text class="txt">{{detailData.count}}</text>
+            </view>
+        </view>
+
+        <!-- 支付金额 -->
+        <view class='dl'>
+            <view class='dt'>支付金额</view>
+            <view class='dd'>
+                <text class="pay_price txt f_orange">￥{{detailData.amount}}</text>
+            </view>
+        </view>
+       
+    </view>
+
+    <!-- 订单其他信息 -->
+    <view class="order_other">
+        <view class="p">
+            <icon class="icons ico_bill"></icon>
+            <text class="txt">订单号</text>{{detailData.orderNo}}
+        </view>
+        <view class="p" wx:if="{{detailData.createTime}}">
+            <icon class="icons ico_time"></icon>
+            <text class="txt">下单时间</text>{{detailData.createTime}}
+        </view>
+        <view class="p" wx:if="{{detailData.confirmTime}}">
+            <icon></icon>
+            <text class="txt">确认时间</text>{{detailData.confirmTime}}
+        </view>
+        <view class="p" wx:if="{{detailData.deliveryTime}}">
+            <icon></icon>
+            <text class="txt">交付时间</text>{{detailData.deliveryTime}}
+        </view>
+        <view class="p" wx:if="{{detailData.checkTime}}">
+            <icon></icon>
+            <text class="txt">完成时间</text>{{detailData.checkTime}}
+        </view>
+    </view>
+
+    <view class="more_tip"><text class="txt">没有更多了</text></view>
+
+</view>
+
+<!-- 底部按钮 -->
+<!-- <button wx:if="{{}}" class="u_btn white btm_fixed" plain="true" hover-class="hover">撤回申请</button> -->
+<button wx:if="{{detailData.status==1}}" class="u_btn white btm_fixed box_shadow" plain="true" hover-class="hover">取消服务</button>
+<button wx:if="{{detailData.status==3}}" class="u_btn blue btm_fixed" plain="true" hover-class="hover">确认完成</button>
+<button wx:if="{{detailData.status==4}}" class="u_btn blue btm_fixed" plain="true" hover-class="hover">立即评价</button>
+
+<!-- <view class="confirm_btm box_shadow">
+    <button class="u_btn small white" hover-class="hover">撤回申请</button>
+    <button class="u_btn med blue btm_fixed" hover-class="hover">立即评价</button>
+    <button class="u_btn small blue" hover-class="hover">确认完成</button>
+    <button class="u_btn small white" hover-class="hover">取消订单</button>
+</view> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

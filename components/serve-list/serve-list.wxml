@@ -1,7 +1,7 @@
 <!-- 服务列表 -->
 <view class='serve_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
     <navigator 
-        class='li' url='/pages/services/serve-detail/serve-detail?id={{item.id}}'
+        class='li' url='/services/serve-detail/serve-detail?id={{item.id}}'
         wx:for="{{listInfo.list}}" wx:key="serve{{index}}"
     >
         <image class='icon' src='{{item.mainImg}}'></image>

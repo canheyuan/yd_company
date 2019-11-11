@@ -1,0 +1,8 @@
+{
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "我的服务",
+    "usingComponents": {
+        "serve-order-list": "/components/serve-order-list/serve-order-list"
+    }
+}

@@ -11,12 +11,9 @@ Page({
 
     },
 
-    onShow() {
-
-    },
-
     //下拉刷新
     onPullDownRefresh: function () {
+        this.setData({ reach:Math.random()+1})
         wx.stopPullDownRefresh(); //下拉刷新后页面上移
     },
 

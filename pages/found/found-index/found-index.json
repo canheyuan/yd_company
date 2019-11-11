@@ -1,9 +1,0 @@
-{
-  "enablePullDownRefresh": true,
-  "navigationBarTitleText": "",
-  "usingComponents": {
-    "news-list":"/components/news-list/news-list",
-    "policy-list": "/components/policy-list/policy-list",
-    "tab": "/components/tab/tab"
-  }
-}

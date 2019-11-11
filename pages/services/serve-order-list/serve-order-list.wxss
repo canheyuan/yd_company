@@ -1,6 +1,0 @@
-
-page{padding-top:80rpx; background:#f7f7f7;}
-
-.scroll_mdl{position:fixed; left:0; top:0; width:100%; background:#fff;}
-.scroll_ctn .txt{width:160rpx;}
-
