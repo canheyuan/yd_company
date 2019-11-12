@@ -170,8 +170,8 @@ function pageDataFn(){
             details_btn: '查看订单 >>',
             details_btn_url: '/services/serve-order-list/serve-order-list',
             details_btn_type: '',
-            btm_btn: langData.backIndexBtn,
-            btm_btn_url: '/pages/index/index',
+            btm_btn: '返回服务首页',
+            btm_btn_url: '/pages/menu-tabs/serve-index/serve-index',
             btm_btn_type: 'switchTab'
         },
         //服务咨询提交成功
@@ -183,8 +183,8 @@ function pageDataFn(){
             details_btn: '',
             details_btn_url: '',
             details_btn_type: '',
-            btm_btn: langData.backIndexBtn,
-            btm_btn_url: '/pages/index/index',
+            btm_btn: '返回服务首页',
+            btm_btn_url: '/pages/menu-tabs/serve-index/serve-index',
             btm_btn_type: 'switchTab'
         },
         //取消服务
@@ -196,8 +196,8 @@ function pageDataFn(){
             details_btn: '查看订单 >>',
             details_btn_url: '',
             details_btn_type: '',
-            btm_btn: langData.backIndexBtn,
-            btm_btn_url: '/pages/index/index',
+            btm_btn: '返回服务首页',
+            btm_btn_url: '/pages/menu-tabs/serve-index/serve-index',
             btm_btn_type: 'switchTab'
         }
     }

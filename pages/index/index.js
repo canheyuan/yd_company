@@ -421,7 +421,7 @@ Page({
         var slideItem = e.currentTarget.dataset.item;
         var gotoUrl = '';  //不同类型，跳转到不同的详情页
         switch (slideItem.targetType){  //类型
-            case 'notice':
+            case 'notice':  
                 gotoUrl = '/pages/message/notice-details/notice-details?id=' + slideItem.targetAddress;
                 break;
             case 'activity':
@@ -433,6 +433,9 @@ Page({
             case 'policy':
                 gotoUrl = '/pages/found/policy-detail/policy-detail?id=' + slideItem.targetAddress;
                 break;
+            case 'service':
+                gotoUrl = '/services/serve-detail/serve-detail?id=' + slideItem.targetAddress;
+                break;
             case 'url':
                 gotoUrl = '/pages/common/web-view/web-view?url=' + slideItem.targetAddress;  //调换h5地址
                 break;
@@ -442,7 +445,7 @@ Page({
             isLoading: false,
             method: 'POST',
             complete: (res) => {
-                wx.navigateTo({ url: gotoUrl });
+                wx.navigateTo({ url: gotoUrl })
             }
         });
     },

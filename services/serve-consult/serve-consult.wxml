@@ -37,7 +37,7 @@
 
         <!-- 联系电话 -->
         <view class='dl'>
-            <view class='dt'>{{langData.public.contactPhone}}</view>
+            <view class='dt'>{{langData.public.contactPhone[lang]}}</view>
             <view class='dd'>
                 <input 
                     class='input' type='number' name="contactPhone" value='{{contactsPhone}}'
@@ -51,7 +51,7 @@
             <view class='dt'>企业人数</view>
             <view class='dd'>
                 <input 
-                    class='input' type='number' name="" value='{{contactsPhone}}'
+                    class='input' type='number' name="entCount" 
                     placeholder='请填写企业人数（选填）' placeholder-class='pl_input'  
                 />
             </view>

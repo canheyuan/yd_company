@@ -1,6 +1,18 @@
 
+
+<!-- 搜索 -->
+<view class="search_mdl" wx:if="{{isSearch}}">
+  <view class='search_box'>
+    <icon class='icons ico_search'></icon>
+    <input 
+        class="input" confirm-type="search" bindconfirm="searchServeFn" value="{{searchTxt}}"
+        placeholder="{{langData.searchPl[lang]}}" placeholder-style="color:#999;" 
+    />
+  </view>
+</view>
+
 <!-- 筛选头部 -->
-<view class="screen_head">
+<view class="screen_head"  wx:if="{{!isSearch}}">
     <view class="screen_list">
         <view 
             wx:for="{{screenList}}" wx:key="screenList{{index}}" 
@@ -35,6 +47,7 @@
     is-asc="{{screenList[screenIndex].isAsc}}"
     category-id="{{categoryId}}"
     supplier-id="{{supplierId}}"
+    key-word="{{searchTxt}}"
 ></serve-list>
 
 <!-- 返回顶部 -->

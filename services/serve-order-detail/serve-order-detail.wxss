@@ -1,6 +1,7 @@
 /* 布局样式 */
 @import '/style/layout.wxss';
 @import '/style/btn.wxss';
+@import '/style/component.wxss';
 
 page{background:#f7f7f7; padding-bottom:100rpx;}
 /* 头部信息 */

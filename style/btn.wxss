@@ -1,7 +1,8 @@
 
 .u_btn_wrap{padding:50rpx 100rpx 30rpx;}
 /* ------- 通用按钮 -------- */
-.u_btn{display:inline-block; box-sizing:border-box; text-align: center; height:100rpx;  line-height:100rpx; padding:0 30rpx; border-radius:50rpx; font-size:40rpx;}
+.u_btn{display:inline-block; box-sizing:border-box; text-align: center; height:100rpx;  line-height:100rpx; padding:0 30rpx; border-radius:50rpx; font-size:40rpx; }
+button.u_btn{border:none;}
 
 .u_btn.w100{ width:100%;}
 .u_btn.hover{opacity: .8;}

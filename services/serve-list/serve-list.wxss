@@ -2,5 +2,8 @@
 page{padding-top:80rpx;}
 .screen_head{position:fixed; top:0; left:0;}
 
-
+.search_mdl{border-bottom:2rpx solid #dddddd; padding:14rpx 30rpx; background:#fff; position:fixed; left:0; top:0; width:100%; box-sizing: border-box;}
+.search_box{height:50rpx; line-height:50rpx; background:#f1f1f1; border-radius:30rpx;}
+.search_box .ico_search{ width:40rpx; height:40rpx; background-position:-80rpx -160rpx; float:left; margin:5rpx 20rpx 0 30rpx;}
+.search_box .input{display:block; height:50rpx; line-height:50rpx; color:#808080; font-size:28rpx;}
 

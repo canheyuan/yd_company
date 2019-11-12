@@ -77,7 +77,7 @@ Page({
                         break;
                     case 2:
                         detailData.statusName = '待交付'
-                        detailData.statusClass = 's_bg02'
+                        detailData.statusClass = 's_bg01'
                         break;
                     case 3:
                         detailData.statusName = '待验收'
@@ -85,7 +85,7 @@ Page({
                         break;
                     case 4:
                         detailData.statusName = '待评价'
-                        detailData.statusClass = 's_bg03'
+                        detailData.statusClass = 's_bg04'
                         break;
                     case 5:
                         detailData.statusName = '已完成'
@@ -93,7 +93,7 @@ Page({
                         break;
                     case 6:
                         detailData.statusName = '已取消'
-                        detailData.statusClass = 's_bg04'
+                        detailData.statusClass = 's_bg05'
                         break;
                 }
                 detailData.star = detailData.star?parseInt(detailData.star):null;
@@ -102,12 +102,20 @@ Page({
         })
     },
 
+    //评分星星
+    starChangeFn(e) {
+        var star = e.currentTarget.dataset.star;
+        this.setData({ starScore: star });
+    },
+
     //打开提示弹窗
     openTipPop(e) {
-        var handleType = e.currentTarget.dataset.type;
-        var popData = this.data.tipPopData[handleType];
+        var handleType = e.currentTarget.dataset.type
+        var orderId = e.currentTarget.dataset.id    //服务id
+        var popData = this.data.tipPopData[handleType]
         console.log('打开提示弹窗:', handleType, popData)
         this.setData({
+            orderId: orderId,
             handleType: handleType,
             popData: popData
         })
@@ -123,25 +131,32 @@ Page({
         var _this = this;
         var orderId = this.data.orderId;
         var handleType = this.data.handleType;
+        var formData = {};
         var apiUrl = '';
         if (!handleType) { return; }
         switch (handleType) {
             case 'finish': //服务完成
-                apiUrl = `${orderId}`
+                apiUrl = `/serviceOrder/check/${orderId}`
+                var jsonType = 'application/json'
                 break;
-            case 'withdraw':  //撤回申请
-                apiUrl = `${orderId}`
-                break;
+            // case 'withdraw':  //撤回申请
+            //     apiUrl = `${orderId}`
+            //     break;
             case 'evaluation':    //服务评价
-                apiUrl = `${orderId}`
+                apiUrl = `/serviceOrder/star/${orderId}`
+                formData['star'] = this.data.starScore;
+                var jsonType = 'application/x-www-form-urlencoded'
                 break;
         }
-
+        console.log('apiUrl:', apiUrl, 'formData:', formData);
+        //return;
         app.requestFn({
             url: apiUrl,
             method: 'POST',
+            data: formData,
+            header: 'application/x-www-form-urlencoded',
             success: (res) => {
-                app.globalData.feeReach = true;
+                //app.globalData.feeReach = true;
                 wx.showToast({ title: _this.data.popData.tipText, icon: 'success', duration: 2000 });
                 _this.closeTipPop();
                 setTimeout(() => {
@@ -158,14 +173,4 @@ Page({
     onPullDownRefresh: function () {
 
     },
-
-    //页面上拉触底事件的处理函数
-    onReachBottom: function () {
-
-    },
-
-    //用户点击右上角分享
-    onShareAppMessage: function () {
-
-    }
 })

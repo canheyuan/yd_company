@@ -31,6 +31,7 @@ Component({
 
         handleType: '',  //操作类型
         popData: null,   //当前弹窗里的数据
+        orderId:'',
         tipPopData: {
             finish: {   //服务完成
                 show: true, //弹窗是否显示
@@ -63,6 +64,9 @@ Component({
         },  //弹窗数据
         starScore:0,    //星星评分
         listInfo: {},   //列表数据
+
+        langData:null,
+        lang:''
     },
 
     //组件的方法列表
@@ -97,7 +101,7 @@ Component({
                                 break;
                             case 2:
                                 listItem.statusName = '待交付'
-                                listItem.statusClass = 's_bg02'
+                                listItem.statusClass = 's_bg01'
                                 break;
                             case 3:
                                 listItem.statusName = '待验收'
@@ -105,7 +109,7 @@ Component({
                                 break;
                             case 4:
                                 listItem.statusName = '待评价'
-                                listItem.statusClass = 's_bg03'
+                                listItem.statusClass = 's_bg04'
                                 break;
                             case 5:
                                 listItem.statusName = '已完成'
@@ -113,7 +117,7 @@ Component({
                                 break;
                             case 6:
                                 listItem.statusName = '已取消'
-                                listItem.statusClass = 's_bg04'
+                                listItem.statusClass = 's_bg05'
                                 break;
                         }
                         listItem.star = listItem.star ? parseInt(listItem.star):null
@@ -155,10 +159,12 @@ Component({
 
         //打开提示弹窗
         openTipPop(e) {
-            var handleType = e.currentTarget.dataset.type;
-            var popData = this.data.tipPopData[handleType];
+            var handleType = e.currentTarget.dataset.type
+            var orderId = e.currentTarget.dataset.id    //服务id
+            var popData = this.data.tipPopData[handleType]
             console.log('打开提示弹窗:', handleType, popData)
             this.setData({
+                orderId: orderId,
                 handleType: handleType,
                 popData: popData
             })
@@ -174,25 +180,32 @@ Component({
             var _this = this;
             var orderId = this.data.orderId;
             var handleType = this.data.handleType;
+            var formData = {};
             var apiUrl = '';
             if (!handleType) { return; }
             switch (handleType) {
                 case 'finish': //服务完成
-                    apiUrl = `${orderId}`
+                    apiUrl = `/serviceOrder/check/${orderId}`
+                    var jsonType = 'application/json'
                     break;
-                case 'withdraw':  //撤回申请
-                    apiUrl = `${orderId}`
-                    break;
+                // case 'withdraw':  //撤回申请
+                //     apiUrl = `${orderId}`
+                //     break;
                 case 'evaluation':    //服务评价
-                    apiUrl = `${orderId}`
+                    apiUrl = `/serviceOrder/star/${orderId}`
+                    formData['star'] = this.data.starScore;
+                    var jsonType = 'application/x-www-form-urlencoded'
                     break;
             }
-
+            console.log('apiUrl:', apiUrl, 'formData:', formData);
+            //return;
             app.requestFn({
                 url: apiUrl,
                 method: 'POST',
+                data:formData,
+                header:'application/x-www-form-urlencoded',
                 success: (res) => {
-                    app.globalData.feeReach = true;
+                    //app.globalData.feeReach = true;
                     wx.showToast({ title: _this.data.popData.tipText, icon: 'success', duration: 2000 });
                     _this.closeTipPop();
                     setTimeout(() => {

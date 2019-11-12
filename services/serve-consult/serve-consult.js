@@ -1,5 +1,5 @@
 const app = getApp(); //获取应用实例
-
+const formTip = require('../../utils/validateForm.js');   //验证
 Page({
     data: {
         domainUrl: app.globalData.domainUrl,
@@ -46,7 +46,7 @@ Page({
         app.getFormIdFn(formId, () => { //获取formid
             //提交注册数据
             app.requestFn({
-                url: ``,
+                url: `/serviceConsult/createConsult`,
                 header: 'application/x-www-form-urlencoded',
                 data: formData,
                 method: 'POST',

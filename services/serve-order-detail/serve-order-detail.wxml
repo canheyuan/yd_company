@@ -72,7 +72,27 @@
                 <text class="pay_price txt f_orange">￥{{detailData.amount}}</text>
             </view>
         </view>
-       
+
+    </view>
+
+    <!-- 服务评价 -->
+    <view 
+        wx:if="{{detailData.status==5}}"
+        class='layout_ctn' style="margin-top:30rpx; text-align:center;"
+    >
+        <view class='dl'>
+            <view class='dd'><view class="txt" style="font-weight:bold;">服务评价</view></view>
+        </view>
+        <view class='dl'>
+            <view class='dd'>
+                <view class='u_star'>
+                    <view 
+                        class='icon {{detailData.star>index?"act":""}}'
+                        wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}"
+                    ></view>
+                </view>
+            </view>
+        </view>
     </view>
 
     <!-- 订单其他信息 -->
@@ -97,6 +117,10 @@
             <icon></icon>
             <text class="txt">完成时间</text>{{detailData.checkTime}}
         </view>
+        <view class="p" wx:if="{{detailData.cancelTime}}">
+            <icon></icon>
+            <text class="txt">取消时间</text>{{detailData.cancelTime}}
+        </view>
     </view>
 
     <view class="more_tip"><text class="txt">没有更多了</text></view>
@@ -105,9 +129,27 @@
 
 <!-- 底部按钮 -->
 <!-- <button wx:if="{{}}" class="u_btn white btm_fixed" plain="true" hover-class="hover">撤回申请</button> -->
-<button wx:if="{{detailData.status==1}}" class="u_btn white btm_fixed box_shadow" plain="true" hover-class="hover">取消服务</button>
-<button wx:if="{{detailData.status==3}}" class="u_btn blue btm_fixed" plain="true" hover-class="hover">确认完成</button>
-<button wx:if="{{detailData.status==4}}" class="u_btn blue btm_fixed" plain="true" hover-class="hover">立即评价</button>
+
+<!-- 取消服务 -->
+<navigator 
+    wx:if="{{detailData.status==1}}"
+    class="u_btn white btm_fixed box_shadow" hover-class="hover"
+    url="/services/serve-cancel/serve-cancel?id={{detailData.id}}"
+>取消服务</navigator>
+
+<!-- 确认完成 -->
+<button 
+    wx:if="{{detailData.status==3}}" plain="true" 
+    class="u_btn blue btm_fixed" hover-class="hover"
+     bindtap="openTipPop" data-type="finish" data-id="{{item.id}}"
+>确认完成</button>
+
+<!-- 立即评价 -->
+<button 
+    wx:if="{{detailData.status==4}}" plain="true" 
+    class="u_btn blue btm_fixed" hover-class="hover"
+     bindtap="openTipPop" data-type="evaluation" data-id="{{item.id}}"
+>立即评价</button>
 
 <!-- <view class="confirm_btm box_shadow">
     <button class="u_btn small white" hover-class="hover">撤回申请</button>
@@ -116,6 +158,27 @@
     <button class="u_btn small white" hover-class="hover">取消订单</button>
 </view> -->
 
+<!-- 提示弹窗 -->
+<view class='mask_bg pop_show' hidden='{{!popData.show}}'>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{popData.title}}</view>
+            <text class='alert'>{{popData.des}}</text>
+            <view class='u_star' wx:if="{{popData.isScore}}">
+                <view 
+                    class='icon {{starScore>starItem?"act":""}}'
+                    wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}" wx:for-item="starItem" 
+                    bindtap="starChangeFn"  data-star="{{index+1}}" 
+                ></view>
+            </view>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap="{{popData.callOffFnName}}">取消</view>
+                <view class='btn' bindtap='{{popData.confirmFnName}}'>确定</view>
+            </view>
+            <view class='close_btn icons' bindtap="{{popData.callOffFnName}}" ></view>
+        </view>
+    </view>
+</view>
 
 
 

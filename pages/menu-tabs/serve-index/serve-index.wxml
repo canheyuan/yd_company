@@ -8,18 +8,18 @@
         <view class='search_box'>
             <icon class='icons ico_search'></icon>
             <input 
-                class="input" confirm-type="search" 
+                class="input" confirm-type="search" bindconfirm="searchServeFn"
                 placeholder="{{langData.searchPl[lang]}}" placeholder-style="color:#fff;" 
             />
         </view>
     </view>
 
     <!-- 幻灯片 -->
-    <view class='banner_box'>
+    <view class='banner_box' wx:if="{{serveSlideList.length>0}}">
         <swiper  class='banner_slide' bindchange="serveSlideChange"  autoplay="true" interval="5000" duration="500">
             <swiper-item wx:for="{{serveSlideList}}" wx:key="serveSlideList{{index}}">
                 <image 
-                    src='{{item.img}}'  class="slide_img" lazy-load="true"
+                    src='{{item.advertImg}}'  class="slide_img" lazy-load="true"
                     bindtap="goToLink" data-item="{{item}}"
                     binderror='errorImgFn' data-obj="serveSlideList[{{index}}].img" 
                     data-img="{{domainUrl}}/images/default/img_730_320.jpg"
@@ -38,11 +38,19 @@
 <default m-name="serveMenu" m-num="5" wx:if="{{!serveMenuFinish && !serveMenuList}}"></default>
 <view class="serve_menu" wx:if="{{serveMenuFinish && serveMenuList}}">
     <navigator 
-        class="li" hover-class="hover" url="{{item.link}}"
+        class="li" hover-class="hover" url="{{item.link}}" wx:if="{{index<9}}"
         wx:for="{{serveMenuList}}" wx:key="serveMenuList{{index}}" 
     >
         <image class="ico {{item.icon?'':'none'}}" src="{{item.icon}}"></image>
         <view class="text">{{item.name}}</view>
+    </navigator>
+    <!-- 若超过10个，就显示全部按钮 -->
+    <navigator 
+        class="li" hover-class="hover" wx:if="{{serveMenuList.length>10}}"
+        url="/services/serve-category/serve-category" 
+    >
+        <image class="ico" src="{{domainUrl}}/images/services/s_ico10.png"></image>
+        <view class="text">{{langData.public.all[lang]}}</view>
     </navigator>
 </view>
 
@@ -55,27 +63,32 @@
         interval="4000" duration="500" 
         vertical="true" circular="true" display-multiple-items="1" 
     >
-        <swiper-item class="li" wx:for="{{[1,2,3,4]}}" wx:key="zjll{{index}}">
-        <view class="top">
-                <text class="user">{{langData.browseText1[lang]}}13800138000</text>
-                <text class="time">20{{langData.browseText2[lang]}}</text>
+        <swiper-item 
+            class="li" wx:for="{{browseList}}" wx:key="browseList{{index}}"
+            bindtap="gotoServeDetailFn" data-id="{{item.serviceId}}"
+        >
+            <view class="top">
+                <text class="user">{{langData.browseText1[lang]}} {{item.userName}}</text>
+                <text class="time">{{item.createTime}} {{langData.browseText2[lang]}}</text>
             </view>
             <view class="btm">
                 <view class="u_serve">{{langData.serveLabel[lang]}}</view>
-                <view class="type">商标注册</view>
+                <view class="type">{{item.serviceName}}</view>
             </view>
         </swiper-item>
     </swiper>
 </view>
 
 <!-- 推荐服务 -->
-<view class='recommend_mdl'>
+<view class='recommend_mdl'  wx:if="{{!serveRecommendFinish || serveRecommendList.length>0 }}">
     <view class='serve_tit'>
         <!-- <navigator class='more' url='/services/serve-list/serve-list'>{{langData.public.moreBtn[lang]}}</navigator> -->
         <view class='h3'>{{langData.recommendTitle[lang]}}</view>
     </view>
-    <!-- <default m-name="recList" m-num="4" ></default> -->
-    <view class='serve_list box_shadow' >
+    <view class="serve_list box_shadow" wx:if="{{!serveRecommendFinish}}">
+        <default m-name="recList" m-num="3"></default>
+    </view>
+    <view class='serve_list box_shadow' wx:if="{{serveRecommendFinish}}" >
         <navigator 
             class='li' url='{{item.link}}'
             wx:for="{{serveRecommendList}}" wx:key="serveRecommendList{{index}}"
@@ -139,11 +152,11 @@
             <image  class='icon {{item.mainImg?"":"none"}}'  src='{{item.mainImg}}' ></image>
             <view class='info'>
                 <view class="price_box" wx:if="{{item.priceType==3}}">
-                    <view class="price">面议</view>
+                    <view class="price">{{langData.priceStatus01[lang]}}</view>
                 </view>
                 <view class="price_box" wx:if="{{item.priceType==2}}">
                     <view class="price">￥{{item.price}}</view>
-                    <view class="y_price" style="text-decoration:none;">订金</view>
+                    <view class="y_price" style="text-decoration:none;">{{langData.priceStatus02[lang]}}</view>
                 </view>
                 <view class="price_box" wx:if="{{item.priceType==1}}">
                     <view class="price">￥{{item.price}}</view>

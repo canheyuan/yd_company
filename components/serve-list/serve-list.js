@@ -11,6 +11,7 @@ Component({
         isAsc:String,
         categoryId:String,
         supplierId:String,
+        keyWord: String,
         reachData: {
             type: Number, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
             observer: function (newVal, oldVal, changedPath) {
@@ -59,6 +60,7 @@ Component({
                     isAsc: _this.properties.isAsc,   //排序方向（1-升序 2-降序，默认2）
                     categoryId: _this.properties.categoryId,  //分类ID
                     supplierId: _this.properties.supplierId,  //服务商ID
+                    keyword: _this.properties.keyWord
                 },
                 isReach: isReach,
                 page: _this,
@@ -71,7 +73,7 @@ Component({
                     }
                 },
                 success: () => {
-                    console.log("服务列表接口", _this.data.listInfo);
+                    //console.log("服务列表接口", _this.data.listInfo);
                 }
 
             });

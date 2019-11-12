@@ -36,6 +36,8 @@ page{background: #f7f7f7; }
 .menu_list .li .ico_complaint{background-position: -300rpx -50rpx;}
 .menu_list .li .ico_order{background-position: -350rpx -50rpx;}
 .menu_list .li .ico_recommend{background-position: -400rpx -50rpx;}
+.menu_list .li .ico_serve{background-position: -450rpx -50rpx;}
+
 
 .menu_list .li.last{margin-bottom:20rpx;}
 .menu_list .li.last .info{border-bottom:none;}

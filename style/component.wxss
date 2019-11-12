@@ -1,5 +1,5 @@
 /* 星星 */
-.u_star{text-align:center; width:350rpx; display:inline-block; font-size:0; vertical-align: top; overflow: hidden;}
+.u_star{text-align:center; width:350rpx; display:inline-block; font-size:0; line-height:0; vertical-align: top; overflow: hidden; }
 .u_star .icon{display:inline-block; width:70rpx; height:60rpx;  background:url(https://www.5iparks.com/static/yuanding/images/icon/star.png) no-repeat; background-size:100% 100%;}
 .u_star .icon.act{background-image:url(https://www.5iparks.com/static/yuanding/images/icon/star_act.png)}
 

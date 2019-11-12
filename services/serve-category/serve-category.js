@@ -22,13 +22,13 @@ Page({
         //判断是否有缓存，有直接加载缓存不调用接口
         var serveData = wx.getStorageSync('serveCategory') ? wx.getStorageSync('serveCategory'):null; //设置缓存用户信息
         if (!serveData){
-            this.setData({ levelId: options.id });
+            this.setData({ levelId: options.id ? options.id:'' });
             this.getlistInfoFn(1);
         }else{
             var levelId = options.id ? options.id: serveData.level1[0].id
             this.setData({
                 serveData : serveData,
-                levelId: levelId
+                levelId : levelId
             })
         }
     },

@@ -817,7 +817,7 @@ module.exports = {
         browseTitle: { zh: '最近浏览', en: 'bbbbbbbbbb' },
         serveLabel: { zh: '服务', en: 'bbbbbbbbbb' },
         browseText1: { zh: '用户', en: 'bbbbbbbbbb' },
-        browseText2: { zh: '分钟前浏览了', en: 'bbbbbbbbbb' },
+        browseText2: { zh: '浏览了', en: 'bbbbbbbbbb' },
         recommendTitle: { zh: '推荐服务', en: 'bbbbbbbbbb' },
         salesLabel: { zh: '销量', en: 'bbbbbbbbbb' },
         salesLabel2:{ zh: '累计销量', en: 'bbbbbbbbbb' },
@@ -830,6 +830,10 @@ module.exports = {
         selfsupportLabel2: { zh: '平台自营服务', en: 'bbbbbbbbbb' },
         attestationLabel: { zh: '平台认证', en: 'bbbbbbbbbb' },
         serveBtn: { zh: '服务 >', en: 'bbbbbbbbbb' },
+        aboutBtn: { zh: '关于 >', en: 'bbbbbbbbbb' },
+        priceStatus01: { zh: '面议', en: 'bbbbbbbbbb' },
+        priceStatus02: { zh: '定金', en: 'bbbbbbbbbb' },
+        priceStatus03: { zh: '促销', en: 'bbbbbbbbbb' },
         //服务列表：serve-list
         listTitle: { zh: '服务列表', en: 'bbbbbbbbbb' },
         tagName01: { zh: '默认排序', en: 'bbbbbbbbbb' },
@@ -838,7 +842,6 @@ module.exports = {
         tagName04: { zh: '销量', en: 'bbbbbbbbbb' },
         tagName05: { zh: '价格', en: 'bbbbbbbbbb' },
         //服务详情：serve-detail
-        promotionLabel:{ zh: '促销', en: 'bbbbbbbbbb' },
         regionTitle:{ zh: '服务地区', en: 'bbbbbbbbbb' },
         deadlineTitle:{ zh: '服务期限', en: 'bbbbbbbbbb' },
         serveDetailTitle:{ zh: '服务详情', en: 'bbbbbbbbbb' },

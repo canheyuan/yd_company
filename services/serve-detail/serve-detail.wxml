@@ -8,15 +8,15 @@
         <view class="money" wx:if="{{detailData.priceType==1}}">
             <text class="price">￥{{detailData.price}}</text>
             <text class="y_price">￥{{detailData.originalPrice}}</text>
-            <view class="label">一口价</view>
+            <view class="label">{{langData.priceStatus03[lang]}}</view>
         </view>
         <view class="money" wx:if="{{detailData.priceType==2}}">
             <text class="price">￥{{detailData.price}}</text>
-            <view class="label">订金</view>
+            <view class="label">{{langData.priceStatus02[lang]}}</view>
         </view>
         <view class="money" wx:if="{{detailData.priceType==3}}">
-            <text class="price">面议</text>
-            <view class="label">面议</view>
+            <text class="price">{{langData.priceStatus01[lang]}}</text>
+            <view class="label">{{langData.priceStatus01[lang]}}</view>
         </view>
         <view class='data_list'>
             <view class="label">
@@ -53,8 +53,12 @@
         <view class="gys_item clearfix">
             <image class="headimg" src="{{detailData.supplier.logo}}"></image>
             <view class="info">
-                <navigator url="/services/supplier-list/supplier-list" class="btn">{{langData.serveBtn[lang]}}</navigator>
+                <navigator 
+                    url="/services/supplier-list/supplier-list?id={{detailData.supplier.id}}" 
+                    class="btn"
+                >{{langData.serveBtn[lang]}}</navigator>
                 <view class='h3'>{{detailData.supplier.name}}</view>
+                
                 <view class="rz_info">
                     <view class="label1" wx:if="{{detailData.supplier.type==1}}">
                         <icon class="icons ico_rz"></icon>
@@ -70,6 +74,7 @@
                         ></view>
                     </view>
                 </view>
+
                 <view class='tj_data'>
                     <view class="label">
                         <icon class="icons ico_xl"></icon>

@@ -4,8 +4,10 @@ Page({
     data: {
         domainUrl: app.globalData.domainUrl,
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
         
+        isSearch:false, //是否是搜索模块
+        searchTxt:'',   //搜索关键词
         supplierId:'',  //服务商id
         categoryId: '',  //分类id,测试：49b1db395cd653a2d22f1aae986e9397
         screenList: null,    //筛选头部数据
@@ -18,6 +20,8 @@ Page({
     //生命周期函数--监听页面加载
     onLoad: function (options) {
         this.setData({
+            isSearch: options.search ? true:false,
+            searchTxt: options.search ? options.search :'',
             categoryId: options.c_id ? options.c_id:''
         })
         //设置语言,判断是否切换语言
@@ -109,11 +113,19 @@ Page({
         })
     },
 
+    //搜索服务
+    searchServeFn(e){
+        var val = e.detail.value
+        this.setData({
+            searchTxt: val,
+            listReach:Math.random() + 1
+        })
+    },
+
     //关闭弹窗
     closeMaskFn(e) {
         this.setData({ screenPopHide: true })
     },
-
 
     //上拉加载更多
     onReachBottom: function (e) {

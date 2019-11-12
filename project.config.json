@@ -55,14 +55,15 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "分销详情页",
-					"pathName": "pages/recommend/recommend-detail/recommend-detail",
-					"query": ""
+					"name": "分销列表页",
+					"pathName": "services/serve-list/serve-list",
+					"query": "",
+					"scene": null
 				},
 				{
 					"id": 1,
-					"name": "服务列表",
-					"pathName": "pages/services/serve-list/serve-list",
+					"name": "pages/common/search/search",
+					"pathName": "pages/common/search/search",
 					"query": "",
 					"scene": null
 				},

@@ -2,7 +2,7 @@
 <!-- 数据未加载时显示的默认列表 -->
 <!-- <default-list wx:if="{{!listInfo.isFinish}}"></default-list> -->
 <view class='my_serve_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
-    <view class='li' wx:for="{{listInfo.list}}" wx:key="serve{{index}}">
+    <view class='li box_shadow' wx:for="{{listInfo.list}}" wx:key="serve{{index}}">
         <view class="company">
             <view class="status {{item.statusClass}}">{{item.statusName}}</view>
             <view class="label1" wx:if="{{item.supplierType==1}}">
@@ -15,10 +15,7 @@
             <view class="txt">{{item.supplierName}}</view>
         </view>
         <view class="gys_info" bindtap="gotoDetailFn" data-id="{{item.id}}">
-            <image 
-                class='icon bg01' 
-                src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
-            ></image>
+            <image class='icon' src='{{item.serviceMainImg}}'></image>
             <view class='info'>
                 <view class="price_box">
                     <view class="price">￥{{item.unitPrice}}</view>
@@ -32,7 +29,7 @@
                 </view>
             </view>
         </view>
-        <view class="btm">
+        <view class="btm" wx:if="{{item.status==1 || item.status==3 || item.status==4 || item.status==5}}">
 
             <!-- 星星评价 -->
             <view class="fwpj_box" wx:if="{{item.star && item.status==5}}">
@@ -50,13 +47,22 @@
             <!-- <view wx:if="{{item.status==6}}" class="btn btn01" bindtap="openTipPop" data-type="withdraw">撤回申请</view> -->
 
             <!-- 取消服务按钮 -->
-            <navigator wx:if="{{item.status==1}}" class="btn btn01" url="/services/serve-cancel/serve-cancel?id={{item.id}}">取消服务</navigator>
+            <navigator 
+                wx:if="{{item.status==1}}" class="btn btn01" 
+                url="/services/serve-cancel/serve-cancel?id={{item.id}}"
+            >取消服务</navigator>
 
             <!-- 服务完成按钮 -->
-            <view wx:if="{{item.status==3}}" class="btn btn02" bindtap="openTipPop" data-type="finish">服务完成</view>
+            <view 
+                wx:if="{{item.status==3}}" class="btn btn02" 
+                bindtap="openTipPop" data-type="finish" data-id="{{item.id}}"
+            >服务完成</view>
 
             <!-- 服务评价按钮 -->
-            <view  wx:if="{{item.status==4}}" class="btn btn02" bindtap="openTipPop" data-type="evaluation">服务评价</view>
+            <view 
+                wx:if="{{item.status==4}}" class="btn btn02" 
+                bindtap="openTipPop" data-type="evaluation" data-id="{{item.id}}"
+            >服务评价</view>
 
         </view>
     </view>
@@ -73,7 +79,7 @@
         <view class='pop_mdl'>
             <view class='h3'>{{popData.title}}</view>
             <text class='alert'>{{popData.des}}</text>
-            <view class='u_star' hidden="{{!popData.isScore}}">
+            <view class='u_star' wx:if="{{popData.isScore}}">
                 <view 
                     class='icon {{starScore>starItem?"act":""}}'
                     wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}" wx:for-item="starItem" 
