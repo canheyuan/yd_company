@@ -1,5 +1,6 @@
 {
-    "navigationBarTitleText": "服务供应商",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
     "usingComponents": {
         "serve-list": "/components/serve-list/serve-list"
     }

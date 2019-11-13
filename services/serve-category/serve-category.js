@@ -9,18 +9,18 @@ Page({
         levelId:'',
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     onLoad: function (options) {
         
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'services', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+        app.loadLangNewFn(this, 'serve', (res,lang) => {
+            wx.setNavigationBarTitle({ title: res.categoryTitle[lang] });  //设置当前页面的title
         });
 
         //判断是否有缓存，有直接加载缓存不调用接口
-        var serveData = wx.getStorageSync('serveCategory') ? wx.getStorageSync('serveCategory'):null; //设置缓存用户信息
+        var serveData = wx.getStorageSync('serveCategory') ? wx.getStorageSync('serveCategory'):null;
         if (!serveData){
             this.setData({ levelId: options.id ? options.id:'' });
             this.getlistInfoFn(1);
@@ -55,29 +55,28 @@ Page({
                 level:level
             },
             success: (res) => {
-                console.log('服务数据列表：'+ level + '级:' , res.data);
-                var serveData = _this.data.serveData;
-                serveData['level'+level] = res.data.data;
-                this.setData({ serveData: serveData });
+                var serveData = _this.data.serveData
+                serveData['level'+level] = res.data.data
+                this.setData({ serveData: serveData })
                 if(level<3){
                     if (serveData.level1.length==0){ return }    //没有一级类目就不用继续加载
-                    _this.getlistInfoFn(level + 1);
+                    _this.getlistInfoFn(level + 1)
                 } else {
-                    wx.setStorageSync('serveCategory', _this.data.serveData); //设置缓存用户信息
+                    wx.setStorageSync('serveCategory', _this.data.serveData) //设置缓存用户信息
                     if (!_this.data.levelId) {
-                        this.setData({ levelId: serveData.level1[0].id });
+                        this.setData({ levelId: serveData.level1[0].id })
                     }
                 }
-                console.log('服务数据列表：', serveData);
             }
-        });
+        })
     },
 
     //跳转
     gotoSeverListFn(e) {
-        var id = e.currentTarget.dataset.id;
+        var id = e.currentTarget.dataset.id
+        var title = e.currentTarget.dataset.title
         wx.navigateTo({
-            url: `/services/serve-list/serve-list?c_id=${id}`
+            url: `/services/serve-list/serve-list?c_id=${id}&title=${title}`
         })
     }
 

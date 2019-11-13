@@ -40,7 +40,7 @@
                     class='li' hidden="{{serveItem2.id != serveItem3.parentId}}"
                     wx:for="{{serveData.level3}}" wx:key="level3{{index}}"
                     wx:for-item="serveItem3" wx:for-index="serveIndex3"
-                    bindtap="gotoSeverListFn" data-id="{{serveItem3.id}}"
+                    bindtap="gotoSeverListFn" data-id="{{serveItem3.id}}" data-title="{{serveItem3.name}}"
                 >
                     <image class="icon {{serveItem3.icon?'':'none'}}" src="{{serveItem3.icon}}"></image>
                     <view class='text'>{{serveItem3.name}}</view>

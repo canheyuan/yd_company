@@ -8,7 +8,7 @@ Page({
         lang: '',    //语言类型
         detailData:null,
 
-        regionName:'请选择'
+        //regionName:'请选择'
     },
 
     //生命周期函数--监听页面加载
@@ -43,12 +43,12 @@ Page({
     },
 
     //改变地区
-    regionChangeFn(e){
-        console.log('改变地区：',e)
-        var value = e.detail.value;
-        var regionName = value.join(' ');
-        this.setData({ regionName: regionName })
-    },
+    // regionChangeFn(e){
+    //     console.log('改变地区：',e)
+    //     var value = e.detail.value;
+    //     var regionName = value.join(' ');
+    //     this.setData({ regionName: regionName })
+    // },
 
     //底部按钮跳转
     gotoUrlFn(e){
@@ -59,12 +59,8 @@ Page({
 
     //页面相关事件处理函数--监听用户下拉动作
     onPullDownRefresh: function () {
-
-    },
-
-    //页面上拉触底事件的处理函数
-    onReachBottom: function () {
-
+        this.getDetailFn(this.data.detailData.id)
+        wx.stopPullDownRefresh(); //下拉刷新后页面上移
     },
 
     //用户点击右上角分享

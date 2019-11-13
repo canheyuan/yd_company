@@ -97,13 +97,13 @@ Page({
                 gotoUrl = '/pages/message/notice-details/notice-details?id=' + slideItem.targetAddress;
                 break;
             case 'activity':
-                gotoUrl = '/pages/activity/activity-details/activity-details?id=' + slideItem.targetAddress;
+                gotoUrl = '/activity/activity-details/activity-details?id=' + slideItem.targetAddress;
                 break;
             case 'news':
-                gotoUrl = '/pages/found/news-detail/news-detail?id=' + slideItem.targetAddress;
+                gotoUrl = '/found/news-detail/news-detail?id=' + slideItem.targetAddress;
                 break;
             case 'policy':
-                gotoUrl = '/pages/found/policy-detail/policy-detail?id=' + slideItem.targetAddress;
+                gotoUrl = '/found/policy-detail/policy-detail?id=' + slideItem.targetAddress;
                 break;
             case 'service':
                 gotoUrl = '/services/serve-detail/serve-detail?id=' + slideItem.targetAddress;

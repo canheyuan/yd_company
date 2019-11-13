@@ -8,7 +8,6 @@ Page({
         lang: '',    //语言类型
 
         detailData:null,    //详情信息
-
     },
 
     //生命周期函数--监听页面加载
@@ -18,11 +17,6 @@ Page({
             wx.setNavigationBarTitle({ title: res.supplierTitle[lang] });  //设置当前页面的title
         });
         this.getDetailFn(options.id);
-    },
-
-    //生命周期函数--监听页面显示
-    onShow: function () {
-
     },
 
     //获取服务商详情

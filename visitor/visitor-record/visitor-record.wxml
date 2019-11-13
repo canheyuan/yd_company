@@ -1,0 +1,43 @@
+
+<!-- 选择月份 -->
+<view class='choose_head'>
+  <picker mode="date" value="{{dateMonth}}" fields="month"  bindchange="changeMonthFn">
+      <view class='month_btn'><icon class='icons ico_month'></icon></view>
+  </picker>
+  <view class='info'>
+    <text class='tit'>{{!dateMonth?langData.public.all:dateMonth}}</text>
+  </view>
+</view>
+
+<view class='visitor_record_list'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+  <navigator 
+    class='li' wx:for="{{listInfo.list}}" wx:key="visitor{{index}}" 
+    url='/visitor/visitor-appointment-detail/visitor-appointment-detail?id={{item.reserveCode}}'
+  >
+
+    <view class='label status{{item.status}}'>{{item.statusName}}</view>
+    <image class='img' src='{{domainUrl}}/images/visitor/fk_img.png'></image>
+
+    <view class='info'>
+      <view class='title'><text>{{langData.vName}}：</text>{{item.visitorName}}</view>
+
+      <view class='p'>
+        <icon class='icons ico_phone'></icon>
+        <text>{{langData.public.phoneCode}}：</text>{{item.visitorPhone}}
+      </view>
+
+      <view class='p'>
+        <icon class='icons ico_time'></icon>
+        <text>{{langData.vTime}}：</text>{{item.reserveTime}}
+      </view>
+    </view>
+
+  </navigator>
+  <!-- 底部提示文字 -->
+  <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
+    <view class='txt'>{{listInfo.tipTxt}}</view>
+  </view> 
+
+</view>
+<!-- 暂无状态 -->
+<list-nothing c-name="visitor" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>

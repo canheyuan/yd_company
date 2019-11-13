@@ -199,7 +199,7 @@ Page({
                 image: 'ico07',
                 title: langMenuData.activity,
                 typeName: 'activity',
-                link: '/pages/activity/activity-list/activity-list',
+                link: '/activity/activity-list/activity-list',
                 skipType: 'navigate',
                 islogin: false,
                 visit: 0,
@@ -219,7 +219,7 @@ Page({
                 image: 'ico11',
                 title: langMenuData.visitor,
                 typeName: 'visitor',
-                link: '/pages/visitor/visitor-appointment/visitor-appointment',
+                link: '/visitor/visitor-appointment/visitor-appointment',
                 skipType: 'navigate',
                 islogin: true,
                 visit: 0,
@@ -229,7 +229,7 @@ Page({
                 image: 'ico10',
                 title: langMenuData.companyNews,
                 typeName: 'companyNews',
-                link: '/pages/found/company-news-list/company-news-list',
+                link: '/found/company-news-list/company-news-list',
                 skipType: 'navigate',
                 islogin: false,
                 visit: 0,
@@ -249,7 +249,7 @@ Page({
                 image: 'ico08',
                 title: langMenuData.scanCode,
                 typeName: 'scancode',
-                link: '/pages/visitor/scan-code/scan-code',
+                link: '/visitor/scan-code/scan-code',
                 skipType: 'navigate',
                 islogin: true,
                 visit: 0,
@@ -269,7 +269,7 @@ Page({
                 image: 'ico15',
                 title: langMenuData.complaint,
                 typeName: 'complaint',
-                link: '/pages/complaint/complaint-apply/complaint-apply',
+                link: '/complaint/complaint-apply/complaint-apply',
                 skipType: 'navigate',
                 islogin: true,
                 visit: 0,
@@ -425,13 +425,13 @@ Page({
                 gotoUrl = '/pages/message/notice-details/notice-details?id=' + slideItem.targetAddress;
                 break;
             case 'activity':
-                gotoUrl = '/pages/activity/activity-details/activity-details?id=' + slideItem.targetAddress;
+                gotoUrl = '/activity/activity-details/activity-details?id=' + slideItem.targetAddress;
                 break;
             case 'news':
-                gotoUrl = '/pages/found/news-detail/news-detail?id=' + slideItem.targetAddress;
+                gotoUrl = '/found/news-detail/news-detail?id=' + slideItem.targetAddress;
                 break;
             case 'policy':
-                gotoUrl = '/pages/found/policy-detail/policy-detail?id=' + slideItem.targetAddress;
+                gotoUrl = '/found/policy-detail/policy-detail?id=' + slideItem.targetAddress;
                 break;
             case 'service':
                 gotoUrl = '/services/serve-detail/serve-detail?id=' + slideItem.targetAddress;
@@ -516,7 +516,7 @@ Page({
     goToPolicy(e) {
         var policyId = e.currentTarget.dataset.id;
         wx.navigateTo({
-            url: '/pages/found/policy-detail/policy-detail?id=' + policyId
+            url: '/found/policy-detail/policy-detail?id=' + policyId
         })
     },
 
@@ -564,7 +564,7 @@ Page({
     morePolicyFn() {
         app.globalData.foundTag = 1;
         wx.switchTab({
-            url: '/pages/found/found-index/found-index'
+            url: '/pages/menu-tabs/found-index/found-index'
         });
     },
 

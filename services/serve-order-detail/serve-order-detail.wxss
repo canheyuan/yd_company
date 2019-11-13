@@ -3,7 +3,7 @@
 @import '/style/btn.wxss';
 @import '/style/component.wxss';
 
-page{background:#f7f7f7; padding-bottom:100rpx;}
+page{background:#f7f7f7;}
 /* 头部信息 */
 .confirm_head{background:#fff; position:relative;}
 .confirm_head .company{background:#f6fcff; padding:20rpx;}

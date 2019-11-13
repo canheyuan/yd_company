@@ -40,7 +40,7 @@ var configData = {
             recommend: true,  //推荐有礼
             coupon: true,  //优惠券
             serve:true, //服务
-            lang: true,  //语言切换
+            lang: false,  //语言切换
         },
     },
 
@@ -71,7 +71,7 @@ var configData = {
             recommend: true,  //推荐有礼
             coupon: true,  //优惠券
             serve: true, //服务
-            lang: true,  //语言切换
+            lang: false,  //语言切换
         },
     },
 

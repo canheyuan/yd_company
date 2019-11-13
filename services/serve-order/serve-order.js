@@ -82,7 +82,7 @@ Page({
                 data: formData,
                 method: 'POST',
                 success: (res) => {
-                    console.log('下单成功')
+                    //console.log('下单成功')
                     wx.redirectTo({ url: '/pages/common/result/result?page=serveOrder' })
                 }
             });

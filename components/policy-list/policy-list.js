@@ -71,7 +71,7 @@ Component({
         gotoDetailsFn(e) {
             var pId = e.currentTarget.dataset.id;
             wx.navigateTo({
-                url: '/pages/found/policy-detail/policy-detail?id=' + pId,
+                url: '/found/policy-detail/policy-detail?id=' + pId,
             });
         },
 

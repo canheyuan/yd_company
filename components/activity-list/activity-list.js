@@ -141,7 +141,7 @@ Component({
         gotoDetailsFn(e) {
             var id = e.currentTarget.dataset.activity_id;
             wx.navigateTo({
-                url: 'pages/activity/activity-details/activity-details?id=' + id,
+                url: '/activity/activity-details/activity-details?id=' + id,
             });
         },
 

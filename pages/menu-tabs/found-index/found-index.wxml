@@ -47,7 +47,7 @@
     <!-- 行业专家 -->
     <view class='index_mdl04'>
         <view class='index_title'>
-            <navigator class='more_btn' url='/pages/found/expert/expert' >{{langData.moreText}}</navigator>
+            <navigator class='more_btn' url='/found/expert/expert' >{{langData.moreText}}</navigator>
             <text>{{langData.expertTitle}}</text>
         </view>
         <view class='hot_act_list_box'>

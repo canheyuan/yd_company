@@ -1,7 +1,7 @@
 <form bindsubmit="cancelFn" report-submit="true">
 <!-- 取消原因 -->
 <view class="cause_box box_shadow">
-    <view class="yd_title01">请选择取消服务的原因：</view>
+    <view class="yd_title01">{{langData.causeTitle[lang]}}</view>
     <view class="cause_list">
         <view 
             class="li {{causeIndex==index?'act':''}}" 
@@ -11,7 +11,7 @@
             <text class="txt">{{item}}</text>
             <textarea 
                 wx:if="{{index==3}}" class="textarea" bindblur="causeTextBlurFn"
-                placeholder="请填写取消服务的原因…" placeholder-class="placeholder"
+                placeholder="{{langData.causePl[lang]}}" placeholder-class="placeholder"
             ></textarea>
         </view>
     </view>
@@ -36,7 +36,7 @@
 </view>
 
 <view class="u_btn_wrap">
-    <button class="u_btn blue w100" hover-class="hover" form-type="submit">立即提交</button>
+    <button class="u_btn blue w100" hover-class="hover" form-type="submit">{{langData.public.submitBtn[lang]}}</button>
 </view>
 </form>
 

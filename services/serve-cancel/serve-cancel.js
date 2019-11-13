@@ -6,12 +6,7 @@ Page({
         langData: null,  //语言数据
         langType: '',    //语言类型
 
-        causeList:[
-            '不想要这项服务',
-            '服务下单后一直没有响应',
-            '信息填写错误重新下单',
-            '其他原因'
-        ],
+        causeList:null,   //取消原因标签列表
         causeIndex:-1,
         reason:'',
         orderId:'',
@@ -23,8 +18,12 @@ Page({
     //生命周期函数--监听页面加载
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangNewFn(this, 'serve', (res) => {
-            //wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+        app.loadLangNewFn(this, 'serve', (res,lang) => {
+            wx.setNavigationBarTitle({ title: res.cancelTitle[lang] });  //设置当前页面的title
+            var causeList = res.causeList.map(item=>{
+                return item[lang];
+            })
+            this.setData({ causeList: causeList  })
         });
 
         this.setData({ orderId : options.id });
@@ -47,10 +46,12 @@ Page({
 
     //提交取消服务
     cancelFn(e){
+        var langData = this.data.langData
+        var lang = this.data.lang
         var _this = this;
         var formId = e.detail.formId;
         if (!this.data.reason){
-            wx.showToast({ title: '请选择取消原因', icon: 'none', duration: 2000 });
+            wx.showToast({ title: langData.causeTip[lang], icon: 'none', duration: 2000 });
             return;
         }
         var formData = {
@@ -65,7 +66,7 @@ Page({
                 data: formData,
                 success: (res) => {
                     app.globalData.serveOrderReach = true;
-                    wx.showToast({ title: '已取消', icon: 'success', duration: 2000 });
+                    wx.showToast({ title: langData.cancelTip[lang], icon: 'success', duration: 2000 });
                     setTimeout(()=>{
                         wx.navigateBack()
                     },2000)

@@ -5,23 +5,26 @@ Page({
         domainUrl: app.globalData.domainUrl,
         langData: null,  //语言数据
         langType: '',    //语言类型
-        tagList: [  //订单状态（1-待确认 2-待交付 3-待验收 4-待评价 5-已评价 6-已取消）
-            { name: '全部', type: '', reach: 1, show: true },
-            { name: '待确认', type: 1, reach: 1, show: false },
-            { name: '待交付', type: 2, reach: 1, show: false },
-            { name: '待验收', type: 3, reach: 1, show: false },
-            { name: '待评价', type: 4, reach: 1, show: false },
-            { name: '已完成', type: 5, reach: 1, show: false },
-            { name: '取消/售后', type: 6, reach: 1, show: false }
-        ],
+        tagList: null,  //订单状态type（1-待确认 2-待交付 3-待验收 4-待评价 5-已评价 6-已取消）
         tagIndex: 0,
     },
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'services', (res) => {
-            //wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+        app.loadLangNewFn(this, 'serve', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.orderListTitle[lang] });  //设置当前页面的title
+            this.setData({
+                tagList: [  //订单状态（1-待确认 2-待交付 3-待验收 4-待评价 5-已评价 6-已取消）
+                    { name: res.orderStatus08[lang], type: '', reach: 1, show: true },
+                    { name: res.orderStatus01[lang], type: 1, reach: 1, show: false },
+                    { name: res.orderStatus02[lang], type: 2, reach: 1, show: false },
+                    { name: res.orderStatus03[lang], type: 3, reach: 1, show: false },
+                    { name: res.orderStatus04[lang], type: 4, reach: 1, show: false },
+                    { name: res.orderStatus05[lang], type: 5, reach: 1, show: false },
+                    { name: res.orderStatus07[lang], type: 6, reach: 1, show: false }
+                ],
+            })
         });
     },
 

@@ -11,36 +11,7 @@ Page({
 
         handleType: '',  //操作类型
         popData: null,   //当前弹窗里的数据
-        tipPopData: {
-            finish: {   //服务完成
-                show: true, //弹窗是否显示
-                title: '服务完成',  //标题
-                des: '感谢您对我们的支持！\n本次服务已经完成？',  //提示文字
-                tipText: '已完成',
-                isScore: false,  //是否评分
-                callOffFnName: 'closeTipPop',   //取消函数名
-                confirmFnName: 'handleFn',  //确定函数名
-            },
-            withdraw: { //撤回申请
-                show: true,
-                title: '撤回申请',
-                des: '感谢您对我们的支持！\n是否撤回取消服务的申请？',
-                tipText: '已撤回',
-                isScore: false,
-                callOffFnName: 'closeTipPop',
-                confirmFnName: 'handleFn',
-            },
-            evaluation: { //服务评价
-                show: true,
-                title: '服务评价',
-                des: '请为我们的服务评分！',
-                tipText: '已评分',
-                isScore: true,
-                callOffFnName: 'closeTipPop',
-                confirmFnName: 'handleFn',
-            }
-
-        },  //弹窗数据
+        tipPopData: null,  //弹窗数据
         starScore: 0,    //星星评分
 
     },
@@ -49,22 +20,48 @@ Page({
     onLoad: function (options) {
         //设置语言,判断是否切换语言
         app.loadLangNewFn(this, 'serve', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.orderDetailTitle[lang] });  //设置当前页面的title
+            this.setData({
+                orderId: options.id,
+                tipPopData: {
+                    finish: {   //服务完成
+                        show: true, //弹窗是否显示
+                        title: res.tipPopData.finish.title[lang],  //标题
+                        des: res.tipPopData.finish.des[lang],  //提示文字
+                        tipText: res.tipPopData.finish.tipText[lang],
+                        isScore: false,  //是否评分
+                        callOffFnName: 'closeTipPop',   //取消函数名
+                        confirmFnName: 'handleFn',  //确定函数名
+                    },
+                    evaluation: { //服务评价
+                        show: true,
+                        title: res.tipPopData.evaluation.title[lang],
+                        des: res.tipPopData.evaluation.des[lang],
+                        tipText: res.tipPopData.evaluation.tipText[lang],
+                        isScore: true,
+                        callOffFnName: 'closeTipPop',
+                        confirmFnName: 'handleFn',
+                    }
 
+                }
+            })
+            this.getDetailFn(options.id)
         });
-        
-        this.setData({ orderId : options.id })
-        this.getDetailFn(options.id)
 
     },
 
     //生命周期函数--监听页面显示
     onShow: function () {
-
+        if (app.globalData.serveOrderReach) {
+            this.getDetailFn(this.data.orderId);
+        }
     },
 
     //获取详情
     getDetailFn(id) {
         var _this = this;
+        var langData = this.data.langData
+        var lang = this.data.lang
         app.requestFn({
             url: `/serviceOrder/detail/${id}`,
             success: (res) => {
@@ -72,27 +69,27 @@ Page({
                 var detailData = res.data.data;
                 switch (detailData.status) {
                     case 1:
-                        detailData.statusName = '待确认'
+                        detailData.statusName = langData.orderStatus01[lang]
                         detailData.statusClass = 's_bg01'
                         break;
                     case 2:
-                        detailData.statusName = '待交付'
+                        detailData.statusName = langData.orderStatus02[lang]
                         detailData.statusClass = 's_bg01'
                         break;
                     case 3:
-                        detailData.statusName = '待验收'
+                        detailData.statusName = langData.orderStatus03[lang]
                         detailData.statusClass = 's_bg02'
                         break;
                     case 4:
-                        detailData.statusName = '待评价'
+                        detailData.statusName = langData.orderStatus04[lang]
                         detailData.statusClass = 's_bg04'
                         break;
                     case 5:
-                        detailData.statusName = '已完成'
+                        detailData.statusName = langData.orderStatus05[lang]
                         detailData.statusClass = 's_bg03'
                         break;
                     case 6:
-                        detailData.statusName = '已取消'
+                        detailData.statusName = langData.orderStatus06[lang]
                         detailData.statusClass = 's_bg05'
                         break;
                 }
@@ -111,11 +108,8 @@ Page({
     //打开提示弹窗
     openTipPop(e) {
         var handleType = e.currentTarget.dataset.type
-        var orderId = e.currentTarget.dataset.id    //服务id
         var popData = this.data.tipPopData[handleType]
-        console.log('打开提示弹窗:', handleType, popData)
         this.setData({
-            orderId: orderId,
             handleType: handleType,
             popData: popData
         })
@@ -139,16 +133,12 @@ Page({
                 apiUrl = `/serviceOrder/check/${orderId}`
                 var jsonType = 'application/json'
                 break;
-            // case 'withdraw':  //撤回申请
-            //     apiUrl = `${orderId}`
-            //     break;
             case 'evaluation':    //服务评价
                 apiUrl = `/serviceOrder/star/${orderId}`
                 formData['star'] = this.data.starScore;
                 var jsonType = 'application/x-www-form-urlencoded'
                 break;
         }
-        console.log('apiUrl:', apiUrl, 'formData:', formData);
         //return;
         app.requestFn({
             url: apiUrl,
@@ -161,16 +151,16 @@ Page({
                 _this.closeTipPop();
                 setTimeout(() => {
                     _this.setData({ ['listInfo.pageNum']: 1 });
-                    _this.loadMoreListFn();
+                    _this.getDetailFn(_this.data.orderId);
                 }, 1500)
             }
         });
     },
 
 
-
     //页面相关事件处理函数--监听用户下拉动作
     onPullDownRefresh: function () {
-
+        this.getDetailFn(this.data.orderId)
+        wx.stopPullDownRefresh(); //下拉刷新后页面上移
     },
 })

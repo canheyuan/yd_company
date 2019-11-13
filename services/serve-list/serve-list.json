@@ -1,5 +1,4 @@
 {
-    "navigationBarTitleText": "",
     "usingComponents": {
         "serve-list": "/components/serve-list/serve-list"
     }

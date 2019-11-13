@@ -10,8 +10,7 @@
                 <view class="price">{{langData.priceStatus01[lang]}}</view>
             </view>
             <view class="price_box" wx:if="{{item.priceType==2}}">
-                <view class="price">￥{{item.price}}</view>
-                <view class="y_price" style="text-decoration:none;">{{langData.priceStatus02[lang]}}</view>
+                <view class="price"><text class="f_gray">{{langData.priceStatus02[lang]}}：</text>￥{{item.price}}</view>
             </view>
             <view class="price_box" wx:if="{{item.priceType==1}}">
                 <view class="price">￥{{item.price}}</view>

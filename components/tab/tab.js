@@ -16,10 +16,10 @@ Component({
         app.loadLangFn(this, 'cpTab', (res) => {
           this.setData({
             tagList: [
-              { title: res.menuText1, link: '/pages/index/index', icoClass: 'ico01' },
-              { title: res.menuText2, link: '/pages/found/found-index/found-index', icoClass: 'ico02' },
-              { title: res.menuText3, link: '/services/serve-index/serve-index', icoClass: 'ico03' },
-              { title: res.menuText4, link: '/pages/user/user-index/user-index', icoClass: 'ico04' }
+                { title: res.menuText1, link: '/pages/index/index', icoClass: 'ico01' },
+                { title: res.menuText2, link: '/pages/menu-tabs/found-index/found-index', icoClass: 'ico02' },
+                { title: res.menuText3, link: '/pages/menu-tabs/serve-index/serve-index', icoClass: 'ico03' },
+                { title: res.menuText4, link: '/pages/menu-tabs/user-index/user-index', icoClass: 'ico04' }
             ]
           })
         });

@@ -49,7 +49,7 @@
         <view class='li box_shadow'  wx:for="{{listInfo.list}}" wx:key="listInfo{{index}}">
             <view class='ico_collect act' bindtap="collectPopShow" data-id="{{item.newsId}}"></view>
             <view class='yd_title01'>{{item.author}}</view>
-            <navigator class='top' url='/pages/found/news-detail/news-detail?id={{item.newsId}}'>
+            <navigator class='top' url='/found/news-detail/news-detail?id={{item.newsId}}'>
                 <image 
                     class='img' src='{{item.mainImgList[0]}}'  lazy-load="true"
                     binderror='errorImgFn' data-obj="listInfo.list[{{index}}].mainImgList[0]"

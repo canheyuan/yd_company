@@ -76,9 +76,7 @@ Page({
 
     //关闭弹窗
     closePop() {
-        this.setData({
-            wzPopStatus: false
-        })
+        this.setData({ wzPopStatus: false  })
     },
 
     //弹窗跳转到成功页
@@ -96,9 +94,8 @@ Page({
                 },
                 method: 'POST',
                 success: (res) => {
-                    wx.navigateTo({
-                        url: '/pages/common/result/result?page=wuzi'
-                    });
+                    this.closePop()
+                    wx.navigateTo({  url: '/pages/common/result/result?page=wuzi' });
                 }
             });
         });

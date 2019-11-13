@@ -28,7 +28,6 @@
                 "my-repair/my-repair",
                 "my-reserve/my-reserve",
                 "my-reserve-details/my-reserve-details",
-                "user-index/user-index",
                 "update-info/update-info",
                 "user-info/user-info",
                 "my-backlog/my-backlog",
@@ -50,7 +49,7 @@
             ]
         },
         {
-            "root": "pages/found/",
+            "root": "found",
             "pages": [
                 "policy-detail/policy-detail",
                 "policy_reading/policy_reading",
@@ -63,6 +62,7 @@
             ]
         },
         {
+            "name":"services",
             "root": "services",
             "pages": [
                 "services-intro/services-intro",
@@ -113,7 +113,7 @@
             ]
         },
         {
-            "root": "pages/complaint/",
+            "root": "complaint",
             "pages": [
                 "complaint-detail/complaint-detail",
                 "complaint-apply/complaint-apply",
@@ -121,7 +121,7 @@
             ]
         },
         {
-            "root": "pages/activity/",
+            "root": "activity",
             "pages": [
                 "activity-list/activity-list",
                 "activity-apply/activity-apply",
@@ -130,7 +130,7 @@
             ]
         },
         {
-            "root": "pages/visitor/",
+            "root": "visitor",
             "pages": [
                 "visitor-record/visitor-record",
                 "visitor-appointment-detail/visitor-appointment-detail",
@@ -172,6 +172,32 @@
             ]
         }
     ],
+    "preloadRule": {
+        "pages/index/index": {
+            "network": "all",
+            "packages": [
+                "pages/common/"
+            ]
+        },
+        "pages/menu-tabs/serve-index/serve-index": {
+            "network": "all",
+            "packages": [
+                "services"
+            ]
+        },
+        "pages/menu-tabs/found-index/found-index": {
+            "network": "all",
+            "packages": [
+                "found"
+            ]
+        },
+        "pages/menu-tabs/user-index/user-index": {
+            "network": "all",
+            "packages": [
+                "pages/user"
+            ]
+        }
+    },
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",

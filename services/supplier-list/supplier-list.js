@@ -10,7 +10,6 @@ Page({
         
 
         supplierId: '',  //服务商id
-        categoryId: '',  //分类id,测试：49b1db395cd653a2d22f1aae986e9397
         screenList: null,    //筛选头部数据
         listReach: null, //刷新
         screenIndex: 0,  //筛选索引
@@ -55,11 +54,7 @@ Page({
             })
         });
         this.getDetailFn(options.id);
-    },
-
-    //生命周期函数--监听页面显示
-    onShow: function () {
-
+        
     },
 
     //获取服务商详情
@@ -147,12 +142,18 @@ Page({
 
     //页面相关事件处理函数--监听用户下拉动作
     onPullDownRefresh: function () {
-
+        this.setData({
+            listReach: Math.random() + 1, //刷新列表
+        })
+        this.getDetailFn(this.data.supplierId);
+        wx.stopPullDownRefresh(); //下拉刷新后页面上移
     },
 
     //页面上拉触底事件的处理函数
     onReachBottom: function () {
-
+        this.setData({
+            listReach: Math.random(), //加载更多列表
+        })
     },
 
     //用户点击右上角分享

@@ -7,7 +7,7 @@
     <view class="gys_item clearfix">
         <image class="headimg" src="{{detailData.logo}}"></image>
         <view class="info">
-            <navigator url="/services/supplier-list/supplier-list?id={{detailData.id}}" class="btn">服务 ></navigator>
+            <navigator url="/services/supplier-list/supplier-list?id={{detailData.id}}" class="btn">{{langData.serveBtn[lang]}}</navigator>
             <view class='h3'>{{detailData.name}}</view>
             <view class="rz_info">
                 <view class="label1" wx:if="{{detailData.type==1}}">

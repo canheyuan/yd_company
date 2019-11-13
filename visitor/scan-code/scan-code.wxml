@@ -1,0 +1,18 @@
+
+<view class='scan_code_mdl box_shadow'>
+  <view class='scan_code' style='background-image:url({{domainUrl}}/images/visitor/code_bg.png);'>
+    <view class='per_img'><image class='img' src='{{userInfo.headImgs}}'></image></view>
+
+    <view class='info'>
+      <view class='name'>{{userInfo.name}}</view>
+      <view class='line'></view>
+      <view class='company_name'>{{userInfo.enterpriseInfo.entName}}</view>
+    </view>
+
+    <view class='code_box'>
+      <view class='tip'>将二维码对准闸机扫描机，即可通行。</view>
+      <image class='ewm' src='{{domainUrl}}/images/temp/ewm.png'></image>
+    </view>
+  </view>
+</view>
+<navigator url='/visitor/history-record/history-record' class='check_btn'>查看历史记录 >></navigator>

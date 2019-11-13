@@ -4,7 +4,7 @@ Page({
     data: {
         domainUrl: app.globalData.domainUrl,
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
 
         serveId: '', //4e31b88314367e857a78bbac4147307b
         detailData: null,
@@ -13,7 +13,9 @@ Page({
     //生命周期函数--监听页面加载
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangNewFn(this, 'serve');
+        app.loadLangNewFn(this, 'serve', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.consultTitle[lang] });  //设置当前页面的title
+        });
 
         //获取缓存详情信息
         var detailData = wx.getStorageSync('serveDetail') ? wx.getStorageSync('serveDetail') : null;
@@ -23,17 +25,11 @@ Page({
         })
     },
 
-    //生命周期函数--监听页面显示
-    onShow: function () {
-
-    },
-
     //提交咨询
     formSubmit(e) {
         var _this = this;
         var formData = e.detail.value;
         var formId = e.detail.formId;
-
         formData['serviceId'] = this.data.serveId
 
         //验证

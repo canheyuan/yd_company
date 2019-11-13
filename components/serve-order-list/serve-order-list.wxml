@@ -22,10 +22,10 @@
                     <view class="price"> x {{item.count}}</view>
                 </view>
                 <view class='h3'>{{item.serviceName}}</view>
-                <view class="p">服务地区：{{item.serviceRegionStr}}</view>
-                <view class="p">服务期限：{{item.serviceDurationStr}}</view>
+                <view class="p">{{langData.regionTitle[lang]}}：{{item.serviceRegionStr}}</view>
+                <view class="p">{{langData.deadlineTitle[lang]}}：{{item.serviceDurationStr}}</view>
                 <view class="price_box2">
-                    合计金额：<text class="f_orange">￥{{item.amount}}</text>
+                    {{langData.amountMoney[lang]}}<text class="f_orange">￥{{item.amount}}</text>
                 </view>
             </view>
         </view>
@@ -33,7 +33,7 @@
 
             <!-- 星星评价 -->
             <view class="fwpj_box" wx:if="{{item.star && item.status==5}}">
-                <text class="tit">服务评价：</text>
+                <text class="tit">{{langData.evaluationTitle[lang]}}：</text>
                 <view class='u_star small'>
                     <view 
                         wx:for="{{[0,1,2,3,4]}}"  wx:key="{{index}}" 
@@ -50,19 +50,19 @@
             <navigator 
                 wx:if="{{item.status==1}}" class="btn btn01" 
                 url="/services/serve-cancel/serve-cancel?id={{item.id}}"
-            >取消服务</navigator>
+            >{{langData.cancelBtn[lang]}}</navigator>
 
             <!-- 服务完成按钮 -->
             <view 
                 wx:if="{{item.status==3}}" class="btn btn02" 
                 bindtap="openTipPop" data-type="finish" data-id="{{item.id}}"
-            >服务完成</view>
+            >{{langData.confirmFinishBtn[lang]}}</view>
 
             <!-- 服务评价按钮 -->
             <view 
                 wx:if="{{item.status==4}}" class="btn btn02" 
                 bindtap="openTipPop" data-type="evaluation" data-id="{{item.id}}"
-            >服务评价</view>
+            >{{langData.evaluationBtn[lang]}}</view>
 
         </view>
     </view>
@@ -87,8 +87,8 @@
                 ></view>
             </view>
             <view class='btm_btn clearfix'>
-                <view class='btn' bindtap="{{popData.callOffFnName}}">取消</view>
-                <view class='btn' bindtap='{{popData.confirmFnName}}'>确定</view>
+                <view class='btn' bindtap="{{popData.callOffFnName}}">{{langData.public.callOffBtn[lang]}}</view>
+                <view class='btn' bindtap='{{popData.confirmFnName}}'>{{langData.public.confirmBtn[lang]}}</view>
             </view>
             <view class='close_btn icons' bindtap="{{popData.callOffFnName}}" ></view>
         </view>

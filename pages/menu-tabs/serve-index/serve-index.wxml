@@ -229,6 +229,11 @@
 <!-- 返回顶部 -->
 <default m-name="backTop" m-top="60" is-show="{{backTopShow}}"></default>
 
+<!------------------ tab栏菜单 ------------------>
+<view wx:if="{{lang=='en'}}" class="tab_box">
+    <tab index='2' lang-change='{{lang}}'></tab>
+</view>
+
 
 <!-- 消息提醒 -->
 <!-- <view class='notice_mdl' >
