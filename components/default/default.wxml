@@ -12,7 +12,7 @@
 <view wx:if="{{mName=='dfList'}}" class="default_list {{mClass}}">
     <view 
         class="li" wx:if="{{mNum>index}}" 
-        wx:for="{{[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]}}" wx:key="list{{index}}"
+        wx:for="{{[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]}}" wx:key="*this"
     >
         <view class="img"></view>
         <view class="info">
@@ -27,7 +27,7 @@
 <view wx:if="{{mName=='serveMenu'}}" class="menu_list {{mClass}}">
     <view 
         class="a" wx:if="{{mNum>index}}" 
-        wx:for="{{[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]}}" wx:key="menulist{{index}}"
+        wx:for="{{[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]}}" wx:key="*this"
     >
         <view class="icon"></view><view class="text"></view>
     </view>
@@ -38,7 +38,7 @@
 <block wx:if="{{mName=='recList'}}">
     <view 
         class="rec_li" wx:if="{{mNum>index}}" 
-        wx:for="{{[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]}}" wx:key="menulist{{index}}"
+        wx:for="{{[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]}}" wx:key="*this"
     >
         <view class="icon"></view>
         <view class="info">

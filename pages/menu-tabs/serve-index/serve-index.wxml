@@ -17,7 +17,7 @@
     <!-- 幻灯片 -->
     <view class='banner_box' wx:if="{{serveSlideList.length>0}}">
         <swiper  class='banner_slide' bindchange="serveSlideChange"  autoplay="true" interval="5000" duration="500">
-            <swiper-item wx:for="{{serveSlideList}}" wx:key="serveSlideList{{index}}">
+            <swiper-item wx:for="{{serveSlideList}}" wx:key="advertId">
                 <image 
                     src='{{item.advertImg}}'  class="slide_img" lazy-load="true"
                     bindtap="goToLink" data-item="{{item}}"
@@ -27,7 +27,7 @@
             </swiper-item>
         </swiper>
         <view class="slide_nav">
-            <view wx:for="{{serveSlideList}}" wx:key="dot{{index}}" class="dot {{index==serveSlideIndex?'act':''}}"></view>
+            <view wx:for="{{serveSlideList}}" wx:key="advertId" class="dot {{index==serveSlideIndex?'act':''}}"></view>
         </view>
     </view>
 
@@ -39,7 +39,7 @@
 <view class="serve_menu" wx:if="{{serveMenuFinish && serveMenuList}}">
     <navigator 
         class="li" hover-class="hover" url="{{item.link}}" wx:if="{{index<9}}"
-        wx:for="{{serveMenuList}}" wx:key="serveMenuList{{index}}" 
+        wx:for="{{serveMenuList}}" wx:key="id" 
     >
         <image class="ico {{item.icon?'':'none'}}" src="{{item.icon}}"></image>
         <view class="text">{{item.name}}</view>
@@ -64,7 +64,7 @@
         vertical="true" circular="true" display-multiple-items="1" 
     >
         <swiper-item 
-            class="li" wx:for="{{browseList}}" wx:key="browseList{{index}}"
+            class="li" wx:for="{{browseList}}" wx:key="serviceId"
             bindtap="gotoServeDetailFn" data-id="{{item.serviceId}}"
         >
             <view class="top">
@@ -91,7 +91,7 @@
     <view class='serve_list box_shadow' wx:if="{{serveRecommendFinish}}" >
         <navigator 
             class='li' url='{{item.link}}'
-            wx:for="{{serveRecommendList}}" wx:key="serveRecommendList{{index}}"
+            wx:for="{{serveRecommendList}}" wx:key="id"
         >
             <!-- <image 
                 class='icon bg0{{index+1}}' 
@@ -99,10 +99,18 @@
             ></image> -->
             <image class="icon" src="{{item.mainImg}}"></image>
             <view class='info'>
-                <view class="price_box">
+                <view class="price_box" wx:if="{{item.priceType==3}}">
+                    <view class="price">{{langData.priceStatus01[lang]}}</view>
+                </view>
+                <view class="price_box" wx:if="{{item.priceType==2}}">
+                    <view class="price">￥{{item.price}}</view>
+                    <view class="y_price" style="text-decoration:none;">{{langData.priceStatus02[lang]}}</view>
+                </view>
+                <view class="price_box" wx:if="{{item.priceType==1}}">
                     <view class="price">￥{{item.price}}</view>
                     <view class="y_price">￥{{item.originalPrice}}</view>
                 </view>
+
                 <view class='h3'>{{item.name}}</view>
                 <view class='tj_data'>
                     <view class="label"><icon class="icons ico_xl"></icon>{{langData.salesLabel[lang]}}：{{item.saleCount}}</view>
@@ -114,10 +122,7 @@
 </view>
 
 <!-- 分类列表 -->
-<block 
-    wx:for="{{categoryList}}" wx:key="categoryList{{index}}"
-    wx:for-item="categoryItem"
->
+<block wx:for="{{categoryList}}" wx:key="idx" wx:for-item="categoryItem">
 <!-- 我要开公司 -->
 <view class="wykgs_mdl">
     <view class="wykgs_title">
@@ -127,7 +132,7 @@
     </view>
     <view class="wykgs_list clearfix">
         <navigator
-            wx:for="{{categoryItem.cateList}}" wx:key="cateList{{index}}"
+            wx:for="{{categoryItem.cateList}}" wx:key="id"
             class="item" style="background-image:url({{domainUrl}}/images/services/kgs_img0{{index+1}}.png);"
             url="/services/serve-list/serve-list?c_id={{item.id}}&title={{item.name}}"
         >
@@ -147,7 +152,7 @@
     <view class='serve_list box_shadow'>
         <navigator 
             class='li' url='/services/serve-detail/serve-detail?id={{item.id}}'
-            wx:for="{{categoryItem.serviceList}}" wx:key="serviceList{{index}}"
+            wx:for="{{categoryItem.serviceList}}" wx:key="id"
         >
             <image  class='icon {{item.mainImg?"":"none"}}'  src='{{item.mainImg}}' ></image>
             <view class='info'>
@@ -187,7 +192,7 @@
     <view class="gys_list box_shadow" wx:if="{{supplierFinish && supplierList.length>0}}">
         <navigator 
             class="gys_item clearfix" hover-class="hover"
-            wx:for="{{supplierList}}" wx:key="supplierList{{index}}"
+            wx:for="{{supplierList}}" wx:key="id"
             url="/services/supplier-list/supplier-list?id={{item.id}}"
         >   
             <image class="headimg" src="{{item.logo}}"></image>
@@ -202,7 +207,7 @@
                     <view class="label2" wx:if="{{item.type==2}}">{{langData.selfsupportLabel[lang]}}</view>
                     <view class="star_box">
                         <view 
-                            wx:for="{{[1,2,3,4,5]}}" wx:key="star{{index}}" 
+                            wx:for="{{[1,2,3,4,5]}}" wx:key="*this" 
                             wx:for-item="starItem" wx:for-index="starIndex"
                             class="star {{starIndex < item.star?'act':''}}"
                         ></view>

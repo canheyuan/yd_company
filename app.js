@@ -8,8 +8,8 @@ let chatIm = require('utils/chatIm.js');    //封装腾讯云接口
 
 App({
     globalData: {
-        appVersion: '1.3.3',       //上传的版本号
-        appVersionDate: '20191106', //版本更新的日期
+        appVersion: '1.4.0',       //上传的版本号
+        appVersionDate: '20191114', //版本更新的日期
 
         langType: '',     //当前小程序的语言版本
         langData: null,

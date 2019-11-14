@@ -30,7 +30,7 @@
             class='index_slide' bindchange="indexSlideChange"
             autoplay="true" interval="5000" duration="500" 
         >
-            <swiper-item wx:for="{{indexSlide}}" wx:key="indexSlide{{index}}">
+            <swiper-item wx:for="{{indexSlide}}" wx:key="advertId">
                 <image 
                     src='{{item.advertImg}}'  class="slide_img" lazy-load="true"
                     bindtap="goToLink" data-item="{{item}}"
@@ -42,20 +42,10 @@
         </swiper>
     </view>
     <view class="slide_nav">
-        <view 
-            wx:for="{{indexSlide}}" wx:key="dot{{index}}" 
-            class="dot {{index==indexSlideIndex?'act':''}}"
-        ></view>
+        <view wx:for="{{indexSlide}}" wx:key="dot" class="dot {{index==indexSlideIndex?'act':''}}"></view>
     </view>
 </view>
 <!------------------ 头部模块_End ------------------>
-
-<!-- <button 
-    open-type="contact" bindcontact="contactFn" 
-    send-message-title="客服1111" class="blue_btn"
-    session-from="index" send-message-path="pages/index/index"
-    send-message-img=""
->客服</button> -->
 
 <view class='index_mdl02'>
     <!------------------ 通知公告_Start ------------------>
@@ -77,7 +67,7 @@
                 interval="3000" duration="500" 
                 vertical="true" circular="true" display-multiple-items="1" 
             >
-                <swiper-item wx:for="{{noticeData.list}}" wx:key="noticeData{{index}}">
+                <swiper-item wx:for="{{noticeData.list}}" wx:key="noticeId">
                     <view class='label l_blue'>{{langData.recentText}}</view>
                     <navigator 
                         class='a' 
@@ -92,7 +82,7 @@
 
     <!------------------ 菜单栏_Start ------------------>
     <view class="menu_list clearfix" style='height:{{menuHeight}}'>
-        <block wx:for="{{menuData}}" wx:key="{{index}}"  wx:if="{{item.isShow}}">
+        <block wx:for="{{menuData}}" wx:key="typeName"  wx:if="{{item.isShow}}">
             <view 
                 class='a' hover-class='hover' data-item="{{item}}" bindtap='loginTipShow' 
                 wx:if="{{!(item.typeName=='merchants' || item.typeName=='merchantsSteward')}}"
@@ -134,7 +124,10 @@
 <!------------------ 待办事项_Start ------------------>
 <view class='index_mdl03' hidden="{{!backLogIsShow}}" wx:if="{{backLogReach>1}}">
     <view class='index_title'>
-        <navigator class='more_btn' hover-class='hover' url='/pages/user/my-backlog/my-backlog'>{{langData.moreText}}</navigator>
+        <navigator 
+            class='more_btn' hover-class='hover' 
+            url='/pages/user/my-backlog/my-backlog'
+        >{{langData.moreText}}</navigator>
         <text>{{langData.backlogTitle}}</text>
     </view>
     <backlog-list target-page="index" reach-data="{{backLogReach}}" bindgetTotalFn="getBackLogTotal"></backlog-list>
@@ -152,7 +145,7 @@
         <scroll-view class='scroll_box' scroll-x="true" style='height:100%; width:100%;'>
             <view class='policy_list' style='width:{{policyList.length*430+20}}rpx;'>
                 <view 
-                    wx:for="{{policyList}}" wx:key="{{index}}"
+                    wx:for="{{policyList}}" wx:key="policyId"
                     class='li' bindtap="goToPolicy" data-id="{{item.policyId}}"
                 >
                     <image 
@@ -195,7 +188,7 @@
             <view class='hot_act_list' style='width:{{hotActList.length*320+20}}rpx;'>
                 <navigator  
                     class='li' url='/activity/activity-details/activity-details?id={{item.activityId}}' 
-                    wx:for="{{hotActList}}" wx:key="{{index}}"
+                    wx:for="{{hotActList}}" wx:key="activityId"
                 >
                     <image 
                         class='img' lazy-load="true"
@@ -217,25 +210,6 @@
 </view>
 <!------------------ 热门活动_End ------------------>
 
-
-<!------------------ 线上图书_Start ------------------>
-<view class='index_mdl05' wx:if="{{moduleSwitch.indexBook}}">
-    <view class='index_title'>
-        <navigator class='more_btn' hover-class='hover'>{{langData.moreText}}</navigator>
-        <text>{{langData.lineBooksTitle}}</text>
-    </view>
-    <view class='xsts_ctn clearfix'>
-        <view class='xsts_list'>
-        <navigator
-            wx:for="{{lineBooksList}}" wx:key="{{index}}" 
-            class='a' url=""
-        >
-            <image class='img' src='{{domainUrl}}{{item.image}}'  lazy-load="true"></image>
-        </navigator>
-        </view>
-    </view>
-</view>
-<!------------------ 线上图书_End ------------------>
 
 <!------------------ tab栏菜单 ------------------>
 <view wx:if="{{langType=='en'}}" class="tab_box">

@@ -5,7 +5,7 @@ Page({
         domainUrl: app.globalData.domainUrl,
         langData: null,  //语言数据
         lang: '',    //语言类型
-
+        userInfo:null,
         serveId: '', //4e31b88314367e857a78bbac4147307b
         detailData: null,
     },
@@ -17,9 +17,12 @@ Page({
             wx.setNavigationBarTitle({ title: res.consultTitle[lang] });  //设置当前页面的title
         });
 
+    
+
         //获取缓存详情信息
         var detailData = wx.getStorageSync('serveDetail') ? wx.getStorageSync('serveDetail') : null;
         this.setData({
+            userInfo:app.globalData.loginInfo.userInfo,
             detailData: detailData,
             serveId: detailData.id
         })

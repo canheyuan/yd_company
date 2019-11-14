@@ -33,8 +33,6 @@
     </view>
 </view>
 
-
-
 <!-- 填写订单信息 -->
 <view class='layout_box'>
     <view class='layout_ctn'>
@@ -43,7 +41,7 @@
             <view class='dt'>{{langData.userName[lang]}}</view>
             <view class='dd'>
                 <input 
-                    class='input' type='text' name="contact" value=''
+                    class='input' type='text' name="contact" value='{{userInfo.name}}'
                     placeholder='{{langData.userNamePl[lang]}}' placeholder-class='pl_input'  
                 />
             </view>
@@ -54,7 +52,7 @@
             <view class='dt'>{{langData.public.contactPhone[lang]}}</view>
             <view class='dd'>
                 <input 
-                    class='input' type='number' name="contactPhone" value='{{contactsPhone}}'
+                    class='input' type='number' name="contactPhone" value='{{userInfo.cellphone}}'
                     placeholder='{{langData.public.contactPhonePl[lang]}}' placeholder-class='pl_input'  
                 />
             </view>

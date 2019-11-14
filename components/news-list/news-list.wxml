@@ -7,7 +7,7 @@
         <scroll-view class='scroll_box' scroll-x="true">
             <view class='scroll_ctn' style='width:{{newsTypeList.length*135}}rpx;'>
                 <view 
-                    wx:for="{{newsTypeList}}" wx:key="newsTypeIndex{{index}}"
+                    wx:for="{{newsTypeList}}" wx:key="code"
                     class='txt {{index == newsTypeIndex?"act":""}}' 
                     bindtap="newsTypeTagFn" data-index="{{index}}"
                 >
@@ -20,7 +20,7 @@
     <!-- 发现资讯 -->
     <view class='news_list'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
         <view 
-            wx:for="{{listInfo.list}}" wx:key="listInfo{{index}}" class='li clearfix' 
+            wx:for="{{listInfo.list}}" wx:key="newsId" class='li clearfix' 
             bindtap="goToNew" data-id="{{item.newsId}}" data-index="{{index}}"
         >
            <image 
@@ -46,7 +46,7 @@
 <block wx:if="{{targetPage=='collect'}}">
     <!-- 收藏资讯 -->
     <view class='news_list2 collect'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
-        <view class='li box_shadow'  wx:for="{{listInfo.list}}" wx:key="listInfo{{index}}">
+        <view class='li box_shadow'  wx:for="{{listInfo.list}}" wx:key="newsId">
             <view class='ico_collect act' bindtap="collectPopShow" data-id="{{item.newsId}}"></view>
             <view class='yd_title01'>{{item.author}}</view>
             <navigator class='top' url='/found/news-detail/news-detail?id={{item.newsId}}'>

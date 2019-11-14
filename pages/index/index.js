@@ -107,8 +107,9 @@ Page({
             loginInfo   : loginInfo,
             backLogReach: Math.random()+1   //刷新加载待办
         });
-
-        this.loadMenuListFn();  //加载菜单
+        this.isParkInfo((res)=>{    //判断是否有房源分销数据
+            this.loadMenuListFn(res);  //加载菜单
+        })
         this.getNoticeData(); //顶部消息个数
         this.getNotification(); //获取通知公告数据消息数量
         this.getIndexSlide(); //顶部幻灯片
@@ -131,9 +132,10 @@ Page({
     },
 
     //加载菜单栏
-    loadMenuListFn(callback) {
+    loadMenuListFn(isRecommendInfo) {
         var moduleSwitch = app.globalData.moduleSwitch;
         var langMenuData = this.data.langData.menu;
+        var recommendShow = (moduleSwitch.recommend && (isRecommendInfo == 1));
         var menuData = [
             {   //在线报修
                 image: 'ico01', //图标
@@ -204,6 +206,16 @@ Page({
                 islogin: false,
                 visit: 0,
                 isShow: moduleSwitch.activity,
+            },
+            {   //推荐有礼
+                image: 'ico17',
+                title: langMenuData.recommend,
+                typeName: 'recommend',
+                link: '/pages/recommend/recommend-index/recommend-index',
+                skipType: 'navigate',
+                islogin: true,
+                visit: 0,
+                isShow: recommendShow,
             },
             {   //热门政策
                 image: 'ico04',
@@ -322,6 +334,18 @@ Page({
             showMenuNum: showMenuNum
         });
 
+    },
+
+    //判断当前园区是否有房源分销信息
+    isParkInfo(callback) {
+        var _this = this;
+        app.requestFn({
+            isLoading: false,
+            url: `/houseDistribution/onDist`,
+            success: (res) => {
+                callback && callback(res.data.data);
+            }
+        });
     },
 
     //展开收缩菜单

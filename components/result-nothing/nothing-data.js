@@ -1,7 +1,8 @@
 
 function pageDataFn() {
     var app = getApp();  //获取应用实例
-    var langData = app.globalData.langData[app.globalData.langType].nothingData;
+    var lang = app.globalData.lang
+    var langData = app.globalData.langNewData.nothingData;
     var page_data = {
         //活动列表暂无状态
         activity: {
@@ -18,38 +19,38 @@ function pageDataFn() {
         //活动列表暂无状态
         activity_collect: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.activity_collect,
+            title: langData.activity_collect[lang],
             des: '',
         },
         //活动列表暂无状态
         news: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.news,
+            title: langData.news[lang],
             des: '',
         },
         news_collect: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.news_collect,
+            title: langData.news_collect[lang],
             des: '',
         },
         discuss: {
             icon: '',
-            title: langData.discuss,
+            title: langData.discuss[lang],
             des: '',
         },
         policy: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.policy,
+            title: langData.policy[lang],
             des: '',
         },
         policy_collect: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.policy_collect,
+            title: langData.policy_collect[lang],
             des: '',
         },
         supplies: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.supplies,
+            title: langData.supplies[lang],
             des: '',
             btm_btn: langData.backIndexBtn,
             btm_btn_url: '/pages/index/index',
@@ -57,67 +58,67 @@ function pageDataFn() {
         },
         order: {
             icon: '/images/order/zdcx_img.png',
-            title: langData.order,
+            title: langData.order[lang],
             des: ''
         },
         repair: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.repair,
+            title: langData.repair[lang],
             des: ''
         },
         reserve: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.reserve,
+            title: langData.reserve[lang],
             des: ''
         },
         expert: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.expert,
+            title: langData.expert[lang],
             des: ''
         },
         expert2: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.expert2,
+            title: langData.expert2[lang],
             des: ''
         },
         message: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.message,
+            title: langData.message[lang],
             des: ''
         },
         visitor: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.visitor,
+            title: langData.visitor[lang],
             des: ''
         },
         complaint: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.complaint,
+            title: langData.complaint[lang],
             des: ''
         },
         myRecommend: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.myRecommend,
+            title: langData.myRecommend[lang],
             des: ''
         },
         coupon_list: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.coupon_list,
+            title: langData.coupon_list[lang],
             des: ''
         },
         companyHosekeeper: {
             icon: '/images/icon/result_nothing.png',
-            title: langData.companyHosekeeper,
+            title: langData.companyHosekeeper[lang],
             des: ''
         },
         companySearchList:{
             icon: '/images/icon/result_nothing.png',
-            title: langData.companySearchList,
+            title: langData.companySearchList[lang],
             des: ''
         },
         serve:{
             icon: '/images/icon/result_nothing.png',
-            title: '暂无服务',
+            title: langData.serve[lang],
             des: ''
         }
     }

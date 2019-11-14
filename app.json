@@ -8,7 +8,7 @@
     ],
     "subPackages": [
         {
-            "root": "pages/repair/",
+            "root": "pages/repair",
             "pages": [
                 "online-repair/online-repair",
                 "repair-detail/repair-detail"
@@ -22,7 +22,7 @@
             ]
         },
         {
-            "root": "pages/user/",
+            "root": "pages/user",
             "pages": [
                 "my-collect/my-collect",
                 "my-repair/my-repair",

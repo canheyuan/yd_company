@@ -55,13 +55,13 @@
                 <text class='txt'>{{langData.invoiceBtn}}</text>
             </navigator>
 
-            <navigator 
+            <!-- <navigator 
                 class='a' hover-class='hover' wx:if="{{moduleSwitch.recommend && isRecommendInfo==1}}"
                 url='/pages/recommend/recommend-index/recommend-index' bindtap='recommendGotoUrl' 
             >
                 <image class='ico' src='{{domainUrl}}/images/me/ico_recommend.png'></image>
                 <text class='txt'>{{langData.recommendBtn}}</text>
-            </navigator>
+            </navigator> -->
         </view>
     </view>
 </view>

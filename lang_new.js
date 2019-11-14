@@ -128,6 +128,7 @@ module.exports = {
         coupon_list:{zh:'暂无优惠券！',en:'No coupons!'},
         companyHosekeeper:{zh:'暂无企业管家',en:'No corporate steward'},
         companySearchList:{zh:'请搜索关键字查找企业！',en:'Please search keywords to find enterprises!'},
+        serve:{zh:'暂无服务',en:'No services'},
         backIndexBtn:{zh:'返回首页',en:'Back to home'},
     },
 
@@ -243,6 +244,7 @@ module.exports = {
             order:{zh:'账单查询',en:'Order'},
             venue:{zh:'场地预定',en:'Reservation'},
             policy:{zh:'热门政策',en:'Policy'},
+            recommend: { zh: '推荐有礼', en: 'Recommend' },
             supplies:{zh:'物资共享',en:'Goods'},
             steward:{zh:'企业管家',en:'Steward'},
             scanCode:{zh:'扫码开门',en:'Scan Code'},
