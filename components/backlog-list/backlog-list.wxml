@@ -5,7 +5,7 @@
 <!-- 待办事项 -->
 <block wx:if="{{listInfo.isFinish}}">
 <view class='dbsx_list' wx:if="{{listInfo.list && listInfo.list.length>0}}">
-    <block wx:for="{{listInfo.list}}" wx:key="toDo{{index}}">
+    <block wx:for="{{listInfo.list}}" wx:key="entityId">
         <!-- 报修 -->
         <view 
             class='li {{item.className}}' bindtap="goToBackLog" data-url="{{item.goUrl}}"

@@ -21,11 +21,6 @@ Page({
         this.getDetailFn(options.id)
     },
 
-    //生命周期函数--监听页面显示
-    onShow: function () {
-
-    },
-
     //获取详情
     getDetailFn(id) {
         var _this = this;

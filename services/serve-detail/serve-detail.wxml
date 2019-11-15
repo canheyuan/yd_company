@@ -3,7 +3,7 @@
 <!-- 服务详情 -->
 <view class="serve_detail">
     <!-- 头部 -->
-    <view class="banner_img"><image mode="widthFix" src="{{detailData.mainImg}}"></image></view>
+    <view class="banner_img"><image mode="aspectFit" src="{{detailData.mainImg}}"></image></view>
     <view class="serve_info">
         <view class="money" wx:if="{{detailData.priceType==1}}">
             <text class="price">￥{{detailData.price}}</text>

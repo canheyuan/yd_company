@@ -30,6 +30,7 @@
             <view wx:for="{{serveSlideList}}" wx:key="advertId" class="dot {{index==serveSlideIndex?'act':''}}"></view>
         </view>
     </view>
+    <image wx:if="{{!serveSlideList.length>0}}" class="banner_df" src="{{domainUrl}}/images/default/img_730_320.jpg"></image>
 
 </view>
 
@@ -41,7 +42,7 @@
         class="li" hover-class="hover" url="{{item.link}}" wx:if="{{index<9}}"
         wx:for="{{serveMenuList}}" wx:key="id" 
     >
-        <image class="ico {{item.icon?'':'none'}}" src="{{item.icon}}"></image>
+        <image class="ico {{item.icon?'':'none'}}" src="{{item.icon}}" lazy-load="true"></image>
         <view class="text">{{item.name}}</view>
     </navigator>
     <!-- 若超过10个，就显示全部按钮 -->
@@ -56,7 +57,7 @@
 
 
 <!-- 最近浏览 -->
-<view class="zjll_mdl box_shadow">
+<view class="zjll_mdl box_shadow" wx:if="{{browseList.length>0}}">
     <view class="title"><image class="img" src="{{domainUrl}}/images/services/zjll_title.png"></image></view>
     <swiper
         class='zjll_list' autoplay="true" 
@@ -97,7 +98,7 @@
                 class='icon bg0{{index+1}}' 
                 src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
             ></image> -->
-            <image class="icon" src="{{item.mainImg}}"></image>
+            <image class="icon" src="{{item.mainImg}}" lazy-load="true"></image>
             <view class='info'>
                 <view class="price_box" wx:if="{{item.priceType==3}}">
                     <view class="price">{{langData.priceStatus01[lang]}}</view>
@@ -154,7 +155,7 @@
             class='li' url='/services/serve-detail/serve-detail?id={{item.id}}'
             wx:for="{{categoryItem.serviceList}}" wx:key="id"
         >
-            <image  class='icon {{item.mainImg?"":"none"}}'  src='{{item.mainImg}}' ></image>
+            <image  class='icon {{item.mainImg?"":"none"}}'  src='{{item.mainImg}}' lazy-load="true" ></image>
             <view class='info'>
                 <view class="price_box" wx:if="{{item.priceType==3}}">
                     <view class="price">{{langData.priceStatus01[lang]}}</view>
@@ -195,7 +196,7 @@
             wx:for="{{supplierList}}" wx:key="id"
             url="/services/supplier-list/supplier-list?id={{item.id}}"
         >   
-            <image class="headimg" src="{{item.logo}}"></image>
+            <image class="headimg" src="{{item.logo}}" lazy-load="true"></image>
             <view class="info">
                 <view class="btn">{{langData.serveBtn[lang]}}</view>
                 <view class='h3'>{{item.name}}</view>

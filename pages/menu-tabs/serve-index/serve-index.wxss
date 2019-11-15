@@ -22,6 +22,7 @@ page{background:#fff;}
 .banner_box .slide_nav .dot.act{background:#4e8bff;}
 .banner_slide{width:100%; height:260rpx; overflow: hidden; border-radius: 0rpx; }
 .banner_slide .slide_img{width:730rpx; height:240rpx; border-radius:20rpx; margin:0 10rpx; box-shadow: 0 5rpx 20rpx rgba(0,0,0,.24); }
+.banner_df{width:730rpx; height:240rpx; border-radius:20rpx; margin:0 10rpx; box-shadow: 0 5rpx 20rpx rgba(0,0,0,.24);}
 
 /* 菜单 */
 .serve_menu{ display: flex; flex-wrap: wrap; width:100%; padding:0rpx 0 10rpx; background:#ffff; margin:10rpx 0;}

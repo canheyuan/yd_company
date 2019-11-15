@@ -1,5 +1,4 @@
 const mtjwxsdk = require('./utils/mtj-wx-sdk.js');  //百度统计
-
 var appConfig = require('config.js');   //不同小程序的配置信息
 let langJson = require('lang.js');   //加载语言文件包
 let langNewJson = require('lang_new.js');   //加载语言文件包
@@ -36,7 +35,7 @@ App({
         loginCode: '',        //微信登录获取code
         isLogin: false,       //登录状态
         isWxLogin: false,     //控制是否正在加载获取用户信息接口
-        isChatLogin: false,    //控制是否调用聊天登录,true:开启，false:关闭
+        isChatLogin: true,    //控制是否调用聊天登录,true:开启，false:关闭
 
         sessionId: '',        //登录后会生成的一个sid
         loginInfo: null,      //缓存用户登录信息
