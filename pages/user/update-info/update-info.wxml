@@ -1,14 +1,17 @@
 <form bindsubmit="formSubmit">
-  <view class='updata_box'>
-    <view class='title'>{{pageData.title}}</view>
-    <view class='updata_ctn'>
-      <view class="clear_input" bindtap="clearInputFn"><icon class='icons ico_reset' ></icon></view>
-      <input class='input' type='text' placeholder='{{pageData.placeholderText}}' value='{{valueTxt}}' focus="true" name="{{changeName}}" />
+    <view class='updata_box'>
+        <view class='title'>{{pageData.title[lang]}}</view>
+        <view class='updata_ctn'>
+            <view class="clear_input" bindtap="clearInputFn"><icon class='icons ico_reset' ></icon></view>
+            <input 
+                class='input' type='text' value='{{valueTxt}}' focus="true" name="{{changeName}}" 
+                placeholder='{{pageData.placeholderText[lang]}}'
+            />
+        </view>
+        <view class='tip'>{{pageData.tipText[lang]}}</view>
     </view>
-    <view class='tip'>{{pageData.tipText}}</view>
-  </view>
 
-  <view class='btn_wrap'>
-    <button class='blue_btn' form-type="submit">{{langData.public.confirmBtn}}</button>
-  </view>
+    <view class='btn_wrap'>
+        <button class='blue_btn' form-type="submit">{{langData.public.confirmBtn[lang]}}</button>
+    </view>
 </form>

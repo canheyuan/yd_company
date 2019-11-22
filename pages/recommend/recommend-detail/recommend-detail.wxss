@@ -3,7 +3,7 @@
 page{background:#f7f7f7; padding-bottom:120rpx;}
 .recommend_title{display: block;  margin-bottom:20rpx; font-weight: bold;}
 .recommend_title text{color:#000; font-size:34rpx; display: block; overflow: hidden;}
-
+.recommend_title .more{float:right;color:#2a99f1; font-size:26rpx;line-height:40rpx;}
 
 
 /* 幻灯片 */

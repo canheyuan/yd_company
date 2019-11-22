@@ -1,19 +1,19 @@
 
 <form report-submit="true" bindsubmit="formSubmit">
     <view class='repair_mdl'>
-        <view class='repair_title'>{{langData.repairInfo}}</view>
+        <view class='repair_title'>{{langData.repairInfo[lang]}}</view>
         <view class='repair_ctn'>
             <!-- 报修类型 -->
             <view class='form_mdl' style='box-shadow:none;'>
                 <view class='dl clearfix'>
-                    <text class='dt'>{{langData.repairType}}：</text>
+                    <text class='dt'>{{langData.repairType[lang]}}：</text>
                     <view class='dd'>
                         <picker 
                             class='picker' bindchange="bxTypeListFn" name="typeId"
                             value="{{bxTypeList[bxTypeIndex].code}}" range="{{bxTypeList}}" range-key="label"
                         >
                             <view style="color:{{bxTypeList?'#333333':'#c2c2c2'}}">
-                            {{bxTypeIndex?bxTypeList[bxTypeIndex].label:langData.public.pleaseChoosePl}}
+                            {{bxTypeIndex?bxTypeList[bxTypeIndex].label:langData.public.pleaseChoosePl[lang]}}
                             </view>
                         </picker>
                         <icon class='icons ico_arrow'></icon>
@@ -23,7 +23,7 @@
 
             <textarea 
                 hidden="{{!popIsShow}}" class='textarea' 
-                placeholder="{{langData.repairDesPl}}" placeholder-style="color:#c2c2c2;" 
+                placeholder="{{langData.repairDesPl[lang]}}" placeholder-style="color:#c2c2c2;" 
                 name="description" maxlength='80'  
             />
             <view class='textarea' hidden="{{popIsShow}}"></view><!-- 打开弹窗时替换文本框，文本框防止文字浮到最前面 -->
@@ -37,27 +37,27 @@
                 <view class='li' wx:if="{{fileImgsNum!=0}}">
                     <view class='add_btn' bindtap="fileImageFn">
                         <icon class='icons ico_add'></icon>
-                        <text>{{langData.public.addAccessory}}</text>
+                        <text>{{langData.public.addAccessory[lang]}}</text>
                     </view>
                 </view>
             </view>
         </view>
-        <view class='ylb_txt' bindtap="servePopFn"><icon class="icons"></icon>{{langData.severPopBtn}}</view>
+        <view class='ylb_txt' bindtap="servePopFn"><icon class="icons"></icon>{{langData.severPopBtn[lang]}}</view>
     </view>
 
     <!-- 报修地点/联系人 -->
     <view class='repair_mdl'>
-        <view class='repair_title'>{{langData.repairInfoTitle}}</view>
+        <view class='repair_title'>{{langData.repairInfoTitle[lang]}}</view>
         <view class='form_mdl'>
             <view class='dl'>
-                <text class='dt'>{{langData.chooseRoom}}</text>
+                <text class='dt'>{{langData.chooseRoom[lang]}}</text>
                 <view class='dd'>
                     <picker 
                         class='picker' bindchange="roomListFn" name="unitId"
                         value="{{roomList[roomIndex].id}}" range="{{roomList}}" range-key="name"
                     >
                         <view style="color:{{roomIndex?'#333333':'#c2c2c2'}}">
-                        {{roomIndex?roomList[roomIndex].name:langData.public.pleaseChoosePl}}
+                        {{roomIndex?roomList[roomIndex].name:langData.public.pleaseChoosePl[lang]}}
                         </view>
                     </picker>
                     <icon class='icons ico_arrow'></icon>
@@ -65,20 +65,20 @@
             </view>
             
             <view class='dl'>
-                <text class='dt'>{{langData.public.contact}}</text>
+                <text class='dt'>{{langData.public.contact[lang]}}</text>
                 <view class='dd'>
                     <input 
                         class='input' type='text' name="contact" value='{{contactsName}}'
-                        placeholder='{{langData.public.contactPl}}' placeholder-class='pl_input'  
+                        placeholder='{{langData.public.contactPl[lang]}}' placeholder-class='pl_input'  
                     />
                 </view>
             </view>
             <view class='dl'>
-                <text class='dt'>{{langData.public.contactPhone}}</text>
+                <text class='dt'>{{langData.public.contactPhone[lang]}}</text>
                 <view class='dd'>
                     <input 
                         class='input' type='text' name="phone" value='{{contactsPhone}}'
-                        placeholder='{{langData.public.contactPhonePl}}' placeholder-class='pl_input'  
+                        placeholder='{{langData.public.contactPhonePl[lang]}}' placeholder-class='pl_input'  
                     />
                 </view>
             </view>
@@ -87,7 +87,7 @@
     </view>
 
     <view class='ljtj_btn'>
-        <button class='blue_btn' form-type='submit'>{{langData.repairBtn}}</button>
+        <button class='blue_btn' form-type='submit'>{{langData.repairBtn[lang]}}</button>
     </view>
 </form>
 

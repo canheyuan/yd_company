@@ -21,15 +21,15 @@
             data-img="{{domainUrl}}/images/default/df_userhead.png"
         ></image>
         <view class='info'>
-            <view class='name'><text>{{userInfo.name}}</text> {{langData.shareText1}}</view>
+            <view class='name'><text>{{userInfo.name}}</text> {{langData.shareText1[lang]}}</view>
             <view class='c_name'>{{detailData.parkName}}</view>
             <image class='ewm' src='{{imgsInfo.ewm.path}}'></image>
         </view>
     </view>
     
     <view class='btn_wrap'>
-        <view class='btn' hover-class='hover' bindtap='previewImgFn'>{{langData.previewImgBtn}}</view>
-        <view class='btn' hover-class='hover' bindtap='downImg'>{{langData.saveImgBtn}}</view>
+        <view class='btn' hover-class='hover' bindtap='previewImgFn'>{{langData.previewImgBtn[lang]}}</view>
+        <view class='btn' hover-class='hover' bindtap='downImg'>{{langData.saveImgBtn[lang]}}</view>
     </view>
 
 </view>
@@ -55,7 +55,7 @@
         <view 
             class='tit02' 
             style='background:url({{domainUrl}}/images/share/tit_bg02.png) no-repeat center top; background-size:100% auto;'
-        >{{langData.shareText2}}</view>
+        >{{langData.shareText2[lang]}}</view>
         <view class='img_box'>
             <image 
                 class='s_img' 
@@ -86,7 +86,7 @@
     
         <view class='txt03' style='background:url({{domainUrl}}/images/share/tit_bg03.png) no-repeat center top; background-size:100% auto;'>
             <text class='money'>￥</text>
-            <text class='num'>{{detailData.lowestPrice}}</text> <text>{{langData.shareText3}}</text>
+            <text class='num'>{{detailData.lowestPrice}}</text> <text>{{langData.shareText3[lang]}}</text>
         </view>
     </view>
 
@@ -104,13 +104,13 @@
             </view>
         </view>
 
-        <view class='ewm_tip_txt'><text class='txt'>{{langData.shareText6}}</text></view>
+        <view class='ewm_tip_txt'><text class='txt'>{{langData.shareText6[lang]}}</text></view>
 
         <view class='clearfix' style='padding:40rpx 70rpx;'>
             <image class='ewm' src='{{imgsInfo.ewm.path}}'></image>
             <view class='btn_wrap'>
-                <view class='btn' hover-class='hover' style='margin-top:30rpx;' bindtap='previewImgFn'>{{langData.previewImgBtn}}</view>
-                <view class='btn' hover-class='hover' style='margin-top:40rpx;' bindtap='downImg'>{{langData.saveImgBtn}}</view>
+                <view class='btn' hover-class='hover' style='margin-top:30rpx;' bindtap='previewImgFn'>{{langData.previewImgBtn[lang]}}</view>
+                <view class='btn' hover-class='hover' style='margin-top:40rpx;' bindtap='downImg'>{{langData.saveImgBtn[lang]}}</view>
             </view>
         </view>
     </view>
@@ -140,12 +140,12 @@
         </block>
     </view>
 
-    <view class='s_blue_btn' bindtap='downLoadImgFn'>{{langData.saveImgBtn}}</view>
+    <view class='s_blue_btn' bindtap='downLoadImgFn'>{{langData.saveImgBtn[lang]}}</view>
 </view>
 
 <!-- 底部固定按钮 -->
 <view class='share_btm'>
-    <view class='tjy_tit' bindtap='tjyPopFn'><icon class='icons ico_tjy'></icon><text>{{langData.recommendLang}}</text></view>
+    <view class='tjy_tit' bindtap='tjyPopFn'><icon class='icons ico_tjy'></icon><text>{{langData.recommendLang[lang]}}</text></view>
     <view class='small_imgs'>
         <view
             wx:for="{{shareTagList}}" wx:key="shareTagList{{index}}" 
@@ -162,12 +162,12 @@
     <view class='mask_bg_ctn' style=' vertical-align:bottom;'>
         <view class='tjy_pop'>
             <view class='head'>
-                <icon class='icons ico_pyq'></icon>{{langData.shareText7}}
+                <icon class='icons ico_pyq'></icon>{{langData.shareText7[lang]}}
                 <view class='close_btn icons'  bindtap='tjyPopFn'></view>
             </view>
             <view class='tjy_txt'><text>{{copyTxt}}</text></view>
-            <view class='rel_btn' bindtap="replaceTxtFn"><icon class='icons ico_rel'></icon><text>{{langData.nextOne}}</text></view>
-            <view class='copy_btn' bindtap="copyTxtFn">{{langData.copyBtn}}</view>
+            <view class='rel_btn' bindtap="replaceTxtFn"><icon class='icons ico_rel'></icon><text>{{langData.nextOne[lang]}}</text></view>
+            <view class='copy_btn' bindtap="copyTxtFn">{{langData.copyBtn[lang]}}</view>
         </view>
     </view>
 </view>

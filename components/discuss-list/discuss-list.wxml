@@ -50,7 +50,7 @@
         class='icon_box icon_favorite {{isCollect==1?"act":""}}' bindtap='collectFn'
         style="width:110rpx;"
     >{{langData.collectBtn}}</view>
-    <view class='icon_box icon_comment' style="width:44rpx;" bindtap='scrollDiscussFn'>{{discussInfo.pageTotal}}</view>
+    <view class='icon_box icon_comment' style="width:44rpx;" bindtap='scrollDiscussFn'>{{discussInfo.pageTotal?discussInfo.pageTotal:0}}</view>
 </view>
 
 <!-- 登录提示 -->

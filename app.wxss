@@ -21,8 +21,8 @@ image{width:auto; height:auto;}
 .s_blue_btn{height:70rpx; line-height:70rpx;  text-align: center; border-radius:35rpx; background:#6592fe; color:#fff; font-size:30rpx;}
 .orange_btn{height:100rpx; line-height:100rpx;  text-align: center; border-radius:50rpx; color:#fff; font-size:40rpx; background: linear-gradient(to right, #ff8a00, #ff6000); box-shadow: 0 10rpx 34rpx rgba(255,96,0,.62);}
 .disabled{background:#ccc!important; box-shadow:none!important; border-color:#ccc!important; color:#fff!important;}
-.blue_btn,
-.orange_btn,
+.blue_btn.hover,
+.orange_btn.hover,
 .s_blue_btn.hover{opacity: .8;}
 
 /* 通用弹窗遮罩 */

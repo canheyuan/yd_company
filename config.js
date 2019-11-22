@@ -4,9 +4,9 @@ var configData = {
     /*---------------------------------------------------------------------------------------------
        更新某个
        各个小程序的配置字段：
-       园叮     ：yuanding    wx3796a1ffecc1e11e
-       小招     ：xiaozhao    wx89d739bab6040e66
-       广佛     ：guangfo     wx7f9808aa00ac932f
+       园叮：   yuanding    wx3796a1ffecc1e11e
+       小招：   xiaozhao    wx89d739bab6040e66
+       广佛：   guangfo     wx7f9808aa00ac932f
     -----------------------------------------------------------------------------------------------*/
 
 
@@ -37,7 +37,7 @@ var configData = {
             venue: true,  //场地预定
             orderFood: false,  //在线订餐
             zsApp: false,  //小招企服
-            zgjApp: true,  //招管家
+            zgjApp: false,  //招管家
             supplies: true,  //物资共享
             activity: true,  //活动中心
             recommend: true,  //推荐有礼
@@ -68,7 +68,7 @@ var configData = {
             venue: true,  //场地预定
             orderFood: false,  //在线订餐
             zsApp: false,  //小招企服
-            zgjApp: true,  //招管家
+            zgjApp: false,  //招管家
             supplies: true,  //物资共享
             activity: true,  //活动中心
             recommend: true,  //推荐有礼
@@ -98,11 +98,12 @@ var configData = {
             venue: true,  //场地预定
             orderFood: false,  //在线订餐
             zsApp: false,  //小招企服
-            zgjApp: true,  //招管家
+            zgjApp: false,  //招管家
             supplies: true,  //物资共享
             activity: true,  //活动中心
             recommend: true,  //推荐有礼
             coupon: true,  //优惠券
+            serve: true, //服务
             lang: false,  //语言切换
         },
 

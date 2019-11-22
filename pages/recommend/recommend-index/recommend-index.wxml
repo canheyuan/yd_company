@@ -7,20 +7,20 @@
     
     <view class='act_rule_mdl'>
         <image class='step_img' src='{{domainUrl}}/images/tj_step_img.png' mode='widthFix'></image>
-        <view class='yd_title02'><text class='txt'>{{langData.ruleTitle}}</text></view>
+        <view class='yd_title02'><text class='txt'>{{langData.ruleTitle[lang]}}</text></view>
         <view class='question_list box_shadow'>
             <view class='li' wx:for="{{langData.quesList}}" wx:key="quesList{{index}}">
-                <view class='question'><icon class='icons ico_ques'></icon><text>{{item.title}}</text></view>
-                <view class='answer'><icon class='icons ico_yh'></icon><text>{{item.answer}}</text></view>
+                <view class='question'><icon class='icons ico_ques'></icon><text>{{item.title[lang]}}</text></view>
+                <view class='answer'><icon class='icons ico_yh'></icon><text>{{item.answer[lang]}}</text></view>
             </view>
         </view>
     </view>
 
     <view class="fixed_btm">
         <navigator 
-            class='blue_btn'  hover-class='hover'
+            class='blue_btn' hover-class="hover"
             url='/pages/recommend/recommend-detail/recommend-detail'
-        >{{langData.recommendBtn}}</navigator>
+        >{{langData.recommendBtn[lang]}}</navigator>
     </view>
     
 </view>

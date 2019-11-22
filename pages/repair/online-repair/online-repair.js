@@ -26,8 +26,8 @@ Page({
 
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'repair', (res) => {
-            wx.setNavigationBarTitle({ title: res.repairTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'repair', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.repairTitle[lang] });  //设置当前页面的title
             this.getRepairInfo();
         });
     },
@@ -100,6 +100,7 @@ Page({
 
         var _this = this;
         var langData = this.data.langData;
+        var lang = this.data.lang
         var formData = e.detail.value;
         var formId = e.detail.formId;
         
@@ -110,10 +111,10 @@ Page({
         
         //验证
         var isTip = formTip([
-            { name: 'empty', verifyText: formData.typeId, tipText: langData.repairTypeTip},
-            { name: 'empty', verifyText: formData.unitId, tipText: langData.repartRoomTip },
-            { name: 'empty', verifyText: formData.contact, tipText: langData.contactTip },
-            { name: 'phone', verifyText: formData.phone, tipText: langData.phoneTip }
+            { name: 'empty', verifyText: formData.typeId, tipText: langData.repairTypeTip[lang]},
+            { name: 'empty', verifyText: formData.unitId, tipText: langData.repartRoomTip[lang] },
+            { name: 'empty', verifyText: formData.contact, tipText: langData.contactTip[lang] },
+            { name: 'phone', verifyText: formData.phone, tipText: langData.phoneTip[lang] }
         ]);
         if (isTip) { return; } //若有提示，就终止下面程序
 
@@ -158,7 +159,7 @@ Page({
                 //提交formId
                 app.getFormIdFn(formId, () => {
                     app.requestFn({
-                        loadTitle: langData.submitRepairTip,
+                        loadTitle: langData.submitRepairTip[lang],
                         url: `/estateRepair/apply`,
                         data: formData,
                         header: 'application/x-www-form-urlencoded',

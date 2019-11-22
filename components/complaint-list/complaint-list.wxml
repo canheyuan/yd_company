@@ -6,7 +6,7 @@
         bindtap="gotoDetail" data-id="{{item.complaintId}}"
     >
         <view class='status icons {{item.statusClass}}'>{{item.status}}</view>
-        <view class='top'><icon class='icons ico_time'></icon>{{langData.public.applyTime}}：{{item.applyTime}}</view>
+        <view class='top'><icon class='icons ico_time'></icon>{{langData.public.applyTime[lang]}}：{{item.applyTime}}</view>
         <view class='main'>
             <view class='title'><text>{{item.title}}</text></view>
             <view class='p'>{{item.content}}</view>
@@ -19,7 +19,7 @@
             </view> -->
         </view>
         <view class='feedback' wx:if="{{item.result}}">
-            <text>{{langData.feedback}}：
+            <text>{{langData.feedback[lang]}}：
             {{item.result}}</text>
             <view class='time'>{{item.finishTime}}</view>
         </view>

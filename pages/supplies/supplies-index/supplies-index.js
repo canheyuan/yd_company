@@ -6,23 +6,23 @@ Page({
         domainUrl: app.globalData.domainUrl,
         pageNum: 1,    //列表接口页码
 
-        wzPopStatus: false,  //借用物资确认弹窗
-        popGoodName: '', //弹窗里的借用物品名称
-        popGoodId: '', //弹窗里的借用物品id
+        wzPopShow: false,  //借用物资确认弹窗
+        popGoodItem: '', //弹窗里的借用物品信息
+        //popGoodId: '', //弹窗里的借用物品id
 
         listInfo: {
             pageSize: 20
         }, //记录列表
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     onLoad: function (options) {
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'supplies', (res) => {
-            wx.setNavigationBarTitle({ title: res.borrowTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'supplies', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.borrowTitle[lang] });  //设置当前页面的title
         });
 
         this.getListInfo(true);  //获取物资列表数据
@@ -68,20 +68,20 @@ Page({
     //打开弹窗
     applyFn(e) {
         this.setData({
-            wzPopStatus: true,
-            popGoodName: e.currentTarget.dataset.name,
-            popGoodId: e.currentTarget.dataset.id
+            wzPopShow: true,
+            popGoodItem: e.currentTarget.dataset.item
         })
     },
 
     //关闭弹窗
     closePop() {
-        this.setData({ wzPopStatus: false  })
+        this.setData({ wzPopShow: false  })
     },
 
     //弹窗跳转到成功页
     gotoSuccessFn(e) {
-        var goodsId = e.currentTarget.dataset.id;
+        var foodList = this.data.listInfo.list
+        var goodsId = this.data.popGoodItem.goodsId
         var formId = e.detail.formId;
         app.getFormIdFn(formId,()=>{
             //提交物资共享
@@ -94,11 +94,25 @@ Page({
                 },
                 method: 'POST',
                 success: (res) => {
+                    //借用后列表里数量减1
+                    foodList.forEach(item=>{
+                        if (item.goodsId == goodsId){
+                            item.restCount = item.restCount - 1
+                        }
+                    })
+                    this.setData({ ['listInfo.list']: foodList });
                     this.closePop()
                     wx.navigateTo({  url: '/pages/common/result/result?page=wuzi' });
                 }
             });
         });
-    }
+    },
+
+    //下拉刷新
+    onPullDownRefresh: function () {
+        this.setData({ ['listInfo.pageNum'] : 1 })
+        this.getListInfo(true);  //获取物资列表数据
+        wx.stopPullDownRefresh(); //下拉刷新后页面上移
+    },
 
 })

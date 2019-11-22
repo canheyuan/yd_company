@@ -30,7 +30,7 @@
             <view class='info'>
                 <view class='h3'>{{venueItem.chamberName}}</view>
                 <view class='ico_txt'><icon class='icons ico_dz'></icon>{{venueItem.address}}</view>
-                <view class='ico_txt'><icon class='icons ico_per'></icon>{{langData.accommodate + venueItem.capacity + langData.person}}</view>
+                <view class='ico_txt'><icon class='icons ico_per'></icon>{{langData.accommodate[lang] + venueItem.capacity + langData.person[lang]}}</view>
                 <view class='label_list'>
                     <text wx:for="{{venueItem.serviceTagList}}" wx:key="{{index}}">{{item}}</text>
                 </view>
@@ -53,8 +53,8 @@
         </view>
 
         <view class='btm clearfix'>
-            <view class='blue_btn'>{{langData.reserveBtn}}</view>
-            <view class='price'><text>￥{{venueItem.price}}</text>/{{langData.hour}}</view>
+            <view class='blue_btn'>{{langData.reserveBtn[lang]}}</view>
+            <view class='price'><text>￥{{venueItem.price}}</text>/{{langData.hour[lang]}}</view>
         </view>
 
         </navigator>

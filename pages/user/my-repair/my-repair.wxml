@@ -3,26 +3,26 @@
 
 <!-- 选项卡切换 -->
 <view class='tag_box'>
-  <view class='tag_list'>
-    <!-- 循环选项卡 -->
-    <view 
-      wx:for="{{tagList}}" wx:key="{{index}}"
-      class='tag_item {{tagIndex==index?"act":""}}' 
-      data-index="{{index}}" 
-      bindtap='tagChangeFn'
-    >{{item.name}}</view>
-  </view>
+    <view class='tag_list'>
+        <!-- 循环选项卡 -->
+        <view 
+            wx:for="{{tagList}}" wx:key="{{index}}"
+            class='tag_item {{tagIndex==index?"act":""}}' 
+            data-index="{{index}}" 
+            bindtap='tagChangeFn'
+        >{{item.name}}</view>
+    </view>
 </view>
 
 <!-- 循环报修列表 -->
 <view hidden="{{tagIndex!=index}}" wx:if="{{item.show}}" wx:for="{{tagList}}" wx:key="tagList{{index}}">
-  <repair-list 
-    target-page="my-repair" lang="{{langType}}"
-    repair-type="{{item.type}}" reach-data="{{item.reach}}"
-  ></repair-list>
+    <repair-list 
+        target-page="my-repair" lang="{{lang}}"
+        repair-type="{{item.type}}" reach-data="{{item.reach}}"
+    ></repair-list>
 </view>
 
 <!-- 返回首页按钮 -->
 <navigator wx:if="{{isIndexBtnShow}}" class='index_btn'  url='/pages/index/index' hover-class='none' open-type='switchTab'>
-  <image src='{{domainUrl}}/images/icon/back2h_btn.png'></image>
+    <image src='{{domainUrl}}/images/icon/back2h_btn.png'></image>
 </navigator>

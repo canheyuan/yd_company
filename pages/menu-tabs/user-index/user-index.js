@@ -19,15 +19,12 @@ Page({
         langType: '',    //语言类型
     },
 
-    //生命周期函数--监听页面加载
-    onLoad: function (options) {
-
-    },
 
     //加载菜单列表
     menuListFn() {
         var moduleSwitch = app.globalData.moduleSwitch;
         var langData = this.data.langData;
+        var lang = this.data.lang;
         var recommendShow = (moduleSwitch.recommend && (this.data.isRecommendInfo == 1));
 
         var loginInfo = app.globalData.loginInfo;
@@ -36,17 +33,17 @@ Page({
             var bOrder = loginInfo.userInfo.parkKeeper || loginInfo.userInfo.entAdmin;
         }
         var menuList = [
-            { title: langData.couponBtn, ico_class: 'ico_coupon', link: '/pages/coupon/my-coupon-list/my-coupon-list', isShow: moduleSwitch.coupon,isLast:true },
-            { title: langData.collectBtn, ico_class: 'ico_gz', link: '/pages/user/my-collect/my-collect', isShow: true, isLast: false },
-            { title: langData.activityBtn, ico_class: 'ico_act', link: '/pages/user/my-activity/my-activity', isShow: moduleSwitch.activity, isLast: false },
-            { title: langData.orderBtn, ico_class: 'ico_order', link: '/pages/order/order-list/order-list', isShow: moduleSwitch.order && bOrder, isLast: false},
-            { title: langData.borrowedBtn, ico_class: 'ico_wz', link: '/pages/supplies/borrowed-record/borrowed-record', isShow: moduleSwitch.supplies, isLast: false},
-            { title: langData.serveBtn, ico_class: 'ico_serve', link: '/services/serve-order-list/serve-order-list', isShow: moduleSwitch.serve, isLast: false },
-            { title: langData.complaintBtn, ico_class: 'ico_complaint', link: '/complaint/complaint-list/complaint-list', isShow: moduleSwitch.complaint, isLast: true},
-            { title: langData.recommendBtn2, ico_class: 'ico_recommend', link: '/pages/recommend/recommend-record/recommend-record', isShow: recommendShow, isLast: true},
+            { title: langData.couponBtn[lang], ico_class: 'ico_coupon', link: '/pages/coupon/my-coupon-list/my-coupon-list', isShow: moduleSwitch.coupon,isLast:true },
+            { title: langData.collectBtn[lang], ico_class: 'ico_gz', link: '/pages/user/my-collect/my-collect', isShow: true, isLast: false },
+            { title: langData.activityBtn[lang], ico_class: 'ico_act', link: '/pages/user/my-activity/my-activity', isShow: moduleSwitch.activity, isLast: false },
+            { title: langData.orderBtn[lang], ico_class: 'ico_order', link: '/pages/order/order-list/order-list', isShow: moduleSwitch.order && bOrder, isLast: false},
+            { title: langData.borrowedBtn[lang], ico_class: 'ico_wz', link: '/pages/supplies/borrowed-record/borrowed-record', isShow: moduleSwitch.supplies, isLast: false},
+            { title: langData.serveBtn[lang], ico_class: 'ico_serve', link: '/services/serve-order-list/serve-order-list', isShow: moduleSwitch.serve, isLast: false },
+            { title: langData.complaintBtn[lang], ico_class: 'ico_complaint', link: '/complaint/complaint-list/complaint-list', isShow: moduleSwitch.complaint, isLast: true},
+            { title: langData.recommendBtn2[lang], ico_class: 'ico_recommend', link: '/pages/recommend/recommend-record/recommend-record', isShow: recommendShow, isLast: true},
 
-            // { title: langData.changeGardenBtn, ico_class: 'ico_garden', link: '/pages/common/change-garden/change-garden', isShow: true },
-            // { title: langData.discussBtn, ico_class: 'ico_discuss', link: '', isShow: true },
+            // { title: langData.changeGardenBtn[lang], ico_class: 'ico_garden', link: '/pages/common/change-garden/change-garden', isShow: true },
+            // { title: langData.discussBtn[lang], ico_class: 'ico_discuss', link: '', isShow: true },
         ];
         this.setData({
             moduleSwitch: moduleSwitch,
@@ -74,8 +71,8 @@ Page({
         this.setData({ ['pickerLang.index']: langIndex });
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'userIndex', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+        app.loadLangNewFn(this, 'userIndex', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
         });
 
         if (!app.globalData.isLogin) {
@@ -109,7 +106,7 @@ Page({
         var index = e.detail.value;
         this.setData({ ['pickerLang.index']: index });
         var langType = index == 1 ? 'en' : 'zh';
-        if (langType == app.globalData.langType) {   //如果语言没改变，就不执行下面的
+        if (langType == app.globalData.lang) {   //如果语言没改变，就不执行下面的
             return;
         }
         if (langType == 'en') {
@@ -132,7 +129,8 @@ Page({
 
     //提示
     fapiaoTip() {
-        wx.showToast({ title: this.data.langData.buildBtn, icon: 'none', duration: 3000 });
+        var lang = app.globalData.lang
+        wx.showToast({ title: this.data.langData.buildBtn[lang], icon: 'none', duration: 3000 });
     },
 
     //图片加载失败显示默认图

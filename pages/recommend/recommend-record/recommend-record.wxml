@@ -1,16 +1,16 @@
 
 <view class="tjjl_head" style='background:url({{domainUrl}}/images/tjjl_bg.jpg) no-repeat center top; background-size:100% auto;'>
-    <view class="tjzl_tit"> <icon class='icons ico_tjzl'></icon>{{langData.dataBrowse}}</view>
+    <view class="tjzl_tit"> <icon class='icons ico_tjzl'></icon>{{langData.dataBrowse[lang]}}</view>
     <view class='tjzl_data'>
         <navigator 
             class='item' hover-class='hover'
             url='/pages/recommend/recommend-record-list/recommend-record-list?num={{detailData.visitorCount?detailData.visitorCount:0}}' 
         >
-            <view class='txt'>{{langData.browseNum}}</view>
+            <view class='txt'>{{langData.browseNum[lang]}}</view>
             <view class='num' style='color:#ffba00;'>{{detailData.visitorCount?detailData.visitorCount:0}}</view>
         </navigator>
         <view class='item'>
-            <view class='txt'>{{langData.consultNum}}</view>
+            <view class='txt'>{{langData.consultNum[lang]}}</view>
             <view class='num' style='color:#fe645c;'>{{detailData.consultCount?detailData.consultCount:0}}</view>
         </view>
         <!-- <view class='item'>
@@ -20,13 +20,13 @@
     </view>
     <navigator class='tg_btn' url='/pages/recommend/recommend-share/recommend-share?dist_id={{distId}}&share_id={{shareId}}'>
         <icon class='icons ico_ewm'></icon>
-        <text>{{langData.shareEwmTitle}}</text>
+        <text>{{langData.shareEwmTitle[lang]}}</text>
         <icon class='icons ico_tri'></icon>
     </navigator>
 </view>
 
 <view class='tjjl_ctn' style='{{detailData.visitorList.length==0?"padding-bottom:50rpx":""}}'>
-    <view class='yd_title01'>{{langData.recordTrace}}</view>
+    <view class='yd_title01'>{{langData.recordTrace[lang]}}</view>
     <view class='tjjl_list'  wx:if="{{detailData.visitorList.length>0}}">
         <view class='li' wx:for="{{detailData.visitorList}}" wx:key="visitorList{{index}}">
             <image
@@ -38,7 +38,7 @@
             <view class='info'>
                 <!-- <view class='btn' hover-class='hover'>联系TA</view> -->
                 <view class='name'>{{item.name?item.name:''}}</view>
-                <view class='p'>{{langData.tipText1}}</view>
+                <view class='p'>{{langData.tipText1[lang]}}</view>
                 <view class='ico_txt'><icon class="icons ico_time"></icon> {{item.lastTime}}</view>
             </view>
         </view>
@@ -49,7 +49,7 @@
 <navigator 
   class='more_btn' wx:if="{{detailData.visitorList.length==10}}"
   url='/pages/recommend/recommend-record-list/recommend-record-list?num={{detailData.visitorCount?detailData.visitorCount:0}}'
->{{langData.checkRecord}}</navigator>
+>{{langData.checkRecord[lang]}}</navigator>
 
 
 

@@ -14,21 +14,21 @@ Page({
         tipPopShow: false,
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'recommend', (res) => {
-            wx.setNavigationBarTitle({ title: res.detailTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'recommend', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.detailTitle[lang] });  //设置当前页面的title
         });
 
         var _this = this;
         this.setData({
             shareId: options.scene ? decodeURIComponent(options.scene) : '',
-            //shareId:'f7979e4508caa2d366fe0d6467825bff',
+            distId: options.dist_id? options.dist_id:'',
             isLogin: app.globalData.isLogin
         });
 
@@ -57,14 +57,19 @@ Page({
 
     //判断加载详情
     firstLoad(){
-        if (!this.data.shareId) {
-            this.getDetailFn({
-                url: '/houseDistribution/myParkDist'
-            });
-        } else {
+        if (this.data.shareId) {
             this.getDetailFn({
                 url: '/houseDistribution/detail',
                 data: { shareId: this.data.shareId }
+            });
+        } else if(this.data.distId){
+            this.getDetailFn({
+                url: '/houseDistribution/detail',
+                data: { distId: this.data.distId }
+            });
+        }else {
+            this.getDetailFn({
+                url: '/houseDistribution/myParkDist'
             });
         }
     },
@@ -136,8 +141,10 @@ Page({
 
     //浏览户型图片
     goToRoom(e) {
-        var imgList = e.currentTarget.dataset.imgs;
-        app.previewImgFn(imgList[0], imgList);
+        var unitId = e.currentTarget.dataset.id
+        wx.navigateTo({
+            url: `/pages/recommend/house-detail/house-detail?id=${unitId}`,
+        })
     },
 
     //用户点击右上角分享

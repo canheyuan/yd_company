@@ -26,16 +26,7 @@ Page({
         isLoginPopHide: true,   //登录提示弹窗是否隐藏
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
-    },
-
-    //生命周期函数--监听页面加载
-    onLoad: function (options) {
-        
-    },
-
-    onResize(){
-        console.log('页面尺寸裱花')
+        lang: '',    //语言类型
     },
 
     onShow() {
@@ -60,11 +51,11 @@ Page({
             tagList[0].isShow = false;
             tagList[1].isShow = false;
             //设置语言,判断是否切换语言
-            app.loadLangFn(this, 'foundIndex', (res) => {
-                wx.setNavigationBarTitle({ title: res.foundTitle });  //设置当前页面的title
-                policyTitleList = [{ indTypeKey: "recommend", indTypeName: res.recommendTitle, policyNum: 0 }];
-                tagList[0].title = res.tagNews;
-                tagList[1].title = res.tagPolicy;
+            app.loadLangNewFn(this, 'foundIndex', (res, lang) => {
+                wx.setNavigationBarTitle({ title: res.foundTitle[lang] });  //设置当前页面的title
+                policyTitleList = [{ indTypeKey: "recommend", indTypeName: res.recommendTitle[lang], policyNum: 0 }];
+                tagList[0].title = res.tagNews[lang];
+                tagList[1].title = res.tagPolicy[lang];
             });
             this.setData({
                 policyTitleList: policyTitleList,

@@ -11,17 +11,16 @@ Page({
       }, //记录列表
 
       langData: null,  //语言数据
-      langType: '',    //语言类型
+      lang: '',    //语言类型
   },
 
   onLoad: function (options) {
-    console.log('页面传递过来的参数：',options);
     if (options.from == 'ma_msg') {
       this.setData({ isIndexBtnShow: true });
     }
     //设置语言,判断是否切换语言
-    app.loadLangFn(this, 'supplies', (res) => {
-        wx.setNavigationBarTitle({ title: res.borrowedRecordTitle });  //设置当前页面的title
+      app.loadLangNewFn(this, 'supplies', (res, lang) => {
+        wx.setNavigationBarTitle({ title: res.borrowedRecordTitle[lang] });  //设置当前页面的title
     });
     this.getListInfo(true);  //加载完页面加载记录列表
   },

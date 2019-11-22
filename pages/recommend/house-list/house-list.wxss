@@ -9,10 +9,11 @@ page{background:#f7f7f7;}
 .house_list .li .top .info{overflow: hidden;}
 .house_list .li .top .h3{font-size:34rpx;  color:#333333; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 1; margin-bottom:20rpx;}
 .house_list .li .top .info .ico_txt{display:block; margin-bottom:10rpx;}
+.house_list .li .top .info .ico_txt .icons{vertical-align: middle;}
 .house_list .li .top .ico_dz{background-position: -330rpx -120rpx}
 .house_list .li .top .ico_area{background-position: -390rpx -120rpx}
 .house_list .li .top .ico_price{background-position: 0rpx -120rpx}
-.house_list .li .top .orange_txt{font-size:30rpx; color:#ff6000; line-height:30rpx;}
+.house_list .li .top .orange_txt{font-size:30rpx; color:#ff6000; line-height:30rpx; display: inline-block; vertical-align: middle;}
 
 .house_list .li .des{background:#f5f5f5; padding:15rpx 30rpx; border-radius:10rpx; margin-top:20rpx; font-size:26rpx; color:#888; line-height:40rpx; }
 .house_list .li .des .text{display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 2;}

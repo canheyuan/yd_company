@@ -27,12 +27,12 @@ Page({
         }
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'reserve', (res) => {
-            wx.setNavigationBarTitle({ title: res.reserveTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'reserve', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.reserveTitle[lang] });  //设置当前页面的title
             var tagList = this.data.tagList;
-            tagList[0].name = res.tagName1;
-            tagList[1].name = res.tagName2;
-            tagList[2].name = res.tagName3;
+                tagList[0].name = res.tagName1[lang];
+                tagList[1].name = res.tagName2[lang];
+                tagList[2].name = res.tagName3[lang];
             this.setData({ tagList: tagList })
         });
     },
@@ -50,9 +50,7 @@ Page({
     onReachBottom: function (e) {
         //动态赋予一个随机数触发组件上拉加载下一页函数
         var reachData = 'tagList[' + this.data.tagIndex + '].reach';
-        this.setData({
-            [reachData]: Math.random()
-        });
+        this.setData({ [reachData]: Math.random() });
     },
 
     //下拉刷新

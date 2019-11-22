@@ -7,22 +7,27 @@ Page({
     data: {
         domainUrl: app.globalData.domainUrl,
         tagList: [
-            { name: '待处理', type: 1, reach: 1, show: true },
-            { name: '处理中', type: 2, reach: 1, show: false },
-            { name: '已完成', type: 3, reach: 1, show: false }
+            { name: '', type: 1, reach: 1, show: true },
+            { name: '', type: 2, reach: 1, show: false },
+            { name: '', type: 3, reach: 1, show: false }
         ],
         tagIndex:0,
 
         listInfo: {},   //列表数据
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'complaint', (res) => {
+        app.loadLangNewFn(this, 'complaint', (res,lang) => {
             wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+            var tagList = this.data.tagList
+            tagList[0].name = res.tagName01[lang]
+            tagList[1].name = res.tagName02[lang]
+            tagList[2].name = res.tagName03[lang]
+            this.setData({ tagList: tagList})
         });
     },
 
@@ -48,8 +53,5 @@ Page({
         this.setData({ [reachObj]: Math.random() + 1 });
         wx.stopPullDownRefresh(); //下拉刷新后页面上移
     },
-
-
-    
 
 })

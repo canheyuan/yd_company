@@ -47,8 +47,8 @@
     <!-- 行业专家 -->
     <view class='index_mdl04'>
         <view class='index_title'>
-            <navigator class='more_btn' url='/found/expert/expert' >{{langData.moreText}}</navigator>
-            <text>{{langData.expertTitle}}</text>
+            <navigator class='more_btn' url='/found/expert/expert' >{{langData.moreText[lang]}}</navigator>
+            <text>{{langData.expertTitle[lang]}}</text>
         </view>
         <view class='hot_act_list_box'>
             <swiper class='hot_act_list' display-multiple-items="{{expertListTotal>2?'2.5':expertListTotal}}" >
@@ -67,10 +67,10 @@
                             <view class='info'>
                                 <view class='title'>{{item.expertName}}<text>({{item.positionName}})</text></view>
                                 <view class='office'>{{item.serviceProvider}}</view>
-                                <view class='project'>{{langData.projectText}}<text>{{item.projectNum}}</text>{{langData.geText}}</view>
+                                <view class='project'>{{langData.projectText[lang]}}<text>{{item.projectNum}}</text>{{langData.geText[lang]}}</view>
                             </view>
                         </view>
-                        <view bindtap="gotoChatFn" data-item='{{item}}' class='btn_sm blue' style='width:80%;'>{{langData.referText}}</view>
+                        <view bindtap="gotoChatFn" data-item='{{item}}' class='btn_sm blue' style='width:80%;'>{{langData.referText[lang]}}</view>
                         <!-- <button open-type="contact" class='btn_sm blue' style='width:80%;' >在线咨询</button> -->
                     </view>
                 </swiper-item>

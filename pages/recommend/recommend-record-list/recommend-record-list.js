@@ -19,14 +19,14 @@ Page({
     rankIndex:0,  
 
       langData: null,  //语言数据
-      langType: '',    //语言类型
+      lang: '',    //语言类型
   },
 
   onLoad: function (options) {
 
       //设置语言,判断是否切换语言
-      app.loadLangFn(this, 'recommend', (res) => {
-          wx.setNavigationBarTitle({ title: res.recordTitle });  //设置当前页面的title
+      app.loadLangNewFn(this, 'recommend', (res, lang) => {
+          wx.setNavigationBarTitle({ title: res.recordTitle[lang] });  //设置当前页面的title
 
           //时间设定
           var nowDate = new Date();
@@ -36,9 +36,9 @@ Page({
           var month = commonFn.getDate(timestamp).substring(0, 7) + '-01 00:00:00';
 
           var dateTag = [
-              { title: res.public.today, date: day },
-              { title: res.public.month, date: month },
-              { title: res.public.all, date: '' },
+              { title: res.public.today[lang], date: day },
+              { title: res.public.month[lang], date: month },
+              { title: res.public.all[lang], date: '' },
           ];
           this.setData({
               nowTime: nowTime,
@@ -63,7 +63,6 @@ Page({
 
     //获取列表数据
     getListInfo(isReach) {
-        var langData = this.data.langData;
         var _this = this;
         listFn.listPage({
             url: `/houseDistribution/visitorList`,

@@ -7,14 +7,13 @@ Page({
         domainUrl: app.globalData.domainUrl,
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
-
+        lang: '',    //语言类型
     },
 
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'recommend', (res) => {
-            wx.setNavigationBarTitle({ title: res.indexTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'recommend', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.indexTitle[lang] });  //设置当前页面的title
         });
     }
 

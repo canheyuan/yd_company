@@ -19,7 +19,7 @@ Page({
         goUrl: '',  //跳转的链接
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
 
     },
 
@@ -28,10 +28,10 @@ Page({
         this.setData({ goUrl: goUrl });
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'recommend', (res) => {
-            wx.setNavigationBarTitle({ title: res.referrerTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'recommend', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.referrerTitle[lang] });  //设置当前页面的title
             this.setData({
-                ['getCode.text']: res.public.getCodeBtn
+                ['getCode.text']: res.public.getCodeBtn[lang]
             })
         });
     },
@@ -49,16 +49,18 @@ Page({
     //验证码倒计时
     countGetCodeFn() {
         var _this = this, time = 60;
+        var langData = this.data.langData
+        var lang = this.data.lang
         countGetCodeTimer = setInterval(function () {
             if (time > 0) {
                 _this.setData({
-                    ['getCode.text']: `${_this.data.langData.public.getCodeBtn2 + time}S`,
+                    ['getCode.text']: `${langData.public.getCodeBtn2[lang] + time}S`,
                     ['getCode.sending']: true,
                 });
             } else {
                 clearInterval(countGetCodeTimer);
                 _this.setData({
-                    ['getCode.text']: _this.data.langData.public.getCodeBtn,
+                    ['getCode.text']: langData.public.getCodeBtn[lang],
                     ['getCode.sending']: false,
                 });
             }
@@ -69,10 +71,11 @@ Page({
 
     //获取验证码
     getCodeFn(e) {
+        var langData = this.data.langData
+        var lang = this.data.lang
         if (this.data.getCode.sending) { return; } //防止多次点击
         var _this = this,
-            phone = this.data.getCode.phone,
-            langData = this.data.langData;
+            phone = this.data.getCode.phone
 
         //验证
         var isTip = formTip([
@@ -84,7 +87,7 @@ Page({
 
         //获取验证码
         app.requestFn({
-            loadTitle: langData.public.sendTip,
+            loadTitle: langData.public.sendTip[lang],
             url: `/sendRegisterCode`,
             header: 'application/x-www-form-urlencoded',
             data: {
@@ -92,14 +95,14 @@ Page({
             },
             method: 'POST',
             success: (res) => {
-                wx.showToast({ title: langData.public.sendSuccessTip, icon: 'success', duration: 3000 });
+                wx.showToast({ title: langData.public.sendSuccessTip[lang], icon: 'success', duration: 3000 });
                 _this.setData({ verificationId: res.data.data.id })
             },
             fail: () => {
-                wx.showToast({ title: langData.public.getCodeError, icon: 'none', duration: 3000 });
+                wx.showToast({ title: langData.public.getCodeError[lang], icon: 'none', duration: 3000 });
                 clearInterval(countGetCodeTimer);
                 _this.setData({
-                    ['getCode.text']: langData.public.getCodeBtn,
+                    ['getCode.text']: langData.public.getCodeBtn[lang],
                     ['getCode.sending']: false
                 });
             },
@@ -120,14 +123,6 @@ Page({
         ]);
         if (isTip) { return; } //若有提示，就终止下面程序
 
-        // if (!commonFn.phoneregFn(formData.mobile)) {
-        //   wx.showToast({ title: '请输入正确的手机号格式', icon: 'none', duration: 2000 });
-        //   return;
-        // }
-        // if (formData.verifyCode == '验证码'){
-        //   wx.showToast({ title: '请输入验证码', icon: 'none', duration: 2000 });
-        //   return;
-        // }
         var openId = wx.getStorageSync('userInfo') ? wx.getStorageSync('userInfo').otherLoginId : '';   //清除之前缓存
         formData['openId'] = openId;
 
@@ -138,7 +133,7 @@ Page({
             data: formData,
             method: 'POST',
             success: (res) => {
-                console.log('验证成功', res.data);
+
                 if (!_this.data.goUrl) {
                     wx.switchTab({ url: '/pages/index/index' });
                 } else if (_this.data.goUrl.type == 'switchTab') {

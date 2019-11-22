@@ -1,53 +1,22 @@
 
 <view class="house_list">
-    <view 
-        wx:for="{{listInfo.list}}" wx:key="listInfo{{index}}"
-        class="li box_shadow"
+    <navigator 
+        wx:for="{{listInfo.list}}" wx:key="unitId"
+        class="li box_shadow" url="/pages/recommend/house-detail/house-detail?id={{item.unitId}}"
     >
         <view class="top">
-            <image class="img" src="{{item.img}}"></image>
+            <image class="img" src="{{item.image}}"></image>
             <view class="info">
-                <view class='h3'>{{item.title}}</view>
-                <view class='ico_txt'><icon class='icons ico_area'></icon>{{item.area}}㎡</view>
-                <view class='ico_txt'><icon class='icons ico_price'></icon><text class="orange_txt">￥{{item.price}}</text>/㎡</view>
-                <view class='ico_txt'><icon class='icons ico_dz'></icon>{{item.address}}</view>
+                <view class='h3'>{{item.name}}</view>
+                <view class='ico_txt'><icon class='icons ico_price'></icon>{{langData.price[lang]}}：<text class="orange_txt">￥{{item.price}}</text>/㎡</view>
+                <view class='ico_txt'><icon class='icons ico_area'></icon>{{langData.area[lang]}}：{{item.areaResult}}㎡</view>
+                <!-- <view class='ico_txt'><icon class='icons ico_dz'></icon>{{item.address}}</view> -->
             </view>
         </view>
-        <view class="des"><view class="text">{{item.des}}</view></view>
-    </view>
-</view>
-
-
-<!-- 户型列表页 -->
-<view class='venue_list' wx:if="{{listInfo.list.length>0 && listInfo.list && false}}">
-    <navigator
-        wx:for="{{listInfo.list}}" wx:key="listInfo{{index}}"
-        class='li box_shadow' 
-        url=''
-    >
-    <view class='top'>
-        <image class='img' 
-            src='{{venueItem.imageList[0]?venueItem.imageList[0]:domainUrl+"/images/default/df_vbd_pic.jpg"}}'
-            binderror='errorImgFn' data-obj="venueList[{{index}}].imageList[0]" data-img="{{domainUrl}}/images/default/df_vbd_pic.jpg"
-        ></image>
-        <view class='info'>
-            <view class='h3'>{{venueItem.chamberName}}</view>
-            <view class='ico_txt'><icon class='icons ico_dz'></icon>{{venueItem.address}}</view>
-            <view class='ico_txt'><icon class='icons ico_per'></icon>{{langData.accommodate + venueItem.capacity + langData.person}}</view>
-            <view class='label_list'>
-                <text wx:for="{{venueItem.serviceTagList}}" wx:key="{{index}}">{{item}}</text>
-            </view>
-        </view>
-    </view>
-    <view class='des'>
-        <view class='text'><template is="wxParse" data="{{wxParseData:desList[index]}}" /></view>
-    </view>
-
-    <view class='btm clearfix'>
-        <view class='blue_btn'>{{langData.reserveBtn}}</view>
-        <view class='price'><text>￥{{venueItem.price}}</text>/{{langData.hour}}</view>
-    </view>
-
+        <!-- <view class="des"><view class="text">{{item.des}}</view></view> -->
     </navigator>
     <view class='more_tip' wx:if="{{listInfo.tipTxt}}"><view class='txt'>{{listInfo.tipTxt}}</view></view>
 </view>
+
+<!-- 暂无状态 -->
+<list-nothing c-name="house" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>

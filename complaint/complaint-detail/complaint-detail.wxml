@@ -6,7 +6,7 @@
 <view class='complaint_detail clearfix'>
     <view class='head'>
         <view class='status {{detailData.statusClass}}'>{{detailData.status}}</view>   <!-- 未接单状态 -->
-        <view class='title'>{{langData.subject}}：{{detailData.title}}</view>
+        <view class='title'>{{langData.subject[lang]}}：{{detailData.title}}</view>
     </view>
 
     <view class='complaint_ctn clearfix'>
@@ -14,22 +14,22 @@
         <view class='des'>{{detailData.content}}</view>
         <!-- 企业 -->
         <view class='dl' wx:if="{{detailData.entName}}">
-            <view class='dt'>{{langData.public.companyName}}</view>
+            <view class='dt'>{{langData.public.companyName[lang]}}</view>
             <view class='dd'><view class="text">{{detailData.entName}}</view></view>
         </view>
         <!-- 联系人 -->
         <view class='dl' wx:if="{{detailData.contact}}">
-            <view class='dt'>{{langData.public.contact}}</view>
+            <view class='dt'>{{langData.public.contact[lang]}}</view>
             <view class='dd'><view class="text">{{detailData.contact}}{{'、'+detailData.contactPhone}}</view></view>
         </view>
         <!-- 受理人 -->
         <view class='dl' wx:if="{{detailData.handler}}">
-            <view class='dt'>{{langData.receiver}}</view>
+            <view class='dt'>{{langData.receiver[lang]}}</view>
             <view class='dd'><view class="text">{{detailData.handler}}、{{detailData.contactPhone}}</view></view>
         </view>
         <!-- 图片 -->
         <view class='dl' wx:if="{{detailData.images.length>0}}">
-            <view class='dt'>{{langData.public.imgAccessory}}</view>
+            <view class='dt'>{{langData.public.imgAccessory[lang]}}</view>
             <view class='dd'>
                 <view class='pic' wx:for="{{detailData.images}}" wx:key="{{index}}">
                     <image 
@@ -43,13 +43,13 @@
     <!-- 订单号时间 -->
     <view class='order_time clearfix'>
         <view class='ico_txt' wx:if="{{detailData.applyTime}}">
-            <icon class="icons ico_time"></icon>{{langData.applyTime}}{{detailData.applyTime}}
+            <icon class="icons ico_time"></icon>{{langData.applyTime[lang]}}{{detailData.applyTime}}
         </view>
         <view class='ico_txt' wx:if="{{detailData.processTime}}">
-            <icon class="icons ico_time"></icon>{{langData.processTime}}{{detailData.processTime}}
+            <icon class="icons ico_time"></icon>{{langData.processTime[lang]}}{{detailData.processTime}}
         </view>
         <view class='ico_txt' wx:if="{{detailData.finishTime}}">
-            <icon class="icons ico_time"></icon>{{langData.finishTime}}{{detailData.finishTime}}
+            <icon class="icons ico_time"></icon>{{langData.finishTime[lang]}}{{detailData.finishTime}}
         </view>
     </view>
 </view>

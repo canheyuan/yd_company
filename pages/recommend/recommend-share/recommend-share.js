@@ -41,8 +41,8 @@ Page({
         });
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'recommend', (res) => {
-            wx.setNavigationBarTitle({ title: res.shareEwmTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'recommend', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.shareEwmTitle[lang] });  //设置当前页面的title
         });
 
 
@@ -148,8 +148,9 @@ Page({
     setImg(callback) {
         var _this = this;
         var langData = this.data.langData;
+        var lang = this.data.lang
         this.setData({ canvasShow: false });
-        wx.showLoading({ title: langData.public.loadingTip });
+        wx.showLoading({ title: langData.public.loadingTip[lang] });
         const ctx = wx.createCanvasContext('shareCanvas');//创建画板
         var imgsInfo = this.data.imgsInfo;
         var sNum = this.data.scaleNum;
@@ -188,7 +189,7 @@ Page({
         ctx.fillText(_this.data.userInfo.name, 200 * sNum, 1630 * sNum);
         var nameW = ctx.measureText(_this.data.userInfo.name).width;
         ctx.setFillStyle('#91bbd9');
-        ctx.fillText(langData.shareText1, 220 * sNum + nameW, 1630 * sNum);
+        ctx.fillText(langData.shareText1[lang], 220 * sNum + nameW, 1630 * sNum);
 
         //输入园区名称
         ctx.setFillStyle('#ffffff');
@@ -207,7 +208,7 @@ Page({
         ctx.setTextAlign('center');
         ctx.setFillStyle('#91bbd9');
         ctx.setFontSize(26 * sNum);
-        ctx.fillText(langData.shareText8, 750 * sNum / 2, 2100 * sNum);
+        ctx.fillText(langData.shareText8[lang], 750 * sNum / 2, 2100 * sNum);
 
         //画图结束
         ctx.draw(true, function () {
@@ -222,7 +223,7 @@ Page({
                     callback && callback();
                 },
                 fail: (res) => {
-                    wx.showToast({ title: langData.public.previewErrorTip });
+                    wx.showToast({ title: langData.public.previewErrorTip[lang] });
                 }
             }, _this);
         });
@@ -232,7 +233,8 @@ Page({
     //生成模板图片02
     setImg2(callback) {
         var langData = this.data.langData;
-        wx.showLoading({ title: langData.public.saveTip });
+        var lang = this.data.lang
+        wx.showLoading({ title: langData.public.saveTip[lang] });
         var _this = this;
         const ctx = wx.createCanvasContext('shareCanvas');//创建画板
 
@@ -261,7 +263,7 @@ Page({
             //插入标题2背景
             ctx.drawImage(imgsInfo.tit02.path, 66 * sNum, 730 * sNum, 246 * sNum, 56 * sNum);
             ctx.setFontSize(28 * sNum);
-            this.drawText(ctx, langData.shareText2, 130 * sNum, 770 * sNum, 30 * sNum, 246 * sNum, 56 * sNum);
+            this.drawText(ctx, langData.shareText2[lang], 130 * sNum, 770 * sNum, 30 * sNum, 246 * sNum, 56 * sNum);
             //景图2描述文字
             var unitData1 = _this.data.detailData.unitList[0];
             ctx.setGlobalAlpha(0.5);
@@ -306,7 +308,7 @@ Page({
         ctx.setTextAlign('center');
         ctx.setFillStyle('#ffffff');
         ctx.setFontSize(44 * sNum);
-        this.drawText(ctx, '￥' + _this.data.detailData.lowestPrice + langData.shareText3, 750 / 2 * sNum, 1690 * sNum, 30 * sNum, 500 * sNum, 56 * sNum);
+        this.drawText(ctx, '￥' + _this.data.detailData.lowestPrice + langData.shareText3[lang], 750 / 2 * sNum, 1690 * sNum, 30 * sNum, 500 * sNum, 56 * sNum);
 
         //插入头像
         ctx.arc(160 * sNum, 1940 * sNum, 70 * sNum, 0, 2 * Math.PI);
@@ -342,7 +344,7 @@ Page({
                     callback && callback();
                 },
                 fail: (res) => {
-                    wx.showToast({ title: langData.public.previewErrorTip });
+                    wx.showToast({ title: langData.public.previewErrorTip[lang] });
                 }
             }, _this);
         });
@@ -440,6 +442,7 @@ Page({
     downImg(e) {
         var _this = this;
         var langData = this.data.langData;
+        var lang = this.data.lang
         var currentImgUrl = '';
 
         if (_this.data.shareImgIndex == 0) {
@@ -453,10 +456,10 @@ Page({
             wx.saveImageToPhotosAlbum({
                 filePath: currentImgUrl,
                 success: (res) => {
-                    wx.showToast({ title: langData.public.saveImgSuccessTip });
+                    wx.showToast({ title: langData.public.saveImgSuccessTip[lang] });
                 },
                 fail: (res) => {
-                    wx.showToast({ title: langData.public.saveImgErrorTip });
+                    wx.showToast({ title: langData.public.saveImgErrorTip[lang] });
                 }
             });
             return;
@@ -469,10 +472,10 @@ Page({
                 wx.saveImageToPhotosAlbum({
                     filePath: _this.data.createImgUrl01,
                     success: (res) => {
-                        wx.showToast({ title: langData.public.saveImgSuccessTip });
+                        wx.showToast({ title: langData.public.saveImgSuccessTip[lang] });
                     },
                     fail: (res) => {
-                        wx.showToast({ title: langData.public.saveImgErrorTip });
+                        wx.showToast({ title: langData.public.saveImgErrorTip[lang] });
                     }
                 });
             });
@@ -483,10 +486,10 @@ Page({
                 wx.saveImageToPhotosAlbum({
                     filePath: _this.data.createImgUrl02,
                     success: (res) => {
-                        wx.showToast({ title: langData.public.saveImgSuccessTip });
+                        wx.showToast({ title: langData.public.saveImgSuccessTip[lang] });
                     },
                     fail: (res) => {
-                        wx.showToast({ title: langData.public.saveImgErrorTip });
+                        wx.showToast({ title: langData.public.saveImgErrorTip[lang] });
                     }
                 });
             });

@@ -11,7 +11,7 @@
         </view> -->
         <view class='ico_txt' style='padding-top:20rpx;'>
         <icon class='icons ico_per'></icon>
-        <text style='color:#ff6000;'>{{visNum}}</text>{{langData.detailText1}}
+        <text style='color:#ff6000;'>{{visNum}}</text>{{langData.detailText1[lang]}}
         </view>
     </view>
 
@@ -31,11 +31,11 @@
         <view 
             class='item {{rankIndex==0?"cur":""}}' 
             bindtap='rankFn' data-rank="last_time" data-index="0"
-        >{{langData.recordTagName1}}</view>
+        >{{langData.recordTagName1[lang]}}</view>
         <view 
             class='item {{rankIndex==1?"cur":""}}' 
             bindtap='rankFn' data-rank="visit_count" data-index="1"
-        >{{langData.recordTagName2}}</view>
+        >{{langData.recordTagName2[lang]}}</view>
     </view>
 
     <view class='tjjl_list'>
@@ -53,11 +53,11 @@
                 <view class='name'>{{item.name?item.name:''}}</view>
                 <view class='ico_txt'>
                     <icon class="icons ico_per"></icon>
-                    {{langData.visitNum}}：{{item.visitCount}}次
+                    {{langData.visitNum[lang]}}：{{item.visitCount}}次
                 </view>
                 <view class='ico_txt'>
                     <icon class="icons ico_time"></icon>
-                    {{langData.lastVisit}}：{{item.lastTime}}
+                    {{langData.lastVisit[lang]}}：{{item.lastTime}}
                 </view>
             </view>
             </view>

@@ -15,7 +15,7 @@ page{padding-bottom: 60rpx; background: #f7f7f7;}
 .borrow .dd .title text{color: #9d9d9d; font-size: 26rpx; display: inline-block; line-height:60rpx;}
 .borrow .dd .address{font-size:24rpx; color:#999; line-height:30rpx;}
 .borrow .dd .address .ico_build{width:30rpx; height:30rpx; background-position:-300rpx -120rpx; vertical-align: top; margin-right:10rpx;}
-.borrow .dd .apply{color: #2a99f1; font-size: 26rpx; line-height:40rpx; position:absolute; right:30rpx; top:10rpx; padding-right:40rpx;
+.borrow .dd .apply{color: #2a99f1; font-size: 26rpx; line-height:40rpx; position:absolute; right:30rpx; top:50%; margin-top:-30rpx; padding-right:40rpx;
 background:url(https://www.5iparks.com/static/yuanding/images/supplies/arrow.png) no-repeat right top; background-size: 40rpx 40rpx;}
 .borrow .dd .apply.brwed{color: #9d9d9d; padding-right: 20rpx; background:none;}
 
@@ -24,5 +24,6 @@ background:url(https://www.5iparks.com/static/yuanding/images/supplies/arrow.png
 .txtnbtn_box{color: #2a99f1; font-size: 30rpx; text-align: center; text-decoration: underline; padding-top: 36rpx;}
 
 /* 弹框内容 */
-.pop_ctn .text_ctn{color: #555; font-size: 32rpx; line-height: 50rpx; margin: 40rpx 0 60rpx;}
-.pop_ctn .text_ctn .supplies{color: #ff6000;  display: block;}
+.pop_ctn .des{color: #555; font-size: 30rpx; line-height: 50rpx; margin: 40rpx 30rpx 60rpx; text-align: left;}
+.pop_ctn .tip{color: #555; font-size: 30rpx; line-height: 50rpx; margin: 40rpx 30rpx 60rpx; }
+/* .pop_ctn .text_ctn .supplies{color: #ff6000;  display: block;} */

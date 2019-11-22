@@ -17,15 +17,15 @@ Page({
         endDate:'',      //当前结束日期
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'reserve', (res) => {
-            wx.setNavigationBarTitle({ title: res.reserveTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'reserve', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.reserveTitle[lang] });  //设置当前页面的title
         });
 
         //获取设定的日期数组
@@ -48,6 +48,7 @@ Page({
     //设置顶部日期
     dateFn(dayTimes) {
         var langData = this.data.langData;
+        var lang = this.data.lang
         const add0 = m => { return m < 10 ? '0' + m : m };
         var weekTxt = langData.dayNames;
         var nowTime = new Date();
@@ -63,9 +64,9 @@ Page({
             var dayTxt2 = day + i + 1;
             var month1 = month;
             var month2 = month;
-            var weekTxt2 = weekTxt[(nowTime.getDay() + i) % 7];
-            if (i == 0) { weekTxt2 = langData.today };
-            if (i == 1) { weekTxt2 = langData.tomorrow };
+            var weekTxt2 = weekTxt[(nowTime.getDay() + i) % 7][lang];
+            if (i == 0) { weekTxt2 = langData.today[lang] };
+            if (i == 1) { weekTxt2 = langData.tomorrow[lang] };
             if (dayTxt > days) {
                 month1 = month1 + 1;
                 dayTxt = dayTxt - days;

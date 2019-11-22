@@ -8,21 +8,24 @@ Page({
         domainUrl: app.globalData.domainUrl,
         userInfo: null,  //用户信息
         userData: null,
-        sexList: ['保密', '男', '女'],  //性别选择
+        sexList:null,  //性别选择
         sexIndex: 0,
         outPop: false,
         appVersion: app.globalData.appVersion, //更新的版本号
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'userInfo', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
-            this.setData({ sexList: res.sexList })
+        app.loadLangNewFn(this, 'userInfo', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
+            var sexList = res.sexList.map(item => {
+                return item[lang];
+            })
+            this.setData({ sexList: sexList })
         });
 
         var loginInfo = wx.getStorageSync('userInfo') ? wx.getStorageSync('userInfo') : null;  //从缓存获取用户信息
@@ -53,6 +56,8 @@ Page({
     //修改头像
     changeHeadImgFn(e) {
         var _this = this;
+        var langData = this.data.langData
+        var lang = this.data.lang
         //选择图片   
         app.chooseImg({
             sizeType: ['compressed'],
@@ -67,7 +72,7 @@ Page({
                         var changeImg2 = res.urlPath;
                         
                         app.requestFn({
-                            loadTitle: _this.data.langData.editTip,
+                            loadTitle: langData.editTip[lang],
                             url: `/userInfo/update`,
                             header: 'application/x-www-form-urlencoded',
                             data: {
@@ -82,37 +87,13 @@ Page({
                                 wx.setStorageSync('userInfo', loginInfo); //设置缓存用户信息
                                 app.globalData.loginInfo = loginInfo;  //获取用户信息
                                 _this.setData({ ["userInfo.headImgs"]: changeImg2 });
-                                wx.showToast({ title: _this.data.langData.editSuccessTip, icon: "success", duration: 2000 });
+                                wx.showToast({ title: langData.editSuccessTip[lang], icon: "success", duration: 2000 });
                                 app.globalData.userIndexReach = true;
                                 _this.setUserImg(changeImg2);
                             }
                         });  
                     },
                 })
-
-                //上传图片
-                // wx.uploadFile({
-                //     url: app.globalData.jkUrl + '/uploadImage', //仅为示例，非真实的接口地址
-                //     filePath: tempFilePaths[0],
-                //     name: 'file',
-                //     header: {
-                //         '5ipark-sid': app.globalData.sessionId
-                //     },
-                //     formData: {
-                //         'entityId': '',
-                //         'entityType': 'user',
-                //         'appCode': ''
-                //     },
-                //     success: (res) => {
-                //         var datas = JSON.parse(res.data);
-                //         if (datas.code == 0) {
-                            
-                //         }
-
-                //     }, fail(err) {
-                //         console.log(err);
-                //     }
-                // })
             }
         })
     },
@@ -133,8 +114,10 @@ Page({
     //修改性别
     sexChange(e) {
         var _this = this;
+        var langData = this.data.langData
+        var lang = this.data.lang
         app.requestFn({
-            loadTitle: _this.data.langData.editTip,
+            loadTitle: langData.editTip[lang],
             url: `/userInfo/update`,
             header: 'application/x-www-form-urlencoded',
             data: {
@@ -149,7 +132,7 @@ Page({
                 wx.setStorageSync('userInfo', loginInfo); //设置缓存用户信息
                 app.globalData.loginInfo = loginInfo;  //获取用户信息
                 this.setData({ sexIndex: e.detail.value });
-                wx.showToast({ title: _this.data.langData.editSuccessTip, icon: "success", duration: 2000 });
+                wx.showToast({ title: langData.editSuccessTip[lang], icon: "success", duration: 2000 });
                 app.globalData.userIndexReach = true;
             }
         });
@@ -164,7 +147,6 @@ Page({
     outLoginFn(e) {
         app.requestFn({
             isLoading: false,
-            //loadTitle: this.data.langData.outTip,
             url: `/logout`,
             success: (res) => {
                 console.log("退出登录成功：", res.data);

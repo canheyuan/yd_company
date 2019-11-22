@@ -20,29 +20,28 @@ Page({
         currentId: '',  //取消收藏id
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'collect', (res) => {
+        app.loadLangNewFn(this, 'collect', (res, lang) => {
 
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
-
+            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
             tipData = {
                 activity: {
-                    name: res.actName, jk_url: '/activityCollection/remove/',
+                    name: res.actName[lang], jk_url: '/activityCollection/remove/',
                 },
                 news: {
-                    name: res.newsName, jk_url: '/newsCollection/remove/',
+                    name: res.newsName[lang], jk_url: '/newsCollection/remove/',
                 },
                 policy: {
-                    name: res.policyName, jk_url: '/policyCollection/remove/',
+                    name: res.policyName[lang], jk_url: '/policyCollection/remove/',
                 },
                 expert: {
-                    name: res.expertName, jk_url: '/expertAttention/remove/',
+                    name: res.expertName[lang], jk_url: '/expertAttention/remove/',
                 }
             }
 
@@ -51,21 +50,18 @@ Page({
 
     },
 
-    //页面上拉触底事件的处理函数
-    onReachBottom: function () {
-        //动态赋予一个随机数触发组件上拉加载下一页函数
-        var reachObj = 'reachData.' + this.data.currentTagName
-        this.setData({
-            [reachObj]: Math.random()
-        });
-        console.log(this.data.reachData)
-    },
-
     //选项卡切换
     tagChange(e) {
         this.setData({
             currentTagName: e.currentTarget.dataset.name
         });
+    },
+
+    //页面上拉触底事件的处理函数
+    onReachBottom: function () {
+        //动态赋予一个随机数触发组件上拉加载下一页函数
+        var reachObj = 'reachData.' + this.data.currentTagName
+        this.setData({ [reachObj]: Math.random() });
     },
 
     //显示弹窗
@@ -79,26 +75,24 @@ Page({
 
     //关闭弹窗
     collectPopHideFn() {
-        this.setData({
-            isPopShow: false
-        });
+        this.setData({ isPopShow: false });
     },
 
     //取消收藏操作
     deleteCollectFn() {
         var _this = this;
+        var langData = this.data.langData
+        var lang = this.data.lang
         app.requestFn({
             isLoading: false,
             url: tipData[_this.data.currentTagName].jk_url + _this.data.currentId,
             method: 'DELETE',
             success: (res) => {
 
-                wx.showToast({ title: '已取消收藏', icon: 'none', duration: 2000 });
+                wx.showToast({ title: langData.public.callOffCollectTip[lang], icon: 'none', duration: 2000 });
                 _this.collectPopHideFn();
                 var reachObj = "reachData." + _this.data.currentTagName;
-                _this.setData({
-                    [reachObj]: Math.random() + 1
-                })
+                _this.setData({ [reachObj]: Math.random() + 1 })
 
             }
         });

@@ -98,7 +98,6 @@
 
 /* 申报政策 */
 .index_mdl04{padding:20rpx 0 0; margin-top:30rpx;}
-.index_mdl04 .index_title, .index_mdl06 .index_title{margin-left:22rpx; margin-right: 24rpx;}
 .policy_list_box{height:470rpx;}
 .policy_list{height:100%;}
 .policy_list .li{width:410rpx; height:450rpx; float:left; margin-left: 20rpx; border-radius:10rpx; overflow: hidden; background:#fff; box-shadow: 0 5rpx 24rpx rgba(0,0,0,.1);}
@@ -110,6 +109,8 @@
 .policy_list .li .info .btm>view icon{width:30rpx; height:30rpx; margin-right:7rpx; vertical-align: middle; position:relative; top:-2rpx; }
 .policy_list .li .info .btm>view icon.ico_cgl{background-position:-30rpx -120rpx;}
 .policy_list .li .info .btm>view icon.ico_zg{background-position:0 -120rpx;}
+.policy_list .li .info .btm>view icon.ico_price{background-position:0 -120rpx;}
+.policy_list .li .info .btm>view icon.ico_area{background-position:-390rpx -120rpx;}
 .policy_list .li .info .btm>view text{color:#ff6000; }
 
 /* 热门活动 */
@@ -136,3 +137,11 @@
 
 .back_top{width:80rpx; height:80rpx; text-align: center; background:#fff; border:4rpx solid #dcdcdc; border-radius:100%; position:fixed; bottom:20rpx; right:20rpx; z-index:99; box-sizing:border-box;}
 .back_top .ico_top{width:50rpx; height:50rpx; background-position: -146rpx -64rpx; margin-top:15rpx;}
+
+.index_mdl07{padding:4rpx 0 0; margin-top:30rpx;}
+.index_mdl07 .policy_list .li {height:410rpx;}
+.index_mdl07 .policy_list .li .info .title{height:40rpx; -webkit-line-clamp: 1;}
+
+.index_mdl04 .index_title, 
+.index_mdl06 .index_title,
+.index_mdl07 .index_title{margin-left:22rpx; margin-right: 24rpx;}

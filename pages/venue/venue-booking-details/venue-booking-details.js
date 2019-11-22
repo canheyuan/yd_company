@@ -21,15 +21,15 @@ Page({
         veneuMoney:0,   //需支付金额
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
         
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'reserve', (res) => {
-            wx.setNavigationBarTitle({ title: res.reserveTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'reserve', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.reserveTitle[lang] });  //设置当前页面的title
         });
         
         this.setData({ dateUrl: options.date });
@@ -68,7 +68,9 @@ Page({
 
     // 时间段选择
     bindTimeChange(e) {
-        console.log(e.detail.value);
+        var langData = this.data.langData
+        var lang = this.data.lang
+
         var changeType = e.currentTarget.dataset.type;
         if (changeType=='starttime'){
             var timehour = this.data.hours_start[e.detail.value];
@@ -84,7 +86,7 @@ Page({
 
         if (s_time && e_time) {
             if (s_time > e_time) {
-                wx.showToast({ title: this.data.langData.timeTip, icon: 'none', duration: 3000 });
+                wx.showToast({ title:langData.timeTip[lang], icon: 'none', duration: 3000 });
                 return;
             }
             var hours = Math.ceil((e_time - s_time) / 1000 / 60 / 60);
@@ -126,16 +128,18 @@ Page({
 
     //提交预定场地
     formSubmit(e) {
-        var langData = this.data.langData;
+        var langData = this.data.langData
+    var lang = this.data.lang
+
         var formId = e.detail.formId;
         var formData = e.detail.value;
 
         //验证
         var isTip = formTip([
-            { name: 'empty', verifyText: this.data.startTime, tipText: langData.timeTip1 },
-            { name: 'empty', verifyText: this.data.endTime, tipText: langData.timeTip2 },
-            { name: 'empty', verifyText: formData.contact, tipText: langData.public.contactTip },
-            { name: 'phone', verifyText: formData.phone, tipText: langData.public.contactPhoneTip},
+            { name: 'empty', verifyText: this.data.startTime, tipText: langData.timeTip1[lang] },
+            { name: 'empty', verifyText: this.data.endTime, tipText: langData.timeTip2[lang] },
+            { name: 'empty', verifyText: formData.contact, tipText: langData.public.contactTip[lang] },
+            { name: 'phone', verifyText: formData.phone, tipText: langData.public.contactPhoneTip[lang]},
         ]);
         if (isTip) { return; } //若有提示，就终止下面程序
         

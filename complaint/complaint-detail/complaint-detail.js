@@ -7,13 +7,13 @@ Page({
         detailData: null, //详情数据
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'complaint', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+            app.loadLangNewFn(this, 'complaint', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
         });
         this.getRepairDetail(options.id); //获取投诉信息
     },
@@ -27,9 +27,7 @@ Page({
                 detailData.applyTime = detailData.applyTime ? commonFn.getDate(detailData.applyTime) : '';
                 detailData.processTime = detailData.processTime ? commonFn.getDate(detailData.processTime) : '';
                 detailData.finishTime = detailData.finishTime ? commonFn.getDate(detailData.finishTime) : '';
-                this.setData({
-                    detailData: detailData
-                })
+                this.setData({ detailData: detailData })
             }
         });
     },

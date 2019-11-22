@@ -1,48 +1,47 @@
 <!-- 顶部说明 -->
 <view class='supplies_top'>
   <view class='supplies_intro'>
-    <view class='yd_title01'>{{langData.serveExplain}}</view>
-    <view class='text_ctn'>{{langData.explainDes}}</view>
+    <view class='yd_title01'>{{langData.serveExplain[lang]}}</view>
+    <view class='text_ctn'>{{langData.explainDes[lang]}}</view>
   </view>
 </view>
 
 <!-- 物品借用 -->
 <view class='borrow' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
-    <view class='dl clearfix' wx:for="{{listInfo.list}}" wx:key="{{index}}">
-
+    <view 
+        class='dl clearfix' wx:for="{{listInfo.list}}" wx:key="goodId"
+        bindtap='{{item.restCount>0?"applyFn":""}}'  data-item="{{item}}" 
+    >
         <view class='dt'><image class='img' mode='widthFix' src='{{item.icon}}'></image></view>
         <view class='dd'>
-            <view class='apply brwed' wx:if="{{item.restCount<1}}">{{langData.borrowing}}</view>
-            <view 
-                class='apply' wx:if="{{item.restCount>0}}" 
-                bindtap='applyFn' data-id="{{item.goodsId}}" data-name="{{item.goodsName}}" 
-            >{{langData.applyBtn}}</view>
+            <view class='apply {{item.restCount>0?"":"brwed"}}'>
+                {{item.restCount>0?langData.applyBtn[lang]:langData.borrowing[lang]}}
+            </view>
 
             <view class='title'>{{item.goodsName}}
-                <text>（{{langData.residue + item.restCount + langData.public.individual}}）</text>
+                <text>（{{langData.residue[lang] + item.restCount + langData.public.individual[lang]}}）</text>
             </view>
             <view class="address" wx:if="{{item.receivePlace}}"><icon class="icons ico_build"></icon>{{item.receivePlace}}</view>
         </view>
 
     </view>
 </view>
-<navigator class='txtnbtn_box' url='/pages/supplies/borrowed-record/borrowed-record' hover-class='none'>{{langData.checkBorrowBtn}}</navigator>
+<navigator class='txtnbtn_box' url='/pages/supplies/borrowed-record/borrowed-record' hover-class='none'>{{langData.checkBorrowBtn[lang]}}</navigator>
 
 <!-- 弹窗 -->
-<view class='mask_bg pop_show' wx:if="{{wzPopStatus}}">
+<view class='mask_bg pop_show' hidden="{{!wzPopShow}}">
     <view class='mask_bg_ctn'>
         <view class='pop_mdl'>
-        <form report-submit="true"  bindsubmit='gotoSuccessFn' data-id="{{popGoodId}}">
-            <view class='h3'>{{langData.verifyBtn}}</view>
+        <form report-submit="true"  bindsubmit='gotoSuccessFn'>
+            <view class='h3'>{{popGoodItem.goodsName}}</view>
             <view class='pop_ctn'>
-                <view class='text_ctn'>{{langData.popText01}}：
-                    <text class='supplies'>{{popGoodName}}</text>
-                </view>
+                <view wx:if="{{popGoodItem.description}}" class='des'>{{popGoodItem.description}}</view>
+                <view wx:if="{{!popGoodItem.description}}" class="tip">{{langData.popText01[lang]}}</view>
             </view>
             
             <view class='btm_btn clearfix'>
-                <view class='btn' bindtap="closePop">{{langData.public.callOffBtn}}</view>
-                <button class='btn' type="none"  hover-class="none" form-type="submit">{{langData.public.confirmBtn}}</button>
+                <view class='btn' bindtap="closePop">{{langData.public.callOffBtn[lang]}}</view>
+                <button class='btn' type="none"  hover-class="none" form-type="submit">{{langData.confirmBtn[lang]}}</button>
             </view>
         </form>
         </view>

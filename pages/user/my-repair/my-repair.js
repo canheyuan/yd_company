@@ -14,7 +14,7 @@ Page({
         tagIndex: 0,  //选项卡索引
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //页面上拉触底事件的处理函数
@@ -34,19 +34,18 @@ Page({
         }
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'repair', (res) => {
-            wx.setNavigationBarTitle({ title: res.myRepairTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'repair', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.myRepairTitle[lang] });  //设置当前页面的title
             var tagList = this.data.tagList;
-            tagList[0].name = res.tagName1;
-            tagList[1].name = res.tagName2;
-            tagList[2].name = res.tagName3;
+            tagList[0].name = res.tagName1[lang];
+            tagList[1].name = res.tagName2[lang];
+            tagList[2].name = res.tagName3[lang];
             this.setData({ tagList: tagList })
         });
 
     },
 
     onShow() {
-        //
         if (app.globalData.myRepairReach) {
             app.globalData.myRepairReach = false;
             var reachObj = 'tagList[' + this.data.tagIndex + '].reach';

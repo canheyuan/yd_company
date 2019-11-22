@@ -11,7 +11,7 @@ Page({
         hasUserInfo: true, //是否有用户信息
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     onLoad: function (options) {
@@ -23,8 +23,8 @@ Page({
         }
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'activity', (res) => {
-            wx.setNavigationBarTitle({ title: res.detailTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'activity', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.detailTitle[lang] });  //设置当前页面的title
         });
 
         this.getActivityInfo(options.id); //获取活动信息
@@ -33,7 +33,6 @@ Page({
 
     //点击报名提示弹窗
     loginTipShow(e) {
-        console.log('eeee',e)
         var formId = e.detail.formId;
         var url = e.currentTarget.dataset.url;
         if (!app.globalData.isLogin) {
@@ -62,6 +61,7 @@ Page({
     getActivityInfo(id) {
         var _this = this;
         var langData = this.data.langData;
+        var lang = this.data.lang
         app.requestFn({
             url: `/activity/detail/${id}`,
             success: (res) => {
@@ -70,19 +70,19 @@ Page({
 
                 switch (detailData.status) {
                     case 1:
-                        detailData.statusName = langData.status1;
+                        detailData.statusName = langData.status1[lang];
                         break;
                     case 2:
-                        detailData.statusName = langData.status2;
+                        detailData.statusName = langData.status2[lang];
                         break;
                     case 3:
-                        detailData.statusName = langData.status3;
+                        detailData.statusName = langData.status3[lang];
                         break;
                     case 4:
-                        detailData.statusName = langData.status4;
+                        detailData.statusName = langData.status4[lang];
                         break;
                     case 5:
-                        detailData.statusName = langData.status5;
+                        detailData.statusName = langData.status5[lang];
                         break;
                 }
 
@@ -95,8 +95,8 @@ Page({
 
                 detailData.areaName = detailData.provinceId + detailData.cityId + detailData.areaId
 
-                detailData.beginTime = commonFn.getDate(detailData.beginTime);  //开始时间戳
-                detailData.endTime = commonFn.getDate(detailData.endTime);  //结束时间戳
+                detailData.beginTime = commonFn.getDate(detailData.beginTime).substring(0,16);  //开始时间戳
+                detailData.endTime = commonFn.getDate(detailData.endTime).substring(0, 16);  //结束时间戳
 
                 WxParse.wxParse('rule', 'html', detailData.rule, _this, 0);
                 WxParse.wxParse('tips', 'html', detailData.tips, _this, 0);

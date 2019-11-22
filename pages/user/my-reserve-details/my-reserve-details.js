@@ -9,7 +9,7 @@ Page({
         detailData: null,   //详情信息
 
         langData: null,
-        langType: ''
+        lang: ''
     },
 
     onLoad: function (options) {
@@ -17,8 +17,8 @@ Page({
             this.setData({ isIndexBtnShow: true });
         }
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'reserve', (res) => {
-            wx.setNavigationBarTitle({ title: res.myReserveTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'reserve', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.myReserveTitle[lang] });  //设置当前页面的title
             this.getDetailsFn(options.id);
         });
 
@@ -27,6 +27,7 @@ Page({
     //获取详情页数据
     getDetailsFn(id) {
         var langData = this.data.langData;
+        var lang = this.data.lang;
         app.requestFn({
             url: `/chamber/orderDetail/${id}`,
             success: (res) => {
@@ -37,24 +38,24 @@ Page({
                 switch (detailData.order.status) {
                     case 1:
                         detailData.order.statusClass = 'l_yellow';
-                        detailData.order.statusName = langData.labelName1;
+                        detailData.order.statusName = langData.labelName1[lang];
                         break;
                     case 2:
                         if (detailData.order.payStatus == 1) {
                             detailData.order.statusClass = 'l_blue';
-                            detailData.order.statusName = langData.labelName2;
+                            detailData.order.statusName = langData.labelName2[lang];
                         } else {
                             detailData.order.statusClass = 'l_gray';
-                            detailData.order.statusName = langData.labelName3;
+                            detailData.order.statusName = langData.labelName3[lang];
                         }
                         break;
                     case 3:
                         detailData.order.statusClass = 'l_gray';
-                        detailData.order.statusName = langData.labelName4;
+                        detailData.order.statusName = langData.labelName4[lang];
                         break;
                     case 9:
                         detailData.order.statusClass = 'l_yellow';
-                        detailData.order.statusName = langData.labelName9;
+                        detailData.order.statusName = langData.labelName9[lang];
                         break;
                 }
 

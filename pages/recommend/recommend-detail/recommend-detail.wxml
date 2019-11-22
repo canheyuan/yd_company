@@ -3,7 +3,7 @@
 <!-- 幻灯片 -->
 <view class='venue_slide_box'>
     <navigator url="/pages/index/index" class="home_btn2" open-type="switchTab">
-        <icon class="icons ico_home"></icon>{{langData.homeText}}
+        <icon class="icons ico_home"></icon>{{langData.homeText[lang]}}
     </navigator>
     <image 
         wx:if="{{!(detailData.parkImg.length > 0)}}" 
@@ -34,11 +34,11 @@
     <view class='title'>{{detailData.parkName}}</view>
     <view class=''>
         <view class='ico_txt'><icon class='icons ico_dz'></icon>{{detailData.address}}</view>
-        <view class='ico_txt'><icon class='icons ico_mj'></icon>{{langData.totalArea}}：{{detailData.totalArea?detailData.totalArea:0}}m²</view>
+        <view class='ico_txt'><icon class='icons ico_mj'></icon>{{langData.totalArea[lang]}}：{{detailData.totalArea?detailData.totalArea:0}}m²</view>
     </view>
 
     <view class='price_mdl'>
-        <view class='yd_title02'><text class='txt'>{{langData.nowPrice}}</text></view>
+        <view class='yd_title02'><text class='txt'>{{langData.nowPrice[lang]}}</text></view>
         <view class='price_main' style='background:url({{domainUrl}}/images/money_ico.png) #fff8ed no-repeat -40rpx 60rpx; background-size:148rpx 166rpx;'>
             <text class='ico_price'>￥</text>
             <text class='num'>{{detailData.lowestPrice?detailData.lowestPrice:0}}</text>
@@ -54,7 +54,7 @@
         </view> -->
         <view class='ico_txt' style='padding-top:20rpx;'>
             <icon class='icons ico_per'></icon>
-            <text style='color:#ff6000;'>{{detailData.pv?detailData.pv:0}}</text>{{langData.detailText1}} 
+            <text style='color:#ff6000;'>{{detailData.pv?detailData.pv:0}}</text>{{langData.detailText1[lang]}} 
         </view>
     </view>
 
@@ -63,15 +63,16 @@
 <!-- 园区户型 -->
 <view class='yqhx_mdl'>
     <view class='recommend_title'>
-        <text>{{langData.parkType}}</text>
+        <navigator class="more" url="/pages/recommend/house-list/house-list?dist_id={{detailData.distId}}">{{langData.allHouseBtn[lang]}}</navigator>
+        <text>{{langData.parkType[lang]}}</text>
     </view>
     <view class='room_list_box'>
         <scroll-view class='scroll_box' scroll-x="true" style='height:100%; width:100%;'>
             <view class='room_list' style='width:{{detailData.unitList.length*570+20}}rpx;'>
 
                 <view
-                    class='li'  wx:for="{{detailData.unitList}}" wx:key="unitList{{index}}"
-                    bindtap="goToRoom" data-id="{{item.unitId}}" data-imgs="{{item.imageList}}"
+                    class='li'  wx:for="{{detailData.unitList}}" wx:key="unitId"
+                    bindtap="goToRoom" data-id="{{item.unitId}}"
                 >
                     <image 
                         class='img' 
@@ -84,12 +85,12 @@
                         <view class='clearfix'>
                             <view class='p'>
                                 <text class='meney_ico'>￥</text>
-                                <text class='price'>{{item.price}}{{langData.public.yuanText}}</text>
+                                <text class='price'>{{item.price}}{{langData.public.yuanText[lang]}}</text>
                                 <text>/m²</text>
                             </view>
                             <view class='title'>{{item.name}}</view>
                         </view>
-                        <view class='ico_txt'><icon class='icons ico_mj'></icon>{{langData.totalArea}}：{{item.smallestArea}}m²</view>
+                        <view class='ico_txt'><icon class='icons ico_mj'></icon>{{langData.totalArea[lang]}}：{{item.smallestArea}}m²</view>
                     </view>
                 </view>
 
@@ -123,68 +124,66 @@
       
 <!-- 服务及设施 -->
 <view class='lstj_mdl'>
-  <view class='recommend_title'>
-    <text>{{langData.serveFacility}}</text>
-  </view>
-  <view class='fwss_ctn box_shadow'>
-    <view class='label' wx:for="{{detailData.serviceTags}}" wx:key="serviceTags{{index}}">{{item}}</view>
-  </view>
+    <view class='recommend_title'>
+        <text>{{langData.serveFacility[lang]}}</text>
+    </view>
+    <view class='fwss_ctn box_shadow'>
+        <view class='label' wx:for="{{detailData.serviceTags}}" wx:key="serviceTags{{index}}">{{item}}</view>
+    </view>
 </view>
 
 <!-- 近期活动 -->
 <view class='jqhd_mdl' wx:if="{{false}}">
-  <view class='recommend_title'>
-    <text>{{langData.recentActivity}}</text>
-  </view>
-  <view class='jqhd_ctn'>
-    <!-- <activity-list 
-      reach-data="1"
-      target-page="act_recent"
-    ></activity-list> -->
-  </view>
+    <view class='recommend_title'>
+        <text>{{langData.recentActivity[lang]}}</text>
+    </view>
+    <view class='jqhd_ctn'>
+        <!-- <activity-list 
+        reach-data="1"
+        target-page="act_recent"
+        ></activity-list> -->
+    </view>
 </view>
 
 <!-- 园区简介 -->
 <view class='yqjj_mdl'>
-  <view class='recommend_title'>
-    <text>{{langData.parkIntro}}</text>
-  </view>
-  <view class='yqjj_ctn box_shadow'>
-    <view style='margin-bottom:30rpx;'>
-      <template is="wxParse" data="{{wxParseData:intro.nodes}}"/>
+    <view class='recommend_title'>
+        <text>{{langData.parkIntro[lang]}}</text>
     </view>
-    <view class='yd_title01' style='margin-bottom:20rpx;'>{{langData.traffic}}</view>
-    <view class='traffic_box'>
-      <template is="wxParse" data="{{wxParseData:traffic.nodes}}"/>
+    <view class='yqjj_ctn box_shadow'>
+        <view style='margin-bottom:30rpx;'>
+            <template is="wxParse" data="{{wxParseData:intro.nodes}}"/>
+        </view>
+        <view class='yd_title01' style='margin-bottom:20rpx;'>{{langData.traffic[lang]}}</view>
+        <view class='traffic_box'>
+            <template is="wxParse" data="{{wxParseData:traffic.nodes}}"/>
+        </view>
     </view>
-  </view>
 </view>
 
 <view class='fixed_btn_wrap' wx:if="{{!shareId || isLogin || detailData.hasPhone==1}}">
-  <view 
-    class='orange_btn' bindtap="gotoUrlFn" 
-  >{{detailData.shareButton}}</view>
+    <view  class='orange_btn' bindtap="gotoUrlFn">{{detailData.shareButton}}</view>
 </view>
 
 <view class='fixed_btn_wrap'  wx:if="{{shareId && !isLogin && detailData.hasPhone==0}}">
     <view 
         class='blue_btn02'  wx:if="{{detailData.contactPhone}}"
         bindtap='makePhoneCallFn' data-phone="{{detailData.contactPhone}}"
-    >{{langData.kefuBtn}}</view>
+    >{{langData.kefuBtn[lang]}}</view>
     <navigator 
         url='/pages/recommend/recommend-apply/recommend-apply?dist_id={{detailData.distId}}&share_id={{shareId}}' 
         class='blue_btn03'
-    >{{langData.yycgBtn}}</navigator>
+    >{{langData.yycgBtn[lang]}}</navigator>
 </view>
 
 <view 
     wx:if="{{shareId && !isLogin && detailData.hasPhone==0}}"  bindtap="gotoUrlFn"  class='wyytj_btn' 
-><text>{{langData.wyytjBtn}}</text></view>
+><text>{{langData.wyytjBtn[lang]}}</text></view>
 
 <navigator 
     wx:if="{{detailData.hasPhone==1}}"  class='wyytj_btn'
     url='/pages/recommend/recommend-record/recommend-record?dist_id={{detailData.distId}}&share_id={{shareId}}'
-><text>{{langData.myshareBtn}}</text></navigator>
+><text>{{langData.myshareBtn[lang]}}</text></navigator>
 
 
 <!-- 返回首页按钮 -->
@@ -203,9 +202,9 @@ isReferrer  是否成为推荐人
 <view class='mask_bg pop_show' wx:if="{{tipPopShow}}">
     <view class='mask_bg_ctn'>
         <view class='shouquan_pop'>
-            <view class='h3'>{{langData.authentication}}</view>
-            <text class='p'>{{langData.authenticationDes}}</text>
-            <button class='btn' open-type='getUserInfo' bindgetuserinfo="getUserInfoFn">{{langData.authenticationBtn}} ></button>
+            <view class='h3'>{{langData.authentication[lang]}}</view>
+            <text class='p'>{{langData.authenticationDes[lang]}}</text>
+            <button class='btn' open-type='getUserInfo' bindgetuserinfo="getUserInfoFn">{{langData.authenticationBtn[lang]}} ></button>
         </view>
     </view>
 </view>

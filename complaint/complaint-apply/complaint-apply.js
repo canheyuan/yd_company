@@ -11,7 +11,7 @@ Page({
         formSubmitStatus: false, //提交状态，控制不重复提交（true：提交中，false：未提交）
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //生命周期函数--监听页面加载
@@ -20,8 +20,8 @@ Page({
             userInfo: app.globalData.loginInfo.userInfo
         })
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'complaint', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+        app.loadLangNewFn(this, 'complaint', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
         });
 
     },
@@ -57,6 +57,7 @@ Page({
     submitFn(e) {
         var _this = this;
         var langData = this.data.langData;
+        var lang = this.data.lang;
         var formData = e.detail.value;
         var formId = e.detail.formId;
 
@@ -67,8 +68,8 @@ Page({
 
         //验证
         var isTip = formTip([
-            { name: 'empty', verifyText: formData.title, tipText: langData.subjectTip },
-            { name: 'empty', verifyText: formData.content, tipText: langData.feedbackTip }
+            { name: 'empty', verifyText: formData.title, tipText: langData.subjectTip[lang] },
+            { name: 'empty', verifyText: formData.content, tipText: langData.feedbackTip[lang] }
         ]);
         if (isTip) { return; } //若有提示，就终止下面程序
 
@@ -113,7 +114,7 @@ Page({
                 //提交formId
                 app.getFormIdFn(formId, () => {
                     app.requestFn({
-                        loadTitle: langData.public.submit,
+                        loadTitle: langData.public.submit[lang],
                         url: `/estateComplaint/add`,
                         data: formData,
                         //header: 'application/x-www-form-urlencoded',

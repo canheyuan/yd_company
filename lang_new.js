@@ -251,6 +251,7 @@ module.exports = {
             zgjApp:{zh:'羊城招管家',en:'Yangcheng'},
             activity:{zh:'活动中心',en:'Activity'},
             news:{zh:'新鲜事',en:'News'},
+            companyNews:{zh:'企业名录',en:'Directories'},
             visitor:{zh:'访客预约',en:'Visitor'},
             orderfood:{zh:'在线订餐',en:'Food Online'},
             coupon:{zh:'领券中心',en:'Coupon'},
@@ -267,6 +268,8 @@ module.exports = {
         costText:{zh:'费用',en:'cost'},
         fixturesText:{zh:'装修',en:'decoration'},
         pending:{zh:'待处理',en:'pending'},
+        houseTitle: { zh: '招商一览', en: '' },
+        unitPrice: { zh: ' 元/㎡', en: '' },
         policyTitle:{zh:'申报政策',en:'Policy'},
         successRateText:{zh:'成功率',en:'Success rate'},
         highestText:{zh:'最高',en:'highest'},
@@ -538,11 +541,12 @@ module.exports = {
         explainDes:{zh:'园区内免费提供共享物资，在线申请即可获得使用权，数量有限，请大家按需申请，用完后请尽快归还，以方便他人借用。',en:'The shared materials are provided free of charge in the park. The right to use can be obtained by online application. The number is limited. Please apply as required. Please return it as soon as possible after use to facilitate borrowing.'},
         residue:{zh:'剩余',en:'Remaining'},
         borrowing:{zh:'借用中',en:'Borrowing'},
-        applyBtn:{zh:'申请',en:'Application'},
+        applyBtn:{zh:'详细',en:'Application'},
         checkBorrowBtn:{zh:'查看借用记录 >>',en:'View borrowing records >>'},
-        verifyBtn:{zh:'确认借用',en:'Confirm borrowing'},
-        popText01:{zh:'您正在申请的借用需求',en:'The borrowing requirement you are applying for'},
+        verifyBtn: { zh: '物品明细', en:'Item details'},
+        popText01: { zh: '确认借用该物品？', en:'Are you sure you want to borrow this item?'},
         applyTip:{zh:'申请中',en:'applying'},
+        confirmBtn: { zh: '借用', en: 'Borrow' },
     },
 
     //切换园区
@@ -579,6 +583,9 @@ module.exports = {
     //投诉建议
     complaint:{
         title:{zh:'投诉建议',en:'Suggestions'},
+        tagName01: { zh: '待处理', en: '' },
+        tagName02: { zh: '处理中', en: '' },
+        tagName03: { zh: '已完成', en: '' },
         subject:{zh:'主题',en:'subject'},
         subjectPl:{zh:'请填写主题',en:'Please fill in the subject'},
         subjectTip:{zh:'请输入主题！',en:'Please enter the subject!'},
@@ -744,6 +751,7 @@ module.exports = {
         authentication:{zh:'授权认证',en:'Authorized certification'},
         authenticationDes:{zh:'您需要进行授权后才能参与分享\n哦，赶紧授权拿佣金',en:'You need to authorize before you can participate in the sharing, and quickly authorize the commission.'},
         authenticationBtn:{zh:'好的，去授权',en:'Ok, go to authorize'},
+        allHouseBtn: { zh: '所有户型 >', en:'All units'},
         //推广记录
         dataBrowse:{zh:'数据总览',en:'Data overview'},
         browseNum:{zh:'浏览人数',en:'Number of visitors'},
@@ -944,6 +952,28 @@ module.exports = {
         //服务订单列表
         orderListTitle:{ zh: '我的服务', en: '' },
         amountMoney:{ zh: '合计金额：', en: '' },
+    },
+
+    //待办事项
+    backlog:{
+        myBacklogTitle: { zh: '我的待办事项', en: '' }
+    },
+
+    //户型模块
+    house:{
+        listTitle: { zh: '户型列表', en: '' },
+        detailTitle: { zh: '户型详情', en: '' },
+        
+        price: { zh: '价格', en: '' },
+        area: { zh: '面积', en: '' },
+        orientation: { zh: '朝向', en: '' },
+        parkName: { zh: '所属园区', en: '' },
+        houseDes: { zh: '户型描述', en: '' },
+        serveTitle: { zh: '服务及设施', en: '' },
+        parkTitle: { zh: '园区简介', en: '' },
+        trafficTitle: { zh: '公共交通', en: '' },
+        parkBtn: { zh: '进入园区 >', en: '' },
+        makePhoneBtn: { zh: '联系园区负责人', en: '' },
     },
 
 

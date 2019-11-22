@@ -9,15 +9,15 @@ Page({
         listInfo: [],
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'gardenChange', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+        app.loadLangNewFn(this, 'gardenChange', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
         });
 
         this.setData({ loginInfo: app.globalData.loginInfo  });
@@ -57,8 +57,9 @@ Page({
         var gardenId = e.currentTarget.dataset.id;
         var gardenName = e.currentTarget.dataset.name;
         var gardenAddress = e.currentTarget.dataset.address;
+        var lang= this.data.lang
         app.requestFn({
-            laodTitle: this.data.langData.changeTip,
+            laodTitle: this.data.langData.changeTip[lang],
             isCloseLoading: false,
             url: `/parkInfo/select`,
             header: 'application/x-www-form-urlencoded',
@@ -73,7 +74,7 @@ Page({
                 userInfoStorage.curParkName = gardenName;
                 userInfoStorage.parkAddress = gardenAddress;
 
-                console.log("选择园区缓存：", gardenId, gardenName, gardenAddress, userInfoStorage);
+                //console.log("选择园区缓存：", gardenId, gardenName, gardenAddress, userInfoStorage);
                 wx.setStorageSync('userInfo', userInfoStorage); //设置缓存用户信息
                 app.globalData.loginInfo = userInfoStorage;  //获取用户信息
 

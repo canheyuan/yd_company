@@ -1,33 +1,37 @@
 <form bindsubmit="formSubmit"  report-submit="true">
     <view class='form_mdl'>
 
+        <!-- 手机号码 -->
         <view class='dl'>
-            <text class='dt'>{{langData.public.phoneCode}}</text>
+            <text class='dt'>{{langData.public.phoneCode[lang]}}</text>
             <view class='dd'>
             <input 
                 type='number' class='input' name="mobile" maxlength='11' value='{{getCode.phone}}'
-                placeholder='{{langData.public.phonePl}}' placeholder-class='pl_input' 
+                placeholder='{{langData.public.phonePl[lang]}}' placeholder-class='pl_input' 
                 bindinput='changePhoneFn' data-phone="{{getCode.phone}}"  
             />
             </view>
         </view>
+
+        <!-- 验证码 -->
         <view class='dl get_code_dl'>
-            <text class='dt'>{{langData.public.verifyCode}}</text>
+            <text class='dt'>{{langData.public.verifyCode[lang]}}</text>
             <view class='dd'>
                 <input 
                     type='text' class='input' name="verifyCode"
-                    placeholder='{{langData.public.verifyCodePl}}' placeholder-class='pl_input' 
+                    placeholder='{{langData.public.verifyCodePl[lang]}}' placeholder-class='pl_input' 
                 />
                 <input type='text' name="verificationId" value='{{verificationId}}' style='display:none;'  />
-            <view 
-                class='s_blue_btn get_code_btn {{getCode.sending?"disabled":""}}' 
-                bindtap="getCodeFn" data-phone="{{getCode.phone}}"
-            >{{getCode.text}}</view>
+                <view 
+                    class='s_blue_btn get_code_btn {{getCode.sending?"disabled":""}}' 
+                    bindtap="getCodeFn" data-phone="{{getCode.phone}}"
+                >{{getCode.text}}</view>
             </view>
         </view>
-    
+
+        <!-- 确定按钮 -->
         <view class='btn_wrap'>
-            <button class='blue_btn' form-type="submit">{{langData.public.confirmBtn}}</button>
+            <button class='blue_btn' form-type="submit">{{langData.public.confirmBtn[lang]}}</button>
         </view>
     </view>
 </form>

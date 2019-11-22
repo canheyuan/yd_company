@@ -20,7 +20,7 @@ Component({
             observer: function (newVal, oldVal, changedPath) {
                 if (this.data.isFirst) {
                     this.setData({ isFirst: false })
-                    app.loadLangFn(this, 'complaint');
+                    app.loadLangNewFn(this, 'complaint');
                 }
                 //随机数大于1：刷新。小于1：上拉刷新
                 if (newVal > 1) {

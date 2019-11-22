@@ -8,7 +8,7 @@ Page({
         reach: null,
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //页面上拉触底事件的处理函数
@@ -25,11 +25,9 @@ Page({
         wx.setStorageSync('backUrl', backUrl);
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'activity', (res) => {
-            wx.setNavigationBarTitle({ title: res.listTitle });  //设置当前页面的title
-            this.setData({
-                reach: Math.random()+1
-            })
+        app.loadLangNewFn(this, 'activity', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.listTitle[lang] });  //设置当前页面的title
+            this.setData({ reach: Math.random() + 1 })
         });
     }
 })

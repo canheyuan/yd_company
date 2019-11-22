@@ -1,7 +1,7 @@
 <view class='repair_details_head'>
     <image class='img' mode='widthFix' src='{{domainUrl}}/images/msg/bxjd_head.jpg'></image>
     <view class='info'>
-        <view class='h3'>{{langData.applyTime}}</view>
+        <view class='h3'>{{langData.applyTime[lang]}}</view>
         <view class='time'>{{detailsData.createTime}}</view>
     </view>
 </view>
@@ -9,13 +9,13 @@
 <!-- 当前进度 -->
 <view class='progress_now'>
     <view class='progress_now_top'>
-        <view class='tit'>{{langData.repairType}}：<text>{{detailsData.typeName}}</text></view>
+        <view class='tit'>{{langData.repairType[lang]}}：<text>{{detailsData.typeName}}</text></view>
         <view class='label icons {{detailsData.statusClass}}'>{{detailsData.statusName}}</view>
     </view>
     <!-- 内容判断_S -->
     <view class='progress_now_ctn' wx:if="{{detailsData.status!=4}}">{{detailsData.description}}</view>
     <view class='progress_now_ctn' wx:if="{{detailsData.status==4}}">
-        <view class='fwpf_txt'>{{langData.serveScore}}</view>
+        <view class='fwpf_txt'>{{langData.serveScore[lang]}}</view>
         <view class='star_list'>
         <view class='icons {{detailsData.star>starItem?"cur":""}}' 
             wx:for="{{[0,1,2,3,4]}}"  wx:key="{{index}}" wx:for-item="starItem"
@@ -81,24 +81,24 @@
 
 <!-- 报修内容 -->
 <view class='bxnr_mdl'>
-    <view class='bxnr_tit'>{{langData.repairInfo}}</view>
+    <view class='bxnr_tit'>{{langData.repairInfo[lang]}}</view>
     <view class='bxnr_ctn'>
         <view class='gray_box'>{{detailsData.description}}</view>
         <view class='bxnr_dl'>
-            <view class='dt'>{{langData.room}}</view>
+            <view class='dt'>{{langData.room[lang]}}</view>
             <view class='dd'>{{detailsData.roomName}}</view>
         </view>
         <view hidden="{{infoShow}}">
             <view class='bxnr_dl'>
-                <view class='dt'>{{langData.public.contact}}</view>
+                <view class='dt'>{{langData.public.contact[lang]}}</view>
                 <view class='dd'>{{detailsData.contact}}</view>
             </view>
             <view class='bxnr_dl'>
-                <view class='dt'>{{langData.public.contactPhone}}</view>
+                <view class='dt'>{{langData.public.contactPhone[lang]}}</view>
                 <view class='dd'>{{detailsData.phone}}</view>
             </view>
             <view class='bxnr_dl' wx:if="{{detailsImgs.length>0}}">
-                <view class='dt'>{{langData.public.imgAccessory}}</view>
+                <view class='dt'>{{langData.public.imgAccessory[lang]}}</view>
                 <view class='dd'>
                     <view class='imgs'>
                         <image 
@@ -115,15 +115,15 @@
         <icon class='icons ico_arrow {{infoShow?"":"ico_arrow_up"}}'></icon>
         </view> -->
     </view>
-    <view class='ylb_txt' bindtap="popFn"><icon class="icons"></icon>{{langData.severPopBtn}}</view>
+    <view class='ylb_txt' bindtap="popFn"><icon class="icons"></icon>{{langData.severPopBtn[lang]}}</view>
 </view>
 
 <!-- 底部按钮 -->
 <view class='fix_btm' wx:if="{{detailsData.status==1}}">
-    <view class='btn btn01' data-type="remove" bindtap='popShowFn'>{{langData.callOffBtn}}</view>
+    <view class='btn btn01' data-type="remove" bindtap='popShowFn'>{{langData.callOffBtn[lang]}}</view>
 </view>
 <view class='fix_btm' wx:if="{{detailsData.status==3}}">
-  <view class='btn btn02' data-type="star" bindtap='popShowFn'>{{langData.serveScore}}</view>
+  <view class='btn btn02' data-type="star" bindtap='popShowFn'>{{langData.serveScore[lang]}}</view>
 </view>
 <view class='fix_btm' wx:if="{{detailsData.status==4}}">
   <view class='price'>
@@ -140,13 +140,13 @@
 <view class='mask_bg pop_show' hidden='{{tipPopDeleteShow}}'>
   <view class='mask_bg_ctn'>
     <view class='pop_mdl'>
-      <view class='h3'>{{langData.affirmTitle}}</view>
+      <view class='h3'>{{langData.affirmTitle[lang]}}</view>
       <view class='pop_ctn' style="padding:30rpx 0;">
-        <view class='p'>{{langData.affirmDes}}</view>
+        <view class='p'>{{langData.affirmDes[lang]}}</view>
       </view>
       <view class='btm_btn clearfix'>
-        <view class='btn' bindtap='closeTipPop'>{{langData.public.callOffBtn}}</view>
-        <view class='btn' bindtap='removeRepairFn' >{{langData.public.confirmBtn}}</view>
+        <view class='btn' bindtap='closeTipPop'>{{langData.public.callOffBtn[lang]}}</view>
+        <view class='btn' bindtap='removeRepairFn' >{{langData.public.confirmBtn[lang]}}</view>
       </view>
       <view class='close_btn icons' bindtap='closeTipPop'></view>
     </view>
@@ -157,7 +157,7 @@
 <view class='mask_bg pop_show' hidden='{{tipPopStarShow}}'>
   <view class='mask_bg_ctn'>
     <view class='pop_mdl'>
-      <view class='h3'>{{langData.serveScore}}</view>
+      <view class='h3'>{{langData.serveScore[lang]}}</view>
       <view class='pop_ctn' style="padding:30rpx 0;">
         <view class='star_list'>
           <view 
@@ -170,8 +170,8 @@
         </view>
       </view>
       <view class='btm_btn clearfix'>
-        <view class='btn' bindtap='closeTipPop'>{{langData.public.callOffBtn}}</view>
-        <view class='btn' bindtap='starRepairFn' >{{langData.public.confirmBtn}}</view>
+        <view class='btn' bindtap='closeTipPop'>{{langData.public.callOffBtn[lang]}}</view>
+        <view class='btn' bindtap='starRepairFn' >{{langData.public.confirmBtn[lang]}}</view>
       </view>
       <view class='close_btn icons' bindtap='closeTipPop'></view>
     </view>

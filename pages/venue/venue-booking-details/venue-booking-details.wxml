@@ -28,7 +28,7 @@
     <view class='title'>{{detailsData.chamberName}}</view>
     <view class=''>
         <view class='ico_txt'><icon class='icons ico_dz'></icon>{{detailsData.address}}</view>
-        <view class='ico_txt'><icon class='icons ico_per'></icon>{{langData.accommodate + ' ' + detailsData.capacity+ ' ' +langData.person}}</view>
+        <view class='ico_txt'><icon class='icons ico_per'></icon>{{langData.accommodate[lang] + ' ' + detailsData.capacity+ ' ' +langData.person[lang]}}</view>
     </view>
     <view class='label_list' wx:if="{{detailsData.serviceTagList.length>0}}">
         <text wx:for="{{detailsData.serviceTagList}}" wx:key="{{index}}">{{item}}</text>
@@ -42,7 +42,7 @@
         wx:if="{{detailsData.description.length > 150}}"
         bindtap="checkMoreFn"
     >
-        {{!moreDes?langData.public.checkMoreBtn:langData.public.packUpBtn}}<icon class='icons ico_arrow'></icon>
+        {{!moreDes?langData.public.checkMoreBtn[lang]:langData.public.packUpBtn[lang]}}<icon class='icons ico_arrow'></icon>
     </view>
 
 </view>
@@ -50,7 +50,7 @@
 <!-- 填写预约信息 -->
 <view class='form_box reserve_form'>
     <view class='form_head'>
-        <view class='tit'>{{langData.writeReserveInfo}}</view>
+        <view class='tit'>{{langData.writeReserveInfo[lang]}}</view>
     </view>
 
     <form bindsubmit="formSubmit" report-submit="true">
@@ -59,13 +59,13 @@
             <input style='display:none;' name="attendance" value='' /><!-- 到场人数,非必填 -->
             <input style='display:none;' name="remark" value='' /><!-- 备注,非必填 -->
             <view class='dl'>
-                <text class='dt'>{{langData.public.reserveDate}}</text>
+                <text class='dt'>{{langData.public.reserveDate[lang]}}</text>
                 <view class='dd'>
                     <view class='date_txt'>{{dateUrl}}</view>
                 </view>
             </view>
             <view class='dl'>
-                <text class='dt'>{{langData.public.reserveTime}}</text>
+                <text class='dt'>{{langData.public.reserveTime[lang]}}</text>
                 <view class='dd'>
                     <!-- 时间段 -->  
                     <view class="picker_group">  
@@ -73,46 +73,46 @@
                             name="orderStart" value="{{dateUrl}} {{startTime}}" range="{{hours_start}}" 
                             bindchange="bindTimeChange" data-type='starttime'
                         >
-                            <view class="time_txt">{{startTime?startTime:langData.public.startTime}}</view>
+                            <view class="time_txt">{{startTime?startTime:langData.public.startTime[lang]}}</view>
                         </picker>
-                        {{langData.public.toText}}  
+                        {{langData.public.toText[lang]}}  
                         <picker 
                             name="orderEnd"  value="{{dateUrl}} {{endTime}}" range="{{hours_end}}"
                             bindchange="bindTimeChange" data-type='endtime'
                         >
-                            <view class="time_txt">{{endTime?endTime:langData.public.endTime}}</view>
+                            <view class="time_txt">{{endTime?endTime:langData.public.endTime[lang]}}</view>
                         </picker>
                     </view>
                 </view>
             </view>
             <view class='dl'>
-                <text class='dt'>{{langData.public.contact}}</text>
+                <text class='dt'>{{langData.public.contact[lang]}}</text>
                 <view class='dd'>
-                    <input type='text' class='input' name="contact" placeholder='{{langData.public.contactPl}}' value="" placeholder-class='pl_input' />
+                    <input type='text' class='input' name="contact" placeholder='{{langData.public.contactPl[lang]}}' value="" placeholder-class='pl_input' />
                 </view>
             </view>
             <view class='dl'>
-                <text class='dt'>{{langData.public.contactPhone}}</text>
+                <text class='dt'>{{langData.public.contactPhone[lang]}}</text>
                 <view class='dd'>
-                    <input type='text' class='input' name="phone" placeholder='{{langData.public.contactPhonePl}}' value="" placeholder-class='pl_input' />
+                    <input type='text' class='input' name="phone" placeholder='{{langData.public.contactPhonePl[lang]}}' value="" placeholder-class='pl_input' />
                 </view>
             </view>
 
             <view class='reserve_btm'>
                 <view class="reserve_btm_box">
-                    <view class='txt'>{{detailsData.price + langData.reserveText1 + veneuTime + langData.reserveText2 + detailsData.freeHours + langData.reserveText3}}</view>
-                    <view class='txt'>{{ langData.reserveText4}} <text style="font-size:28rpx; top:-6rpx; margin-left:10rpx;">¥</text><text>{{veneuMoney}}</text></view>
+                    <view class='txt'>{{detailsData.price + langData.reserveText1[lang] + veneuTime + langData.reserveText2[lang] + detailsData.freeHours + langData.reserveText3[lang]}}</view>
+                    <view class='txt'>{{ langData.reserveText4[lang]}} <text style="font-size:28rpx; top:-6rpx; margin-left:10rpx;">¥</text><text>{{veneuMoney}}</text></view>
                     <icon class="icons ico_money"></icon>
                 </view>
             </view>
             
             <!-- <view class='form_btm reserve_btm'>
-            <view class='txt'>￥{{detailsData.price + langData.reserveText1 + veneuTime + langData.reserveText2}} <text>¥{{detailsData.price*veneuTime}}</text></view>
+            <view class='txt'>￥{{detailsData.price + langData.reserveText1[lang] + veneuTime + langData.reserveText2[lang]}} <text>¥{{detailsData.price*veneuTime}}</text></view>
             </view> -->
         </view>
 
         <view style='padding:60rpx 100rpx;'>
-            <button class='blue_btn' form-type='submit'>{{langData.venueBtn}}</button>
+            <button class='blue_btn' form-type='submit'>{{langData.venueBtn[lang]}}</button>
         </view>
     </form>
 </view>

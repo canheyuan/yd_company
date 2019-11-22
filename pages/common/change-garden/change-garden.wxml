@@ -1,8 +1,8 @@
 <!--园区背景模块-->
 <view class='garden_head'>
-    <view>{{langData.curPark}}:</view>
+    <view>{{langData.curPark[lang]}}:</view>
     <view class='h3'>{{loginInfo.curParkName}}</view>
-    <view>{{langData.address}}：{{loginInfo.parkAddress}}</view>
+    <view>{{langData.address[lang]}}：{{loginInfo.parkAddress}}</view>
 </view>
 
 <!--已定位园区_暂时不做，以后要做-->
@@ -21,7 +21,7 @@
 </view> -->
 
 <!--标题-->
-<view class='allpark_title'>{{langData.allPark}}</view>
+<view class='allpark_title'>{{langData.allPark[lang]}}</view>
 <radio-group>
     <block wx:for="{{listInfo}}" wx:key="{{index}}" wx:for-item="listInfo">
         <view 
@@ -35,7 +35,7 @@
                 <image class='icon' mode='widthFix' src='{{domainUrl}}/images/icon/louyu.png'></image>
                 <view class='info'>
                     <view class='title'>{{listInfo.parkName}}</view>
-                    <view class='address'>{{langData.address}}：{{listInfo.address}}</view>
+                    <view class='address'>{{langData.address[lang]}}：{{listInfo.address}}</view>
                 </view>
             </view>
             <!-- <view class='radio_box'>

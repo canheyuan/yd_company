@@ -13,7 +13,10 @@ Page({
   },
 
   onLoad: function (options) {
-      
+      //设置语言,判断是否切换语言
+      app.loadLangNewFn(this, 'backlog', (res, lang) => {
+          wx.setNavigationBarTitle({ title: res.myBacklogTitle[lang] });  //设置当前页面的title
+      });
   }
 
 })

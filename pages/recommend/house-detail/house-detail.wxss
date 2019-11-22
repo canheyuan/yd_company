@@ -1,10 +1,54 @@
-page{background:#f7f7f7;}
-.house_head{padding:30rpx; background:#fff; margin-bottom:20rpx;}
-.house_head .title{font-size:36rpx; color:#333; text-align: left; line-height:50rpx; margin-bottom:40rpx; font-weight: bold;}
-.house_head .info .ico_txt{display:block; margin-bottom:20rpx;}
+@import '/style/btn.wxss';
+page{background:#f7f7f7; padding-bottom:100rpx;}
+
+/* 幻灯片 */
+.house_slide_box{width:100%; height:400rpx;}
+.house_slide{width:100%; height:400rpx;}
+.house_slide .slide_img{width:100%; height:400rpx;}
+
+.house_head{padding:30rpx 20rpx; background:#fff; margin-bottom:20rpx;}
+.house_head .title{font-size:32rpx; color:#333; text-align: left; line-height:50rpx; margin-bottom:30rpx; font-weight: bold;}
+.house_head .info .ico_txt{display:block; margin-bottom:20rpx; width:50%; float:left; margin-right:0; line-height:30rpx;}
+.house_head .info .ico_txt.row1{width:100%;}
 .house_head .info .ico_txt .icons{width:30rpx; height:30rpx;}
 .house_head .info .ico_txt .ico_time{background-position: -120rpx -120rpx;}
+.house_head .info .ico_txt .ico_price{background-position: 0rpx -120rpx;}
+.house_head .info .ico_txt .ico_area{background-position: -390rpx -120rpx;}
+.house_head .info .ico_txt .ico_address{background-position: -300rpx -120rpx;}
+.house_head .info .ico_txt .txt{display:inline-block; line-height:30rpx;}
+.house_head .info .ico_txt .txt .price{font-size:30rpx; color:#ff6000; font-weight: bold; line-height:30rpx;}
 .house_ctn{padding:30rpx;  background:#fff; }
+.house_title {margin-bottom:20rpx;}
+.house_title .more{float:right;color:#2a99f1; font-size:26rpx;line-height:40rpx;}
+.house_title .yd_title01{margin-bottom:0; overflow: hidden;}
 .house_ctn .house_imgs{font-size:0;}
 .house_ctn .house_imgs .img{width:100%; margin-bottom:5rpx;}
-.house_ctn .house_des{display:block; background:#eee; border-radius:10rpx; padding:20rpx; font-size:24rpx; line-height:40rpx; color:#888; margin-bottom:50rpx;}
+.house_ctn .house_des{display:block; background:#f5f5f5; border-radius:10rpx; padding:20rpx; font-size:24rpx; line-height:40rpx; color:#888; margin-bottom:60rpx;}
+.house_ctn .house_label{margin-bottom:60rpx; font-size:0;}
+.house_ctn .house_label text{display:inline-block; height:40rpx; line-height:40rpx; background:#f0f0f5; border-radius:20rpx; padding:0 25rpx; font-size:24rpx; color:#666; text-align: center; margin-right:15rpx;}
+
+.phone_btn .ico_phone{display:inline-block; width:50rpx; height:50rpx; background-position:-300rpx -60rpx; vertical-align: middle; margin-right:10rpx;}
+
+
+.recommend_title{display: block;  margin-bottom:20rpx; font-weight: bold;}
+.recommend_title text{color:#000; font-size:34rpx; line-height:40rpx; display: block; overflow: hidden;}
+.recommend_title .more{float:right;color:#2a99f1; font-size:26rpx;line-height:40rpx;}
+
+.lstj_mdl{padding:20rpx;}
+/* 服务及设施 */
+.fwss_ctn{background:#fff; border-radius:20rpx; padding:30rpx 20rpx 20rpx; overflow: hidden; margin-top:30rpx;}
+.fwss_ctn .label{display:inline-block; height:56rpx; line-height:56rpx; padding:0 20rpx; background:#f5f5fa; font-size:24rpx; color:#333; border-radius:28rpx; margin-right:10rpx; margin-bottom:10rpx;}
+
+/* 园区简介 */
+.yqjj_mdl{padding:20rpx;}
+.yqjj_ctn{background:#fff; border-radius:20rpx; padding:30rpx 20rpx; font-size:26rpx; color:#333;}
+.yqjj_ctn .p{text-indent:2em; font-size:30rpx; line-height:48rpx; color:#333333; margin-bottom:20rpx;}
+.yqjj_ctn image{max-width:100%!important; margin-bottom:20rpx;}
+.traffic_box{background:#f5f5f5; border-radius:10rpx; padding:20rpx 20rpx;}
+.traffic_box .tit{font-size:30rpx; color:#333; margin-bottom:10rpx;}
+.traffic_box .txt{font-size:28rpx; color:#7f7f7f; margin-left:115rpx; margin-bottom:20rpx; line-height:40rpx;}
+.hxjj_txt{font-size:28rpx; color:#333; line-height:40rpx;}
+
+
+
+

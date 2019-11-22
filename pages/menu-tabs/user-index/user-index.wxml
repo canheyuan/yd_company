@@ -10,7 +10,7 @@
     <!-- 编辑按钮 -->
     <navigator class='update_txt' url='/pages/user/user-info/user-info' hover-class='hover'>
         <image src='{{domainUrl}}/images/me/bj.png'></image>
-        <text class='bj_txt'>{{langData.editBtn}}</text>
+        <text class='bj_txt'>{{langData.editBtn[lang]}}</text>
     </navigator>
 
     <!-- 我的信息 -->
@@ -39,7 +39,7 @@
                 url='/pages/user/my-repair/my-repair'
             >
                 <image class='ico' src='{{domainUrl}}/images/me/ico_repair.png'></image>
-                <text class='txt'>{{langData.repairBtn}}</text>
+                <text class='txt'>{{langData.repairBtn[lang]}}</text>
             </navigator>
             
             <navigator 
@@ -47,12 +47,12 @@
                 url='/pages/user/my-reserve/my-reserve' 
             >
                 <image class='ico' src='{{domainUrl}}/images/me/ico_venue.png'></image>
-                <text class='txt'>{{langData.venueBtn}}</text>
+                <text class='txt'>{{langData.venueBtn[lang]}}</text>
             </navigator>
 
             <navigator class='a' hover-class='hover' url='' bindtap="fapiaoTip">
                 <image class='ico' src='{{domainUrl}}/images/me/ico_invoice.png'></image>
-                <text class='txt'>{{langData.invoiceBtn}}</text>
+                <text class='txt'>{{langData.invoiceBtn[lang]}}</text>
             </navigator>
 
             <!-- <navigator 
@@ -60,7 +60,7 @@
                 url='/pages/recommend/recommend-index/recommend-index' bindtap='recommendGotoUrl' 
             >
                 <image class='ico' src='{{domainUrl}}/images/me/ico_recommend.png'></image>
-                <text class='txt'>{{langData.recommendBtn}}</text>
+                <text class='txt'>{{langData.recommendBtn[lang]}}</text>
             </navigator> -->
         </view>
     </view>
@@ -85,7 +85,7 @@
     >
         <icon class='icons2 menu_ico {{item.ico_class}}'></icon>
         <view class='info'>
-            <text class='txt'>{{langData.changeLangBtn}}({{pickerLang.list[pickerLang.index]}})</text>
+            <text class='txt'>{{langData.changeLangBtn[lang]}}({{pickerLang.list[pickerLang.index]}})</text>
         </view>
         <icon class='icons ico_tri'></icon>
     </picker>

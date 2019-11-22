@@ -15,7 +15,7 @@
 
 <!-- 循环报修列表 -->
 <view hidden="{{tagIndex!=index}}" wx:if="{{item.show}}" wx:for="{{tagList}}" wx:key="{{index}}">
-  <reserve-list target-page="my-reserve" reserve-type="{{item.type}}" reach-data="{{item.reach}}" lang="{{langType}}"></reserve-list>
+  <reserve-list target-page="my-reserve" reserve-type="{{item.type}}" reach-data="{{item.reach}}" lang="{{lang}}"></reserve-list>
 </view>
 
 <!-- 返回首页按钮 -->

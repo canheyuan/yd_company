@@ -7,7 +7,7 @@ function pageDataFn() {
         //活动列表暂无状态
         activity: {
             icon: '/images/icon/result_nothing.png', //图标
-            title: langData.activity,    //标题
+            title: langData.activity[lang],    //标题
             des: '',  //描述
             details_btn: '',  //描述下面按钮
             details_btn_url: '',  //描述下面按钮链接
@@ -52,7 +52,7 @@ function pageDataFn() {
             icon: '/images/icon/result_nothing.png',
             title: langData.supplies[lang],
             des: '',
-            btm_btn: langData.backIndexBtn,
+            btm_btn: langData.backIndexBtn[lang],
             btm_btn_url: '/pages/index/index',
             btm_btn_type: 'switchTab'
         },
@@ -120,6 +120,12 @@ function pageDataFn() {
             icon: '/images/icon/result_nothing.png',
             title: langData.serve[lang],
             des: ''
+        },
+        house:{
+            icon: '/images/icon/result_nothing.png',
+            title: '暂无户型',
+            des: ''
+            
         }
     }
     return page_data;

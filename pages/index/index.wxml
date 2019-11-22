@@ -52,11 +52,11 @@
     <view class='notice_mdl'>
         <image 
             wx:if="{{langData}}" class='notice_img' lazy-load="true" 
-            src='{{domainUrl}}/images/index/{{langData.noticeImg}}'
+            src='{{domainUrl}}/images/index/{{langData.noticeImg[lang]}}'
         ></image>
         <view class='notice_ctn'>
             <view class='notice_slide' wx:if="{{noticeData.newest}}">
-                <view class='label l_orange'>{{langData.newText}}</view>
+                <view class='label l_orange'>{{langData.newText[lang]}}</view>
                 <navigator 
                     class='a' 
                     url="/pages/message/notice-details/notice-details?id={{noticeData.newest.noticeId}}"
@@ -68,7 +68,7 @@
                 vertical="true" circular="true" display-multiple-items="1" 
             >
                 <swiper-item wx:for="{{noticeData.list}}" wx:key="noticeId">
-                    <view class='label l_blue'>{{langData.recentText}}</view>
+                    <view class='label l_blue'>{{langData.recentText[lang]}}</view>
                     <navigator 
                         class='a' 
                         url="/pages/message/notice-details/notice-details?id={{item.noticeId}}"
@@ -127,19 +127,54 @@
         <navigator 
             class='more_btn' hover-class='hover' 
             url='/pages/user/my-backlog/my-backlog'
-        >{{langData.moreText}}</navigator>
-        <text>{{langData.backlogTitle}}</text>
+        >{{langData.moreText[lang]}}</navigator>
+        <text>{{langData.backlogTitle[lang]}}</text>
     </view>
     <backlog-list target-page="index" reach-data="{{backLogReach}}" bindgetTotalFn="getBackLogTotal"></backlog-list>
 </view>
 <!------------------ 待办事项_End ------------------>
 
+<!------------------ 招商一览_Start ------------------>
+<view class='index_mdl07' wx:if="{{houseList.length>0 &&  moduleSwitch.recommend}}">
+    <view class='index_title'>
+        <navigator 
+            class='more_btn' hover-class='hover' 
+            url="/pages/recommend/house-list/house-list?dist_id={{houseList[0].distId}}"
+        >{{langData.moreText[lang]}}</navigator>
+        <text>{{langData.houseTitle[lang]}}</text>
+    </view>
+    <view class='policy_list_box'>
+        <scroll-view class='scroll_box' scroll-x="true" style='height:100%; width:100%;'>
+            <view class='policy_list' style='width:{{houseList.length*430+20}}rpx;'>
+                <navigator
+                    class='li' url='/pages/recommend/house-detail/house-detail?id={{item.unitId}}' 
+                    wx:for="{{houseList}}" wx:key="unitId"
+                >
+                    <image 
+                        class='img' lazy-load="true"
+                        src='{{item.image?item.image:domainUrl+"/images/default/img_300_227.jpg"}}'
+                        binderror='errorImgFn' data-obj="houseList[{{index}}].image" 
+                        data-img="{{domainUrl}}/images/default/img_300_227.jpg"
+                    ></image>
+                    <view class='info'>
+                        <view class='title'>{{item.name}}</view>
+                        <view class='btm'>
+                            <view><icon class='icons ico_price'></icon><text>￥{{item.price}}</text>  /㎡</view>
+                            <view style="text-align:right;"><icon class='icons ico_area'></icon>{{item.areaResult}}㎡</view>
+                        </view>
+                    </view>
+                </navigator>
+            </view> 
+        </scroll-view>
+    </view>
+</view>
+<!------------------ 招商一览_End ------------------>
 
 <!------------------ 申报政策_Start ------------------>
 <view class='index_mdl04' wx:if="{{policyList.length>0}}">
     <view class='index_title'>
-        <view class='more_btn' hover-class='hover' bindtap='morePolicyFn'>{{langData.moreText}}</view>
-        <text>{{langData.policyTitle}}</text>
+        <view class='more_btn' hover-class='hover' bindtap='morePolicyFn'>{{langData.moreText[lang]}}</view>
+        <text>{{langData.policyTitle[lang]}}</text>
     </view>
     <view class='policy_list_box'>
         <scroll-view class='scroll_box' scroll-x="true" style='height:100%; width:100%;'>
@@ -159,11 +194,11 @@
                         <view class='btm'>
                             <view>
                                 <icon class='icons ico_cgl' ></icon>
-                                {{langData.successRateText}}<text>{{item.probability}}%</text>
+                                {{langData.successRateText[lang]}}<text>{{item.probability}}%</text>
                             </view>
                             <view wx:if="{{item.highestReward}}">
                                 <icon class='icons ico_zg' ></icon>
-                                {{langData.highestText}} <text>{{item.highestReward}}</text>
+                                {{langData.highestText[lang]}} <text>{{item.highestReward}}</text>
                             </view>
                         </view> 
                     </view>
@@ -180,8 +215,8 @@
     <view class='index_title'>
         <navigator 
             class='more_btn' hover-class='hover' url="/activity/activity-list/activity-list"
-        >{{langData.moreText}}</navigator>
-        <text>{{langData.activityTitle}}</text>
+        >{{langData.moreText[lang]}}</navigator>
+        <text>{{langData.activityTitle[lang]}}</text>
     </view>
     <view class='hot_act_list_box'>
         <scroll-view class='scroll_box' scroll-x="true" style='height:100%; width:100%;'>

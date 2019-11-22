@@ -1,65 +1,79 @@
 const app = getApp()//  //获取应用实例
-var commonFn = require('../../../utils/common.js');//一些通用的函数
+const commonFn = require('../../../utils/common.js');
+const listFn = require('../../../utils/list.js'); //通用列表函数
 
 Page({
     data: {
         domainUrl: app.globalData.domainUrl,
         langData: null,  //语言数据
         langType: '',    //语言类型
-        listInfo:{
-            list:[
-                {
-                    title:'1广佛一期二号楼303',
-                    area:30,
-                    address:'广佛数字创意园',
-                    price:100,
-                    img:'https://5iparks.com/profile/2019/09/76cdfa9eb25ad34f6dd9b24a024ccffa.jpg',
-                    des:'描述1描述1描述1描述1描述1描述1'
-                },
-                {
-                    title: '2广佛一期二号楼303',
-                    area: 30,
-                    address: '广佛数字创意园',
-                    price: 100,
-                    img: 'https://5iparks.com/profile/2019/09/29d625397848423dcdce400c71178e46.jpg',
-                    des: '描述222描述222描述222描述222描述222描述222描述222描述222描述222描述222描述222描述222描述222描述222描述222'
-                },
-                {
-                    title: '3广佛一期二号楼303',
-                    area: 30,
-                    address: '广佛数字创意园',
-                    price: 100,
-                    img: 'https://5iparks.com/profile/2019/09/c5205f4ba202912b9c09720f955b2dce.jpg',
-                    des: '描述1描述1描述1描述1描述1描述1'
-                },
-                {
-                    title: '4广佛一期二号楼303',
-                    area: 30,
-                    address: '广佛数字创意园',
-                    price: 100,
-                    img: 'https://5iparks.com/profile/2019/09/2bfa9ddf04942d34e2f1f399ac412af5.jpg',
-                    des: '描述1描述1描述1描述1描述1描述1'
-                },
-                {
-                    title: '5广佛一期二号楼303',
-                    area: 30,
-                    address: '广佛数字创意园',
-                    price: 100,
-                    img: 'https://5iparks.com/profile/2019/09/343a273bafc44f7d92e95027a47adc31.png',
-                    des: '描述1描述1描述1描述1描述1描述1'
-                }
-            ]
-        }
 
-        
+        distId:'',  //分销id
+        listInfo:{
+            
+        }
     },
 
     onLoad: function (options) {
         var backUrl = { url: '/' + commonFn.getCurrentPageUrl(), type: 'navigateTo' };
         wx.setStorageSync('backUrl', backUrl);
+        this.setData({ distId : options.dist_id })
 
+        //设置语言,判断是否切换语言
+        app.loadLangNewFn(this, 'house', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.listTitle[lang] });  //设置当前页面的title
+        });
+
+        this.getListInfo(true);
     },
 
+    ////获取投诉列表
+    getListInfo(isReach) {
+        var _this = this;
+        
+        listFn.listPage({
+            url: `/houseDistribution/unitList`,
+            data: {
+                distId: this.data.distId   //1-待处理 2-处理中 3-已完成
+            },
+            isReach: isReach,
+            page: _this,
+            listDataName: 'listInfo',
+            getListDataFn: (listdata) => {
+                //返回列表数据和总数
+                return {
+                    list: listdata.data,
+                    total: listdata.total
+                }
+            },
+            disposeFn: (listItem) => {
+                //对列表循环操作改变数据
+                var listItem = listItem;
+                if (listItem) {
+                    listItem.areaResult = (listItem.biggestArea == listItem.smallestArea ? listItem.smallestArea : `${listItem.smallestArea}~${listItem.biggestArea}`)
+                }
+                return listItem;
+            },
+            success: () => {
+                console.log("户型列表列表接口：", _this.data.listInfo);
+            }
+        });
+    },
+
+
+    //上拉到底部加载更多函数
+    onReachBottom: function () {
+        var _this = this;
+        var listInfo = this.data.listInfo;
+        listFn.listLoadMore({
+            pageNum: listInfo.pageNum,
+            pageSize: listInfo.pageSize,
+            pageTotal: listInfo.pageTotal,
+            getListFn: (isReach) => {
+                _this.getListInfo(isReach);
+            }
+        })
+    },
 
     //用户点击右上角分享
     onShareAppMessage: function (e) {

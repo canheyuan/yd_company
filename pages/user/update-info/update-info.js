@@ -9,7 +9,7 @@ Page({
     changeName:'',
 
       langData: null,  //语言数据
-      langType: '',    //语言类型
+      lang: '',    //语言类型
   },
 
   //生命周期函数--监听页面加载
@@ -17,8 +17,7 @@ Page({
     var updata_type = options.type;
     var default_value = options.value;
       //设置语言,判断是否切换语言
-      app.loadLangFn(this, 'updataInfo', (res) => {
-
+          app.loadLangNewFn(this, 'updataInfo', (res, lang) => {
           let pageInfo = res[updata_type];
           //设置加载的内容和文本框默认值
           this.setData({
@@ -28,7 +27,7 @@ Page({
           });
 
           //设置title
-          wx.setNavigationBarTitle({ title: pageInfo.pageTitle });
+          wx.setNavigationBarTitle({ title: pageInfo.pageTitle[lang] });
 
       });
   },
@@ -42,6 +41,8 @@ Page({
   formSubmit(e){
     var _this = this;
     var formData = e.detail.value;
+    var langData = this.data.langData
+    var lang = this.data.lang
     app.requestFn({
         isLoading: false,
       url: `/userInfo/update`,
@@ -58,7 +59,7 @@ Page({
         app.globalData.userIndexReach = true;
         app.globalData.userInfoReach = true;
 
-          wx.showToast({ title: _this.data.langData.public.editSuccess, icon: "success", duration: 2000 });
+          wx.showToast({ title: langData.public.editSuccess[lang], icon: "success", duration: 2000 });
         
         if (_this.data.changeName == 'name') { _this.setUserImg(_this.data.changeName)}
         setTimeout(function () {  wx.navigateBack(); }, 2000);

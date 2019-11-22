@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "收藏/关注",
+    "navigationBarTitleText": "",
     "usingComponents": {
         "activity-list": "/components/activity-list/activity-list",
         "news-list": "/components/news-list/news-list",

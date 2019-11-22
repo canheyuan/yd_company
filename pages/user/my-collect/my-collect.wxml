@@ -1,28 +1,28 @@
 <!-- 选项卡切换 -->
 <view class='tag_box tag_fixed'>
-  <view class='tag_list'>
-    <view 
-      class='tag_item {{currentTagName=="policy"?"act":""}}' 
-      bindtap='tagChange' data-name="policy"
-    >{{langData.policyName}}</view>
+    <view class='tag_list'>
+        <view 
+            class='tag_item {{currentTagName=="policy"?"act":""}}' 
+            bindtap='tagChange' data-name="policy"
+        >{{langData.policyName[lang]}}</view>
 
-    <view 
-      class='tag_item {{currentTagName=="expert"?"act":""}}' 
-      bindtap='tagChange' data-name="expert"
-    >{{langData.expertName}}</view>
+        <view 
+            class='tag_item {{currentTagName=="expert"?"act":""}}' 
+            bindtap='tagChange' data-name="expert"
+        >{{langData.expertName[lang]}}</view>
 
-    <!-- <view class='tag_item' data-name="serve">服务</view> -->
-    <view 
-      class='tag_item {{currentTagName=="news"?"act":""}}' 
-      bindtap='tagChange' data-name="news"
-    >{{langData.newsName}}</view>
+        <!-- <view class='tag_item' data-name="serve">服务</view> -->
+        <view 
+            class='tag_item {{currentTagName=="news"?"act":""}}' 
+            bindtap='tagChange' data-name="news"
+        >{{langData.newsName[lang]}}</view>
 
-    <view 
-      class='tag_item {{currentTagName=="activity"?"act":""}}' 
-      bindtap='tagChange' data-name="activity" wx:if="{{moduleSwitch.activity}}"
-    >{{langData.actName}}</view>
-    <!-- <view class='tag_item' data-name="books">图书</view> -->
-  </view>
+        <view 
+            class='tag_item {{currentTagName=="activity"?"act":""}}' 
+            bindtap='tagChange' data-name="activity" wx:if="{{moduleSwitch.activity}}"
+        >{{langData.actName[lang]}}</view>
+        <!-- <view class='tag_item' data-name="books">图书</view> -->
+    </view>
 </view>
 
 
@@ -31,58 +31,58 @@
   bind:collectPopShow:收藏弹窗显示
 -->
 <view hidden='{{currentTagName!="policy"}}'>
-  <!-- 政策列表 -->
-  <policy-list
-    target-page="collect" 
-    bind:collectPopShow="collectPopShowFn"
-    reach-data='{{reachData.policy}}'
-     lang="{{langType}}"
-  ></policy-list>
+    <!-- 政策列表 -->
+    <policy-list
+        target-page="collect" 
+        bind:collectPopShow="collectPopShowFn"
+        reach-data='{{reachData.policy}}'
+        lang="{{lang}}"
+    ></policy-list>
 </view>
 
 <view hidden='{{currentTagName!="expert"}}'>
-  <!-- 专家列表 -->
-  <expert-list
-    target-page="collect" 
-    bind:collectPopShow="collectPopShowFn"
-    reach-data='{{reachData.expert}}'
-     lang="{{langType}}"
-  ></expert-list>
+    <!-- 专家列表 -->
+    <expert-list
+        target-page="collect" 
+        bind:collectPopShow="collectPopShowFn"
+        reach-data='{{reachData.expert}}'
+        lang="{{lang}}"
+    ></expert-list>
 </view>
 
 <view hidden='{{currentTagName!="news"}}'>
-  <!-- 新闻列表 -->
-  <news-list 
-    target-page="collect" 
-    bind:collectPopShow="collectPopShowFn"
-    reachData="{{reachData.news}}"
-     lang="{{langType}}"
-  ></news-list>
+    <!-- 新闻列表 -->
+    <news-list 
+        target-page="collect" 
+        bind:collectPopShow="collectPopShowFn"
+        reachData="{{reachData.news}}"
+        lang="{{lang}}"
+    ></news-list>
 </view>
 
 <view hidden='{{currentTagName!="activity"}}'>
-  <!-- 活动列表 -->
-  <activity-list 
-    target-page="collect"
-    bind:collectPopShow="collectPopShowFn"
-    reach-data='{{reachData.activity}}'
-    lang="{{langType}}"
-  ></activity-list>
+    <!-- 活动列表 -->
+    <activity-list 
+        target-page="collect"
+        bind:collectPopShow="collectPopShowFn"
+        reach-data='{{reachData.activity}}'
+        lang="{{lang}}"
+    ></activity-list>
 </view>
 
 <!-- 弹窗 -->
 <view class='mask_bg pop_show collect_pop' wx:if="{{isPopShow}}">
-  <view class='mask_bg_ctn'>
-    <view class='pop_mdl'>
-      <view class='h3'>{{langData.public.callOffCollect}}</view>
-      <view class='pop_ctn'>
-        <view class='p'>{{langData.popDes}}{{popTipTitle}}？</view>
-        <view class='p'>{{langData.popDes2}}</view>
-      </view>
-      <view class='btm_btn clearfix'>
-        <view class='btn' bindtap="collectPopHideFn">{{langData.public.callOffBtn}}</view>
-        <view class='btn' bindtap="deleteCollectFn">{{langData.public.confirmBtn}}</view>
-      </view>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{langData.public.callOffCollect[lang]}}</view>
+            <view class='pop_ctn'>
+                <view class='p'>{{langData.popDes[lang]}}{{popTipTitle}}？</view>
+                <view class='p'>{{langData.popDes2[lang]}}</view>
+            </view>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap="collectPopHideFn">{{langData.public.callOffBtn[lang]}}</view>
+                <view class='btn' bindtap="deleteCollectFn">{{langData.public.confirmBtn[lang]}}</view>
+            </view>
+        </view>
     </view>
-  </view>
 </view>

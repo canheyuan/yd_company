@@ -1,52 +1,46 @@
 <form bindsubmit="formSubmit"  report-submit="true">
-  <view class='form_mdl'>
+    <view class='form_mdl'>
 
-    <view class='dl'>
-      <text class='dt'>{{langData.public.name}}</text>
-      <view class='dd'>
-        <input type='text'  class='input' placeholder='{{langData.public.nameTip}}'  placeholder-class='pl_input'  name="name" value='' />
-      </view>
-    </view>
-    <view class='dl'>
-      <text class='dt'>{{langData.public.phoneCode}}</text>
-      <view class='dd'>
-      <input type='number'  class='input' placeholder='{{langData.public.phonePl}}'  name="phone" placeholder-class='pl_input' maxlength='11' bindinput='changePhoneFn' data-phone="{{phone}}" value='{{phone}}' />
-      </view>
-    </view>
-    <!-- <view class='dl get_code_dl'>
-      <text class='dt'>验证码</text>
-      <view class='dd'>
-        <input type='text' class='input' placeholder='填写验证码'  name="verifyCode"  placeholder-class='pl_input' />
-        <input type='text' name="verificationId" value='{{verificationId}}' style='display:none;'  />
-      <view 
-        class='s_blue_btn get_code_btn {{(getCodeText!="获取验证码")?"disabled":""}}' 
-        bindtap="getCodeFn" data-phone="{{phone}}"
-      >{{getCodeText}}</view>
-      </view>
-    </view> -->
-  
-    <view class='dl'>
-      <text class='dt'>{{langData.subscribeDate}}</text>
-      <view class='dd'>
-        <picker class='picker' name="" mode="date" bindchange="selectFn"  data-indexName="dateValue">
-          <view style="color:{{dateValue?'#333333':'#c2c2c2'}}">{{dateValue?dateValue:langData.subscribeDatePl}}</view>
-        </picker>
-        <icon class='icons ico_arrow'></icon>
-      </view>
-    </view>
+        <!-- 姓名 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.public.name[lang]}}</text>
+            <view class='dd'>
+                <input type='text'  class='input' placeholder='{{langData.public.nameTip[lang]}}'  placeholder-class='pl_input'  name="name" value='' />
+            </view>
+        </view>
 
-    <view class='dl'>
-      <text class='dt'>{{langData.subscribeTime}}</text>
-      <view class='dd'>
-         <picker class='picker' name="" mode="time" bindchange="selectFn" data-indexName="timeValue">
-            <view style="color:{{timeValue?'#333333':'#c2c2c2'}}">{{timeValue?timeValue:langData.subscribeTimePl}}</view>
-          </picker>
-        <icon class='icons ico_arrow'></icon>
-      </view>
-    </view>
+        <!-- 手机号码 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.public.phoneCode[lang]}}</text>
+            <view class='dd'>
+            <input type='number'  class='input' placeholder='{{langData.public.phonePl[lang]}}'  name="phone" placeholder-class='pl_input' maxlength='11' bindinput='changePhoneFn' data-phone="{{phone}}" value='{{phone}}' />
+            </view>
+        </view>
 
-    <view class='btn_wrap'>
-      <button class='blue_btn' form-type="submit">{{langData.subscribeBtn}}</button>
+        <!-- 预约日期 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.subscribeDate[lang]}}</text>
+            <view class='dd'>
+                <picker class='picker' name="" mode="date" bindchange="selectFn"  data-indexName="dateValue">
+                <view style="color:{{dateValue?'#333333':'#c2c2c2'}}">{{dateValue?dateValue:langData.subscribeDatePl[lang]}}</view>
+                </picker>
+                <icon class='icons ico_arrow'></icon>
+            </view>
+        </view>
+
+        <!-- 预约时间 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.subscribeTime[lang]}}</text>
+            <view class='dd'>
+                <picker class='picker' name="" mode="time" bindchange="selectFn" data-indexName="timeValue">
+                    <view style="color:{{timeValue?'#333333':'#c2c2c2'}}">{{timeValue?timeValue:langData.subscribeTimePl[lang]}}</view>
+                </picker>
+                <icon class='icons ico_arrow'></icon>
+            </view>
+        </view>
+
+        <view class='btn_wrap'>
+            <button class='blue_btn' form-type="submit">{{langData.subscribeBtn[lang]}}</button>
+        </view>
     </view>
-  </view>
 </form>

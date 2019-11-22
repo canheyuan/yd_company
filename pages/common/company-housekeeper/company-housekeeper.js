@@ -8,14 +8,14 @@ Page({
         listInfo: {},  //列表
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     onLoad: function (options) {
         this.verifyTime();
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'companyHousekeeper', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+        app.loadLangNewFn(this, 'companyHousekeeper', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
         });
         this.getListInfo(true);
     },

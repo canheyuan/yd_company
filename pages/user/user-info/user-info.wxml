@@ -1,86 +1,86 @@
 <view class='user_info'>
 
-  <view class='form_mdl' >
-    <view class='dl per_dl'>
-      <view class='dd' bindtap="changeHeadImgFn">
-        <view class='icons ico_arrow'></view>
-        <image class='per_img'
-          src='{{userInfo.headImgs?userInfo.headImgs:domainUrl+"/images/default/df_userhead.png"}}'
-          binderror='errorImgFn' 
-          data-obj="userInfo.headImgs"
-          data-img="{{domainUrl}}/images/default/df_userhead.png"
-        ></image>
-      </view>
-    </view>
-    <view class='dl clearfix' style='padding-top:0;'>
-      <text class='dt'>{{langData.park}}</text>
-      <view class='dd'>
-        <text  class='txt'>{{userInfo.parkInfo.parkName}}</text>
-      </view>
-    </view>
-  </view>
-
-
-  <view class='form_mdl' style='margin-top:30rpx;'>
-    <view class='dl'>
-      <text class='dt'>{{langData.name}}</text>
-      <view class='dd' bindtap="gotoChange" data-type="name" data-value="{{userInfo.name?userInfo.name:''}}">
-        <view class='icons ico_arrow'></view>
-        <text  class='txt'>{{userInfo.name?userInfo.name:langData.realName}}</text>
-      </view>
-    </view>
-    
-    <view class='dl'>
-      <text class='dt'>{{langData.sex}}</text>
-      <view class='dd'>
-        <view class='icons ico_arrow'></view>
-        <picker bindchange="sexChange" value="{{sexIndex}}" range="{{sexList}}" >
-          <view class='txt'>{{sexList[sexIndex]}}</view>
-        </picker>
-      </view>
-    </view>
-  </view>
-
-
-  <view class='form_mdl' style='margin-top:30rpx;'>
-    <view class='dl'>
-      <text class='dt'>{{langData.phone}}</text>
-      <view class='dd' bindtap="gotoChange" data-type="cellphone" data-value="{{userInfo.cellphone?userInfo.cellphone:''}}">
-        <view class='icons ico_arrow'></view>
-        <text  class='txt'>{{userInfo.cellphone?userInfo.cellphone:langData.bindPhone}}</text>
-      </view>
-    </view>
-    <view class='dl'>
-      <text class='dt'>{{langData.email}}</text>
-      <view class='dd' bindtap="gotoChange" data-type="email" data-value="{{userInfo.email?userInfo.email:''}}">
-        <view class='icons ico_arrow'></view>
-        <text  class='txt'>{{userInfo.email?userInfo.email:langData.bindEmail}}</text>
-      </view>
+    <view class='form_mdl' >
+        <view class='dl per_dl'>
+            <view class='dd' bindtap="changeHeadImgFn">
+                <view class='icons ico_arrow'></view>
+                <image class='per_img'
+                    src='{{userInfo.headImgs?userInfo.headImgs:domainUrl+"/images/default/df_userhead.png"}}'
+                    binderror='errorImgFn' 
+                    data-obj="userInfo.headImgs"
+                    data-img="{{domainUrl}}/images/default/df_userhead.png"
+                ></image>
+            </view>
+        </view>
+        <view class='dl clearfix' style='padding-top:0;'>
+            <text class='dt'>{{langData.park[lang]}}</text>
+            <view class='dd'>
+                <text  class='txt'>{{userInfo.parkInfo.parkName}}</text>
+            </view>
+        </view>
     </view>
 
-  </view>
 
-  <view class='exit_btn_box'>
-    <view class='exit_btn' bindtap='outPopFn'>{{langData.outLogin}}</view>
-    <view class='yd_title02 versions_txt'><text class='txt'>{{langData.versions}}：{{appVersion}}</text></view>
-  </view>
+    <view class='form_mdl' style='margin-top:30rpx;'>
+        <view class='dl'>
+            <text class='dt'>{{langData.name[lang]}}</text>
+            <view class='dd' bindtap="gotoChange" data-type="name" data-value="{{userInfo.name?userInfo.name:''}}">
+                <view class='icons ico_arrow'></view>
+                <text  class='txt'>{{userInfo.name?userInfo.name:langData.realName[lang]}}</text>
+            </view>
+        </view>
+        
+        <view class='dl'>
+            <text class='dt'>{{langData.sex[lang]}}</text>
+            <view class='dd'>
+                <view class='icons ico_arrow'></view>
+                <picker bindchange="sexChange" value="{{sexIndex}}" range="{{sexList}}" >
+                    <view class='txt'>{{sexList[sexIndex]}}</view>
+                </picker>
+            </view>
+        </view>
+    </view>
+
+
+    <view class='form_mdl' style='margin-top:30rpx;'>
+        <view class='dl'>
+            <text class='dt'>{{langData.phone[lang]}}</text>
+            <view class='dd' bindtap="gotoChange" data-type="cellphone" data-value="{{userInfo.cellphone?userInfo.cellphone:''}}">
+                <view class='icons ico_arrow'></view>
+                <text  class='txt'>{{userInfo.cellphone?userInfo.cellphone:langData.bindPhone[lang]}}</text>
+            </view>
+        </view>
+        <view class='dl'>
+            <text class='dt'>{{langData.email[lang]}}</text>
+            <view class='dd' bindtap="gotoChange" data-type="email" data-value="{{userInfo.email?userInfo.email:''}}">
+                <view class='icons ico_arrow'></view>
+                <text  class='txt'>{{userInfo.email?userInfo.email:langData.bindEmail[lang]}}</text>
+            </view>
+        </view>
+
+    </view>
+
+    <view class='exit_btn_box'>
+        <view class='exit_btn' bindtap='outPopFn'>{{langData.outLogin[lang]}}</view>
+        <view class='yd_title02 versions_txt'><text class='txt'>{{langData.versions[lang]}}：{{appVersion}}</text></view>
+    </view>
 
 
 </view>
 
 <!-- 退出登录弹窗 -->
 <view class='mask_bg pop_show' wx:if='{{outPop}}'>
-  <view class='mask_bg_ctn'>
-    <view class='pop_mdl'>
-      <view class='h3'>{{langData.outTipTitle}}</view>
-      <view class='alert'>{{langData.outTipAlert}}
-        <view>{{langData.outTipAlert2}}</view>
-      </view>
-      <view class='btm_btn clearfix'>
-        <view class='btn' bindtap="outPopFn">{{langData.public.callOffBtn}}</view>
-        <view class='btn' bindtap='outLoginFn'>{{langData.public.confirmBtn}}</view>
-      </view>
-      <view class='close_btn icons' bindtap="outPopFn" ></view>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{langData.outTipTitle[lang]}}</view>
+            <view class='alert'>{{langData.outTipAlert[lang]}}
+                <view>{{langData.outTipAlert2[lang]}}</view>
+            </view>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap="outPopFn">{{langData.public.callOffBtn[lang]}}</view>
+                <view class='btn' bindtap='outLoginFn'>{{langData.public.confirmBtn[lang]}}</view>
+            </view>
+            <view class='close_btn icons' bindtap="outPopFn" ></view>
+        </view>
     </view>
-  </view>
 </view>

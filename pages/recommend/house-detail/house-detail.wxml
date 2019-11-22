@@ -1,36 +1,86 @@
 <import src="/wxParse/wxParse.wxml"/>
 
+<view class="house_slide_box">
+    <swiper 
+        class='house_slide' bindchange="slideChange"
+        autoplay="true" interval="5000" duration="500" 
+        indicator-dots="true" indicator-color="#ffffff" indicator-active-color="#4a7df6"
+    >
+        <swiper-item wx:for="{{detailData.imageList}}" wx:key="*this">
+            <image 
+                src='{{item}}'  class="slide_img" lazy-load="true"
+                bindtap="previewImg" data-list="{{detailData.imageList}}" data-item="{{item}}"
+                binderror='errorImgFn' 
+                data-obj="detailData.imageList[{{index}}]" 
+                data-img="{{domainUrl}}/images/default/img_730_320.jpg"
+            ></image>
+        </swiper-item>
+    </swiper>
+</view>
 <view class="house_head">
-    <view class="title">广佛一期二号楼303房</view>
-
-    <view class='info'>
-        <view class='ico_txt'>
+    <view class="title">{{detailData.name}}</view>
+    <view class='info clearfix'>
+        <!-- <view class='ico_txt'>
             <icon class='icons ico_time'></icon>
-            <text>发布时间：2019-10-21 14:20:00</text>
+            <text>发布时间：2019-10-21 14:20</text>
+        </view> -->
+        <view class='ico_txt' wx:if="{{detailData.areaResult}}">
+            <icon class='icons ico_area'></icon>
+            <view class="txt">{{langData.area[lang]}}：{{detailData.areaResult}}㎡</view>
         </view>
-        <view class='ico_txt'>
-            <icon class='icons ico_time'></icon>
-            <text>面积：200平方米</text>
+        <view class='ico_txt' wx:if="{{detailData.price}}">
+            <icon class='icons ico_price'></icon>
+            <view class="txt">{{langData.price[lang]}}：<text class="price">￥{{detailData.price}} </text>/㎡</view>
         </view>
-        <view class='ico_txt'>
-            <icon class='icons ico_time'></icon>
-            <text>价格：100元/平方米</text>
+        <view class='ico_txt' wx:if="{{detailData.orientation}}">
+            <icon class='icons ico_area'></icon>
+            <view class="txt">{{langData.orientation[lang]}}：{{detailData.orientation}}</view>
         </view>
-        <view class='ico_txt '>
-            <icon class='icons ico_time'></icon>
-            <text>地址：广佛数字创意园二号楼一楼</text>
+        <view class='ico_txt row1' wx:if="{{detailData.parkName}}">
+            <icon class='icons ico_address'></icon>
+            <view class="txt">{{langData.parkName[lang]}}：{{detailData.parkName}}</view>
         </view>
     </view>
 
 </view>
 
-<view class="house_ctn">
-    <view class='yd_title01' style="margin-bottom:20rpx;">户型描述</view>
-    <view class="house_des">户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述户型描述</view>
-    <view class='yd_title01' style="margin-bottom:20rpx;">实拍效果图</view>
-    <view class="house_imgs">
-        <image wx:for="{{houseImgs}}" wx:key="houseImg{{index}}" src="{{item}}" class="img" mode="widthFix"></image>
+<!-- 户型描述 -->
+<view class="lstj_mdl" wx:if="{{detailData.unitIntro}}">
+    <view class='recommend_title'><text>{{langData.houseDes[lang]}}</text></view>
+    <view class="yqjj_ctn">
+        <text class="hxjj_txt">{{detailData.unitIntro}}</text>
     </view>
-    <view class='more_tip'><view class='txt'>没有更多了</view></view>  
 </view>
 
+<!-- 服务及设施 -->
+<view class='lstj_mdl' wx:if="{{detailData.serviceTags}}">
+    <view class='recommend_title'><text>{{langData.serveTitle[lang]}}</text></view>
+    <view class='fwss_ctn box_shadow'>
+        <view class='label' wx:for="{{detailData.serviceTags}}" wx:key="*this">{{item}}</view>
+    </view>
+</view>
+
+<!-- 园区简介 -->
+<view class='yqjj_mdl'>
+    <view class='recommend_title'>
+        <navigator class="more" url="/pages/recommend/recommend-detail/recommend-detail?dist_id={{detailData.distId}}">{{langData.parkBtn[lang]}}</navigator>
+        <text>{{langData.parkTitle[lang]}}</text>
+    </view>
+    <view class='yqjj_ctn box_shadow'>
+        <view style='margin-bottom:30rpx;'>
+            <template is="wxParse" data="{{wxParseData:intro.nodes}}"/>
+        </view>
+        <view class='yd_title01' style='margin-bottom:20rpx;'>{{langData.trafficTitle[lang]}}</view>
+        <view class='traffic_box'>
+            <template is="wxParse" data="{{wxParseData:traffic.nodes}}"/>
+        </view>
+    </view>
+</view>
+<view class='more_tip'><view class='txt'>{{langData.public.noMoreText[lang]}}</view></view>  
+
+
+<!-- 底部园区负责人电话按钮 -->
+<view 
+    class="u_btn btm_fixed orange phone_btn"
+    bindtap="makingPhoneFn" data-phone="{{detailData.contactPhone}}"
+><icon class="icons ico_phone"></icon>{{langData.makePhoneBtn[lang]}}</view>

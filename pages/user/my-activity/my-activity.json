@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "已报名的活动",
+  "navigationBarTitleText": "",
   "usingComponents": {
     "activity-list": "/components/activity-list/activity-list"
   }
