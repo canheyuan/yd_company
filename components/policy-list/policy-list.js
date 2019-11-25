@@ -13,20 +13,12 @@ Component({
 
         isFirst:true,
         langData: null,  //语言数据
-        langType: ''
+        lang: ''
     },
 
     //组件的属性列表
     properties: {
         targetPage: String,
-
-        // lang: { //语言数据改变
-        //     type: String,
-        //     observer: function (newVal, oldVal, changedPath) {  //动态改变属性时执行
-        //         //设置语言,判断是否切换语言
-        //         app.loadLangFn(this, 'cpPolicyList');
-        //     }
-        // },
 
         //改变类型列表
         policyType: {
@@ -42,7 +34,7 @@ Component({
             observer: function (newVal, oldVal, changedPath) {
                 if (this.data.isFirst) {
                     this.setData({ isFirst: false })
-                    app.loadLangFn(this, 'cpPolicyList');
+                    app.loadLangNewFn(this, 'cpPolicyList');
                 }
                 //随机数大于1：刷新。小于1：上拉刷新
                 if (newVal > 1) {
@@ -84,7 +76,6 @@ Component({
             } else if (this.properties.targetPage == "collect") {
                 url = '/policyCollection/policyList';//收藏列表
             }
-
             listFn.listPage({
                 isLoading:false,
                 url: url,
@@ -107,11 +98,11 @@ Component({
                     if (listItem) {
 
                         listItem.endTime = commonFn.getDate(listItem.endTime);
-                        if (listItem.highestReward >= 10000 && _this.data.langType=='zh') {
+                        if (listItem.highestReward >= 10000 && _this.data.lang=='zh') {
                           listItem.highestReward = parseInt(listItem.highestReward / 10000) + '万';
                         }
 
-                        if (listItem.highestReward >= 1000000 && _this.data.langType == 'en') {
+                        if (listItem.highestReward >= 1000000 && _this.data.lang == 'en') {
                             listItem.highestReward = parseInt(listItem.highestReward / 1000000) + ' million';
                         }
 

@@ -1,7 +1,6 @@
 {
     "enablePullDownRefresh": true,
     "backgroundTextStyle": "dark",
-    "navigationBarTitleText": "企业名录",
     "usingComponents": {
         "news-list": "/components/news-list/news-list"
     }

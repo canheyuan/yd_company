@@ -13,7 +13,7 @@ Page({
         isCollected: null, //是否已收藏
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     onLoad: function (options) {
@@ -22,10 +22,10 @@ Page({
         wx.setStorageSync('backUrl', backUrl);
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'policyDetail');
+        app.loadLangNewFn(this, 'policyDetail');
 
         this.setData({ policyId: options.id });
-        this.getpolicyData(options.id);
+        this.getpolicyData(options.id); 
     },
 
     //获取政策详情
@@ -80,6 +80,8 @@ Page({
 
     //跳转到聊天窗口
     gotoChatFn(imId) {
+        var langData = this.data.langData
+        var lang = this.data.lang
         //判断是否有登陆
         if (!app.globalData.isLogin) {
             this.setData({ isLoginPopHide: false });
@@ -88,7 +90,7 @@ Page({
         var friendData = {
             id: imId,
             faceUrl: '',
-            nick: this.data.langData.public.service
+            nick: langData.public.service[lang]
         };
         friendData = this.setStorage(friendData);
         app.chatData.toUser = friendData;
@@ -101,6 +103,8 @@ Page({
 
     //判断是否发送消息，且设置缓存
     setStorage(friendData) {
+        var langData = this.data.langData
+        var lang = this.data.lang
         var chatMessage = wx.getStorageSync('chatMessage') ? wx.getStorageSync('chatMessage') : [];
         var loginName = app.globalData.loginInfo.loginName;
         var article_id = this.data.serviceId;
@@ -116,7 +120,7 @@ Page({
             }
         });
         if (!chat_time || (chat_time + 24 * 60 * 60 * 1000) < nowTime) {
-            friendData['default_msg'] = this.data.langData.public.consultationTip + this.data.policyData.policyTitle;
+            friendData['default_msg'] = langData.public.consultationTip[lang] + this.data.policyData.policyTitle;
         };
         if (!b) {
             chatMessage.push({
@@ -132,7 +136,8 @@ Page({
 
     //添加取消收藏活动
     collectFn(e) {
-        var langData = this.data.langData;
+        var langData = this.data.langData
+        var lang = this.data.lang
         //判断是否有登陆
         if (!app.globalData.isLogin) {
             this.setData({ isLoginPopHide: false });
@@ -149,7 +154,7 @@ Page({
                 },
                 method: 'POST',
                 success: (res) => {
-                    wx.showToast({ title: langData.public.collectTip, icon: 'success', duration: 2000 });
+                    wx.showToast({ title: langData.public.collectTip[lang], icon: 'success', duration: 2000 });
                     _this.setData({ isCollected: 1 });
                 }
             });
@@ -161,7 +166,7 @@ Page({
                 url: `/policyCollection/remove/${_this.data.policyId}`,
                 method: 'DELETE',
                 success: (res) => {
-                    wx.showToast({ title: langData.public.callOffCollectTip, icon: 'none', duration: 2000 });
+                    wx.showToast({ title: langData.public.callOffCollectTip[lang], icon: 'none', duration: 2000 });
                     _this.setData({ isCollected: 2 });
                 }
             });
@@ -176,9 +181,15 @@ Page({
         wx.setClipboardData({
             data: url,
             success:(res)=> {
-                wx.showToast({ title: this.data.langData.copyTip, icon: 'success', duration: 2000 });
+                wx.showToast({ title: this.data.langData.copyTip[lang], icon: 'success', duration: 2000 });
             }
         });
+    },
+
+    //下拉刷新
+    onPullDownRefresh: function () {
+        this.getpolicyData(this.data.policyId);
+        wx.stopPullDownRefresh(); //下拉刷新后页面上移
     },
 
     //转发

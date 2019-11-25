@@ -39,7 +39,7 @@
     <!-- 地址 -->
     <view class='ico_txt'>
         <icon class='icons ico_dz'></icon>
-        <text>{{langData.public.address[lang]}}：{{detailsData.areaName + detailsData.address}}</text>
+        <text>{{langData.public.address[lang]}}：{{detailsData.addressName}}</text>
     </view>
 
 </view>

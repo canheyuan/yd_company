@@ -15,8 +15,8 @@ Page({
     //页面加载完后
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'formPage', (res) => {
-            wx.setNavigationBarTitle({ title: res.loginTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'formPage', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.loginTitle[lang] });  //设置当前页面的title
         });
 
         if (app.globalData.loginInfo) {
@@ -35,7 +35,8 @@ Page({
     formSubmit(e) {
         var _this = this;
         var formData = e.detail.value;
-        var langData = _this.data.langData;
+        var langData = this.data.langData;
+        var lang = this.data.lang
         console.log("form数据", formData);
 
         //验证
@@ -49,7 +50,7 @@ Page({
         formData['openId'] = openId;
 
         app.requestFn({
-            loadTitle: langData.public.submit,
+            loadTitle: langData.public.submit[lang],
             isSessionId: false, //不需要传sessionId
             url: `/login`,
             header: 'application/x-www-form-urlencoded',

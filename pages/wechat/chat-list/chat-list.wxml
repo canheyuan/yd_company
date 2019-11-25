@@ -6,8 +6,8 @@
     <navigator class='msg_item' url='/pages/message/notice-list/notice-list' hover-class='none'>
         <image class='img' src='{{domainUrl}}/images/msg/msg_ico01.png'></image>
         <view class='info'>
-            <view class='title'>{{langData.systemNotice}}</view>
-            <view class='p'>{{langData.systemDes}}</view>
+            <view class='title'>{{langData.systemNotice[lang]}}</view>
+            <view class='p'>{{langData.systemDes[lang]}}</view>
             <view class='num' wx:if="{{systemMsgNum > 0}}">{{systemMsgNum}}</view>
         </view>
     </navigator>
@@ -15,8 +15,8 @@
     <navigator class='msg_item' url='/pages/message/message-list/message-list' hover-class='none'>
         <image class='img' src='{{domainUrl}}/images/msg/msg_ico02.png'></image>
         <view class='info'>
-            <view class='title'>{{langData.message}}</view>
-            <view class='p'>{{langData.mesDes}}</view>
+            <view class='title'>{{langData.message[lang]}}</view>
+            <view class='p'>{{langData.mesDes[lang]}}</view>
             <view class='num' wx:if="{{msgNum > 0}}">{{msgNum}}</view>
         </view>
     </navigator>

@@ -127,7 +127,7 @@
 </view>
 <view class='fix_btm' wx:if="{{detailsData.status==4}}">
   <view class='price'>
-    {{langData.payMoney}}： ￥<text>{{detailsData.repairMoney?detailsData.repairMoney:'0.00'}}</text>
+    {{langData.payMoney[lang]}}： ￥<text>{{detailsData.repairMoney?detailsData.repairMoney:'0.00'}}</text>
   </view>
 </view>
 
@@ -155,44 +155,44 @@
 
 <!-- 提示弹窗 -->
 <view class='mask_bg pop_show' hidden='{{tipPopStarShow}}'>
-  <view class='mask_bg_ctn'>
-    <view class='pop_mdl'>
-      <view class='h3'>{{langData.serveScore[lang]}}</view>
-      <view class='pop_ctn' style="padding:30rpx 0;">
-        <view class='star_list'>
-          <view 
-            class='icons {{starScore>starItem?"cur":""}}'
-            wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}"  
-            wx:for-item="starItem" 
-            data-star="{{index+1}}" 
-            bindtap="starChangeFn"
-           ></view>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{langData.serveScore[lang]}}</view>
+            <view class='pop_ctn' style="padding:30rpx 0;">
+                <view class='star_list'>
+                <view 
+                    class='icons {{starScore>starItem?"cur":""}}'
+                    wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}"  
+                    wx:for-item="starItem" 
+                    data-star="{{index+1}}" 
+                    bindtap="starChangeFn"
+                ></view>
+                </view>
+            </view>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap='closeTipPop'>{{langData.public.callOffBtn[lang]}}</view>
+                <view class='btn' bindtap='starRepairFn' >{{langData.public.confirmBtn[lang]}}</view>
+            </view>
+            <view class='close_btn icons' bindtap='closeTipPop'></view>
         </view>
-      </view>
-      <view class='btm_btn clearfix'>
-        <view class='btn' bindtap='closeTipPop'>{{langData.public.callOffBtn[lang]}}</view>
-        <view class='btn' bindtap='starRepairFn' >{{langData.public.confirmBtn[lang]}}</view>
-      </view>
-      <view class='close_btn icons' bindtap='closeTipPop'></view>
     </view>
-  </view>
 </view>
 
 <!-- 弹窗 -->
 <view class='mask_bg pop_show' wx:if="{{false}}">
-  <view class='mask_bg_ctn'>
-    <view class='pop_mdl'>
-      <view class='h3'>服务完成</view>
-      <view class='p'>感谢您对我们的支持！</view>
-      <view class='p'>本次维修支付的金额是：</view>
-      <input type="digit" class='price_input' placeholder="请填写支付金额"/>
-      <view class='btm_btn clearfix'>
-        <view class='btn'>取消</view>
-        <view class='btn'>确定</view>
-      </view>
-      <view class='close_btn icons'></view>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>服务完成</view>
+            <view class='p'>感谢您对我们的支持！</view>
+            <view class='p'>本次维修支付的金额是：</view>
+            <input type="digit" class='price_input' placeholder="请填写支付金额"/>
+            <view class='btm_btn clearfix'>
+                <view class='btn'>取消</view>
+                <view class='btn'>确定</view>
+            </view>
+            <view class='close_btn icons'></view>
+        </view>
     </view>
-  </view>
 </view>
 
 <!-- 返回首页按钮 -->

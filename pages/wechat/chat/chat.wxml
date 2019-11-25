@@ -1,7 +1,7 @@
 
 <!-- 顶部状态 -->
 <view style="background-color:#40c9ff;" class="chat-page-status-style">
-    {{langData.chating}}
+    {{langData.chating[lang]}}
 </view>
 
 <scroll-view
@@ -14,7 +14,7 @@
     <view class="top_load" hidden="{{topLoadHide}}">
         <image class="load_img" src="{{domainUrl}}/images/chat/msg_load.png"></image>
     </view>
-    <view class="more_tip" wx:if="{{isNoMoreMsg}}"><text class="txt">{{langData.loadAll}}</text></view>
+    <view class="more_tip" wx:if="{{isNoMoreMsg}}"><text class="txt">{{langData.loadAll[lang]}}</text></view>
     <view class="message_list">
 
         <view class="li {{item.isMy?'user_from':'user_to'}}" wx:for="{{chatItems}}" wx:key="chatItems{{index}}">
@@ -55,7 +55,7 @@
             bindinput="inputChangeFn"
         />
         <view hover-class="press-style-opacity">
-            <view wx:if="{{inputFocus}}" class="send_btn" bindtap="sendTextBtn" data-value="{{textMessage}}">{{langData.sendBtn}}</view>
+            <view wx:if="{{inputFocus}}" class="send_btn" bindtap="sendTextBtn" data-value="{{textMessage}}">{{langData.sendBtn[lang]}}</view>
             <image wx:if="{{!inputFocus}}" class="extra-btn-style" src="{{domainUrl}}/images/chat/extra.png" catchtap="chooseImgFn" />
         </view>
 

@@ -17,6 +17,7 @@ Component({
 
         isFirst:true,
         langData: null,  //语言数据
+        lang:''
     },
 
     //组件的属性列表
@@ -30,22 +31,13 @@ Component({
             }
         },
 
-        // lang: { //语言数据改变
-        //     type: String,
-        //     observer: function (newVal, oldVal, changedPath) {  //动态改变属性时执行
-        //         //设置语言,判断是否切换语言
-        //         console.log('cpExpertList');
-        //         app.loadLangFn(this, 'cpExpertList');
-        //     }
-        // },
-
         //刷新数据
         reachData: {
             type: Number, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
             observer: function (newVal, oldVal, changedPath) {
                 if (this.data.isFirst) {
                     this.setData({ isFirst: false })
-                    app.loadLangFn(this, 'cpExpertList');
+                    app.loadLangNewFn(this, 'cpExpertList')
                 }
                 //随机数大于1：刷新。小于1：上拉刷新
                 if (newVal > 1) {

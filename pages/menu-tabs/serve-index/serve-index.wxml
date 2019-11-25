@@ -69,7 +69,7 @@
             bindtap="gotoServeDetailFn" data-id="{{item.serviceId}}"
         >
             <view class="top">
-                <text class="user">{{langData.browseText1[lang]}} {{item.userName}}</text>
+                <text class="user">{{item.userName}}</text>
                 <text class="time">{{item.createTime}} {{langData.browseText2[lang]}}</text>
             </view>
             <view class="btm">

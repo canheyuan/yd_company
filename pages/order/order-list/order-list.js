@@ -12,20 +12,20 @@ Page({
         reach: [1, 1, 1],
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'order', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+        app.loadLangNewFn(this, 'order', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
             this.setData({
                 tagList: [
-                    { name: res.orderTagName1, type: 1 },
-                    { name: res.orderTagName2, type: 2 },
-                    { name: res.orderTagName3, type: 0 }
+                    { name: res.orderTagName1[lang], type: 1 },
+                    { name: res.orderTagName2[lang], type: 2 },
+                    { name: res.orderTagName3[lang], type: 0 }
                 ]
             })
         });

@@ -11,9 +11,10 @@ page{padding-top:80rpx;}
 .tag_box .tab_search .icon{width: 34rpx; height: 34rpx;}
 
 /* 幻灯片 */
+.found_slide_df{height: 320rpx; margin: 20rpx 20rpx 20rpx; border-radius:20rpx; overflow: hidden; box-shadow: 0 5rpx 20rpx rgba(0,0,0,.24); background:#ddd;}
 .found_slide_box{height: 340rpx; padding: 20rpx 0 0; background:url(https://www.5iparks.com/static/yuanding/images/found/bg-gray-white.jpg) repeat-x center top; background-size:auto 100%;}
 .found_slide{height:340rpx; overflow: hidden; border-radius:20rpx;}
-.found_slide_item{position: relative;height: 320rpx; margin: 0 20rpx; border-radius:20rpx; overflow: hidden; box-shadow: 0 5rpx 20rpx rgba(0,0,0,.24);}
+.found_slide_item{position: relative;height: 320rpx; margin: 0 20rpx; border-radius:20rpx; overflow: hidden; box-shadow: 0 5rpx 20rpx rgba(0,0,0,.24); font-size:0;}
 .found_slide_item .slide_img{width:100%; height:320rpx;}
 
 /* 幻灯片文字 */

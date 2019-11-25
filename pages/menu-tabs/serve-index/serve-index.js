@@ -112,6 +112,7 @@ Page({
                 gotoUrl = '/pages/common/web-view/web-view?url=' + slideItem.targetAddress;  //调换h5地址
                 break;
         }
+        if (!gotoUrl){return;}
         app.requestFn({
             url: `/advert/click?advertId=${slideItem.advertId}`,
             isLoading: false,
@@ -135,7 +136,7 @@ Page({
             url: `/serviceRecord/list`,
             data: { num: 10 },
             success: (res) => {
-                console.log('服务记录：',res.data)
+                //console.log('服务记录：',res.data)
                 var browseList = res.data.data;
                 browseList.forEach(item=>{
                     item.createTime = item.createTime.substring(5,16)
@@ -178,7 +179,7 @@ Page({
             url: '/serviceInfo/recoList',
             data: { num: 4 },
             success: (res) => {
-                console.log('首页推荐服务列表：',res.data)
+                //console.log('首页推荐服务列表：',res.data)
                 var serveRecommendList = res.data.data;
                 serveRecommendList.forEach(item => {
                     item.link = `/services/serve-detail/serve-detail?id=${item.id}`;
@@ -198,7 +199,7 @@ Page({
             url: '/serviceCategory/recoList',
             data: { serviceNum: 4 },
             success: (res) => {
-                console.log('查询推荐的服务分类列表', res.data)
+                //console.log('查询推荐的服务分类列表', res.data)
                 var categoryList = res.data.data;
                 _this.setData({
                     categoryList: categoryList,
@@ -215,7 +216,7 @@ Page({
             url: '/serviceSupplier/recoList',
             data: { num: 2 },
             success: (res) => {
-                console.log('服务商列表：',res.data)
+                //console.log('服务商列表：',res.data)
                 var supplierList = res.data.data;
                 supplierList.forEach(item => {
                     item.star = parseInt(item.star);

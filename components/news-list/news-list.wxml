@@ -1,4 +1,11 @@
+<!-- 数据未加载时显示的默认列表 -->
+<view wx:if="{{!listInfo.isFinish}}" style="padding:40rpx 30rpx;">
+    <default m-name="dfList" ></default>
+</view>
+
+<block  wx:if="{{listInfo.isFinish}}">
 <block wx:if="{{targetPage=='news' || targetPage=='companyNews'}}">
+    <!-- 类型切换 -->
     <view class='scroll_mdl' style="margin-top:20rpx;" wx:if="{{typeShow}}">
         <view class='down_btn'>
             <image class='bg' src='{{domainUrl}}/images/icon/btn_shadow.png'></image>
@@ -10,15 +17,13 @@
                     wx:for="{{newsTypeList}}" wx:key="code"
                     class='txt {{index == newsTypeIndex?"act":""}}' 
                     bindtap="newsTypeTagFn" data-index="{{index}}"
-                >
-                    {{item.name}}
-                </view>
+                >{{item.name}}</view>
             </view>
         </scroll-view>
     </view>
 
     <!-- 发现资讯 -->
-    <view class='news_list'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
+    <view class='news_list' wx:if="{{listInfo.list.length>0 && listInfo.list}}">
         <view 
             wx:for="{{listInfo.list}}" wx:key="newsId" class='li clearfix' 
             bindtap="goToNew" data-id="{{item.newsId}}" data-index="{{index}}"
@@ -71,3 +76,4 @@
 
 <!-- 暂无状态 -->
 <list-nothing c-name="news" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>
+</block>

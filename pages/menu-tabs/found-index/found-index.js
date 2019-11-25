@@ -127,7 +127,15 @@ Page({
             },
             success: (res) => {
                 var list = res.data.rows;
-                var total = res.data.total;
+                var total = res.data.total > 10 ? 10 : res.data.total;
+                //只取前十个
+                list.filter((item, index)=>{
+                    return index<10
+                })
+                list.forEach(item=>{
+                    item.bannerImg = item.mainImgList[0] ? item.mainImgList[0] : this.data.domainUrl + "/images/default/img_730_320.jpg"
+                })
+
                 this.setData({
                     newsSlideData: list,
                     newsSlideTotal: total

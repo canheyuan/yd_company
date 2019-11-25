@@ -1,3 +1,10 @@
+
+<!-- 数据未加载时显示的默认列表 -->
+<view wx:if="{{!listInfo.isFinish}}" style="padding:40rpx 30rpx;">
+    <default m-name="dfList" ></default>
+</view>
+
+<block  wx:if="{{listInfo.isFinish}}">
 <view class='policy_list {{listName}}'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
     <view 
         class='li clearfix' wx:for="{{listInfo.list}}" wx:key="policy{{index}}"
@@ -20,12 +27,12 @@
             </view>
 
             <view class='bonus'>
-                <view class='interpret'>{{langData.bonusText01}}</view>
+                <view class='interpret'>{{langData.bonusText01[lang]}}</view>
                 <view class='money' wx:if="{{item.highestReward}}">
                     <text>¥</text>{{item.highestReward}}
                 </view>
-                <view class='money' wx:if="{{!item.highestReward}}">{{langData.bonusText02}}</view>
-                <view class='btn_sm orange' style='width:80%;'>{{langData.knowBtn}}</view>
+                <view class='money' wx:if="{{!item.highestReward}}">{{langData.bonusText02[lang]}}</view>
+                <view class='btn_sm orange' style='width:80%;'>{{langData.knowBtn[lang]}}</view>
             </view>
 
         </view>
@@ -42,3 +49,4 @@
     c-name="{{targetName}}" 
     wx:if="{{!listInfo.list.length>0 && listInfo.list}}"
 ></list-nothing>
+</block>

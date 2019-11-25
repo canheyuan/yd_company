@@ -1,6 +1,7 @@
 {
-  "navigationBarTitleText": "专家",
-  "usingComponents": {
-    "expert-list": "/components/expert-list/expert-list"
-  }
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "usingComponents": {
+        "expert-list": "/components/expert-list/expert-list"
+    }
 }

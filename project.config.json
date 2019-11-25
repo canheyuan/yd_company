@@ -27,7 +27,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.6",
-	"appid": "wx7f9808aa00ac932f",
+	"appid": "wx89d739bab6040e66",
 	"projectname": "%E5%9B%AD%E5%8F%AE-%E4%BC%81%E4%B8%9A%E7%AB%AF",
 	"isGameTourist": false,
 	"simulatorType": "wechat",
@@ -102,6 +102,13 @@
 					"id": -1,
 					"name": "户型列表页",
 					"pathName": "pages/recommend/house-list/house-list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "pages/order/cost-details/cost-details",
+					"pathName": "pages/order/cost-details/cost-details",
 					"query": "",
 					"scene": null
 				}

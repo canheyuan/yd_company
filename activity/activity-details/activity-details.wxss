@@ -16,7 +16,7 @@ page{background:#fff; padding-bottom:120rpx;}
 .act_details_head .top .label .ico_bm{background-position: -150rpx -420rpx;}
 
 .act_details_info{padding:25rpx; background:#fff;}
-.act_details_info .ico_txt{margin-bottom:10rpx;}
+.act_details_info .ico_txt{margin-bottom:10rpx; display:block;}
 .act_details_info .ico_txt icon{float:left;}
 .act_details_info .ico_txt text{overflow:hidden; display:block;}
 .act_details_info .ico_txt.txt_time text{display:inline;}

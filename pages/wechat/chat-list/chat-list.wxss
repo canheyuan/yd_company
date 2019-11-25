@@ -37,7 +37,7 @@ page{background:#f7f7f7;}
 .usermsg_box .user_head{width: 114rpx; height: 114rpx; margin-right: 20rpx; border-radius: 50%; float: left;}
 .usermsg_box .user_head image{width: 100%; height: 100%; border-radius: 50%;}
 .usermsg_box .div_top{border-bottom: 1rpx solid #e2e2e2;}
-.msg_box::after .div_top{border-bottom:none;}
+.msg_box:last-child .div_top{border-bottom:none;}
 
 .msg_mdl{margin:20rpx; background:#fff; overflow: hidden; border-radius:10rpx;}
 .msg_item{width:50%; box-sizing:border-box; float:left; padding:30rpx 15rpx; position:relative;}

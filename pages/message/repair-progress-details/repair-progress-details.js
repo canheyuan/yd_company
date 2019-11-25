@@ -17,13 +17,13 @@ Page({
         starScore: 0,  //评分分数
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'repair', (res) => {
-            wx.setNavigationBarTitle({ title: res.repairDetailTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'repair', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.repairDetailTitle[lang] });  //设置当前页面的title
         });
         this.getRepairDetail(options.id);
     },
@@ -54,7 +54,7 @@ Page({
                     detailsData: detailData,
                     detailsImgs: detailData.imageList
                 })
-                console.log("报修详情:", detailData);
+                //console.log("报修详情:", detailData);
             }
         });
     },

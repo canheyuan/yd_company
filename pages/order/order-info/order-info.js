@@ -2,25 +2,18 @@
 const app = getApp(); //获取应用实例
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     domainUrl: app.globalData.domainUrl,
     detailsData:null     //详情数据
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     this.getDetaisFn(options.id);
     //this.getDetaisFn('488c5e01a2d5c6124011374e21431a61');
-    
   },
 
 
-  //获取互动详情信息
+  //获取详情信息
   getDetaisFn(id) {
     var _this = this;
     wx.showLoading({ title: '数据加载中', mask: true });

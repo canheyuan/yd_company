@@ -7,7 +7,7 @@
         class='li {{index==tagIndex?"act":""}}' 
         url='{{item.link}}' open-type='switchTab'
     >
-      <icon class='{{item.icoClass}}'></icon><text>{{item.title}}</text>
+      <icon class='ico {{item.icoClass}}'></icon><text class="txt">{{item.title}}</text>
     </navigator>
   </view>
 </view>

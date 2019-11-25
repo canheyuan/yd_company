@@ -1,7 +1,7 @@
-<view class="cost_tip">{{langData.costTip}}</view>
+<view class="cost_tip">{{langData.costTip[lang]}}</view>
 
 <view class='cost_details_top'>
-    <view class='h3'>{{langData.costDetail}}</view>
+    <view class='h3'>{{langData.costDetail[lang]}}</view>
     <view class='p'><icon class='icons ico_per'></icon>{{userInfo.name}}  |  {{userInfo.cellphone}}</view>
     <view class='p'><icon class='icons ico_fz'></icon>{{userInfo.enterpriseInfo.entName}}</view>
 </view>
@@ -9,28 +9,28 @@
 <view class='form_box'>
     <view class='form_head'>
         <view class='tit'>{{detailsData.fee.feeName}}</view>
-        <view class='yjfy_txt'>{{langData.shouldCost}}：<text>￥{{detailsData.fee.totalAmount}}</text></view>
+        <view class='yjfy_txt'>{{langData.shouldCost[lang]}}：<text>￥{{detailsData.fee.totalAmount}}</text></view>
     </view>
 
     <view class='form_mdl'>
         <view class='dl'>
-            <text class='dt'>{{langData.month}}</text>
-            <view class='dd'><text class='txt'>{{detailsData.month}}月份</text></view>
+            <text class='dt'>{{langData.month[lang]}}</text>
+            <view class='dd'><text class='txt'>{{detailsData.month + langData.month2[lang]}}</text></view>
         </view>
         <view class='dl'>
-            <text class='dt'>{{langData.room}}</text>
+            <text class='dt'>{{langData.room[lang]}}</text>
             <view class='dd'><text class='txt'>{{detailsData.fee.unitName}}</text></view>
         </view>
 
         <!-- 租金 -->
         <block wx:if="{{detailsData.fee.feeType == 'rent'}}">
             <!-- <view class='dl'>
-                <text class='dt'>{{langData.priceName}}</text>
-                <view class='dd'><text class='txt'>{{detailsData.fee.price}}{{langData.unitPrice}}</text></view>
+                <text class='dt'>{{langData.priceName[lang]}}</text>
+                <view class='dd'><text class='txt'>{{detailsData.fee.price}}{{langData.unitPrice[lang]}}</text></view>
             </view> -->
             <view class='dl'>
-                <text class='dt'>{{langData.countName}}</text>
-                <view class='dd'><text class='txt'>{{detailsData.fee.count}}{{langData.unitCount}}</text></view>
+                <text class='dt'>{{langData.countName[lang]}}</text>
+                <view class='dd'><text class='txt'>{{detailsData.fee.count}}{{langData.unitCount[lang]}}</text></view>
             </view>
         </block>
         
@@ -38,49 +38,49 @@
         <block wx:if="{{detailsData.fee.feeType == 'water' || detailsData.fee.feeType == 'electric'}}">
             <!-- 上月抄表 -->
             <view class='dl'>
-                <text class='dt'>{{langData.prevMeter}}</text>
+                <text class='dt'>{{langData.prevMeter[lang]}}</text>
                 <view class='dd'><text class='txt'>{{detailsData.meter.previousTime}}</text></view>
             </view>
             <!-- 本次抄表 -->
             <view class='dl'>
-                <text class='dt'>{{langData.currentMeter}}</text>
+                <text class='dt'>{{langData.currentMeter[lang]}}</text>
                 <view class='dd'><text class='txt'>{{detailsData.meter.currentTime}}</text></view>
             </view>
             <!-- 上月读数 -->
             <view class='dl'>
-                <text class='dt'>{{langData.prevReading}}</text>
+                <text class='dt'>{{langData.prevReading[lang]}}</text>
                 <view class='dd'>
-                    <view class='check_pic'>{{langData.checkPic}}</view>
-                    <text class='txt'>{{detailsData.meter.previousReading}}{{detailsData.fee.feeType == 'water'?langData.fangUnit:langData.duUnit}}</text>
+                    <view class='check_pic'>{{langData.checkPic[lang]}}</view>
+                    <text class='txt'>{{detailsData.meter.previousReading}}{{detailsData.fee.feeType == 'water'?langData.fangUnit[lang]:langData.duUnit[lang]}}</text>
                 </view>
             </view>
             <!-- 本月读数 -->
             <view class='dl'>
-                <text class='dt'>{{langData.currentReading}}</text>
+                <text class='dt'>{{langData.currentReading[lang]}}</text>
                 <view class='dd'>
-                    <view class='check_pic'>{{langData.checkPic}}</view>
-                    <text class='txt'>{{detailsData.meter.currentReading}}{{detailsData.fee.feeType == 'water'?langData.fangUnit:langData.duUnit}}</text>
+                    <view class='check_pic'>{{langData.checkPic[lang]}}</view>
+                    <text class='txt'>{{detailsData.meter.currentReading}}{{detailsData.fee.feeType == 'water'?langData.fangUnit[lang]:langData.duUnit[lang]}}</text>
                 </view>
             </view>
             <!-- 本月公摊 -->
             <view class='dl' wx:if="{{detailsData.meter.sharedFee}}">
-                <text class='dt'>{{langData.sharedFee}}</text>
-                <view class='dd'><text class='txt'>{{detailsData.meter.sharedFee}}{{detailsData.fee.feeType == 'water'?langData.fangUnit:langData.duUnit}}</text></view>
+                <text class='dt'>{{langData.sharedFee[lang]}}</text>
+                <view class='dd'><text class='txt'>{{detailsData.meter.sharedFee}}{{detailsData.fee.feeType == 'water'?langData.fangUnit[lang]:langData.duUnit[lang]}}</text></view>
             </view>
             <!-- 实际用量 -->
             <view class='dl'>
-                <text class='dt'>{{langData.realityCount}}</text>
-                <view class='dd'><text class='txt'>{{detailsData.meter.count}}{{detailsData.fee.feeType == 'water'?langData.fangUnit:langData.duUnit}}</text></view>
+                <text class='dt'>{{langData.realityCount[lang]}}</text>
+                <view class='dd'><text class='txt'>{{detailsData.meter.count}}{{detailsData.fee.feeType == 'water'?langData.fangUnit[lang]:langData.duUnit[lang]}}</text></view>
             </view>
             <!-- 单价 -->
             <!-- <view class='dl'>
-                <text class='dt'>{{langData.priceName}}</text>
+                <text class='dt'>{{langData.priceName[lang]}}</text>
                 <view class='dd'><text class='txt'>¥{{detailsData.fee.price}}</text></view>
             </view> -->
         </block>
 
     </view>
 
-    <view class='yd_title02 no_more'><text class='txt'>{{langData.public.noMoreText}}</text></view>
+    <view class='yd_title02 no_more'><text class='txt'>{{langData.public.noMoreText[lang]}}</text></view>
 
 </view>

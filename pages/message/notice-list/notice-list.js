@@ -8,13 +8,13 @@ Page({
 
         listInfo: {},   //列表数据
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'message', (res) => {
-            wx.setNavigationBarTitle({ title: res.noticeTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'message', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.noticeTitle[lang] });  //设置当前页面的title
         });
 
         this.getListInfo(true);  //加载完页面加载记录列表
@@ -22,7 +22,6 @@ Page({
 
     //获取列表数据
     getListInfo(isReach) {
-        var langData = this.data.langData;
         var _this = this;
         listFn.listPage({
             url: `/noticeInfo/list`,
@@ -37,7 +36,7 @@ Page({
                 }
             },
             success:()=>{
-                console.log('listInfo.list',_this.data.listInfo)
+                //console.log('listInfo.list',_this.data.listInfo)
             }
         });
     },

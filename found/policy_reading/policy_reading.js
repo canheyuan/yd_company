@@ -6,22 +6,15 @@ Page({
         domainUrl: app.globalData.domainUrl,
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
     onLoad: function () {
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'policyDetail',(res)=>{
-            wx.setNavigationBarTitle({ title: res.applyTitle });
+        app.loadLangNewFn(this, 'policyDetail', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.applyTitle[lang] });
         });
 
-        this.setData({
-            policyData: wx.getStorageSync('policyData')
-        })
-    },
-
-    //用户点击右上角分享
-    onShareAppMessage: function () {
-        
+        this.setData({ policyData: wx.getStorageSync('policyData') })
     }
 })

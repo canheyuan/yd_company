@@ -17,12 +17,15 @@
 <!-- 评论列表 -->
 <view bindtap="loginTipShow2">
     <discuss-list
-        lang='{{langType}}'
+        lang='{{lang}}'
         target-page="news"
         detail-id="{{newsData.newsId}}" 
         is-collected="{{newsData.isCollected}}"
     ></discuss-list>
 </view>
+
+<!-- 返回顶部 -->
+<default m-name="backTop" m-top="50" is-show="{{backTopShow}}"></default>
 
 <!-- 登录提示 -->
 <!-- <view hidden="{{isLoginPopHide}}">

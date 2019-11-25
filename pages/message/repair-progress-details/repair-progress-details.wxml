@@ -1,34 +1,34 @@
 <view class='repair_details_head'>
-  <image class='img' mode='widthFix' src='{{domainUrl}}/images/msg/bxjd_head.jpg'></image>
-  <view class='info'>
-    <view class='h3'>{{langData.applyTime}}</view>
-    <view class='time'>{{detailsData.createTime}}</view>
-  </view>
+    <image class='img' mode='widthFix' src='{{domainUrl}}/images/msg/bxjd_head.jpg'></image>
+    <view class='info'>
+        <view class='h3'>{{langData.applyTime[lang]}}</view>
+        <view class='time'>{{detailsData.createTime}}</view>
+    </view>
 </view>
 
 <!-- 当前进度 -->
 <view class='progress_now'>
-  <view class='progress_now_top'>
-    <view class='tit'>{{langData.repairType}}：<text>{{detailsData.typeName}}</text></view>
-    <view class='label icons {{detailsData.statusClass}}'>{{detailsData.statusName}}</view>
-  </view>
-  <!-- 内容判断_S -->
-  <view class='progress_now_ctn' wx:if="{{detailsData.status!=4}}">{{detailsData.description}}</view>
-  <view class='progress_now_ctn' wx:if="{{detailsData.status==4}}">
-    <view class='fwpf_txt'>{{langData.serveScore}}</view>
-    <view class='star_list'>
-      <view class='icons {{detailsData.star>starItem?"cur":""}}' 
-        wx:for="{{[0,1,2,3,4]}}"  wx:key="{{index}}" wx:for-item="starItem"
-      ></view>
+    <view class='progress_now_top'>
+        <view class='tit'>{{langData.repairType[lang]}}：<text>{{detailsData.typeName}}</text></view>
+        <view class='label icons {{detailsData.statusClass}}'>{{detailsData.statusName}}</view>
     </view>
-  </view>
-  <!-- 内容判断_End -->
-  <!-- <view class='progress_now_btm'>
-    <view class='time'><icon class='icons ico_time'></icon>当前状态时间2018-04-29  14:45</view>
-    <view class='btns'>
-      <view class='btn02' bindtap='progressDetailsFn'>{{progressDetails?"详细进度":"收起进度"}}</view>
+    <!-- 内容判断_S -->
+    <view class='progress_now_ctn' wx:if="{{detailsData.status!=4}}">{{detailsData.description}}</view>
+    <view class='progress_now_ctn' wx:if="{{detailsData.status==4}}">
+        <view class='fwpf_txt'>{{langData.serveScore[lang]}}</view>
+        <view class='star_list'>
+            <view class='icons {{detailsData.star>starItem?"cur":""}}' 
+                wx:for="{{[0,1,2,3,4]}}"  wx:key="{{index}}" wx:for-item="starItem"
+            ></view>
+        </view>
     </view>
-  </view> -->
+    <!-- 内容判断_End -->
+    <!-- <view class='progress_now_btm'>
+        <view class='time'><icon class='icons ico_time'></icon>当前状态时间2018-04-29  14:45</view>
+        <view class='btns'>
+        <view class='btn02' bindtap='progressDetailsFn'>{{progressDetails?"详细进度":"收起进度"}}</view>
+        </view>
+    </view> -->
 </view>
 
 <!-- 进度详情 -->
@@ -81,117 +81,115 @@
 
 <!-- 报修内容 -->
 <view class='bxnr_mdl'>
-    <view class='bxnr_tit'>{{langData.repairInfo}}</view>
+    <view class='bxnr_tit'>{{langData.repairInfo[lang]}}</view>
     <view class='bxnr_ctn'>
         <view class='gray_box'>{{detailsData.description}}</view>
         <view class='bxnr_dl'>
-        <view class='dt'>{{langData.room}}</view>
-        <view class='dd'>{{detailsData.roomName}}</view>
+            <view class='dt'>{{langData.room[lang]}}</view>
+            <view class='dd'>{{detailsData.roomName}}</view>
         </view>
         <view hidden="{{infoShow}}">
-        <view class='bxnr_dl'>
-            <view class='dt'>{{langData.public.contact}}</view>
-            <view class='dd'>{{detailsData.contact}}</view>
-        </view>
-        <view class='bxnr_dl'>
-            <view class='dt'>{{langData.public.contactPhone}}</view>
-            <view class='dd'>{{detailsData.phone}}</view>
-        </view>
-        <view class='bxnr_dl' wx:if="{{detailsImgs.length>0}}">
-            <view class='dt'>{{langData.public.imgAccessory}}</view>
-            <view class='dd'>
-            <view class='imgs'>
-                <image 
-                wx:for="{{detailsImgs}}" wx:key="{{index}}" 
-                src='{{item}}' binderror='errorImgFn' data-obj="detailsImgs[{{index}}]"
-                ></image>
+            <view class='bxnr_dl'>
+                <view class='dt'>{{langData.public.contact[lang]}}</view>
+                <view class='dd'>{{detailsData.contact}}</view>
             </view>
+            <view class='bxnr_dl'>
+                <view class='dt'>{{langData.public.contactPhone[lang]}}</view>
+                <view class='dd'>{{detailsData.phone}}</view>
             </view>
-        </view>
+            <view class='bxnr_dl' wx:if="{{detailsImgs.length>0}}">
+                <view class='dt'>{{langData.public.imgAccessory[lang]}}</view>
+                <view class='dd'>
+                <view class='imgs'>
+                    <image 
+                    wx:for="{{detailsImgs}}" wx:key="{{index}}" 
+                    src='{{item}}' binderror='errorImgFn' data-obj="detailsImgs[{{index}}]"
+                    ></image>
+                </view>
+                </view>
+            </view>
         </view>
         <!-- <view class='btm' bindtap='infoShowFn'>
         <text>{{infoShow?'展开':'收起'}}</text> 
         <icon class='icons ico_arrow {{infoShow?"":"ico_arrow_up"}}'></icon>
         </view> -->
     </view>
-    <view class='ylb_txt' bindtap="popFn"><icon class="icons"></icon>{{langData.severPopBtn}}</view>
+    <view class='ylb_txt' bindtap="popFn"><icon class="icons"></icon>{{langData.severPopBtn[lang]}}</view>
 </view>
 
 <!-- 底部按钮 -->
 <view class='fix_btm' wx:if="{{detailsData.status==1}}">
-    <view class='btn btn01' data-type="remove" bindtap='popShowFn'>{{langData.callOffBtn}}</view>
+    <view class='btn btn01' data-type="remove" bindtap='popShowFn'>{{langData.callOffBtn[lang]}}</view>
 </view>
 <view class='fix_btm' wx:if="{{detailsData.status==3}}">
-  <view class='btn btn02' data-type="star" bindtap='popShowFn'>{{langData.serveScore}}</view>
+    <view class='btn btn02' data-type="star" bindtap='popShowFn'>{{langData.serveScore[lang]}}</view>
 </view>
 <view class='fix_btm' wx:if="{{detailsData.status==4}}">
-  <view class='price'>
-    {{langData.payMoney}}： ￥<text>{{detailsData.repairMoney?detailsData.repairMoney:'0.00'}}</text>
-  </view>
+    <view class='price'>
+        {{langData.payMoney[lang]}}： ￥<text>{{detailsData.repairMoney?detailsData.repairMoney:'0.00'}}</text>
+    </view>
 </view>
 
 <!-- 有偿服务价格一览表弹窗 -->
 <view hidden="{{popIsShow}}">
-<serve-price-pop bindclosepop="popFn"></serve-price-pop>
+    <serve-price-pop bindclosepop="popFn"></serve-price-pop>
 </view>
 
 <!-- 提示弹窗 -->
 <view class='mask_bg pop_show' hidden='{{tipPopDeleteShow}}'>
-  <view class='mask_bg_ctn'>
-    <view class='pop_mdl'>
-      <view class='h3'>{{langData.affirmTitle}}</view>
-      <view class='pop_ctn' style="padding:30rpx 0;">
-        <view class='p'>{{langData.affirmDes}}</view>
-      </view>
-      <view class='btm_btn clearfix'>
-        <view class='btn' bindtap='closeTipPop'>{{langData.public.callOffBtn}}</view>
-        <view class='btn' bindtap='removeRepairFn' >{{langData.public.confirmBtn}}</view>
-      </view>
-      <view class='close_btn icons' bindtap='closeTipPop'></view>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{langData.affirmTitle[lang]}}</view>
+            <view class='pop_ctn' style="padding:30rpx 0;">
+                <view class='p'>{{langData.affirmDes[lang]}}</view>
+            </view>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap='closeTipPop'>{{langData.public.callOffBtn[lang]}}</view>
+                <view class='btn' bindtap='removeRepairFn' >{{langData.public.confirmBtn[lang]}}</view>
+            </view>
+            <view class='close_btn icons' bindtap='closeTipPop'></view>
+        </view>
     </view>
-  </view>
 </view>
 
 <!-- 提示弹窗 -->
 <view class='mask_bg pop_show' hidden='{{tipPopStarShow}}'>
-  <view class='mask_bg_ctn'>
-    <view class='pop_mdl'>
-      <view class='h3'>{{langData.serveScore}}</view>
-      <view class='pop_ctn' style="padding:30rpx 0;">
-        <view class='star_list'>
-          <view 
-            class='icons {{starScore>starItem?"cur":""}}'
-            wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}"  
-            wx:for-item="starItem" 
-            data-star="{{index+1}}" 
-            bindtap="starChangeFn"
-           ></view>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{langData.serveScore}}</view>
+            <view class='pop_ctn' style="padding:30rpx 0;">
+                <view class='star_list'>
+                <view 
+                    class='icons {{starScore>starItem?"cur":""}}'
+                    wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}" wx:for-item="starItem" 
+                    bindtap="starChangeFn" data-star="{{index+1}}" 
+                ></view>
+                </view>
+            </view>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap='closeTipPop'>{{langData.public.callOffBtn[lang]}}</view>
+                <view class='btn' bindtap='starRepairFn' >{{langData.public.confirmBtn[lang]}}</view>
+            </view>
+            <view class='close_btn icons' bindtap='closeTipPop'></view>
         </view>
-      </view>
-      <view class='btm_btn clearfix'>
-        <view class='btn' bindtap='closeTipPop'>{{langData.public.callOffBtn}}</view>
-        <view class='btn' bindtap='starRepairFn' >{{langData.public.confirmBtn}}</view>
-      </view>
-      <view class='close_btn icons' bindtap='closeTipPop'></view>
     </view>
-  </view>
 </view>
 
 <!-- 弹窗 -->
 <view class='mask_bg pop_show' wx:if="{{false}}">
-  <view class='mask_bg_ctn'>
-    <view class='pop_mdl'>
-      <view class='h3'>服务完成</view>
-      <view class='p'>感谢您对我们的支持！</view>
-      <view class='p'>本次维修支付的金额是：</view>
-      <input type="digit" class='price_input' placeholder="请填写支付金额"/>
-      <view class='btm_btn clearfix'>
-        <view class='btn'>取消</view>
-        <view class='btn'>确定</view>
-      </view>
-      <view class='close_btn icons'></view>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>服务完成</view>
+            <view class='p'>感谢您对我们的支持！</view>
+            <view class='p'>本次维修支付的金额是：</view>
+            <input type="digit" class='price_input' placeholder="请填写支付金额"/>
+            <view class='btm_btn clearfix'>
+                <view class='btn'>取消</view>
+                <view class='btn'>确定</view>
+            </view>
+            <view class='close_btn icons'></view>
+        </view>
     </view>
-  </view>
 </view>
 
 

@@ -14,25 +14,31 @@
 
 <!-- 新鲜事_S -->
 <view hidden="{{tagIndex!=0}}" wx:if="{{tagList[0].isShow}}">
+    
     <!-- 幻灯片 -->
-    <view class='found_slide_box' wx:if="{{newsSlideData.length>0}}">
-        <swiper class='found_slide' autoplay="true" interval="3000" duration="500">
-            <block wx:for="{{newsSlideData}}" wx:key="newsId" wx:if="{{index<10}}">
-                <swiper-item>          
-                    <view class='found_slide_item' bindtap="goToNew" data-newId="{{item.newsId}}">
-                        <view class='found_slide_cont'>
-                            <view class='found_slide_title'>{{item.newsTitle}}</view>
-                            <view class='found_slide_dot'><text class='text_big'>{{index+1}}</text>/{{newsSlideTotal>10?10:newsSlideTotal}}</view>
-                        </view>
-                        <image 
-                            src='{{item.mainImgList[0]?item.mainImgList[0]:domainUrl+"/images/default/img_730_320.jpg"}}' class="slide_img"
-                            binderror='errorImgFn' 
-                            data-obj="newsSlideData[{{index}}].mainImgList[0]" 
-                            data-img="{{domainUrl}}/images/default/img_730_320.jpg"
-                        ></image>
-                    </view>        
-                </swiper-item>
-            </block>
+    <view class='found_slide_box'>
+        <!-- 幻灯片默认显示 -->
+        <view class="found_slide_df" wx:if="{{!newsSlideData.length>0}}"></view>
+        <swiper 
+            class='found_slide' autoplay="true" interval="3000" duration="500" 
+            wx:if="{{newsSlideData.length>0}}"
+        >
+        <swiper-item wx:for="{{newsSlideData}}" wx:key="newsId" >          
+            <view class='found_slide_item' bindtap="goToNew" data-newId="{{item.newsId}}">
+                <view class='found_slide_cont'>
+                    <view class='found_slide_title'>{{item.newsTitle}}</view>
+                    <view class='found_slide_dot'>
+                        <text class='text_big'>{{index+1}}</text>/{{newsSlideTotal}}
+                    </view>
+                </view>
+                <image 
+                    src='{{item.bannerImg}}' class="slide_img"
+                    binderror='errorImgFn' 
+                    data-obj="newsSlideData[{{index}}].bannerImg" 
+                    data-img="{{domainUrl}}/images/default/img_730_320.jpg"
+                ></image>
+            </view>        
+        </swiper-item>
         </swiper>
     </view>
 

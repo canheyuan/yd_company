@@ -36,7 +36,7 @@ Page({
         goUrl: '',  //跳转的链接
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     onLoad: function (options) {
@@ -46,11 +46,11 @@ Page({
         app.chatData.chatPage = 'register';
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'formPage', (res) => {
-            wx.setNavigationBarTitle({ title: res.registerTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'formPage', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.registerTitle[lang] });  //设置当前页面的title
             this.setData({
-                searchPl:res.searchKey,
-                ['getCode.text']: res.public.getCodeBtn
+                searchPl:res.searchKey[lang],
+                ['getCode.text']: res.public.getCodeBtn[lang]
             })
         });
 
@@ -115,7 +115,6 @@ Page({
 
     //文本框获得焦点
     searchFocusFn(e){
-        var langData = this.data.langData;
         if (e.detail.value == '') {
             this.setData({ searchPl: '' });
         }
@@ -123,9 +122,10 @@ Page({
 
     //文本框失去焦点
     searchBlurFn(e){
-        var langData = this.data.langData;
+        var langData = this.data.langData
+        var lang = this.data.lang
         if (e.detail.value == '') {
-            this.setData({ searchPl: langData.searchKey })
+            this.setData({ searchPl: langData.searchKey[lang] })
         }
     },
 
@@ -240,16 +240,18 @@ Page({
     //验证码倒计时
     countGetCodeFn() {
         var _this = this, time = 60;
+        var langData = this.data.langData
+        var lang = this.data.lang
         countGetCodeTimer = setInterval(function () {
             if (time > 0) {
                 _this.setData({
-                    ['getCode.text']: `${_this.data.langData.public.getCodeBtn2 + time}S`,
+                    ['getCode.text']: `${langData.public.getCodeBtn2[lang] + time}S`,
                     ['getCode.sending']: true,
                 });
             } else {
                 clearInterval(countGetCodeTimer);
                 _this.setData({
-                    ['getCode.text']: _this.data.langData.public.getCodeBtn,
+                    ['getCode.text']: langData.public.getCodeBtn[lang],
                     ['getCode.sending']: false,
                 });
             }
@@ -262,8 +264,9 @@ Page({
 
         if (this.data.getCode.sending) { return; } //防止多次点击
         var _this = this, 
-            phone = this.data.getCode.phone,
-            langData = this.data.langData;
+            phone = this.data.getCode.phone
+        var langData = this.data.langData
+        var lang = this.data.lang
 
         //验证
         var isTip = formTip([
@@ -275,7 +278,7 @@ Page({
 
         //获取验证码
         app.requestFn({
-            loadTitle: langData.public.sendTip,
+            loadTitle: langData.public.sendTip[lang],
             url: `/sendRegisterCode`,
             header: 'application/x-www-form-urlencoded',
             data: {
@@ -283,14 +286,14 @@ Page({
             },
             method: 'POST',
             success: (res) => {
-                wx.showToast({ title: langData.public.sendSuccessTip, icon: 'success', duration: 3000 });
+                wx.showToast({ title: langData.public.sendSuccessTip[lang], icon: 'success', duration: 3000 });
                 _this.setData({ ['getCode.verificationId']: res.data.data.id })
             },
             fail: () => {
-                wx.showToast({ title: langData.public.getCodeError, icon: 'none', duration: 3000 });
+                wx.showToast({ title: langData.public.getCodeError[lang], icon: 'none', duration: 3000 });
                 clearInterval(countGetCodeTimer);
                 _this.setData({ 
-                    ['getCode.text']: langData.public.getCodeBtn,
+                    ['getCode.text']: langData.public.getCodeBtn[lang],
                     ['getCode.sending']: false
                  });
             },
@@ -302,6 +305,8 @@ Page({
         var _this = this;
         var formData = e.detail.value;
         var formId = e.detail.formId;
+        var langData = this.data.langData
+        var lang = this.data.lang
 
         //验证
         var isTip = formTip([
@@ -322,7 +327,7 @@ Page({
         app.getFormIdFn(formId, () => {
             //提交注册数据
             app.requestFn({
-                loadTitle: _this.data.langData.public.submit,
+                loadTitle: langData.public.submit[lang],
                 url: `/register`,
                 header: 'application/x-www-form-urlencoded',
                 data: formData,

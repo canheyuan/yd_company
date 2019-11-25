@@ -1,7 +1,7 @@
 {
-  "navigationBarTitleText": "",
-  "usingComponents": {
-    "discuss-list": "/components/discuss-list/discuss-list",
-    "login-tip": "/components/login-tip/login-tip"
-  }
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "usingComponents": {
+        "discuss-list": "/components/discuss-list/discuss-list"
+    }
 }

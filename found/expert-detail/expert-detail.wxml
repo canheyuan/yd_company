@@ -1,59 +1,84 @@
 <import src="/wxParse/wxParse.wxml"/>
+
+<!-- 头部专家信息 -->
 <view class='top_ep_info clearfix'>
-  <view class='user_head'><image class='img' src='{{expertData.headImg}}'></image></view>
-  <view class='icon_like'>{{expertData.attentionNum}}</view>
-  <view class='h3'>{{expertData.expertName}}<text style="font-size:28rpx;">（{{expertData.positionName}}）</text></view>
-  <view class='title'><text>{{expertData.serviceProvider}}</text></view>
-  <view class='news_tips yd_label'>
-    <view class='ico_txt institution'><image src='{{domainUrl}}/images/icon/ico_loc_sm_white.png'></image>{{expertData.cityName}}</view>
-    <text wx:for="{{expertData.focusAreas}}" wx:key="{{index}}">{{item}}</text>
-  </view>
+    <view class='user_head'><image class='img' src='{{expertData.headImg}}'></image></view>
+    <view class='icon_like'>{{expertData.attentionNum}}</view>
+    <view class='h3'>{{expertData.expertName}}<text style="font-size:28rpx;">（{{expertData.positionName}}）</text></view>
+    <view class='title'><text>{{expertData.serviceProvider}}</text></view>
+    <view class='news_tips yd_label'>
+        <view class='ico_txt institution'>
+            <image src='{{domainUrl}}/images/icon/ico_loc_sm_white.png'></image>
+            {{expertData.cityName}}
+        </view>
+        <text wx:for="{{expertData.focusAreas}}" wx:key="{{index}}">{{item}}</text>
+    </view>
 </view>
+
+
 
 <!-- 切换标签 -->
 <view class='tag_box'>
-  <view class='tag_list'>
-    <view 
-      wx:for="{{tagList}}" wx:key="tagList{{index}}"  class='tag_item {{tagIndex==index?"act":""}}'
-      bindtap='tagChange' data-index="{{index}}" 
-    >{{item}}</view>
-  </view>
+    <view class='tag_list'>
+        <view 
+            wx:for="{{tagList}}" wx:key="*this" 
+            class='tag_item {{tagIndex==index?"act":""}}'
+            bindtap='tagChange' data-index="{{index}}" 
+        >{{item[lang]}}</view>
+    </view>
 </view>
-
 <view 
-  hidden="{{tagIndex!=index}}" class='intro_box' wx:for="{{tagList}}" wx:key="tagList{{index}}" 
+    hidden="{{tagIndex!=index}}" class='intro_box' 
+    wx:for="{{tagList}}" wx:key="*this" 
 >
   <view class='intro_cnt box_shadow details_ctn'>
-    <template wx:if="{{tagIndex==0}}" is="wxParse" data="{{wxParseData:intro.nodes}}"/><!-- 文字介绍 -->
-    <template wx:if="{{tagIndex==1}}" is="wxParse" data="{{wxParseData:experience.nodes}}"/><!--经历描述-->
-    <template wx:if="{{tagIndex==2}}" is="wxParse" data="{{wxParseData:achievement.nodes}}"/><!--主要成就-->
+        <template wx:if="{{tagIndex==0}}" is="wxParse" data="{{wxParseData:intro.nodes}}"/><!-- 文字介绍 -->
+        <template wx:if="{{tagIndex==1}}" is="wxParse" data="{{wxParseData:experience.nodes}}"/><!--经历描述-->
+        <template wx:if="{{tagIndex==2}}" is="wxParse" data="{{wxParseData:achievement.nodes}}"/><!--主要成就-->
   </view>
 </view>
 
-<view class='yd_title02 bxnr_tit'><view class='txt'>{{langData.projectText}}<text>{{expertData.projectNum}}</text></view></view>
+
 
 <!-- 指导项目 -->
-<view class='guide_box'>
-  <view class='guide_cnt box_shadow'>
-    <view class='ul'>
-      <view class='li' wx:for="{{expertData.projects}}" wx:key="{{index}}">
-        <view class='logo'><image src='{{item.entLogo}}' mode='aspectFit'></image></view>
-        <view class='title'>{{item.projectName}}</view>
-        <view class='content'>{{item.industryType}}</view>
-      </view>
+<block wx:if="{{expertData.projectNum>0}}">
+    <view class='yd_title02 bxnr_tit'>
+        <view class='txt'>{{langData.projectText[lang]}}
+            <text>{{expertData.projectNum}}</text>
+        </view>
     </view>
-  </view>
-</view>
+    <view class='guide_box'>
+        <view class='guide_cnt box_shadow'>
+            <view class='ul'>
+                <view class='li' wx:for="{{expertData.projects}}" wx:key="expertProjectId">
+                    <view class='logo'><image src='{{item.entLogo}}' mode='aspectFit'></image></view>
+                    <view class='title'>{{item.projectName}}</view>
+                    <view class='content'>{{item.industryType}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</block>
+
+
 
 <!-- 底部工具栏 -->
 <view class='tool_bar clearfix'>
-  <!-- <button open-type="contact" class='blue_btn' style='width:60%;'>立即咨询</button> -->
-  <view class='blue_btn' style='width:60%;' bindtap="gotoChatFn" data-item="{{expertData}}">{{langData.referText2}}</view>
-  <view class='icon_box icon_favorite {{isAttention==1?"act":""}}' bindtap="collectFn">{{langData.attentionBtn}}</view>
+    <!-- <button open-type="contact" class='blue_btn' style='width:60%;'>立即咨询</button> -->
+    <view 
+        class='blue_btn' style='width:60%;' 
+        bindtap="gotoChatFn" data-item="{{expertData}}"
+    >{{langData.referText2[lang]}}</view>
+    <view 
+        class='icon_box icon_favorite {{isAttention==1?"act":""}}' 
+        bindtap="collectFn">
+    {{langData.attentionBtn[lang]}}</view>
 </view>
+
+
 
 <!-- 登录提示 -->
 <view hidden="{{isLoginPopHide}}">
-<login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
+    <login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
 </view>
 

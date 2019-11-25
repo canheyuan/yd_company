@@ -1,4 +1,4 @@
-
+<!-- 专家类型 -->
 <view class='scroll_mdl'>
     <view class='down_btn'>
         <image class='bg' src='{{domainUrl}}/images/icon/btn_shadow.png'></image>
@@ -18,7 +18,10 @@
 </view>
 
 <!-- 专家列表 -->
-<expert-list focusArea="{{expertType}}" reachData="{{reachData}}" lang="{{langType}}"></expert-list>
+<expert-list focusArea="{{expertType}}" reachData="{{reachData}}"></expert-list>
+
+<!-- 返回顶部 -->
+<default m-name="backTop" m-top="50" is-show="{{backTopShow}}"></default>
 
 
 

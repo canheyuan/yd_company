@@ -5,21 +5,21 @@
 
     <view class='form_mdl form_mdl2'>
         <view class='dl clearfix'>
-            <text class='dt'>{{langData.feePeriod}}</text>
+            <text class='dt'>{{langData.feePeriod[lang]}}</text>
             <view class='dd'>
                 <text  class='txt'>{{detailsData.feePeriod}}</text>
             </view>
         </view>
 
         <view class='dl clearfix'>
-            <text class='dt'>{{langData.feeProject}}</text>
+            <text class='dt'>{{langData.feeProject[lang]}}</text>
             <view class='dd'>
                 <view class='jfxm_list'>
                     <view class='li' wx:for="{{detailsData.fees}}" wx:key="{{index}}">
-                        <navigator url='/pages/order/cost-details/cost-details?id={{item.feeId}}' class='d_btn'>{{langData.detailBtn}}</navigator>
+                        <navigator url='/pages/order/cost-details/cost-details?id={{item.feeId}}' class='d_btn'>{{langData.detailBtn[lang]}}</navigator>
                         <view class='info'>
                             <view class='h3'>{{item.unitName}}{{item.feeName}}</view>
-                            <view class='price'>{{langData.money}}：  <text>￥{{item.totalAmount}}</text></view>
+                            <view class='price'>{{langData.money[lang]}}：  <text>￥{{item.totalAmount}}</text></view>
                         </view>
                     </view>
                 </view>
@@ -27,13 +27,13 @@
         </view>
 
         <view class='dl clearfix'>
-            <text class='dt'>{{langData.payer}}</text>
+            <text class='dt'>{{langData.payer[lang]}}</text>
             <view class='dd'>
                 <text  class='txt'>{{userInfo.enterpriseInfo.entName}}</text>
             </view>
         </view>
         <!-- <view class='dl clearfix'>
-            <text class='dt'>{{langData.payee}}</text>
+            <text class='dt'>{{langData.payee[lang]}}</text>
             <view class='dd'>
                 <text  class='txt'>广州园叮科技有限公司</text>
             </view>
@@ -41,14 +41,14 @@
     
         <view class='form_btm'>
             <view class='txt'>
-                {{langData.payText1 + (detailsData.fees.length?detailsData.fees.length:0) + langData.payText2}}
+                {{langData.payText1[lang] + (detailsData.fees.length?detailsData.fees.length:0) + langData.payText2[lang]}}
                 <text>￥{{detailsData.totalAmount}}</text>
             </view>
         </view>
     </view>
     <view style='padding:60rpx 100rpx 50rpx;' wx:if="{{detailsData.status == 2}}">
-        <view class='blue_btn' wx:if="{{detailsData.signStatus && detailsData.signStatus!=3}}" bindtap="signFn" >签收</view>
-        <view class='blue_btn' wx:if="{{detailsData.signStatus==3}}" bindtap="payFn" >{{langData.payBtn}}</view>
+        <view class='blue_btn' wx:if="{{detailsData.signStatus && detailsData.signStatus!=3}}" bindtap="signFn" >{{langData.signForBtn[lang]}}</view>
+        <view class='blue_btn' wx:if="{{detailsData.signStatus==3}}" bindtap="payFn" >{{langData.payBtn[lang]}}</view>
     </view>
 </view>
 

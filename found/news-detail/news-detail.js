@@ -19,12 +19,13 @@ Page({
         wx.setStorageSync('backUrl', backUrl);
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'foundIndex', (res) => {
-            wx.setNavigationBarTitle({ title: res.tagNews });  //设置当前页面的title
+        app.loadLangNewFn(this, 'foundIndex', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.tagNews[lang] });  //设置当前页面的title
         });
 
         this.setData({ newsId: options.id });
         this.getNewsInfo(options.id);
+       
     },
 
     //获取新闻信息
@@ -56,10 +57,25 @@ Page({
         this.setData({ isLoginPopHide: true });
     },
 
-    //点击评论提示弹窗
+    // //点击评论提示弹窗
     loginTipShow2(e) {
         if (!app.globalData.isLogin) {
             this.setData({ isLoginPopHide: false });
+        }
+    },
+
+    //下拉刷新
+    onPullDownRefresh: function () {
+        this.getNewsInfo(this.data.newsId);
+        wx.stopPullDownRefresh(); //下拉刷新后页面上移
+    },
+
+    //监听滚动判断是否显示返回顶部按钮
+    onPageScroll(e) {
+        if (e.scrollTop > 800 && !this.data.backTopShow) {
+            this.setData({ backTopShow: true });
+        } else if (e.scrollTop < 800 && this.data.backTopShow) {
+            this.setData({ backTopShow: false });
         }
     },
 

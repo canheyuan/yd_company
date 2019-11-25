@@ -8,8 +8,9 @@ module.exports = {
         saveTip:{zh:'保存中',en:'Preservation'},
         editSuccess:{zh:'修改成功!',en:'Successfully modified!'},
         sendSuccessTip:{zh:'发送成功',en:'Sent successfully'},
+        collectTip: { zh: '已收藏', en: 'Collected' },
         callOffCollect:{zh:'取消收藏',en:'Cancel collection'},
-        callOffCollectTip:{zh:'已取消收藏！',en:'Collection has been canceled!'},
+        callOffCollectTip:{zh:'已取消收藏',en:'Collection has been canceled!'},
         scoredTip:{zh:'已评分',en:'Scored'},
         loginTimeout:{zh:'登录已超时，请重新登录再进行操作！',en:'The login has timed out, please log in again and proceed!'},
         loadingData:{zh:'数据加载中',en:'loading'},
@@ -282,6 +283,7 @@ module.exports = {
     //发现首页
     foundIndex:{
         foundTitle:{zh:'发现',en:'Found'},
+        companyNews: { zh: '企业名录', en: 'Directories' },
         tagNews:{zh:'新鲜事',en:'News'},
         tagPolicy:{zh:'最新政策',en:'New Policy'},
         moreText:{zh:'更多 >',en:'More >'},
@@ -563,6 +565,7 @@ module.exports = {
         findPasswordTitle:{zh:'找回密码',en:'Retrieve password'},
         loginTitle:{zh:'登录',en:'Login'},
         registerTitle:{zh:'注册',en:'Register'},
+        loginHeadTitle: { zh: '园叮智慧园区管理系统', en:'Yuanding intelligent park management system'},
         forgetPassword:{zh:'忘记密码',en:'forget password'},
         loginText1:{zh:'还没有账号？',en:"Don't have an account yet?"},
         quickregister:{zh:'快速注册',en:'Quick registration'},
@@ -668,6 +671,7 @@ module.exports = {
         payText1:{zh:'共',en:'A total of'},
         payText2:{zh:'个缴费项目，需支付',en:'payment items, payable'},
         payBtn:{zh:'立即支付',en:'pay immediately'},
+        signForBtn: { zh: '签收', en: 'Sign for' },
 
         //缴费详情
         costDetailTitle:{zh:'费用详情',en:'Fee details'},
@@ -689,6 +693,7 @@ module.exports = {
         checkPic:{zh:'查看照片 >',en:'View photo >'},
         fangUnit:{zh:'方',en:'party'},
         duUnit:{zh:'度',en:''},
+        month2: { zh:'月份',en:''},
         //订单列表
         orderTagName1:{zh:'待支付',en:'Unpaid'},
         orderTagName2:{zh:'未开票',en:'Unbilled'},

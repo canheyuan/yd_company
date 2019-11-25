@@ -89,18 +89,20 @@ Page({
                 detailData.rule = commonFn.replaceTxt(detailData.rule);//富文本去掉<o:p>等标签
                 detailData.tips = commonFn.replaceTxt(detailData.tips);//富文本去掉<o:p>等标签
 
-                detailData.provinceId = regionData.regionData(detailData.provinceId);
-                detailData.cityId = regionData.regionData(detailData.cityId);
-                detailData.areaId = regionData.regionData(detailData.areaId);
+                detailData.provinceName = regionData.regionData(detailData.provinceId);   //省
+                detailData.cityName = regionData.regionData(detailData.cityId);   //市
+                detailData.areaName = regionData.regionData(detailData.areaId);   //区
 
-                detailData.areaName = detailData.provinceId + detailData.cityId + detailData.areaId
+                detailData.addressName = detailData.provinceName + detailData.cityName + detailData.areaName + detailData.address
 
                 detailData.beginTime = commonFn.getDate(detailData.beginTime).substring(0,16);  //开始时间戳
                 detailData.endTime = commonFn.getDate(detailData.endTime).substring(0, 16);  //结束时间戳
 
+                
+                this.setData({ detailsData: detailData });
+
                 WxParse.wxParse('rule', 'html', detailData.rule, _this, 0);
                 WxParse.wxParse('tips', 'html', detailData.tips, _this, 0);
-                this.setData({ detailsData: detailData });
 
             }
         });

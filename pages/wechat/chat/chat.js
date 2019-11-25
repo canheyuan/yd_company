@@ -36,7 +36,7 @@ Page({
     onLoad: function (options) {
         var _this = this;
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'chat');
+        app.loadLangNewFn(this, 'chat');
         var systemInfo = wx.getSystemInfoSync();    //获取系统信息
         _this.setData({
             scrollHeight: systemInfo.windowHeight - 78, //聊天框高度
@@ -193,6 +193,8 @@ Page({
     //选择图片发送
     chooseImgFn(){
         var _this = this;
+        var langData = this.data.langData
+        var lang = this.data.lang
         app.chooseImg({
             count: 1, // 默认9
             sizeType: ['compressed'],
@@ -205,14 +207,14 @@ Page({
                     var isHasfromAccount = false;
                     lastMsg.forEach(item => {
                         if (item.fromAccount == app.chatData.toUser.id) {
-                            item.lastMsg = _this.data.langData.otherText;
+                            item.lastMsg = langData.otherText[lang];
                             isHasfromAccount = true;
                         }
                     });
                     if (!isHasfromAccount) {
                         lastMsg.push({
                             fromAccount: app.chatData.toUser.id,
-                            lastMsg: _this.data.langData.otherText
+                            lastMsg: langData.otherText[lang]
                         })
                     }
                     wx.setStorageSync('lastMsg', lastMsg);

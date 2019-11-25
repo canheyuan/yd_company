@@ -44,7 +44,7 @@ page{background:#fff;}
 .zjll_mdl .title{width:65rpx; height:138rpx; float:left; margin-right:30rpx;}
 .zjll_mdl .title .img{width:100%; height:100%;}
 .zjll_list{overflow:hidden; height:138rpx; }
-.zjll_list .li{height:100%; box-sizing: border-box; padding:20rpx 0;}
+.zjll_list .li{height:100%; box-sizing: border-box; padding:15rpx 0;}
 .zjll_list .li .top{margin-bottom:10rpx;}
 .zjll_list .li .top .user{font-size:30rpx; color:#333; margin-right:20rpx;}
 .zjll_list .li .top .time{font-size:28rpx; color:#9d9d9d;}

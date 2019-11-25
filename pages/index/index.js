@@ -601,10 +601,8 @@ Page({
     //监听滚动判断是否显示返回顶部按钮
     onPageScroll(e) {
         if (e.scrollTop > 800 && !this.data.backTopShow) {
-            console.log('backTopShow:true')
             this.setData({ backTopShow: true });
         } else if (e.scrollTop < 800 && this.data.backTopShow){
-            console.log('backTopShow:false')
             this.setData({ backTopShow: false });
         }
     },

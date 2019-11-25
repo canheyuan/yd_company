@@ -3,35 +3,35 @@
         
         <!-- 选择园区 -->
         <view class='dl'>
-            <text class='dt'>{{langData.curPark}}</text>
+            <text class='dt'>{{langData.curPark[lang]}}</text>
             <view class='dd' bindtap="gardenPopShow">
                 <view class='icons ico_arrow'></view>
-                <text  class='txt {{garden.name?"":"pl_input"}}'>{{garden.name?garden.name:langData.changeParkTip}}</text>
+                <text  class='txt {{garden.name?"":"pl_input"}}'>{{garden.name?garden.name:langData.changeParkTip[lang]}}</text>
                 <input type='text' class='input'  name="parkId" value="{{garden.id}}" style='display:none;' />
             </view>
         </view>
 
         <!-- 选择企业 -->
         <view class='dl' wx:if="{{!source}}">
-            <text class='dt'>{{langData.company}}</text>
+            <text class='dt'>{{langData.company[lang]}}</text>
             <view class='dd' bindtap="companyPopShow">
                 <view class='icons ico_arrow'></view>
-                <text  class='txt {{company.name?"":"pl_input"}}'>{{company.name?company.name:langData.changeCompanyTip}}</text>
-                <input type='text'  class='input' placeholder='{{langData.public.companyPl}}'  name="entId" value='{{company.id}}' style='display:none;' />
+                <text  class='txt {{company.name?"":"pl_input"}}'>{{company.name?company.name:langData.changeCompanyTip[lang]}}</text>
+                <input type='text'  class='input' placeholder='{{langData.public.companyPl[lang]}}'  name="entId" value='{{company.id}}' style='display:none;' />
             </view>
         </view>
 
         <!-- 输入姓名 -->
         <view class='dl'>
-            <text class='dt'>{{langData.public.name}}</text>
+            <text class='dt'>{{langData.public.name[lang]}}</text>
             <view class='dd'>
-                <input type='text'  class='input' placeholder='{{langData.public.namePl}}'  name="name" placeholder-class='pl_input' />
+                <input type='text'  class='input' placeholder='{{langData.public.namePl[lang]}}'  name="name" placeholder-class='pl_input' />
             </view>
         </view>
 
         <!-- 手机号 -->
         <view class='dl'>
-            <text class='dt'>{{langData.public.phoneCode}}</text>
+            <text class='dt'>{{langData.public.phoneCode[lang]}}</text>
             <view class='dd'>
                 <button 
                     class="wx_btn" plain="true" hover-class="hover" wx:if="{{wxBtnShow}}"
@@ -41,7 +41,7 @@
                 </button>
                 <input 
                     type='number'  class='input' name="mobile" maxlength='11' focus="{{phoneFocus}}"
-                    placeholder='{{langData.public.phonePl}}' placeholder-class='pl_input'
+                    placeholder='{{langData.public.phonePl[lang]}}' placeholder-class='pl_input'
                     bindblur="blurPhoneFn"
                     bindinput='changePhoneFn' data-phone="{{getCode.phone}}" value='{{getCode.phone}}' 
                 />
@@ -50,11 +50,11 @@
 
         <!-- 验证码 -->
         <view class='dl get_code_dl' hidden="{{!getCode.show}}">
-            <text class='dt'>{{langData.public.verifyCode}}</text>
+            <text class='dt'>{{langData.public.verifyCode[lang]}}</text>
             <view class='dd'>
                 <input 
                     type='text' class='input' placeholder-class='pl_input' 
-                    placeholder='{{langData.public.verifyCodePl}}'
+                    placeholder='{{langData.public.verifyCodePl[lang]}}'
                     value="{{getCode.code}}" name="verifyCode" 
                 />
                 <input type='text' name="verificationId" value='{{getCode.verificationId}}' style='display:none;'  />
@@ -67,30 +67,30 @@
 
         <!-- 密码 -->
         <view class='dl'>
-            <text class='dt'>{{langData.public.password}}</text>
+            <text class='dt'>{{langData.public.password[lang]}}</text>
             <view class='dd'>
-                <input type='text' password="true" class='input' placeholder='{{langData.public.passwordTip2}}'   name="password" placeholder-class='pl_input' />
+                <input type='text' password="true" class='input' placeholder='{{langData.public.passwordTip2[lang]}}'   name="password" placeholder-class='pl_input' />
             </view>
         </view>
 
         <!-- 确认密码 -->
         <view class='dl'>
-            <text class='dt'>{{langData.public.verifyPassword}}</text>
+            <text class='dt'>{{langData.public.verifyPassword[lang]}}</text>
             <view class='dd'>
-            <input type='text' password="true" class='input' placeholder='{{langData.public.passwordTip3}}' name="password2" placeholder-class='pl_input' />
+            <input type='text' password="true" class='input' placeholder='{{langData.public.passwordTip3[lang]}}' name="password2" placeholder-class='pl_input' />
             </view>
         </view>
 
         <!-- 提交按钮 -->
         <view class='btn_wrap'>
-            <button class='blue_btn' form-type="submit">{{langData.public.verifySubmitBtn}}</button>
+            <button class='blue_btn' form-type="submit">{{langData.public.verifySubmitBtn[lang]}}</button>
         </view>
 
     </view>
 
     <!-- 登录文字 -->
     <view class='login_btm'>
-        <view class='reg_btn'>{{langData.regText1}}，<navigator url='/pages/common/login/login' class='a'>{{langData.loginBtn}}</navigator></view>
+        <view class='reg_btn'>{{langData.regText1[lang]}}，<navigator url='/pages/common/login/login' class='a'>{{langData.loginBtn[lang]}}</navigator></view>
     </view>
 
     <input style='display:none;' name="from" value="{{source}}"></input>
@@ -100,7 +100,7 @@
 <view class='mask_bg pop_show' hidden="{{!garden.popIsShow}}">
     <view class='mask_bg_ctn' style=''>
         <view class='garden_mdl'>
-            <view class='allpark_title'>{{langData.changePark}}</view>
+            <view class='allpark_title'>{{langData.changePark[lang]}}</view>
             <view class='garden_list'>
                 <view 
                     class='allpark01' wx:for="{{garden.list}}" wx:key="gardenList{{index}}"
@@ -110,7 +110,7 @@
                     <image class='icon' mode='widthFix' src='{{domainUrl}}/images/icon/louyu.png'></image>
                     <view class='info'>
                         <view class='title'>{{item.parkName}}</view>
-                        <view class='address'>{{langData.changeCompany}}：{{item.address}}</view>
+                        <view class='address'>{{langData.changeCompany[lang]}}：{{item.address}}</view>
                     </view>
                     </view>
                 </view>
@@ -124,7 +124,7 @@
 <view class='mask_bg pop_show' hidden="{{!company.popIsShow}}">
     <view class='mask_bg_ctn' style=''>
         <view class='garden_mdl'>
-            <view class='allpark_title'>{{langData.changeCompany}}</view>
+            <view class='allpark_title'>{{langData.changeCompany[lang]}}</view>
             <view class="search_input_box">
                 <input 
                     class="serach_input" placeholder="{{searchPl}}" 

@@ -1,5 +1,6 @@
 {
-  "navigationBarTitleText": "政策详情",
+  "enablePullDownRefresh": true,
+"backgroundTextStyle": "dark",
   "usingComponents": {
     "login-tip": "/components/login-tip/login-tip"
   }

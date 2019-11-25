@@ -11,24 +11,45 @@ Page({
         reachData: null,  //随机数，只要数值改了，列表就会刷新
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     onLoad: function () {
         this.getAreaList();
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'foundIndex', (res) => {
-            wx.setNavigationBarTitle({ title: res.expertTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'foundIndex', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.expertTitle[lang] });  //设置当前页面的title
         });
     },
 
-    //页面上拉触底事件的处理函数
+    onShow(){
+        //专家列表是否刷新
+        if (app.globalData.expertReach) {
+            this.setData({ reachData: Math.random() + 1 });
+        }
+    },
+
+    //页面上拉加载更多数据
     onReachBottom: function (e) {
-        //动态赋予一个随机数触发组件上拉加载下一页函数
         this.setData({ reachData: Math.random() })
     },
 
+    //下拉刷新
+    onPullDownRefresh: function () {
+        this.setData({ reachData: Math.random()+1 })
+        wx.stopPullDownRefresh(); //下拉刷新后页面上移
+    },
+
+    //监听滚动判断是否显示返回顶部按钮
+    onPageScroll(e) {
+        if (e.scrollTop > 800 && !this.data.backTopShow) {
+            this.setData({ backTopShow: true });
+        } else if (e.scrollTop < 800 && this.data.backTopShow) {
+            this.setData({ backTopShow: false });
+        }
+    },
+    
     //行业类型选项卡切换
     tagChange(e) {
         var index = e.currentTarget.dataset.index;
@@ -54,5 +75,5 @@ Page({
                 })
             }
         });
-    },
+    }
 })

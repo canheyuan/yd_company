@@ -23,7 +23,7 @@
             </view>
         </view>
         
-        <view class='label icons' wx:if="{{item.isUnread=='Y'}}">{{langData.public.unread}}</view>
+        <view class='label icons' wx:if="{{item.isUnread=='Y'}}">{{langData.public.unread[lang]}}</view>
     </view>
 
     <!-- 底部提示文字 -->
