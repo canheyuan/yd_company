@@ -1,5 +1,5 @@
 <view class='reach_load'>
     <view class="la-ball-pulse la-2x">
-        <view></view><view></view><view></view>
+        <view class="item"></view><view class="item"></view><view class="item"></view>
     </view>
 </view>

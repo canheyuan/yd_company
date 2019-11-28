@@ -11,31 +11,32 @@ Page({
         dateMonth: '', //筛选月份
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
 
     },
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
-
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'visitor', (res) => {
-            wx.setNavigationBarTitle({ title: res.vRecordTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'visitor', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.vRecordTitle[lang] });  //设置当前页面的title
         });
-
         this.getListInfo(true);
     },
 
     //切换月份
     changeMonthFn(e) {
-        console.log(e);
-        this.setData({ dateMonth: e.detail.value });
+        this.setData({ 
+            dateMonth: e.detail.value, 
+            ['listInfo.pageNum']:1
+        });
         this.getListInfo(true);
     },
 
     //获取列表数据
     getListInfo(isReach) {
-        var langData = this.data.langData;
+        var langData = this.data.langData
+        var lang = this.data.lang
         var _this = this;
         listFn.listPage({
             url: `/visitorReservation/list`,
@@ -58,16 +59,16 @@ Page({
                 if (listItem) {
                     switch (listItem.status) {
                         case 1:
-                            listItem.statusName = langData.statusText1;
+                            listItem.statusName = langData.statusText1[lang];
                             break;
                         case 2:
-                            listItem.statusName = langData.statusText2;
+                            listItem.statusName = langData.statusText2[lang];
                             break;
                         case 3:
-                            listItem.statusName = langData.statusText3;
+                            listItem.statusName = langData.statusText3[lang];
                             break;
                         default:
-                            listItem.statusName = langData.statusText4;
+                            listItem.statusName = langData.statusText4[lang];
                             break;
                     }
                     listItem.reserveTime = commonFn.getDate(listItem.reserveTime).substring(0, 16);
@@ -75,7 +76,7 @@ Page({
                 return listItem;
             },
             success: () => {
-                console.log("预约记录接口：", _this.data.listInfo);
+                //console.log("预约记录接口：", _this.data.listInfo);
             }
         });
     },
@@ -93,5 +94,4 @@ Page({
             }
         });
     }
-
 })

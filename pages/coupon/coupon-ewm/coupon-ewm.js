@@ -22,8 +22,8 @@ Page({
     onLoad: function (options) {
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'coupon', (res) => {
-            wx.setNavigationBarTitle({ title: res.useTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'coupon', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.useTitle[lang] });  //设置当前页面的title
         });
 
         this.getDetailFn(options.id);
@@ -42,18 +42,19 @@ Page({
     },
 
     onHide: function () {
-        console.log('关闭页面')
+        //console.log('关闭页面')
         clearInterval(couponTimer);
     },
 
     onUnload() {
-        console.log('卸载页面');
+        //console.log('卸载页面');
         clearInterval(couponTimer);
     },
 
     //获取数据
     getDetailFn(id) {
-        var langData = this.data.langData;
+        var langData = this.data.langData
+        var lang = this.data.lang
         app.requestFn({
             isLoading: false,
             url: `/userCoupon/detail/${id}`,
@@ -69,10 +70,10 @@ Page({
 
                 if (detailData.couponType == 1) {
                     var discountArr = detailData.discountText.split(',');
-                    detailData.discountTxt = discountArr[0] > 0 ? `${langData.manText}${discountArr[0]}${langData.text1}${discountArr[1]}${langData.public.yuanText}` : `${langData.jianText}${discountArr[1]}${langData.public.yuanText}`
+                    detailData.discountTxt = discountArr[0] > 0 ? `${langData.manText[lang]}${discountArr[0]}${langData.text1[lang]}${discountArr[1]}${langData.public.yuanText[lang]}` : `${langData.jianText[lang]}${discountArr[1]}${langData.public.yuanText[lang]}`
                 } else if (detailData.couponType == 2) {
                     var discountArr = detailData.discountText.split(',');
-                    detailData.discountTxt = discountArr[0] > 0 ? `${langData.manText}${discountArr[0]}${langData.text4}${discountArr[1]}${langData.public.zheText}` : `${discountArr[1]}${langData.public.zheText}`
+                    detailData.discountTxt = discountArr[0] > 0 ? `${langData.manText[lang]}${discountArr[0]}${langData.text4[lang]}${discountArr[1]}${langData.public.zheText[lang]}` : `${discountArr[1]}${langData.public.zheText[lang]}`
                 }
 
                 if (detailData.status == 1 && !this.data.isFirst) { //未使用且不是第一次加载接口
@@ -116,7 +117,6 @@ Page({
         //调用插件中的draw方法，绘制二维码图片
         QR.api.draw(url, canvasId, cavW, cavH);
         setTimeout(() => { this.canvasToTempImage(); }, 1000);
-
     },
 
     //获取临时缓存照片路径，存入data中
@@ -128,7 +128,7 @@ Page({
                 var tempFilePath = res.tempFilePath;
             },
             fail: function (res) {
-                console.log(res);
+                //console.log(res);
             }
         });
     }

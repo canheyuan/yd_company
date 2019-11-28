@@ -44,6 +44,7 @@ Page({
         });
 
         if (app.globalData.foundReach) {    //是否加载发现页面
+            app.globalData.aa = true;
             app.globalData.foundReach = false;
 
             var policyTitleList = this.data.policyTitleList;

@@ -4,54 +4,66 @@
         class="li"
         style="background:url({{domainUrl}}/images/coupon/coupon_bg2.png) no-repeat; background-size:100% 100%;"
     >
-
         <view class='tit'>{{detailData.couponName}}</view>
-        <view class='get_time'>{{langData.issueTime}}：{{detailData.issueTime}}</view>
-        <view class='mf_txt' wx:if="{{detailData.couponType == 3}}">{{langData.free}}</view>
+        <view class='get_time'>{{langData.issueTime[lang]}}：{{detailData.issueDate}}</view>
+
+        <view class='mf_txt' wx:if="{{detailData.couponType == 3}}">{{langData.free[lang]}}</view>
         <view class='yh_txt' wx:if="{{detailData.couponType != 3}}">
             <view class='num'>{{detailData.discountPrice}}</view>
             <view class='tip'>{{detailData.discountSumPrice}}</view>
         </view>
+
+        <!-- 使用时间 -->
         <view class='use_time'>
             <icon class='icons ico_time'></icon>
-            {{langData.validTime}}：{{detailData.useStart}}  {{langData.public.toText}}  {{detailData.useEnd}}
+            {{langData.validTime[lang]}}：{{detailData.useStartDate}}  {{langData.public.toText[lang]}}  {{detailData.useEndDate}}
         </view>
-        <view class='coupon_code'><icon class='icons ico_code'></icon>{{detailData.couponCode}}</view>
+        <!-- <view class='coupon_code'><icon class='icons ico_code'></icon>{{detailData.couponCode}}</view>
         <view 
             class='get_btn' 
             bindtap="{{detailData.status==0?'useCouponFn':''}}" data-id="{{detailData.couponCode}}"
-        >{{detailData.btnName}}</view>
+        >{{detailData.btnName}}</view> -->
 
     </view>
 </view>
 
 <view class='coupon_detail'>
-    <view class='yd_title01'>{{langData.detailInfo}}</view>
+    <view class='yd_title01'>{{langData.detailInfo[lang]}}</view>
     <view class='coupon_ctn'>
+        <!-- 领取时间 -->
         <view class='dl'>
-            <view class='dt'>{{langData.issueTime}}</view>
+            <view class='dt'>{{langData.issueTime[lang]}}</view>
             <view class='dd'>{{detailData.issueTime}}</view>
         </view>
+
+        <!-- 生效时间 -->
         <view class='dl'>
-            <view class='dt'>{{langData.validTime}}</view>
-            <view class='dd'>{{detailData.useStart}}   {{langData.public.toText}}  {{detailData.useEnd}}</view>
+            <view class='dt'>{{langData.validTime[lang]}}</view>
+            <view class='dd'><text>{{detailData.useStart}}    {{langData.public.toText[lang]}}  \n{{detailData.useEnd}}</text></view>
         </view>
+
+        <!-- 优惠券码 -->
         <view class='dl'>
-            <view class='dt'>{{langData.couponCode}}</view>
+            <view class='dt'>{{langData.couponCode[lang]}}</view>
             <view class='dd'>{{detailData.couponCode}}</view>
         </view>
+
+        <!-- 使用时间 -->
         <view class='dl' wx:if="{{detailData.status==1}}">
-            <view class='dt'>{{langData.useTime}}</view>
+            <view class='dt'>{{langData.useTime[lang]}}</view>
             <view class='dd'>{{detailData.useTime}}</view>
         </view>   
     </view>
+
+    <!-- 使用按钮 -->
     <navigator 
-        wx:if="{{detailData.status==0}}"
-        class='orange_btn' 
+        class='orange_btn' wx:if="{{detailData.status==0}}"
         url='/pages/coupon/coupon-ewm/coupon-ewm?id={{detailData.couponCode}}'
-    >{{langData.public.useBtn}}</navigator>
+    >{{langData.public.useBtn[lang]}}</navigator>
 </view>
+
+<!-- 使用规则 -->
  <view class='coupon_tip'>
-    <text>{{langData.public.useExplain}}：
+    <text>{{langData.public.useExplain[lang]}}：
     {{detailData.couponIntro}}</text>
 </view>

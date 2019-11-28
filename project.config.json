@@ -27,7 +27,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.6",
-	"appid": "wx89d739bab6040e66",
+	"appid": "wx7f9808aa00ac932f",
 	"projectname": "%E5%9B%AD%E5%8F%AE-%E4%BC%81%E4%B8%9A%E7%AB%AF",
 	"isGameTourist": false,
 	"simulatorType": "wechat",
@@ -108,8 +108,8 @@
 				{
 					"id": 7,
 					"name": "pages/order/cost-details/cost-details",
-					"pathName": "pages/order/cost-details/cost-details",
-					"query": "",
+					"pathName": "pages/common/web-view/web-view",
+					"query": "url= https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd811f5114e3e56f3&redirect_uri=https://cloud.ywpark.net/bbpark_new/htdocs/html/wechat/i-business/index.html&response_type=code&scope=snsapi_base&state=1#wechat_redirect",
 					"scene": null
 				}
 			]

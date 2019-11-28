@@ -1,5 +1,3 @@
-<!-- 下拉刷新动画 -->
-<!-- <reach-load></reach-load> -->
 
 <!-- 返回顶部 -->
 <default m-name="backTop" m-top="20" is-show="{{backTopShow}}"></default>
@@ -8,7 +6,6 @@
 <view hidden="{{isLoginPopHide}}">
     <login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
 </view>
-
 
 <!------------------ 头部模块_Start ------------------>
 <view class='index_mdl01'>

@@ -10,16 +10,16 @@
         <view class='status'>{{item.statusName}}</view>
         <view class='tit'>{{item.couponName}}</view>
         <view class='get_time'>{{item.getTimeTxt}}</view>
-        <view class='mf_txt' wx:if="{{item.couponType == 3}}">{{langData.free}}</view>
+        <view class='mf_txt' wx:if="{{item.couponType == 3}}">{{langData.free[lang]}}</view>
         <view class='yh_txt' wx:if="{{item.couponType != 3}}">
             <view class='num' style="{{langType=='en'?'font-size:30rpx;':''}}">{{item.discountPrice}}</view>
             <view class='tip'>{{item.discountSumPrice}}</view>
         </view>
         <view class='jd_box'> <view class='jd_bar' style='width:{{item.jdNum}}%'></view> </view>
-        <view class='jd_txt' wx:if="{{langType=='zh'}}">{{langData.yqText}} <text>{{item.jdNum}}%</text></view>
-        <view class='jd_txt' wx:if="{{langType=='en'}}"><text>{{item.jdNum}}%</text> {{langData.yqText}}</view>
+        <view class='jd_txt' wx:if="{{langType=='zh'}}">{{langData.yqText[lang]}} <text>{{item.jdNum}}%</text></view>
+        <view class='jd_txt' wx:if="{{langType=='en'}}"><text>{{item.jdNum}}%</text> {{langData.yqText[lang]}}</view>
         <view class='use_time'><icon class='icons ico_time'></icon>{{item.useTimeText}}</view>
-        <view class='get_btn' bindtap='getCouponFn' data-id="{{item.couponId}}" data-index="{{index}}">{{langData.lqBtn}}</view>
+        <view class='get_btn' bindtap='getCouponFn' data-id="{{item.couponId}}" data-index="{{index}}">{{langData.lqBtn[lang]}}</view>
 
     </view>
 
@@ -32,7 +32,7 @@
 <navigator 
     url='/pages/coupon/my-coupon-list/my-coupon-list' 
     class='my_coupon_btn' hover-class='none'
->{{langData.myCouponBtn}}</navigator>
+>{{langData.myCouponBtn[lang]}}</navigator>
 
 <!-- 返回首页按钮 -->
 <navigator wx:if="{{isIndexBtnShow}}" class='index_btn'  url='/pages/index/index' hover-class='none' open-type='switchTab'>
@@ -42,11 +42,14 @@
 <!-- 优惠券弹窗 -->
 <view class='mask_bg pop_show' hidden="{{!coupopPopIsShow}}">
     <view class='mask_bg_ctn' style='vertical-align:top;'>
-        <view class='coupon_pop' style='background:url({{domainUrl}}/images/coupon/layer_bg.png) no-repeat; background-size:100% auto;'>
-            <view class='title'>{{langData.lqSuccess}}</view>
-            <text class='txt'>{{langData.popText1}}
-            {{langData.popText2}}</text>
-            <navigator url='/pages/coupon/my-coupon-list/my-coupon-list' class='btn'>{{langData.popUseBtn}}</navigator>
+        <view 
+            class='coupon_pop' 
+            style='background:url({{domainUrl}}/images/coupon/layer_bg.png) no-repeat; background-size:100% auto;'
+        >
+            <view class='title'>{{langData.lqSuccess[lang]}}</view>
+            <text class='txt'>{{langData.popText1[lang]}}
+            {{langData.popText2[lang]}}</text>
+            <navigator url='/pages/coupon/my-coupon-list/my-coupon-list' class='btn'>{{langData.popUseBtn[lang]}}</navigator>
             <view class='close_btn' bindtap="closeCoupopPop"><icon class='icons ico_close'></icon></view>
         </view>
     </view>

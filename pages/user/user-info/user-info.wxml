@@ -73,9 +73,7 @@
     <view class='mask_bg_ctn'>
         <view class='pop_mdl'>
             <view class='h3'>{{langData.outTipTitle[lang]}}</view>
-            <view class='alert'>{{langData.outTipAlert[lang]}}
-                <view>{{langData.outTipAlert2[lang]}}</view>
-            </view>
+            <view class='alert'><text>{{langData.outTipAlert[lang]}}</text></view>
             <view class='btm_btn clearfix'>
                 <view class='btn' bindtap="outPopFn">{{langData.public.callOffBtn[lang]}}</view>
                 <view class='btn' bindtap='outLoginFn'>{{langData.public.confirmBtn[lang]}}</view>

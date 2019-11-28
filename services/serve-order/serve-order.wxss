@@ -29,8 +29,11 @@ page{background:#f7f7f7; padding-bottom:100rpx;}
 .confirm_btm .price{font-size:26rpx; line-height:70rpx; color:#666;}
 .confirm_btm .price .f_orange{color:#ff6000; font-size:30rpx; font-weight: bold;}
 .confirm_btm .s_blue_btn{float:right; padding:0 30rpx; min-width:260rpx; text-align: center;}
+.statement .f_blue{display:inline-block;}
 
-
-
+.text_list{max-height:600rpx; overflow: auto; padding:0 30rpx; }
+.text_list .li{margin-bottom:30rpx;}
+.text_list .li .text{display:block; font-size:28rpx; color:#333; line-height:40rpx; text-align: left; }
+.text_list .li .img{width:100%;}
 
 

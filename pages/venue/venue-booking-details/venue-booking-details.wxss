@@ -25,9 +25,8 @@ page{background:#f7f7f7;}
 
 /* 日期选择 */
 .picker_group {font-size:28rpx; line-height:50rpx;}
-.picker_group .date_txt{float:left; line-height:60rpx; color:#333; text-align: center;}
-.picker_group picker {color: #999;display: inline-block;width:180rpx;text-align: center;
-line-height:60rpx;}
+.picker_group .date_txt{float:left; line-height:60rpx; color:#333; text-align: left;}
+.picker_group .picker_time {color: #999;display: inline-block; text-align: left; line-height:60rpx;}
 
 .reserve_form .dl .dt{width:170rpx; text-align: center;}
 .reserve_form .reserve_btm{padding-bottom:15rpx; }

@@ -24,7 +24,7 @@ Page({
         isNoMoreMsg:false,   //是否没有更多消息了
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     onShow: function () {
@@ -56,6 +56,7 @@ Page({
                 return item.fromAccount != app.chatData.toUser.id
             });
             wx.setStorageSync('msgStorage', msgStorage);
+            console.log('消息缓存', app.chatData.toUser.id,wx.getStorageSync('msgStorage'))
 
             var chatList = res.concat(_this.data.chatItems);
             chatList.forEach(item => {

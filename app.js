@@ -63,8 +63,9 @@ App({
         },
 
     },
-
+    
     onLaunch: function (opt) {
+        
         
         //在globalData加入功能开关
         this.globalData.appApi = appConfig.appApi
@@ -217,7 +218,7 @@ App({
     },
 
     //重置所有刷新状态
-    resetAllReach(){    
+    resetAllReach(){   
         this.globalData.indexReach = true;
         this.globalData.foundReach = true;
         this.globalData.expertReach = true;
@@ -507,7 +508,6 @@ App({
             } else {
                 callback && callback(res);  //已经是好友
             }
-
         })
 
     },
@@ -603,6 +603,11 @@ App({
         //做缓存记录未读消息
         var msgStorage = wx.getStorageSync('msgStorage') ? wx.getStorageSync('msgStorage') : [];
         newMsgList.forEach((item, i) => {
+            if (item.fromAccount == this.chatData.fromUser.id){
+                //如果接收的信息是自己的，就忽略掉
+                return
+            }
+
             var isMsg = false;  //当前账号是否有未读消息
             msgStorage.forEach(item2 => {
                 if (item2.fromAccount == item.fromAccount) {
@@ -674,11 +679,11 @@ App({
             'signType': 'MD5',
             'paySign': payData.paySign,
             'success': function (res) {
-                console.log("支付成功", res);
+                //console.log("支付成功", res);
                 callback && callback(res);
             },
             'fail': function (res) {
-                console.log("支付失败", res);
+                //console.log("支付失败", res);
                 callback && callback(res);
             }
         })

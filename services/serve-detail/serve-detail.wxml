@@ -115,5 +115,10 @@
     >{{langData.payOrderBtn[lang]}}</view>
 </view>
 
+<!------------------ 登录提示弹窗 ------------------>
+<view hidden="{{isLoginPopHide}}">
+    <login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
+</view>
+
 
 

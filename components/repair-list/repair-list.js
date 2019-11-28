@@ -16,20 +16,12 @@ Component({
             }
         },
 
-        // lang: { //语言数据改变
-        //     type: String,
-        //     observer: function (newVal, oldVal, changedPath) {  //动态改变属性时执行
-        //         //设置语言,判断是否切换语言
-        //         app.loadLangFn(this, 'cpRepairList');
-        //     }
-        // },
-
         reachData: {
             type: Number, //类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
             observer: function (newVal, oldVal, changedPath) {
                 if (this.data.isFirst) {
                     this.setData({ isFirst: false })
-                    app.loadLangFn(this, 'cpRepairList');
+                    app.loadLangNewFn(this, 'cpRepairList');
                 }
                 //随机数大于1：刷新。小于1：上拉刷新
                 if (newVal > 1) {
@@ -148,11 +140,14 @@ Component({
         //删除报修
         removeRepairFn(e) {
             var _this = this;
+            var langData = this.data.langData
+            var lang = this.data.lang
+
             var formId = e.detail.formId;
             var repairId = _this.data.listInfo.list[_this.data.repairIndex].repairId;
             app.getFormIdFn(formId, () => {
                 app.requestFn({
-                    loadTitle: _this.data.langData.public.deleteTip,
+                    loadTitle: langData.public.deleteTip[lang],
                     url: `/estateRepair/cancel`,
                     header: 'application/x-www-form-urlencoded',
                     data: {
@@ -165,7 +160,7 @@ Component({
                         list.splice(_this.data.repairIndex, 1); //手动删除该条数据，避免重新加载接口
                         _this.setData({ ['listInfo.list']: list });
                         _this.closeTipPop();  //关闭弹窗
-                        wx.showToast({ title: _this.data.langData.callOffRepair, icon: 'success', duration: 2000 });
+                        wx.showToast({ title: langData.callOffRepair[lang], icon: 'success', duration: 2000 });
                     }
                 });
             })
@@ -175,18 +170,21 @@ Component({
         //评分
         starChangeFn(e) {
             var star = e.currentTarget.dataset.star;
-            this.setData({ starScore: star  });
+            this.setData({ starScore: star });
         },
         
         //提交评分
         starRepairFn(e) {
             var _this = this;
+            var langData = this.data.langData
+            var lang = this.data.lang
+
             var formId = e.detail.formId;
             var repairId = _this.data.listInfo.list[_this.data.repairIndex].repairId;
             var starScore = _this.data.starScore;
             app.getFormIdFn(formId, () => {
                 app.requestFn({
-                    loadTitle: _this.data.langData.public.submit,
+                    loadTitle: langData.public.submit[lang],
                     url: `/estateRepair/star`,
                     header: 'application/x-www-form-urlencoded',
                     data: {
@@ -200,7 +198,7 @@ Component({
                         this.setData({ ['listInfo.pageNum']: 1 });
                         _this.getListInfo(true); //更新组件列表信息
                         _this.closeTipPop();
-                        wx.showToast({ title: _this.data.langData.public.scoredTip, icon: 'success', duration: 2000 });
+                        wx.showToast({ title: langData.public.scoredTip[lang], icon: 'success', duration: 2000 });
                     }
                 });
             });

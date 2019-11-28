@@ -214,7 +214,7 @@ Page({
         var _this = this;
         app.requestFn({
             url: '/serviceSupplier/recoList',
-            data: { num: 2 },
+            data: { num: 20 },
             success: (res) => {
                 //console.log('服务商列表：',res.data)
                 var supplierList = res.data.data;

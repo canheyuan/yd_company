@@ -13,7 +13,7 @@ Page({
         timeValue: null,  //选择的时间
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
 
     },
 
@@ -21,8 +21,8 @@ Page({
     onLoad: function (options) {
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'visitor', (res) => {
-            wx.setNavigationBarTitle({ title: res.visitorAppointmentTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'visitor', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.visitorAppointmentTitle[lang] });  //设置当前页面的title
         });
 
         this.getVisitorInfoFn();
@@ -40,7 +40,9 @@ Page({
             url: `/visitorReservation/initInfo`,
             success: (res) => {
                 var datas = res.data.data;
-                datas.address = regionFn.regionData(datas.provinceId) + regionFn.regionData(datas.cityId) + (datas.address ? datas.address : ''); //拼地址
+                datas.address = regionFn.regionData(datas.provinceId) + 
+                                regionFn.regionData(datas.cityId) + 
+                                (datas.address ? datas.address : ''); //拼地址
                 datas.roomList = [];  //将对象的房间转为数组，方便引用
                 Object.keys(datas.rooms).forEach(key => {
                     datas.roomList.push({ roomId: key, roomName: datas.rooms[key] });
@@ -53,28 +55,29 @@ Page({
 
     //提交预约
     submitFn(e) {
-        var langData = this.data.langData;
+        var langData = this.data.langData
+        var lang = this.data.lang
         var visitorData = this.data.visitorData;
         var formDatas = e.detail.value;
 
         if (formDatas.visitorName == '') {
-            wx.showToast({ title: langData.vNameTip, icon: 'none', duration: 2000 });
+            wx.showToast({ title: langData.vNameTip[lang], icon: 'none', duration: 2000 });
             return;
         }
         if (!commonFn.phoneregFn(formDatas.visitorPhone)) {
-            wx.showToast({ title: langData.vPhoneTip, icon: 'none', duration: 2000 });
+            wx.showToast({ title: langData.vPhoneTip[lang], icon: 'none', duration: 2000 });
             return;
         }
         if (!this.data.roomIndex) {
-            wx.showToast({ title: langData.vFloorTip, icon: 'none', duration: 2000 });
+            wx.showToast({ title: langData.vFloorTip[lang], icon: 'none', duration: 2000 });
             return;
         }
         if (!this.data.dateValue) {
-            wx.showToast({ title: langData.vDateTip, icon: 'none', duration: 2000 });
+            wx.showToast({ title: langData.vDateTip[lang], icon: 'none', duration: 2000 });
             return;
         }
         if (!this.data.timeValue) {
-            wx.showToast({ title: langData.vTimeTip, icon: 'none', duration: 2000 });
+            wx.showToast({ title: langData.vTimeTip[lang], icon: 'none', duration: 2000 });
             return;
         }
 
@@ -88,7 +91,7 @@ Page({
             header: 'application/x-www-form-urlencoded',
             method: "POST",
             success: (res) => {
-                console.log("提交预约成功：", res);
+                //console.log("提交预约成功：", res);
                 wx.navigateTo({ url: '/visitor/visitor-success/visitor-success?id=' + res.data.data }); //跳转成功页
             }
         });

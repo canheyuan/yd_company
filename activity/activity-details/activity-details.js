@@ -6,9 +6,14 @@ var WxParse = require('../../wxParse/wxParse.js');
 Page({
     data: {
         domainUrl: app.globalData.domainUrl,
-        isIndexBtnShow:false,
-        detailsData: null,  //数据
+
+        isIndexBtnShow:false,   //返回首页按钮是否显示
+        backTopShow:false,  //返回顶部按钮是否显示
+        
+        detailData: null,  //数据信息
         hasUserInfo: true, //是否有用户信息
+        scrollToView:'',  //定位到页面某个位置，传元素id值
+        discussReach:1,    //是否刷新评论列表
 
         langData: null,  //语言数据
         lang: '',    //语言类型
@@ -27,8 +32,7 @@ Page({
             wx.setNavigationBarTitle({ title: res.detailTitle[lang] });  //设置当前页面的title
         });
 
-        this.getActivityInfo(options.id); //获取活动信息
-        //this.getActivityInfo('5c22e208829a7cbea64e0ffcc36b37bc')
+        this.getDetailFn(options.id); //获取活动信息
     },
 
     //点击报名提示弹窗
@@ -41,24 +45,38 @@ Page({
             app.getFormIdFn(formId, () => {
                 wx.navigateTo({ url: url });
             })
-            
         }
     },
 
-    //点击评论提示弹窗
-    loginTipShow2(e) {
-        if (!app.globalData.isLogin) {
-            this.setData({ hasUserInfo: false });
-        }
+    //定位到评论区域
+    scrollDiscussFn(e){
+        this.setData({ scrollToView: 'discuss-list' })
     },
 
-    //关闭登录提示弹窗
-    closePopFn() {
-        this.setData({ hasUserInfo: true });
+    //上拉加载更多评论
+    loadMoreFn(e){
+        this.setData({ discussReach:Math.random() })
+    },
+
+    //下拉刷新
+    onPullDownRefresh: function () {
+        this.getDetailFn(this.data.detailData.activityId);
+        this.setData({ discussReach: Math.random() + 1 })
+        wx.stopPullDownRefresh(); //下拉刷新后页面上移
+    },
+
+    //监听scroll-view内容滚动判断是否显示返回顶部按钮
+    scrollFn(e) {
+        console.log('监听scroll-view内容滚动', e.detail)
+        if (e.detail.scrollTop > 800 && !this.data.backTopShow) {
+            this.setData({ backTopShow: true });
+        } else if (e.detail.scrollTop < 800 && this.data.backTopShow) {
+            this.setData({ backTopShow: false });
+        }
     },
 
     //获取互动详情信息
-    getActivityInfo(id) {
+    getDetailFn(id) {
         var _this = this;
         var langData = this.data.langData;
         var lang = this.data.lang
@@ -99,7 +117,7 @@ Page({
                 detailData.endTime = commonFn.getDate(detailData.endTime).substring(0, 16);  //结束时间戳
 
                 
-                this.setData({ detailsData: detailData });
+                this.setData({ detailData: detailData });
 
                 WxParse.wxParse('rule', 'html', detailData.rule, _this, 0);
                 WxParse.wxParse('tips', 'html', detailData.tips, _this, 0);

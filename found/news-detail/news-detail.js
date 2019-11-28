@@ -5,12 +5,13 @@ const app = getApp();
 Page({
     data: {
         domainUrl: app.globalData.domainUrl,
-        newsData: null,  //数据
+        detailData: null,  //数据
         newsId: "",  //新闻列表对应ID
+        discussReach:1,
 
         isLoginPopHide:true,
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     onLoad: function (options) {
@@ -24,54 +25,44 @@ Page({
         });
 
         this.setData({ newsId: options.id });
-        this.getNewsInfo(options.id);
-       
+        this.getDetailFn(options.id);
     },
 
     //获取新闻信息
-    getNewsInfo(newsId) {
+    getDetailFn(newsId) {
         var _this = this;
         app.requestFn({
             url: `/news/detail/${newsId}`,
             success: (res) => {
-                console.log("新闻详情页：", res.data.data);
-                var newsData = res.data.data;
-                newsData.publishTime = commonFn.getDate(newsData.publishTime).substr(0, 16);
-                WxParse.wxParse('content', 'html', newsData.content, _this, 0); //富文本转换
-                _this.setData({ newsData: newsData });
+                //console.log("新闻详情页：", res.data.data);
+                var detailData = res.data.data;
+                detailData.publishTime = commonFn.getDate(detailData.publishTime).substr(0, 16);
+                WxParse.wxParse('content', 'html', detailData.content, _this, 0); //富文本转换
+                _this.setData({ detailData: detailData });
             }
         });
     },
 
-    //滚动到评论区域
-    scrollToDoFn(e) {
-        wx.createSelectorQuery().select('#discuss_ctn').fields({
-            rect: true
-        }, function (res) {
-            wx.pageScrollTo({ scrollTop: res.top });
-        }).exec()
+    //定位到评论区域
+    scrollDiscussFn(e) {
+        this.setData({ scrollToView: 'discuss-list' })
     },
 
-    //关闭登录提示弹窗
-    closePopFn() {
-        this.setData({ isLoginPopHide: true });
-    },
-
-    // //点击评论提示弹窗
-    loginTipShow2(e) {
-        if (!app.globalData.isLogin) {
-            this.setData({ isLoginPopHide: false });
-        }
+    //上拉加载更多评论
+    loadMoreFn(e) {
+        this.setData({ discussReach: Math.random() })
     },
 
     //下拉刷新
     onPullDownRefresh: function () {
-        this.getNewsInfo(this.data.newsId);
+        this.getDetailFn(this.data.newsId);
+        this.setData({ discussReach: Math.random()+1 })
         wx.stopPullDownRefresh(); //下拉刷新后页面上移
     },
 
-    //监听滚动判断是否显示返回顶部按钮
-    onPageScroll(e) {
+    //监听scroll-view内容滚动判断是否显示返回顶部按钮
+    scrollFn(e) {
+        console.log('监听scroll-view内容滚动',e.detail)
         if (e.scrollTop > 800 && !this.data.backTopShow) {
             this.setData({ backTopShow: true });
         } else if (e.scrollTop < 800 && this.data.backTopShow) {
@@ -81,6 +72,6 @@ Page({
 
     //转发
     onShareAppMessage: function () {
-
+        console.log('share:', app.globalData.foundReach)
     }
 })

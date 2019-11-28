@@ -17,7 +17,7 @@ Component({
     attached() {
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'cpLoginTip');
+        app.loadLangNewFn(this, 'cpLoginTip');
 
         this.setData({
             closeBtnShow: this.properties.closeBtnShow ? this.properties.closeBtnShow : false
@@ -33,15 +33,17 @@ Component({
 
         //获取用户信息
         getUserInfoFn(e) {
-            this.closePopFn();
-            wx.showLoading({ title: this.data.langData.public.loadingTip, mask: true });
+             //console.log("组件获取用户信息：", e.detail);
             var _this = this;
-            console.log("组件获取用户信息：", e.detail);
+            var langData = this.data.langData
+            var lang = this.data.lang
+
+            this.closePopFn();
+            wx.showLoading({ title: langData.public.loadingTip[lang], mask: true });
             wx.removeStorageSync('userInfo'); //清除之前缓存
             var page = e.currentTarget.dataset.page; //跳转页面
 
             app.getWxLoginInfo(function () {
-
                 var gotoUrl = '';
                 if (page == 'login') {
                     gotoUrl = '/pages/common/login/login'

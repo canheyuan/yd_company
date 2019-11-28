@@ -66,6 +66,7 @@ Page({
 
     //刷新
     reachFn(){
+        
         var _this = this;
         var langIndex = wx.getStorageSync('langtype') == 'en' ? 1 : 0;
         this.setData({ ['pickerLang.index']: langIndex });
@@ -118,8 +119,8 @@ Page({
         app.globalData.lang = langType
         wx.setStorageSync('langtype', langType);
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'userIndex', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+        app.loadLangNewFn(this, 'userIndex', (res,lang) => {
+            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
             this.menuListFn();
         });
 

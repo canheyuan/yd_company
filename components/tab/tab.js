@@ -13,13 +13,13 @@ Component({
     langChange:{
       type:String,
       observer: function(newVal , oldVal ,changedPath){
-        app.loadLangFn(this, 'cpTab', (res) => {
+          app.loadLangNewFn(this, 'cpTab', (res,lang) => {
           this.setData({
             tagList: [
-                { title: res.menuText1, link: '/pages/index/index', icoClass: 'ico01' },
-                { title: res.menuText2, link: '/pages/menu-tabs/found-index/found-index', icoClass: 'ico02' },
-                { title: res.menuText3, link: '/pages/menu-tabs/serve-index/serve-index', icoClass: 'ico03' },
-                { title: res.menuText4, link: '/pages/menu-tabs/user-index/user-index', icoClass: 'ico04' }
+                { title: res.menuText1[lang], link: '/pages/index/index', icoClass: 'ico01' },
+                { title: res.menuText2[lang], link: '/pages/menu-tabs/found-index/found-index', icoClass: 'ico02' },
+                { title: res.menuText3[lang], link: '/pages/menu-tabs/serve-index/serve-index', icoClass: 'ico03' },
+                { title: res.menuText4[lang], link: '/pages/menu-tabs/user-index/user-index', icoClass: 'ico04' }
             ]
           })
         });

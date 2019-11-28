@@ -7,7 +7,7 @@ Page({
         langData: null,  //语言数据
         lang: '',    //语言类型
         detailData:null,
-
+        isLoginPopHide:true,    //登录提示是否隐藏
         //regionName:'请选择'
     },
 
@@ -17,9 +17,9 @@ Page({
         app.loadLangNewFn(this, 'serve', (res, lang) => {
             
         });
-
         this.getDetailFn(options.id)
     },
+
 
     //获取详情
     getDetailFn(id) {
@@ -27,7 +27,7 @@ Page({
         app.requestFn({
             url: `/serviceInfo/detail/${id}`,
             success: (res) => {
-                console.log('服务详情：',res.data)
+                //console.log('服务详情：',res.data)
                 var detailData = res.data.data;
                 detailData.supplier.star = parseInt(detailData.supplier.star);
                 WxParse.wxParse('description', 'html', detailData.description, _this, 0);
@@ -47,9 +47,19 @@ Page({
 
     //底部按钮跳转
     gotoUrlFn(e){
+
+        if(!app.globalData.isLogin){
+            this.setData({ isLoginPopHide :false })
+            return;
+        }
+
         wx.setStorageSync('serveDetail', this.data.detailData); //设置缓存用户信息
         var url = e.currentTarget.dataset.url;
         wx.navigateTo({ url: url })
+    },
+
+    closePopFn(){
+        this.setData({ isLoginPopHide: true })
     },
 
     //页面相关事件处理函数--监听用户下拉动作

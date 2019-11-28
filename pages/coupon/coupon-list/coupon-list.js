@@ -21,8 +21,8 @@ Page({
         }
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'coupon', (res) => {
-            wx.setNavigationBarTitle({ title: res.listTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'coupon', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.listTitle[lang] });  //设置当前页面的title
         });
 
         this.getListInfo(true);
@@ -36,7 +36,8 @@ Page({
     //获取列表数据
     getListInfo(isReach) {
         var _this = this;
-        var langData = this.data.langData;
+        var langData = this.data.langData
+        var lang = this.data.lang
         listFn.listPage({
             url: `/coupon/list`,
             data:{
@@ -63,53 +64,53 @@ Page({
 
                     if (listItem.couponType == 1) {
                         var discountArr = listItem.discountText.split(',');
-                        listItem.discountPrice = discountArr[1] + langData.public.yuanText;
-                        listItem.discountSumPrice = discountArr[0] > 0 ? `${langData.manText}${discountArr[0]}${langData.text1}` : langData.text3;
+                        listItem.discountPrice = discountArr[1] + langData.public.yuanText[lang];
+                        listItem.discountSumPrice = discountArr[0] > 0 ? `${langData.manText[lang]}${discountArr[0]}${langData.text1[lang]}` : langData.text3[lang];
                     } else if (listItem.couponType == 2) {
                         var discountArr = listItem.discountText.split(',');
                         if(_this.data.langType=='en'){
-                            listItem.discountPrice = parseInt(10 - discountArr[1])*10 + langData.public.zheText;
+                            listItem.discountPrice = parseInt(10 - discountArr[1]) * 10 + langData.public.zheText[lang];
                         }else{
-                            listItem.discountPrice = discountArr[1] + langData.public.zheText;
+                            listItem.discountPrice = discountArr[1] + langData.public.zheText[lang];
                         }
                         
-                        listItem.discountSumPrice = discountArr[0] > 0 ? `${langData.manText}${discountArr[0]}${langData.text2}` : langData.text3;
+                        listItem.discountSumPrice = discountArr[0] > 0 ? `${langData.manText[lang]}${discountArr[0]}${langData.text2[lang]}` : langData.text3[lang];
                     }
 
                     if (listItem.useTimeType == 1) {
-                        listItem.useTimeText = `${langData.validTime}：${listItem.useStart} ${langData.public.toText} ${listItem.useEnd}`;
+                        listItem.useTimeText = `${langData.validTime[lang]}：${listItem.useStart} ${langData.public.toText[lang]} ${listItem.useEnd}`;
                     } else {
-                        listItem.useTimeText = `${langData.validTime}：${langData.text5}${listItem.usableDay}${langData.text6}`;
+                        listItem.useTimeText = `${langData.validTime[lang]}：${langData.text5[lang]}${listItem.usableDay}${langData.text6[lang]}`;
                     }
 
 
                     switch (listItem.status) {
                         case 1:
                             listItem.statusClass = '';
-                            listItem.statusName = langData.status1;
-                            listItem.getTimeTxt = langData.startTime + listItem.receiveStart.slice(5, 16) + langData.text7;
+                            listItem.statusName = langData.status1[lang];
+                            listItem.getTimeTxt = langData.startTime[lang] + listItem.receiveStart.slice(0, 16) + langData.text7[lang];
                             break;
                         case 2:
                             listItem.statusClass = 'start';
-                            listItem.statusName = langData.status2;
-                            listItem.getTimeTxt = langData.endTime + listItem.receiveEnd.slice(5, 16);
+                            listItem.statusName = langData.status2[lang]
+                            listItem.getTimeTxt = langData.endTime[lang] + listItem.receiveEnd.slice(0, 16)
                             break;
                         case 3:
                             listItem.statusClass = 'end';
-                            listItem.statusName = langData.status3;
-                            listItem.getTimeTxt = langData.endTime + listItem.receiveEnd.slice(5, 16);
+                            listItem.statusName = langData.status3[lang]
+                            listItem.getTimeTxt = langData.endTime[lang] + listItem.receiveEnd.slice(0, 16)
                             break;
                         case 4:
                             listItem.statusClass = 'end';
-                            listItem.statusName = langData.status4;
-                            listItem.getTimeTxt = langData.pastDue;
+                            listItem.statusName = langData.status4[lang]
+                            listItem.getTimeTxt = langData.pastDue[lang]
                             break;
                     }
                 }
                 return listItem;
             },
             success: () => {
-                console.log("优惠券接口：", _this.data.listInfo);
+                //console.log("优惠券接口：", _this.data.listInfo);
             }
 
         });
@@ -127,6 +128,13 @@ Page({
                 _this.getListInfo(isReach);
             }
         });
+    },
+
+    //下拉刷新
+    onPullDownRefresh: function () {
+        this.setData({ ['listInfo.pageNum'] :1 })
+        this.getListInfo(true);
+        wx.stopPullDownRefresh(); //下拉刷新后页面上移
     },
 
     //获取验证码
@@ -156,8 +164,9 @@ Page({
 
     //关闭弹窗
     closeCoupopPop() {
-        this.setData({
-            coupopPopIsShow: false
-        })
+        this.setData({ coupopPopIsShow: false })
     },
+
+    //转发
+    onShareAppMessage: function () { },
 })

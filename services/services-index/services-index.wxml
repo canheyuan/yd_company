@@ -10,7 +10,7 @@
     <!-- 推荐 -->
     <view class='recommend_mdl'>
         <view class='serve_tit'>
-            <navigator class='more' url='/services/services-classify/services-classify?tag=0'>{{langData.moreBtn}}</navigator>
+            <navigator class='more' url='/services/services-classify/services-classify?tag=0'>{{langData.moreBtn[lang]}}</navigator>
             <view class='h3'>{{recommendData.name}}</view>
         </view>
         <view class='recommend_list box_shadow'>
@@ -38,7 +38,7 @@
             <navigator 
                 class='more' 
                 url='/services/services-classify/services-classify?tag={{serveIndex + 1}}'
-            >{{langData.moreBtn}}</navigator>
+            >{{langData.moreBtn[lang]}}</navigator>
             <view class='h3'>{{serveItem.name}}</view>
         </view>
         <view class='serve_list box_shadow'>

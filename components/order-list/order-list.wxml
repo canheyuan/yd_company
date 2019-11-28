@@ -16,16 +16,16 @@
 
       <!-- 未支付-租金 -->
       <view class='li' bindtap="gotoDetailsFn" data-id="{{item.billId}}" wx:if="{{item.status==2}}">
-        <view class='label l_purple'>{{langData.orderName}}</view>
+        <view class='label l_purple'>{{langData.orderName[lang]}}</view>
 
         <view class='info'>
           <view class='info_r'>
             <view class='price'>￥ {{item.totalAmount}}</view>
-            <view class='btn'>{{langData.payBtn}}</view>
+            <view class='btn'>{{langData.payBtn[lang]}}</view>
           </view>
           <view class='info_l'>
-            <view class='h3'>{{item.month}}{{langData.orderText1}}</view>
-            <!-- <view class='p'>{{langData.payee}}：广州园叮科技有限公司</view> -->
+            <view class='h3'>{{item.month}}{{langData.orderText1[lang]}}</view>
+            <!-- <view class='p'>{{langData.payee[lang]}}：广州园叮科技有限公司</view> -->
             <view class='ico_txt'><icon class='icons ico_time'></icon>{{item.feePeriod}}</view>
           </view>
         </view>
@@ -33,15 +33,15 @@
 
       <!-- 未开票 -->
       <view class='li fapiao_li' bindtap="gotoDetailsFn" data-id="{{item.billId}}" wx:if="{{item.status==3}}">
-        <view class='label l_purple'>{{langData.orderName}}</view>
+        <view class='label l_purple'>{{langData.orderName[lang]}}</view>
         <view class='info'>
           <view class='info_r'>
            <view class='price'>￥ {{item.totalAmount}}</view>
             <!-- <view class='btn'>我要开票</view> -->
           </view>
           <view class='info_l'>
-            <view class='h3'>{{item.month}}{{langData.orderText1}}</view>
-            <!-- <view class='p'>{{langData.payee}}：广州园叮科技有限公司</view> -->
+            <view class='h3'>{{item.month}}{{langData.orderText1[lang]}}</view>
+            <!-- <view class='p'>{{langData.payee[lang]}}：广州园叮科技有限公司</view> -->
             <view class='ico_txt'><icon class='icons ico_time'></icon>{{item.feePeriod}}</view>
           </view>
         </view>

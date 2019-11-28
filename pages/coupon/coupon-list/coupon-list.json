@@ -1,6 +1,4 @@
 {
-  "navigationBarTitleText": "",
-  "usingComponents": {
-    "list-nothing": "/components/result-nothing/result-nothing"
-  }
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark"
 }

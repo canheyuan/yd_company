@@ -20,8 +20,8 @@ Page({
         wx.setStorageSync('backUrl', backUrl)
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'services', (res) => {
-            wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+        app.loadLangNewFn(this, 'services', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
         })
 
         this.setData({ serviceId: options.id })
@@ -72,6 +72,8 @@ Page({
 
     //跳转到聊天窗口
     gotoChatFn(imId, avatar) {
+        var langData = this.data.langData
+        var lang = this.data.lang
         //判断是否有登陆
         if (!app.globalData.isLogin) {
             this.setData({ isLoginPopHide: false });
@@ -80,7 +82,7 @@ Page({
         var friendData = {
             id: imId,
             faceUrl: avatar,
-            nick: this.data.langData.public.service
+            nick: langData.public.service[lang]
         };
         friendData = this.setStorage(friendData);
         app.chatData.toUser = friendData;
@@ -92,6 +94,9 @@ Page({
 
     //判断是否发送消息，且设置缓存
     setStorage(friendData) {
+        var langData = this.data.langData
+        var lang = this.data.lang
+
         var chatMessage = wx.getStorageSync('chatMessage') ? wx.getStorageSync('chatMessage') : [];
         var loginName = app.globalData.loginInfo.loginName;
         var article_id = this.data.serviceId;
@@ -107,7 +112,7 @@ Page({
             }
         });
         if (!chat_time || (chat_time + 24 * 60 * 60 * 1000) < nowTime) {
-            friendData['default_msg'] = this.data.langData.public.consultationTip + this.data.servicesIntro.title;
+            friendData['default_msg'] = langData.public.consultationTip[lang] + this.data.servicesIntro.title;
         }
         if (!b) {
             chatMessage.push({

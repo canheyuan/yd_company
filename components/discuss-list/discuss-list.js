@@ -9,14 +9,6 @@ Component({
     properties: {
         targetPage: String, //目标页面
 
-        lang: { //语言数据改变
-            type: String,
-            observer: function (newVal, oldVal, changedPath) {  //动态改变属性时执行
-                //设置语言,判断是否切换语言
-                app.loadLangFn(this, 'cpDiscussList');
-            }
-        },
-
         //是否已收藏
         isCollected: {
             type: String,
@@ -24,32 +16,34 @@ Component({
                 this.setData({ isCollect: newVal });
             }
         },
+        detailId: String,   //详情页id
 
-        //评论接口需要的id
-        detailId: {
-            type: String, 
+        reachData: {
+            type: Number, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
             observer: function (newVal, oldVal, changedPath) {
-                if (newVal) {
-                    this.setData({ 
-                        ['discussInfo.pageNum'] : 1,
-                        detailId: newVal
-                    });
-                    this.getDiscussList(true);
+                if (this.data.isFirst) {
+                    this.setData({ isFirst: false })
+                    //设置语言,判断是否切换语言
+                    app.loadLangNewFn(this, 'cpDiscussList');
                 }
+
+                //随机数大于1：刷新。小于1：上拉刷新
+                if (newVal > 1) {
+                    this.setData({ ['discussInfo.pageNum']: 1 });
+                };
+                this.loadMoreListFn();
             }
         },
-        
     },
 
     //组件的初始数据
     data: {
         domainUrl: app.globalData.domainUrl,
+        isFirst:true,
          //评论列表数据
         discussInfo: {
             pageSize:20
         },  
-
-        detailId: "",   //接口ID
         apiData:{
             //活动(键值名称和targetPage接受的名称一致)
             activity: {
@@ -77,34 +71,36 @@ Component({
         
         isCollect: null,   //是否收藏
         discussContent: '', //评论内容
-        isLoginPopHide: true
+        isLoginPopHide: true,   //登录提示弹窗是否隐藏
+        isLogin: false ,    //是否登录
+    },
+
+    attached() {
+        //获取登录状态
+        this.setData({ isLogin: app.globalData.isLogin })
     },
 
     //组件的方法列表
     methods: {
         //滚动到评论位置
-        pageScrollFn() {
-            
+        scrollDiscussFn() {
+            this.triggerEvent('scrollDiscussFn');
         },
 
-        //文本框获得焦点时
-        discussFocus(){
-            //判断是否有登陆
-            if (!app.globalData.isLogin) {
-                this.setData({ isLoginPopHide: false });
-                wx.hideKeyboard();
-                return;
-            }
+        //打开登录提示
+        loginTipShowFn(e){
+            this.setData({ isLoginPopHide: false });
         },
+
 
         //获取列表数据
-        getDiscussList(isReach) {
-            console.log('获取列表数据')
+        getListInfo(isReach) {
+            //console.log('获取列表数据')
             var _this = this;
             var targetPage = _this.properties.targetPage
             var apiActData = this.data.apiData[targetPage];
             var formData = {};
-            formData[apiActData.detailIdName] = _this.data.detailId;
+            formData[apiActData.detailIdName] = _this.properties.detailId;
             listFn.listPage({
                 isLoading: false,
                 url: apiActData.listUrl,
@@ -129,19 +125,27 @@ Component({
                     return listItem;
                 },
                 success: (res) => {
-                    console.log("评论列表：", _this.data.discussInfo);
+                    //console.log("评论列表：", _this.data.discussInfo);
                 }
             });
         },
 
+        //上拉到底部加载更多函数
+        loadMoreListFn: function () {
+            var _this = this;
+            var listInfo = this.data.discussInfo;
+            listFn.listLoadMore({
+                pageNum: listInfo.pageNum,
+                pageSize: listInfo.pageSize,
+                pageTotal: listInfo.pageTotal,
+                getListFn: (isReach) => {
+                    _this.getListInfo(isReach);
+                }
+            })
+        },
+
         //点赞/取消赞
         setlikeFn(e) {
-            //判断是否有登陆
-            if (!app.globalData.isLogin) {
-                this.setData({ isLoginPopHide: false });
-
-                return;
-            }
             var _this = this;
             var likeCode = e.currentTarget.dataset.like_code;
             var actCommId = e.currentTarget.dataset.id;
@@ -183,38 +187,35 @@ Component({
 
         //添加取消收藏活动
         collectFn() {
-            //判断是否有登陆
-            if (!app.globalData.isLogin) {
-                this.setData({ isLoginPopHide: false });
-                return;
-            }
             //添加收藏活动
             var _this = this;
+            var langData = this.data.langData
+            var lang = this.data.lang
             var targetPage = _this.properties.targetPage
             var apiActData = this.data.apiData[targetPage];
 
             if (_this.data.isCollect == 2) {
                 var formData = {};
-                formData[apiActData.detailIdName] = _this.data.detailId;
+                formData[apiActData.detailIdName] = _this.properties.detailId;
                 app.requestFn({
                     isLoading: false,
                     url: apiActData.addCollectUrl,
                     data: formData,
                     method: 'POST',
                     success: (res) => {
-                        wx.showToast({ title: _this.data.langData.collectTip, icon: 'success', duration: 2000 });
+                        wx.showToast({ title: langData.collectTip[lang], icon: 'success', duration: 2000 });
                         _this.setData({ isCollect: 1 });
                     }
                 });
 
             } else if (_this.data.isCollect == 1) {
-                //取消收藏活动
+                //取消收藏
                 app.requestFn({
                     isLoading: false,
-                    url: apiActData.delCollectUrl + _this.data.detailId,
+                    url: apiActData.delCollectUrl + _this.properties.detailId,
                     method: 'DELETE',
                     success: (res) => {
-                        wx.showToast({ title: _this.data.langData.unCollectTip, icon: 'success', duration: 2000 });
+                        wx.showToast({ title: langData.unCollectTip[lang], icon: 'success', duration: 2000 });
                         _this.setData({ isCollect: 2 });
                     }
                 });
@@ -236,7 +237,7 @@ Component({
             var formData = {
                 content: message
             };
-            formData[apiActData.detailIdName] = _this.data.detailId;
+            formData[apiActData.detailIdName] = _this.properties.detailId;
             app.msgSecCheck(message,(res)=>{
                 app.requestFn({
                     isLoading: false,
@@ -249,7 +250,8 @@ Component({
                             ['discussInfo.pageNum']: 1,
                             discussContent: ''   //重置输入框
                         });
-                        _this.getDiscussList(true);
+                        _this.getListInfo(true);
+                        _this.scrollDiscussFn();
                     }
                 });
             });

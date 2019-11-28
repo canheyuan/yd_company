@@ -2,13 +2,21 @@
 <view class='mask_bg pop_show' wx:if="{{isShow}}">
   <view class='mask_bg_ctn'>
       <view class='login_tip_mdl'>
-          <view class='close_btn icons' bindtap="closePopFn" wx:if="{{closeBtnShow}}"></view>
-          <text class='txt'>{{langData.tipText1}}</text>
-          <!-- <button class='orange_btn' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" hover-class="none">立即登录</button> -->
-          <button open-type='getUserInfo' bindgetuserinfo='getUserInfoFn' class='orange_btn' hover-class="none" data-page="login">{{langData.loginBtn}}</button>
-          <view class='btm_tip'>
-            {{langData.tipText2}}<button plain="true" open-type='getUserInfo' bindgetuserinfo='getUserInfoFn' class='a' hover-class="none" data-page="register" >{{langData.regBtn}}</button>
-          </view>
+            <view class='close_btn icons' bindtap="closePopFn" wx:if="{{closeBtnShow}}"></view>
+            <text class='txt'>{{langData.tipText1[lang]}}</text>
+            
+            <button 
+                open-type='getUserInfo' class='orange_btn' hover-class="none"
+                bindgetuserinfo='getUserInfoFn' data-page="login"
+            >{{langData.loginBtn[lang]}}</button>
+
+            <view class='btm_tip'>
+                {{langData.tipText2[lang]}}
+                <button 
+                    plain="true" open-type='getUserInfo' class='a' hover-class="none"
+                    bindgetuserinfo='getUserInfoFn' data-page="register"
+                >{{langData.regBtn[lang]}}</button>
+            </view>
       </view>
   </view>
 </view>

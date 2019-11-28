@@ -6,23 +6,17 @@ Component({
     properties: {
         targetPage: String,
 
-        lang: { //语言数据改变
-            type: String,
-            observer: function (newVal, oldVal, changedPath) {  //动态改变属性时执行
-                //设置语言,判断是否切换语言
-                app.loadLangFn(this, 'order');
-            }
-        },
+        listType: String,
 
-        listType: {
-            type: String,
-            observer: function (newVal, oldVal, changedPath) {
-                this.setData({ listType: newVal });
-            }
-        },
         reachData: {
             type: Number, // 类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
             observer: function (newVal, oldVal, changedPath) {
+
+                if (this.data.isFirst) {
+                    this.setData({ isFirst: false })
+                    app.loadLangNewFn(this, 'order');
+                }
+
                 //随机数大于1：刷新。小于1：上拉刷新
                 if (newVal > 1) {
                     this.setData({ ['listInfo.pageNum']: 1 });
@@ -35,9 +29,8 @@ Component({
     /**-------- 组件的初始数据 ---------**/
     data: {
         domainUrl: app.globalData.domainUrl,
-
+        isFirst:true,
         listInfo: {},
-        listType: '',
         period: '',
 
         langData: null,  //语言数据
@@ -59,7 +52,7 @@ Component({
             listFn.listPage({
                 url: `/bill/myBill`,
                 data: {
-                    type: _this.data.listType,  //类型，0所有 1待支付 2未开票，默认0
+                    type: _this.properties.listType,  //类型，0所有 1待支付 2未开票，默认0
                     period: _this.data.period  //收费周期 yyyy-MM
                 },
                 isReach: isReach,

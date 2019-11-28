@@ -13,7 +13,7 @@ Component({
             observer: function (newVal, oldVal, changedPath) {
                 if (this.data.isFirst){
                     this.setData({ isFirst:false })
-                    app.loadLangFn(this, 'cpActivityList');
+                    app.loadLangNewFn(this, 'cpActivityList');
                 }
                 
                 //随机数大于1：刷新。小于1：上拉刷新
@@ -56,6 +56,7 @@ Component({
         getListInfo(isReach) {
             var _this = this;
             var langData = _this.data.langData;
+            var lang = this.data.lang
             var url = '/activity/list'; //活动列表
             if (this.properties.targetPage == "collect") {
                 url = '/activityCollection/activityList';   //我的活动收藏接口
@@ -86,38 +87,38 @@ Component({
                         switch (listItem.status) {
                             case 1:
                                 listItem.statusClass = 's_purple';
-                                listItem.statusName = langData.status1;
+                                listItem.statusName = langData.status1[lang];
                                 break;
                             case 2:
                                 listItem.statusClass = 's_yellow';
                                 if (listItem.personCount == listItem.joinCount){    //判断是否报名满员
-                                    listItem.statusName = langData.fullPerson;
+                                    listItem.statusName = langData.fullPerson[lang]
                                 }else{
-                                    listItem.statusName = langData.status2;
+                                    listItem.statusName = langData.status2[lang]
                                 }
                                 break;
                             case 3:
                                 listItem.statusClass = 's_blue';
-                                listItem.statusName = langData.status3;
+                                listItem.statusName = langData.status3[lang]
                                 break;
                             case 4:
                                 listItem.statusClass = 's_blue';
-                                listItem.statusName = langData.status4;
+                                listItem.statusName = langData.status4[lang]
                                 break;
                             case 5:
                                 listItem.statusClass = 's_gray';
-                                listItem.statusName = langData.status5;
+                                listItem.statusName = langData.status5[lang]
                                 break;
                             case 6:
                                 listItem.statusClass = 's_gray';
-                                listItem.statusName = langData.status6;
+                                listItem.statusName = langData.status6[lang]
                                 break;
                         }
                     }
                     return listItem;
                 },
                 success: () => {
-                    console.log("活动接口：", _this.data.listInfo);
+                    //console.log("活动接口：", _this.data.listInfo);
                 }
 
             });

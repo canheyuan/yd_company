@@ -9,7 +9,7 @@ Page({
         domainUrl: app.globalData.domainUrl,
         moduleSwitch: app.globalData.moduleSwitch,
         isPopShow: false,  //弹窗是否显示
-        currentTagName: 'policy',  //默认显示哪个模块（policy、news、acitvity、expert）
+        currentTagName: 'expert',  //默认显示哪个模块（policy、news、acitvity、expert）
         reachData: {
             news: 1,
             activity: 1,
@@ -46,8 +46,6 @@ Page({
             }
 
         });
-
-
     },
 
     //选项卡切换

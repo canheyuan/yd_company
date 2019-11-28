@@ -5,82 +5,24 @@
 <!-- 待办事项 -->
 <block wx:if="{{listInfo.isFinish}}">
 <view class='dbsx_list' wx:if="{{listInfo.list && listInfo.list.length>0}}">
-    <block wx:for="{{listInfo.list}}" wx:key="entityId">
-        <!-- 报修 -->
-        <view 
-            class='li {{item.className}}' bindtap="goToBackLog" data-url="{{item.goUrl}}"
-        >
-            <view class='time'><text>{{item.date}}</text>{{item.time}}</view>
-            <view class='dot'><text class='dot_in'></text></view>
-            <view class='info'>
-                <view class='title'>{{item.title}}<text class='label'>{{item.labelName}}</text></view>
-                <view class='price' wx:if="{{item.remark}}">{{item.remark}}</view>
-                <view class='price' wx:if="{{item.entityType=='financebill'}}">{{langData.costText}}：￥{{item.toPay}}</view>
-                <view class='pay_status'>{{langData.pending}}</view>
-                <view class='arrow_ico icons'></view>
-            </view>
+
+    <view 
+        wx:for="{{listInfo.list}}" wx:key="entityId"
+        class='li {{item.className}}' bindtap="goToBackLog" data-url="{{item.goUrl}}"
+    >
+        <view class='time'><text>{{item.date}}</text>{{item.time}}</view>
+        <view class='dot'><text class='dot_in'></text></view>
+        <view class='info'>
+            <view class='title'>{{item.title}}<text class='label'>{{item.labelName}}</text></view>
+            <view class='price' wx:if="{{item.remark}}">{{item.remark}}</view>
+            <view class='price' wx:if="{{item.entityType=='financebill'}}">{{langData.costText[lang]}}：￥{{item.toPay}}</view>
+            <view class='pay_status'>{{langData.pending[lang]}}</view>
+            <view class='arrow_ico icons'></view>
         </view>
-
-        <!-- 物资共享 -->
-        <!-- <view 
-            wx:if="{{item.entityType=='estaterentdetail'}}" class='li li_green' 
-            bindtap="goToBackLog" data-blID='{{item.entityId}}' data-blType='{{item.entityType}}'
-        >
-            <view class='time'><text>{{item.date}}</text>{{item.time}}</view>
-            <view class='dot'><text class='dot_in'></text></view>
-            <view class='info'>
-                <view class='title'>{{item.title}}<text class='label'>物资</text></view>
-                <view class='price' wx:if="{{item.remark}}">{{item.remark}}</view>
-                <view class='pay_status'>待处理</view>
-                <view class='arrow_ico icons'></view>
-            </view>
-        </view> -->
-
-        <!-- 订单 -->
-        <!-- <view 
-            wx:if="{{item.entityType=='financebill'}}" class='li li_blue' 
-            bindtap="goToBackLog" data-blID='{{item.entityId}}' data-blType='{{item.entityType}}'
-        >
-            <view class='time'><text>{{item.date}}</text>{{item.time}}</view>
-            <view class='dot'><text class='dot_in'></text></view>
-            <view class='info'>
-                <view class='title'>{{item.title}}<text class='label'>账单</text></view>
-                <view class='price'>费用：￥{{item.toPay}}</view>
-                <view class='pay_status'>待处理</view>
-                <view class='arrow_ico icons'></view>
-            </view>
-        </view> -->
-
-        <!-- 装修 -->
-        <!-- <view 
-            wx:if="{{item.entityType=='estatedecorationbooking'}}" class='li li_purple' 
-            bindtap="goToBackLog" data-blID='{{item.entityId}}' data-blType='{{item.entityType}}'
-        >
-            <view class='time'><text>{{item.date}}</text>{{item.time}}</view>
-            <view class='dot'><text class='dot_in'></text></view>
-            <view class='info'>
-                <view class='title'>{{item.title}}<text class='label'>装修</text></view>
-                <view class='pay_status'>待处理</view>
-                <view class='arrow_ico icons'></view>
-            </view>
-        </view> -->
-
-        <!--场地预定 -->
-        <!-- <view 
-            wx:if="{{item.entityType=='chamberorder'}}" class='li li_purple' 
-            bindtap="goToBackLog" data-blID='{{item.entityId}}' data-blType='{{item.entityType}}'
-        >
-            <view class='time'><text>{{item.date}}</text>{{item.time}}</view>
-            <view class='dot'><text class='dot_in'></text></view>
-            <view class='info'>
-                <view class='title'>{{item.title}}<text class='label'>账单</text></view>
-                <view class='pay_status'>待处理</view>
-                <view class='arrow_ico icons'></view>
-            </view>
-        </view> -->
-    </block>
+    </view>
     
 </view>
+
 <!-- 底部提示文字 -->
 <view 
     class='more_tip' style="margin-top:0;"
@@ -90,7 +32,7 @@
 
 <!-- 暂无状态 -->
 <list-nothing 
-  c-name="backlog" 
-  wx:if="{{!listInfo.list.length>0 && listInfo.list  && targetPage!='index'}}"
+    c-name="backlog" 
+    wx:if="{{!listInfo.list.length>0 && listInfo.list  && targetPage!='index'}}"
 ></list-nothing>
 </block>

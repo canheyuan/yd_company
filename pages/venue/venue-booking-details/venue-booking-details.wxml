@@ -70,14 +70,14 @@
                     <!-- 时间段 -->  
                     <view class="picker_group">  
                         <picker 
-                            name="orderStart" value="{{dateUrl}} {{startTime}}" range="{{hours_start}}" 
+                            class="picker_time" name="orderStart" value="{{dateUrl}} {{startTime}}" range="{{hours_start}}" 
                             bindchange="bindTimeChange" data-type='starttime'
                         >
                             <view class="time_txt">{{startTime?startTime:langData.public.startTime[lang]}}</view>
                         </picker>
                         {{langData.public.toText[lang]}}  
                         <picker 
-                            name="orderEnd"  value="{{dateUrl}} {{endTime}}" range="{{hours_end}}"
+                            class="picker_time" name="orderEnd"  value="{{dateUrl}} {{endTime}}" range="{{hours_end}}"
                             bindchange="bindTimeChange" data-type='endtime'
                         >
                             <view class="time_txt">{{endTime?endTime:langData.public.endTime[lang]}}</view>

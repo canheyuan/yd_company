@@ -11,7 +11,7 @@
                 wx:for="{{areaList}}" wx:key="{{index}}" wx:for-item="areaList" 
                 bindtap="tagChange" data-index="{{index}}" data-id="{{areaList.areaId}}"
             >
-                {{areaList.areaName}}<text>({{areaList.areaId}})</text>
+                {{areaList.areaName}}<text class="text">({{areaList.areaId}})</text>
             </view>
         </view>
     </scroll-view>
@@ -22,13 +22,4 @@
 
 <!-- 返回顶部 -->
 <default m-name="backTop" m-top="50" is-show="{{backTopShow}}"></default>
-
-
-
-
-
-
-
-
-
 

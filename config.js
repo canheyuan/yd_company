@@ -1,6 +1,6 @@
 var configData = {
     
-    nowApp: 'xiaozhao',    //设置当前哪个小程序的配置信息
+    nowApp: 'guangfo',    //设置当前哪个小程序的配置信息
     /*---------------------------------------------------------------------------------------------
        更新某个
        各个小程序的配置字段：
@@ -31,7 +31,7 @@ var configData = {
             policy: true,  //政策模块
             complaint: true, //投诉建议模块
             visitor: true,  //访客预约
-            scanCode: true,  //扫码开门
+            scanCode: false,  //扫码开门
             repair: true,  //报修
             order: true,  //账单
             venue: true,  //场地预定
@@ -50,7 +50,7 @@ var configData = {
     //小招园叮
     xiaozhao: {
         jkUrl: 'https://demo.5iparks.com/api',       //接口正式版
-        mtjAppKey: 'cb5e07b28d',    //百度统计appKey
+        mtjAppKey: '43b1e00093',    //百度统计appKey
         appApi: {
             channel: 'cmb',  //园叮不传，小招传cmb
             aid: 'G8TDGHBTUU'   //后台获取数据的唯一标识

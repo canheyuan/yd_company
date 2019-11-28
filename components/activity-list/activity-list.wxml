@@ -1,6 +1,5 @@
 
 <view class='act_list {{listName}}'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
-    
     <view class='li'  wx:for="{{listInfo.list}}" wx:key="activity{{index}}">
         <icon class='ico_collect act' bindtap="collectPopShow" data-id="{{listInfo.activityId}}"></icon>
 
@@ -16,40 +15,51 @@
             <image class='img' src='{{item.mainImg}}' binderror="errorImgFn" data-obj="listInfo[{{index}}].mainImg"></image>
             <view class='info'>
                 <view class='h3'>{{item.activityName}}</view>      
-                <view class='ico_txt'><icon class='icons ico_time'></icon>{{item.beginTime + langData.public.toText + item.endTime}}</view>  
-                <view class='ico_txt'><icon class='icons ico_dz'></icon><text>{{item.address}}</text></view>   
+                <view class='ico_txt'>
+                    <icon class='icons ico_time'></icon>
+                    {{item.beginTime + langData.public.toText[lang] + item.endTime}}
+                </view>  
+                <view class='ico_txt'>
+                    <icon class='icons ico_dz'></icon>
+                    <text>{{item.address}}</text>
+                </view>   
             </view>
         </navigator>
 
         <view class='btm'>
+            <!-- 我要报名按钮 -->
             <form  
                 wx:if="{{item.status==2 && item.isJoined!=1}}"  report-submit="true" bindsubmit="applyBtnFn" 
                 data-url='/activity/activity-apply/activity-apply?id={{detailsData.activityId}}'
             >
-                <button class='btn {{item.status==3?"disabled":""}}' hover-class='none' form-type='submit'>{{langData.iApply}}</button>
+                <button 
+                    class='btn {{item.status==3?"disabled":""}}' hover-class='none' 
+                    form-type='submit'
+                >{{langData.iApply[lang]}}</button>
             </form>
-            <!-- <view 
-                
-                class='btn {{item.status==3?"disabled":""}}' hover-class='none'
-                bindtap="applyBtnFn" data-url="/activity/activity-apply/activity-apply?id={{item.activityId}}"
-            >
-                {{langData.iApply}}
-            </view> -->
 
+            <!-- 免费 -->
             <view class='label' wx:if='{{item.joinWay==1}}' style="width:210rpx;">
-                <icon class='icons ico_mf'></icon>{{langData.freeApply}}
+                <icon class='icons ico_mf'></icon>{{langData.freeApply[lang]}}
             </view>
+            <!-- 价格 -->
             <view class='label' wx:if='{{item.joinWay==2}}' style="width:210rpx;">
                 <icon class='icons ico_mf'></icon>
                 <text>￥{{item.price}}</text>
             </view>
+            <!-- 报名数 -->
             <view class='label' style='margin-left:40rpx;'>
                 <icon class='icons ico_bm'></icon>
-                <text>{{item.joinCount?item.joinCount:'0'}}</text>{{langData.applyText}}
+                <text>{{item.joinCount?item.joinCount:'0'}}</text>{{langData.applyText[lang]}}
             </view>
 
         </view>
-        <image wx:if="{{item.isJoined==1}}" class='status_img' src='{{domainUrl}}/images/ybm_img.png' mode='widthFix' ></image> <!-- 报名成功图标 -->
+
+        <!-- 报名成功图标 -->
+        <image
+            wx:if="{{item.isJoined==1}}" class='status_img' 
+            src='{{domainUrl}}/images/ybm_img.png' mode='widthFix' 
+        ></image> 
     </view>
 
     <view class='more_tip' wx:if="{{listInfo.tipTxt}}"><view class='txt'>{{listInfo.tipTxt}}</view></view>

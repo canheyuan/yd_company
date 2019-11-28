@@ -102,7 +102,7 @@ function pageDataFn(){
             page_title: langData.repair.page_title[lang],
             icon: '/images/icon/result_reg.png',
             title: langData.repair.title[lang],
-            des: langData.repair.des,
+            des: langData.repair.des[lang],
             details_btn: langData.repair.details_btn[lang],
             details_btn_url: '/pages/user/my-repair/my-repair',
             details_btn_type: '',

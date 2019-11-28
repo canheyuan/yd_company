@@ -61,14 +61,18 @@
         <!-- 备注信息 -->
         <view class='dl bor_no' style="padding-bottom:0;">
             <view class='dt fl_none'>{{langData.public.remark[lang]}}</view>
-            <view class='dd'>
+            <view class='dd' hidden="{{statementShow}}">
                 <textarea 
                     class="textarea" maxlength="100" name="remark"
                     placeholder="{{langData.remarkPl2[lang]}}" 
                     placeholder-class="placeholder"
                 ></textarea>
             </view>
+            <view class="dd" hidden="{{!statementShow}}">
+                <view class="textarea placeholder">{{langData.remarkPl2[lang]}}</view>
+            </view>
         </view>
+
 
         <!-- 购买数量 -->
         <view class='dl'>
@@ -84,7 +88,7 @@
        
     </view>
     <!-- 服务声明 -->
-     <view class="statement">
+     <view class="statement" bindtap="statementPopFn">
         {{langData.statementText1[lang]}}
         <text class="f_blue">{{langData.statementText2[lang]}}</text>
      </view>
@@ -105,6 +109,30 @@
     </view>
 </view>
 </form>
+
+<!-- 服务声明弹窗 -->
+<view class='mask_bg pop_show' hidden='{{!statementShow}}'>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{smData.title}}</view>
+            <view class="text_list">
+                <view class="li" wx:for="{{smData.textList}}" wx:key="*this">
+                    <text 
+                        wx:if="{{item.type=='text'}}" class="text"
+                        style="{{item.layout?'text-align:'+item.layout:''}}"
+                    >{{item.content}}</text>
+                    <image 
+                        wx:if="{{item.type=='img'}}" class="img" mode="widthFix" 
+                        src="{{item.url}}"
+                    ></image>
+                </view>
+            </view>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap='statementPopFn'>我知道了</view>
+            </view>
+        </view>
+    </view>
+</view>
 
 
 

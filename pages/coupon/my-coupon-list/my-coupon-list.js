@@ -11,15 +11,15 @@ Page({
     coupopPopIsShow: false,  //优惠券弹窗是否显示
 
       langData: null,  //语言数据
-      langType: '',    //语言类型
+      lang: '',    //语言类型
   },
 
   //生命周期函数--监听页面加载
   onLoad: function (options) {
 
       //设置语言,判断是否切换语言
-      app.loadLangFn(this, 'coupon', (res) => {
-          wx.setNavigationBarTitle({ title: res.title });  //设置当前页面的title
+      app.loadLangNewFn(this, 'coupon', (res, lang) => {
+          wx.setNavigationBarTitle({ title: res.title[lang] });  //设置当前页面的title
       });
 
     app.globalData.couponListReach = false;
@@ -65,7 +65,8 @@ Page({
   //获取列表数据
   getListInfo(isReach) {
     var _this = this;
-      var langData = this.data.langData;
+      var langData = this.data.langData
+      var lang = this.data.lang
     listFn.listPage({
       url: `/userCoupon/list`,
       data:{
@@ -92,23 +93,23 @@ Page({
           
             if (listItem.couponType == 1) {
                 var discountArr = listItem.discountText.split(',');
-                listItem.discountPrice = discountArr[1] + langData.public.yuanText;
-                listItem.discountSumPrice = discountArr[0] > 0 ? `${langData.manText}${discountArr[0]}${langData.text1}` : langData.text3;
+                listItem.discountPrice = discountArr[1] + langData.public.yuanText[lang];
+                listItem.discountSumPrice = discountArr[0] > 0 ? `${langData.manText[lang]}${discountArr[0]}${langData.text1[lang]}` : langData.text3[lang];
             } else if (listItem.couponType == 2) {
                 var discountArr = listItem.discountText.split(',');
-                listItem.discountPrice = discountArr[1] + langData.public.zheText;
-                listItem.discountSumPrice = discountArr[0] > 0 ? `${langData.manText}${discountArr[0]}${langData.text2}` : langData.text3;
+                listItem.discountPrice = discountArr[1] + langData.public.zheText[lang];
+                listItem.discountSumPrice = discountArr[0] > 0 ? `${langData.manText[lang]}${discountArr[0]}${langData.text2[lang]}` : langData.text3[lang];
             }
 
             switch (listItem.status) {
                 case 0:
-                    listItem.btnName = langData.btnName1;
+                    listItem.btnName = langData.btnName1[lang];
                     break;
                 case 1:
-                    listItem.btnName = langData.btnName2;
+                    listItem.btnName = langData.btnName2[lang];
                     break;
                 case 2:
-                    listItem.btnName = langData.btnName3;
+                    listItem.btnName = langData.btnName3[lang];
                     break;
             }
 

@@ -1,5 +1,4 @@
 @import "/app.wxss";
-
 /* 登录提示组件 */
 .login_tip_mdl{width:650rpx; margin:0 auto; position:relative; background:url(https://www.5iparks.com/static/yuanding/images/login_tip_bg.jpg) #fff no-repeat center top; background-size:100% auto; border-radius:30rpx; padding:380rpx 40rpx 60rpx; box-sizing:border-box;}
 .login_tip_mdl .txt{font-size:32rpx; color:#333; line-height:44rpx; display: block; margin-bottom:50rpx;}

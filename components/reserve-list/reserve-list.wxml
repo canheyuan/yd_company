@@ -1,30 +1,30 @@
 
 <view class='reserve_list'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
-   <navigator 
-    class='venue_info box_shadow {{listInfo.rType==3?"due":""}}' 
-    wx:for="{{listInfo.list}}" wx:key="{{index}}" wx:for-item="listInfo" 
-    url='{{listInfo.rType==3?"":"/pages/user/my-reserve-details/my-reserve-details?id=" + listInfo.id}}'
-   >
-    <!-- l_yellow、l_gray、l_blue -->
-    <view class='icons label {{listInfo.statusClass}}'>{{listInfo.statusName}}</view>
-    <view class='top'>
-      <view class='p'>{{langData.reserveBook}}：</view>
-      <view class='h3'>{{listInfo.chamberName}}</view>
-    </view>
+    <navigator 
+        class='venue_info box_shadow {{listInfo.rType==3?"due":""}}' 
+        wx:for="{{listInfo.list}}" wx:key="id"
+        url='{{item.rType==3?"":"/pages/user/my-reserve-details/my-reserve-details?id=" + item.id}}'
+    >
+        <!-- l_yellow、l_gray、l_blue -->
+        <view class='icons label {{item.statusClass}}'>{{item.statusName}}</view>
+        <view class='top'>
+            <view class='p'>{{langData.reserveBook[lang]}}：</view>
+            <view class='h3'>{{item.chamberName}}</view>
+        </view>
 
-    <view class='btm'>
-      <view class='ico_txt'><icon class='icons ico_time'></icon>{{listInfo.reserveTime}}</view>
-      <!-- <view class='ico_txt'><icon class='icons ico_per'></icon>可容纳{{listInfo.chamberName }}人</view> -->
-    </view>
-  </navigator>
-  <!-- 底部提示文字 -->
-  <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
-    <view class='txt'>{{listInfo.tipTxt}}</view>
-  </view>  
+        <view class='btm'>
+        <view class='ico_txt'><icon class='icons ico_time'></icon>{{item.reserveTime}}</view>
+        <!-- <view class='ico_txt'><icon class='icons ico_per'></icon>可容纳{{item.chamberName }}人</view> -->
+        </view>
+    </navigator>
+    <!-- 底部提示文字 -->
+    <view class='more_tip' wx:if="{{listInfo.tipTxt}}">
+        <view class='txt'>{{listInfo.tipTxt}}</view>
+    </view>  
 </view>
 
 <!-- 暂无状态 -->
 <list-nothing 
-  c-name="reserve" 
-  wx:if="{{!listInfo.list.length>0 && listInfo.list}}"
+    c-name="reserve" 
+    wx:if="{{!listInfo.list.length>0 && listInfo.list}}"
 ></list-nothing>

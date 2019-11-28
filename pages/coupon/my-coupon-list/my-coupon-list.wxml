@@ -2,9 +2,9 @@
 <!-- 选项卡切换 -->
 <view class='tag_box tag_fixed'>
   <view class='tag_list'>
-    <view class='tag_item {{currentTagName==0?"act":""}}' data-index="0" bindtap='tagChange'>{{langData.tagName1}}</view>
-    <view class='tag_item {{currentTagName==1?"act":""}}' data-index="1" bindtap='tagChange'>{{langData.tagName2}}</view>
-    <view class='tag_item {{currentTagName==2?"act":""}}' data-index="2" bindtap='tagChange'>{{langData.tagName3}}</view>
+    <view class='tag_item {{currentTagName==0?"act":""}}' data-index="0" bindtap='tagChange'>{{langData.tagName1[lang]}}</view>
+    <view class='tag_item {{currentTagName==1?"act":""}}' data-index="1" bindtap='tagChange'>{{langData.tagName2[lang]}}</view>
+    <view class='tag_item {{currentTagName==2?"act":""}}' data-index="2" bindtap='tagChange'>{{langData.tagName3[lang]}}</view>
   </view>
 </view>
 
@@ -18,13 +18,13 @@
         <view  class='click_area' bindtap='gotoDetailFn' data-id="{{item.couponCode}}"></view>
 
         <view class='tit'>{{item.couponName}}</view>
-        <view class='get_time'>{{langData.issueTime}}：{{item.issueTime}}</view>
-        <view class='mf_txt' wx:if="{{item.couponType == 3}}">{{langData.free}}</view>
+        <view class='get_time'>{{langData.issueTime[lang]}}：{{item.issueTime}}</view>
+        <view class='mf_txt' wx:if="{{item.couponType == 3}}">{{langData.free[lang]}}</view>
         <view class='yh_txt' wx:if="{{item.couponType != 3}}">
             <view class='num'>{{item.discountPrice}}</view>
             <view class='tip'>{{item.discountSumPrice}}</view>
         </view>
-        <view class='use_time'><icon class='icons ico_time'></icon>{{langData.validTime}}：{{item.useStart}}  {{langData.public.toText}}  {{item.useEnd}}</view>
+        <view class='use_time'><icon class='icons ico_time'></icon>{{langData.validTime[lang]}}：{{item.useStart}}  {{langData.public.toText[lang]}}  {{item.useEnd}}</view>
         <view class='get_btn' bindtap="{{item.status==0?'gotoEwmFn':''}}" data-id="{{item.couponCode}}">{{item.btnName}}</view>
 
     </view>

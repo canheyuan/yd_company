@@ -1,18 +1,17 @@
 <!-- 评论区 -->
 <view class='comment_box'>
-    <view class='bxnr_tit'>{{langData.discussTitle}}</view>
+    <view class='bxnr_tit'>{{langData.discussTitle[lang]}}</view>
     <view class='comment_area' wx:if="{{discussInfo.list.length>0 && discussInfo.list}}">
         <view class='comment_item'  wx:for="{{discussInfo.list}}" wx:key="discussInfo{{index}}">
             <view class='comment_head'>
                 <image 
                     src='{{item.headImg?item.headImg:domainUrl+"/images/default/df_userhead.png"}}' 
-                    binderror="errorImgFn" data-obj="discussInfo.list[{{index}}].headImg"
-                    class='img'
+                    class='img' binderror="errorImgFn" data-obj="discussInfo.list[{{index}}].headImg"
                 ></image>
             </view>
             <view class='comment_user'>
                 {{item.userName?item.userName:'游客'}}
-                <text>\n{{item.createTime}}</text>
+                <text class="txt">\n{{item.createTime}}</text>
             </view>
 
             <view 
@@ -38,19 +37,22 @@
     <view class='text_input'>
         <view class='icon'></view>
         <input 
-            placeholder="{{langData.inputTip}}" 
-            placeholder-class='placeholder' 
-            confirm-type="send" 
-            bindconfirm="addDiscussFn" bindinput='writeDiscuss' bindfocus="discussFocus"
-            value="{{discussContent}}" 
+            placeholder="{{langData.inputTip[lang]}}" placeholder-class='placeholder' 
+            confirm-type="send" value="{{discussContent}}" 
+            bindconfirm="addDiscussFn" bindinput='writeDiscuss'
         />
     </view>
-    <button class='icon_box icon_share' style="width:60rpx;" open-type='share' plain="true">{{langData.shareBtn}}</button>
-    <view 
-        class='icon_box icon_favorite {{isCollect==1?"act":""}}' bindtap='collectFn'
-        style="width:110rpx;"
-    >{{langData.collectBtn}}</view>
+    <!-- 分享按钮 -->
+    <button class='icon_box icon_share' style="width:60rpx;" open-type='share' plain="true">{{langData.shareBtn[lang]}}</button>
+
+    <!-- 收藏按钮 -->
+    <view class='icon_box icon_favorite {{isCollect==1?"act":""}}' bindtap='collectFn' style="width:110rpx;">{{langData.collectBtn[lang]}}</view>
+
+    <!-- 评论数 -->
     <view class='icon_box icon_comment' style="width:44rpx;" bindtap='scrollDiscussFn'>{{discussInfo.pageTotal?discussInfo.pageTotal:0}}</view>
+
+    <!-- 工具栏遮罩层 -->
+    <view class="login_tip_mask" bindtap="loginTipShowFn" wx:if="{{!isLogin}}"></view>
 </view>
 
 <!-- 登录提示 -->

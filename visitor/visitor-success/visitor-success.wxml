@@ -1,17 +1,17 @@
 <view class='result_page'>
-  <image class='img' src='{{domainUrl}}/images/visitor/result_img03.png' mode='widthFix'></image>
-  <text class='h3'>{{langData.visitorSuccess}}</text>
-  <view class='p'>{{langData.vDesText}}</view>
-  <view class='p' style='color:#333;'>{{detailsData.visitorName}}，{{detailsData.visitorPhone}}</view>
+    <image class='img' src='{{domainUrl}}/images/visitor/result_img03.png' mode='widthFix'></image>
+    <text class='h3'>{{langData.visitorSuccess[lang]}}</text>
+    <view class='p'>{{langData.vDesText[lang]}}</view>
+    <view class='p' style='color:#333;'>{{detailsData.visitorName}}，{{detailsData.visitorPhone}}</view>
 
-  <navigator 
-    class='check_txt' 
-    url='/visitor/visitor-appointment-detail/visitor-appointment-detail?id={{detailsData.reserveCode}}'
-  >{{langData.vInfoBtn}}</navigator>
+    <navigator 
+        class='check_txt' 
+        url='/visitor/visitor-appointment-detail/visitor-appointment-detail?id={{detailsData.reserveCode}}'
+    >{{langData.vInfoBtn[lang]}}</navigator>
 
-  <navigator 
-    class='btm_btn blue_btn' 
-    url='/pages/index/index' 
-    open-type='switchTab'
-  >{{langData.public.backIndexBtn}}</navigator>
+    <navigator 
+        class='btm_btn blue_btn' 
+        url='/pages/index/index' 
+        open-type='switchTab'
+    >{{langData.public.backIndexBtn[lang]}}</navigator>
 </view>

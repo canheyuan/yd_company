@@ -16,12 +16,12 @@ page{background:#f7f7f7;}
 
 /* 详细信息 */
 .coupon_detail{padding:140rpx 25rpx 50rpx; background:#fff; margin-top:-160rpx;}
-.coupon_ctn{margin-top:10rpx;}
+.coupon_ctn{margin:10rpx 0 0;}
 .coupon_ctn .dl{border-bottom:1rpx solid #e5e5e5; padding:20rpx 0; overflow: hidden;}
-.coupon_ctn .dl:nth-child(3){border-bottom:none;}
+.coupon_ctn .dl:last-child{border-bottom:none;}
 .coupon_ctn .dt{float:left; width:150rpx; margin-right:10rpx; line-height:44rpx; font-size:30rpx; color:#9d9d9d;}
 .coupon_ctn .dd{overflow:hidden; line-height:44rpx; font-size:30rpx; color:#333333;}
-.coupon_ctn .orange_btn{margin-top:40rpx;}
+.coupon_detail .orange_btn{margin:40rpx 40rpx 0;}
 
 /* 优惠券描述 */
 .coupon_tip{font-size:28rpx; color:#999999; line-height:46rpx; padding:40rpx 25rpx;}

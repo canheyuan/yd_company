@@ -17,8 +17,8 @@ Page({
     onLoad: function (options) {
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'visitor', (res) => {
-            wx.setNavigationBarTitle({ title: res.visitorAppointmentTitle });  //设置当前页面的title
+        app.loadLangNewFn(this, 'visitor', (res, lang) => {
+            wx.setNavigationBarTitle({ title: res.visitorAppointmentTitle[lang] });  //设置当前页面的title
         });
 
         this.getDetailFn(options.id);
@@ -27,7 +27,8 @@ Page({
 
     //获取详情信息
     getDetailFn(id) {
-        var langData = this.data.langData;
+        var langData = this.data.langData
+        var lang = this.data.lang
         var that = this;
         app.requestFn({
             url: `/visitorReservation/detail/${id}`,
@@ -35,16 +36,16 @@ Page({
                 var detailData = res.data.data;
                 switch (detailData.status) {
                     case 1:
-                        detailData.statusName = langData.statusText1;
+                        detailData.statusName = langData.statusText1[lang];
                         break;
                     case 2:
-                        detailData.statusName = langData.statusText2;
+                        detailData.statusName = langData.statusText2[lang];
                         break;
                     case 3:
-                        detailData.statusName = langData.statusText3;
+                        detailData.statusName = langData.statusText3[lang];
                         break;
                     default:
-                        detailData.statusName = langData.statusText4;
+                        detailData.statusName = langData.statusText4[lang];
                         break;
                 }
 

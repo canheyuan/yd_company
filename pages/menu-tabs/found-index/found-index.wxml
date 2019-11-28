@@ -99,7 +99,7 @@
                         bindtap="policyTag" data-key="{{item.indTypeKey}}"
                     >
                         <icon class='icons ico_tj' wx:if="{{index==0}}"></icon>{{item.indTypeName}}
-                        <text>({{item.policyNum}})</text>
+                        <text class="text">({{item.policyNum}})</text>
                     </view>
                 </view>
             </scroll-view>

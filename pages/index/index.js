@@ -1,5 +1,6 @@
 const commonFn = require('../../utils/common.js'); //一些通用的函数
 const app = getApp();   //获取应用实例
+
 Page({
     data: {
         domainUrl: app.globalData.domainUrl,
@@ -39,7 +40,7 @@ Page({
 
     //页面加载完之后执行
     onLoad: function (option) {
-        
+        console.log('首页')
     },
 
     //页面显示加载
@@ -510,6 +511,7 @@ Page({
                         var msgNum = msgStorage.reduce((prev, cur) => {
                             return cur.unread + prev
                         }, 0);
+                        console.log('获取通知公告数据消息数量:', num, num2, msgNum, msgStorage)
                         _this.setData({
                             msgNum: num + msgNum + num2
                         });

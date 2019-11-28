@@ -10,7 +10,7 @@ Component({
     attached() {
 
         //设置语言,判断是否切换语言
-        app.loadLangFn(this, 'cpServePricePop');
+        app.loadLangNewFn(this, 'cpServePricePop');
 
         var _this = this;
         //加载完页面获取数据
@@ -19,7 +19,7 @@ Component({
             url: `/estateRepair/info`,
             success: (res) => {
                 var datas = res.data.data;
-                console.log("服务价格一览表：", datas);
+                //console.log("服务价格一览表：", datas);
                 _this.setData({ servicesList: datas.services });
             }
         });

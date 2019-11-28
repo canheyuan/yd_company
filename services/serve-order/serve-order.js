@@ -1,5 +1,6 @@
 const app = getApp(); //获取应用实例
 const formTip = require('../../utils/validateForm.js');   //验证
+//const shengming = require('https://5iparks.com/static/guest/js/shengming.js');
 
 Page({
     data: {
@@ -10,7 +11,8 @@ Page({
         serveId: '', //4e31b88314367e857a78bbac4147307b
         detailData:null,
         payNum : 1, //购买数量
-
+        statementShow :false,    //服务声明是否显示
+        smData: null   //服务声明数据
     },
 
     //生命周期函数--监听页面加载
@@ -27,11 +29,20 @@ Page({
             serveId: detailData.id
         })
 
+        this.getShengmingFn();
     },
 
-    //生命周期函数--监听页面显示
-    onShow: function () {
-
+    //获取声明信息
+    getShengmingFn() {
+        wx.request({
+            url: 'https://5iparks.com/static/guest/json/shengming.json',
+            method: 'GET',
+            dataType: 'json',   //数据返回类型
+            success: (res) => {
+                console.log('getjsFn', res.data)
+                this.setData({ smData: res.data })
+            }
+        })
     },
 
     //获取详情
@@ -88,5 +99,10 @@ Page({
                 }
             });
         })
+    },
+
+    //服务声明弹窗打开关闭
+    statementPopFn(e){
+        this.setData({ statementShow: !this.data.statementShow })
     }
 })

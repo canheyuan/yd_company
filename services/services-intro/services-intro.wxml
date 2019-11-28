@@ -12,7 +12,7 @@
 <!-- 底部工具栏 -->
 <view class='tool_bar clearfix'>
   <!-- <button open-type="contact" class='blue_btn' style='width:60%;'>在线咨询</button> -->
-  <view class='blue_btn' style='width:60%;' bindtap="kefuFn">{{langData.referBtn}}</view>
+  <view class='blue_btn' style='width:60%;' bindtap="kefuFn">{{langData.referBtn[lang]}}</view>
 </view>
 
 <!-- 登录提示 -->

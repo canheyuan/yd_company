@@ -147,7 +147,7 @@ Page({
                 if (sessionList.length == 0) {
                     wx.hideLoading();
                 } else if (sessionList.length > 0) {
-
+                    console.log('sessionList', sessionList)
                     var userId = sessionList.map((item, index) => {
                         return item.To_Account
                     })

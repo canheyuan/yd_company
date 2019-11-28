@@ -7,7 +7,7 @@ page{padding-top:100rpx;}
 .choose_head .info .tit{display:inline-block; color:#555555; font-size:30rpx; margin-right:20rpx;}
 
 /* 预约记录列表 */
-.visitor_record_list{padding-top:90rpx;}
+.visitor_record_list{}
 .visitor_record_list .li{padding:30rpx 0 0 30rpx; position:relative;}
 .visitor_record_list .li .img{float:left; width:114rpx; height:114rpx; border-radius:100%; margin-right:30rpx;}
 .visitor_record_list .li .label{position:absolute; right:30rpx; top:30rpx; font-size:22rpx; color:#fff; background:#17b8fb;  display: inline-block; width:100rpx; height:40rpx; line-height:40rpx; text-align: center; border-radius:6rpx;}

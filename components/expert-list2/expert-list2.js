@@ -1,13 +1,13 @@
 const app = getApp(); //获取应用实例
 const commonFn = require('../../utils/common.js');
 const regionData = require('../../utils/region-data.js');
-var WxParse = require('../../wxParse/wxParse.js');//富文本
 const listFn = require('../../utils/list.js'); //通用列表函数
+
 Component({
     //组件的初始数据
     data: {
         domainUrl: app.globalData.domainUrl,
-        listInfo: {},  //活动列表
+        listInfo: {},  //列表
         isFirst:true,
         langData: null,  //语言数据
     },
@@ -16,21 +16,13 @@ Component({
     properties: {
         targetPage: String,
 
-        // lang: { //语言数据改变
-        //     type: String,
-        //     observer: function (newVal, oldVal, changedPath) {  //动态改变属性时执行
-        //         //设置语言,判断是否切换语言
-        //         app.loadLangFn(this, 'cpExpertList');
-        //     }
-        // },
-
         //刷新数据
         reachData: {
             type: Number, // 类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
             observer: function (newVal, oldVal, changedPath) {
                 if (this.data.isFirst) {
                     this.setData({ isFirst: false })
-                    app.loadLangFn(this, 'cpExpertList');
+                    app.loadLangNewFn(this, 'cpExpertList');
                 }
                 //随机数大于1：刷新。小于1：上拉刷新
                 if (newVal > 1) {
@@ -39,11 +31,6 @@ Component({
                 this.loadMoreListFn();
             }
         }
-    },
-
-    //组件加载完成后
-    attached() {
-
     },
 
     //组件的方法列表
@@ -80,7 +67,7 @@ Component({
                     return listItem;
                 },
                 success: (res) => {
-                    console.log("收藏专家列表接口：", _this.data.listInfo);
+                    //console.log("收藏专家列表接口：", _this.data.listInfo);
                 }
             });
         },

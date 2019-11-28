@@ -11,7 +11,7 @@ Component({
             observer: function (newVal, oldVal, changedPath) {
                 if (this.data.isFirst) {
                     this.setData({ isFirst: false })
-                    app.loadLangFn(this, 'cpBacklog');
+                    app.loadLangNewFn(this, 'cpBacklog');
                 }
                 //随机数大于1：刷新。小于1：上拉刷新
                 if (newVal > 1) {
@@ -27,13 +27,7 @@ Component({
         listInfo:{},
         isFirst:true,
         langData: null,  //语言数据
-        langType:''
-    },
-
-    //组件加载完成后
-    attached() {
-        // //设置语言,判断是否切换语言
-        // app.loadLangFn(this, 'cpBacklog');
+        lang:''
     },
 
     methods: {
@@ -41,7 +35,7 @@ Component({
         getListInfo(isReach) {
             var _this = this;
             var langData = this.data.langData;
-            var langType = this.data.langType;
+            var lang = this.data.lang
             if (this.properties.targetPage=='index'){   //若是首页的待办，只显示前五条
                 this.setData({ ['listInfo.pageSize']:5 })
             }
@@ -66,27 +60,27 @@ Component({
                         switch (listItem.entityType){
                             case 'estaterepair':    //报修
                                 listItem.className = 'li_yellow';
-                                listItem.labelName = langData.repairText;
+                                listItem.labelName = langData.repairText[lang];
                                 listItem.goUrl = '/pages/repair/repair-detail/repair-detail?id=' + listItem.entityId
                                 break;
                             case 'financebill': //订单
                                 listItem.className = 'li_blue';
-                                listItem.labelName = langData.billText;
+                                listItem.labelName = langData.billText[lang]
                                 listItem.goUrl = '/pages/order/confirmation-info/confirmation-info?id=' + listItem.entityId
                                 break;
                             case 'estaterentdetail':    //物资
                                 listItem.className = 'li_green';
-                                listItem.labelName = langData.goodsText;
+                                listItem.labelName = langData.goodsText[lang]
                                 listItem.goUrl = '/pages/supplies/supplies-detail/supplies-detail?id=' + listItem.entityId
                                 break;
                             case 'estatedecorationbooking': //装修
                                 listItem.className = 'li_purple';
-                                listItem.labelName = langData.fixturesText;
+                                listItem.labelName = langData.fixturesText[lang]
                                 listItem.goUrl = '';
                                 break;
                             case 'chamberorder':    //场地预定
                                 listItem.className = 'li_purple';
-                                listItem.labelName = langData.billText;
+                                listItem.labelName = langData.billText[lang]
                                 listItem.goUrl = '/pages/user/my-reserve-details/my-reserve-details?id=' + listItem.entityId
                                 break;
                         }
@@ -118,9 +112,10 @@ Component({
         //跳转代办事项
         goToBackLog(e) {
             var langData = this.data.langData;
+            var lang = this.data.lang
             var goUrl = e.currentTarget.dataset.url;
             if (!goUrl) {
-                wx.showToast({ title: langData.buildTip, icon: 'none', duration: 2000 });
+                wx.showToast({ title: langData.buildTip[lang], icon: 'none', duration: 2000 });
             } else {
                 wx.navigateTo({ url: goUrl });
             }

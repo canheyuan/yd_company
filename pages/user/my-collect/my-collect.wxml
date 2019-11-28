@@ -25,7 +25,6 @@
     </view>
 </view>
 
-
 <!-- 参数：
   target-page:目标页面（list:活动列表、collect：搜藏活动列表）
   bind:collectPopShow:收藏弹窗显示
@@ -46,7 +45,6 @@
         target-page="collect" 
         bind:collectPopShow="collectPopShowFn"
         reach-data='{{reachData.expert}}'
-        lang="{{lang}}"
     ></expert-list>
 </view>
 

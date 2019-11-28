@@ -1,17 +1,19 @@
 
 <view class="coupon_box box_shadow">
-  <view class='coupon_bg' style='background:url({{domainUrl}}/images/coupon/yhq_bg.jpg) no-repeat; background-size:100% 100%;'>
-    <view class='title'>{{detailData.couponName}}</view>
-    <view class='p'>{{detailData.discountTxt}}</view>
-    <canvas  class='ewm' hidden="{{canvasHidden}}" canvas-id="mycanvas"/>
-    <!-- <image class='ewm' src=''></image> -->
-    <view class='code'>{{langData.couponCode}}：{{detailData.couponCode}}</view>
-  </view>
+    <view 
+        class='coupon_bg' 
+        style='background:url({{domainUrl}}/images/coupon/yhq_bg.jpg) no-repeat; background-size:100% 100%;'
+    >
+        <view class='title'>{{detailData.couponName}}</view>
+        <view class='p'>{{detailData.discountTxt}}</view>
+        <canvas  class='ewm' hidden="{{canvasHidden}}" canvas-id="mycanvas"/>
+        <!-- <image class='ewm' src=''></image> -->
+        <view class='code'>{{langData.couponCode[lang]}}：{{detailData.couponCode}}</view>
+    </view>
 </view>
 
  <view class='coupon_tip'>
-  <text>{{langData.public.useExplain}}：
-  {{detailData.couponIntro}}</text>
+  <text>{{langData.public.useExplain[lang]}}：{{detailData.couponIntro}}</text>
 </view>
 
 
