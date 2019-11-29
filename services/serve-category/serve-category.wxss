@@ -24,16 +24,17 @@ page{height: 100%; background: #fff;}
 /* 服务项目 */
 .list_box{ margin-top: 40rpx;}
 .list_box .title{color: #666; font-size: 26rpx; line-height: 40rpx; padding: 0 4rpx; margin-bottom: 22rpx; font-weight: bold;}
-.list_box .title icon{width: 40rpx; height: 40rpx; margin-right: 2rpx; display: block; float: left;}
-.list_box .title icon.ico_tj{background-position:-400rpx -160rpx;}
-.list_box .title icon.ico_hot{background-position:-360rpx -210rpx;}
+.list_box .title .icons{width: 40rpx; height: 40rpx; margin-right: 2rpx; display: block; float: left;}
+.list_box .title .icons.ico_tj{background-position:-400rpx -160rpx;}
+.list_box .title .icons.ico_hot{background-position:-360rpx -210rpx;}
 .list_box .ul{display: flex; flex-flow: row wrap; justify-content: flex-start; margin: -4rpx 0 -3rpx 0;}
 .list_box .ul .li{flex: 0 0 32.2%; color: #333; font-size: 26rpx; line-height: 34rpx; text-align: center; padding: 20rpx 0; margin: 4rpx 7rpx 3rpx 0; border-radius: 8rpx; background: #fafafa;}
 .list_box .ul .li .text{display: flex; justify-content: center; align-items: center; min-height: 68rpx;}
 
 /* 三级图标列表 */
 .third_list .li{float:left; width:33.3%; text-align: center; margin-bottom:30rpx;}
-.third_list .li .icon{width:70rpx; height:70rpx;}
+.third_list .li .icon_box{display:inline-block; width:70rpx; height:70rpx; }
+.third_list .li .icon{display:inline-block; width:70rpx; height:70rpx;}
 .third_list .li .icon.none{background:#eee; border-radius:10rpx;}
 .third_list .li .text{font-size:26rpx; color:#333333;}
 

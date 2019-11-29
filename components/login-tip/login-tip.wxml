@@ -6,7 +6,7 @@
             <text class='txt'>{{langData.tipText1[lang]}}</text>
             
             <button 
-                open-type='getUserInfo' class='orange_btn' hover-class="none"
+                open-type='getUserInfo' class='u_btn orange login_btn' hover-class="none"
                 bindgetuserinfo='getUserInfoFn' data-page="login"
             >{{langData.loginBtn[lang]}}</button>
 

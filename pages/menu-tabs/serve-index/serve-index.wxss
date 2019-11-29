@@ -61,7 +61,7 @@ page{background:#fff;}
 .wykgs_title .ico_dp{width:40rpx; height:40rpx; background-position: -320rpx -210rpx; vertical-align: top; margin-right:10rpx;}
 .wykgs_title .tit1{font-size:34rpx; color:#111111; line-height:40rpx; font-weight: bold; margin-right:10rpx;}
 .wykgs_title .tit2{font-size:26rpx; color:#999999; line-height:40rpx;}
-.wykgs_list .item{float:left; width:223rpx; height:242rpx; background-position: center top; background-repeat:no-repeat; background-size:100% 100%;box-sizing: border-box; padding:35rpx 18rpx;  color:#5b87a0; margin-right:22rpx;}
+.wykgs_list .item{float:left; width:223rpx; height:242rpx; background-position: center top; background-repeat:no-repeat; background-size:100% 100%;box-sizing: border-box; padding:35rpx 18rpx;  color:#5b87a0; margin-right:20rpx;}
 .wykgs_list .item:last-child{margin-right:0;}
 .wykgs_list .item .title{font-size:30rpx; padding-bottom:25rpx; margin-bottom:20rpx; position:relative; font-weight: bold;}
 .wykgs_list .item .title::after{content:''; display:block; width:40rpx; height:6rpx; background:#74a2bd; position:absolute; bottom:0; left:0;}

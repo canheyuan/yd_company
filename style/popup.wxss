@@ -1,0 +1,13 @@
+/* 通用弹窗遮罩 */
+.mask_bg{background:rgba(0,0,0,.5); height:100%; width:100%; position:fixed; top:0; left:0; display:table;z-index: 10000; opacity:1; -webkit-transition:all .3s; transition:all .3s; }
+.mask_bg_ctn{display:table-cell; vertical-align:middle; text-align:center;}
+.pop_mdl{width:650rpx; margin:0 auto; background:#fff; border-radius:20rpx; padding-top:30rpx; position:relative;}
+.pop_mdl .close_btn{width:50rpx; height:50rpx; background-position: -250rpx -60rpx; position:absolute; right:15rpx; top:15rpx;}
+.pop_mdl .h3{font-weight:bold; font-size:40rpx; color:#000; margin-bottom:30rpx; padding:0 60rpx;}
+.pop_mdl .title{font-weight:bold; font-size:40rpx; color:#000; margin-bottom:30rpx; padding:0 60rpx;}
+.pop_ctn .ctn{max-height:600rpx; overflow: auto;}
+.pop_mdl .btm_btn{border-top:1rpx solid #d4d4d4; margin-top:40rpx; display: box; display: -webkit-box;}
+.pop_mdl .btm_btn .btn{box-flex: 1; -webkit-box-flex: 1; width:100%;  display:block; text-align: center; height:100rpx; line-height:100rpx; box-sizing:border-box; font-size:40rpx;}
+.pop_mdl .btm_btn .btn{color:#888888; border:0; border-right:1rpx solid #d4d4d4;}
+.pop_mdl .btm_btn .btn:last-child{color:#2a99f1; border-right:none;}
+.pop_mdl .btm_btn .btn::after{ border: none; }
