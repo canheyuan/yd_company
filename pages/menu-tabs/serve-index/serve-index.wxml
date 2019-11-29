@@ -48,7 +48,7 @@
     <!-- 若超过10个，就显示全部按钮 -->
     <navigator 
         class="li" hover-class="hover" wx:if="{{serveMenuList.length>10}}"
-        url="/services/serve-category/serve-category" 
+        url="/pages/services/serve-category/serve-category" 
     >
         <image class="ico" src="{{domainUrl}}/images/services/s_ico10.png"></image>
         <view class="text">{{langData.public.all[lang]}}</view>
@@ -83,7 +83,7 @@
 <!-- 推荐服务 -->
 <view class='recommend_mdl'  wx:if="{{!serveRecommendFinish || serveRecommendList.length>0 }}">
     <view class='serve_tit'>
-        <!-- <navigator class='more' url='/services/serve-list/serve-list'>{{langData.public.moreBtn[lang]}}</navigator> -->
+        <!-- <navigator class='more' url='/pages/services/serve-list/serve-list'>{{langData.public.moreBtn[lang]}}</navigator> -->
         <view class='h3'>{{langData.recommendTitle[lang]}}</view>
     </view>
     <view class="serve_list box_shadow" wx:if="{{!serveRecommendFinish}}">
@@ -135,7 +135,7 @@
         <navigator
             wx:for="{{categoryItem.cateList}}" wx:key="id"
             class="item" style="background-image:url({{domainUrl}}/images/services/kgs_img0{{index+1}}.png);"
-            url="/services/serve-list/serve-list?c_id={{item.id}}&title={{item.name}}"
+            url="/pages/services/serve-list/serve-list?c_id={{item.id}}&title={{item.name}}"
         >
             <view class="title">{{item.name}}</view>
             <view class="p">{{item.description}}</view>
@@ -152,7 +152,7 @@
     <view class='serve_list box_shadow'  wx:if="{{serveRecommendFinish && serveRecommendList}}">-->
     <view class='serve_list box_shadow'>
         <navigator 
-            class='li' url='/services/serve-detail/serve-detail?id={{item.id}}'
+            class='li' url='/pages/services/serve-detail/serve-detail?id={{item.id}}'
             wx:for="{{categoryItem.serviceList}}" wx:key="id"
         >
             <image  class='icon {{item.mainImg?"":"none"}}'  src='{{item.mainImg}}' lazy-load="true" ></image>
@@ -194,7 +194,7 @@
         <navigator 
             class="gys_item clearfix" hover-class="hover"
             wx:for="{{supplierList}}" wx:key="id"
-            url="/services/supplier-list/supplier-list?id={{item.id}}"
+            url="/pages/services/supplier-list/supplier-list?id={{item.id}}"
         >   
             <image class="headimg" src="{{item.logo}}" lazy-load="true"></image>
             <view class="info">

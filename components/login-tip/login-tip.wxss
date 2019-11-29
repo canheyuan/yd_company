@@ -1,4 +1,5 @@
-@import "/app.wxss";
+@import "/style/bg.wxss";
+@import "/style/popup.wxss";
 @import "/style/btn.wxss";
 
 /* 登录提示组件 */

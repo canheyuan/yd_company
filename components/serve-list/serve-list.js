@@ -89,12 +89,12 @@ Component({
         },
 
         //跳转到详情页
-        gotoDetailsFn(e) {
-            var id = e.currentTarget.dataset.activity_id;
-            wx.navigateTo({
-                url: `pages/services/serve-detail/serve-detail?id=${id}`,
-            });
-        },
+        // gotoDetailsFn(e) {
+        //     var id = e.currentTarget.dataset.activity_id;
+        //     wx.navigateTo({
+        //         url: `pages/services/serve-detail/serve-detail?id=${id}`,
+        //     });
+        // },
 
         //图片加载失败显示默认图
         errorImgFn(e) {

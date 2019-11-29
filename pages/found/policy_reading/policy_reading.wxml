@@ -1,0 +1,49 @@
+<!-- 政策匹配 -->
+<view class='news_cgl_box'>
+    <view class='cgl_card clearfix'>
+        <view class='title'>{{langData.title01[lang]}}</view>
+        <view class='percent'>{{policyData.probability}}%</view>
+        <view class='col1'>
+            <view class='money'>
+                {{langData.bestText[lang]}}: 
+                <text>{{policyData.highestReward?policyData.highestReward+langData.yuan[lang]:langData.noText[lang]}}</text>
+            </view>
+            <view class='time'>{{langData.cutOffTime[lang]}}: {{policyData.endTime}}</view>
+        </view>
+        
+        <view class='col2' wx:if="{{policyData.isAssess==1}}">
+        <view class='ico_txt standard'>
+            <image class="img" src='{{domainUrl}}/images/icon/ico_correct.png'></image>
+            <text>{{policyData.passNum}}</text> {{langData.condition[lang]}}
+        </view>
+        <view class='ico_txt await'>
+            <image class="img" src='{{domainUrl}}/images/icon/ico_wrong.png'></image>
+            <text>{{policyData.failNum}}</text> {{langData.unCondition[lang]}}
+        </view>
+        </view>
+    </view>
+</view>
+
+<!-- 政策解读 -->
+<view class='reading_box'>
+    <view class='yd_title01'>{{langData.subject[lang]}}</view>
+    <view class='policy_title'>
+        {{policyData.originalTitle}}
+        <text>{{policyData.articleNumber?policyData.articleNumber:''}}</text>
+    </view>
+    <view class='yd_title01'>{{langData.conditionStatus[lang]}}</view>
+    <view class='ul'>
+        <view 
+            wx:for="{{policyData.cons}}" wx:key="{{index}}"
+            class='li {{item.result!=1?"await":""}}'
+        >{{item.conditionName}}</view>
+    </view>
+</view>
+
+<!-- 按钮区域 -->
+<!-- <view class='txtnbtn_box'>
+  <view class='reminder fw500'>以上信息与您的企业信息不符？请重新评估</view>
+  <navigator url="/pages/found/policy-assess-1/policy-assess-1">
+    <view class='blue_btn'>重新评估</view>
+  </navigator>
+</view> -->

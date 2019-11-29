@@ -19,7 +19,7 @@
                         <navigator url='/pages/order/cost-details/cost-details?id={{item.feeId}}' class='d_btn'>{{langData.detailBtn[lang]}}</navigator>
                         <view class='info'>
                             <view class='h3'>{{item.unitName}}{{item.feeName}}</view>
-                            <view class='price'>{{langData.money[lang]}}：  <text>￥{{item.totalAmount}}</text></view>
+                            <view class='price'>{{langData.money[lang]}}：  <text class="text">￥{{item.totalAmount}}</text></view>
                         </view>
                     </view>
                 </view>
@@ -42,7 +42,7 @@
         <view class='form_btm'>
             <view class='txt'>
                 {{langData.payText1[lang] + (detailsData.fees.length?detailsData.fees.length:0) + langData.payText2[lang]}}
-                <text>￥{{detailsData.totalAmount}}</text>
+                <text class="text">￥{{detailsData.totalAmount}}</text>
             </view>
         </view>
     </view>

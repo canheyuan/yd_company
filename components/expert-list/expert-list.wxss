@@ -28,7 +28,7 @@
 .act_list .li .btm .blue_btn{width: 46%; height:72rpx; line-height:72rpx; border-radius:36px; font-size:28rpx; margin:0 auto; box-shadow: 0 6rpx 10rpx rgba(101,146,254,.36);}
 
 /* 标签 */
-.yd_label text{height:34rpx; line-height:34rpx; padding:0 15rpx; border:1rpx solid #bdbdbd; border-radius:8rpx; font-size:22rpx; color:#aeaeae; margin-right:10rpx;}
+.yd_label .text{height:34rpx; line-height:34rpx; padding:0 15rpx; border:1rpx solid #bdbdbd; border-radius:8rpx; font-size:22rpx; color:#aeaeae; margin-right:10rpx;}
 
 .ico_favorite_corner{position: absolute; width: 65rpx; height: 65rpx; top:0; right: 0; border-top-right-radius: 10rpx; overflow: hidden; background:url(https://www.5iparks.com/static/yuanding/images/icon/ico_favorite_corner.png) no-repeat top right; background-size: contain;}
 .ico_favorite_corner.act{background-image:url(https://www.5iparks.com/static/yuanding/images/icon/ico_favorite_corner_act.png)}

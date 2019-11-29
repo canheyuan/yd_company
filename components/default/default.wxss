@@ -1,8 +1,15 @@
-@import '/app.wxss';
+
+@import "/style/bg.wxss";
 
 /* 返回顶部 */
 .back_top{width:80rpx; height:80rpx; text-align: center; background:#fff; border:4rpx solid #dcdcdc; border-radius:100%; position:fixed; bottom:20rpx; right:20rpx; z-index:99; box-sizing:border-box;}
 .back_top .ico_top{width:50rpx; height:50rpx; background-position: -146rpx -64rpx; margin-top:15rpx;}
+
+/* 返回首页按钮 */
+.index_btn{position:fixed; bottom:60rpx; right:30rpx; z-index:99; width:122rpx; height:122rpx;}
+.index_btn .img{width:100%; height:100%;}
+
+.box_shadow{box-shadow: 0 5rpx 24rpx rgba(0,0,0,.1);}
 
 /* 通用列表 */
 .default_list{padding:0 0rpx; animation:flicker 1s linear 0s infinite alternate; height:100%; overflow: hidden; }

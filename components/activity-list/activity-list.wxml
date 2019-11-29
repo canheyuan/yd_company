@@ -10,7 +10,7 @@
 
         <navigator 
             class='top' hover-class='none'
-            url="/activity/activity-details/activity-details?id={{item.activityId}}"
+            url="/pages/activity/activity-details/activity-details?id={{item.activityId}}"
         >
             <image class='img' src='{{item.mainImg}}' binderror="errorImgFn" data-obj="listInfo[{{index}}].mainImg"></image>
             <view class='info'>
@@ -30,7 +30,7 @@
             <!-- 我要报名按钮 -->
             <form  
                 wx:if="{{item.status==2 && item.isJoined!=1}}"  report-submit="true" bindsubmit="applyBtnFn" 
-                data-url='/activity/activity-apply/activity-apply?id={{detailsData.activityId}}'
+                data-url='/pages/activity/activity-apply/activity-apply?id={{detailsData.activityId}}'
             >
                 <button 
                     class='btn {{item.status==3?"disabled":""}}' hover-class='none' 

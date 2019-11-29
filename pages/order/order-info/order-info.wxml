@@ -31,21 +31,21 @@
             <view class='d_btn'>详情 ></view>
             <view class='info'>
               <view class='h3'>6月份租金</view>
-              <view class='price'>金额：  <text>14323.43</text></view>
+              <view class='price'>金额：  <text class="text">14323.43</text></view>
             </view>
           </view>
           <view class='li'>
             <view class='d_btn'>详情 ></view>
             <view class='info'>
               <view class='h3'>6月份租金</view>
-              <view class='price'>金额：  <text>14323.43</text></view>
+              <view class='price'>金额：  <text class="text">14323.43</text></view>
             </view>
           </view>
           <view class='li'>
             <view class='d_btn'>详情 ></view>
             <view class='info'>
               <view class='h3'>6月份租金</view>
-              <view class='price'>金额：  <text>14323.43</text></view>
+              <view class='price'>金额：  <text class="text">14323.43</text></view>
             </view>
           </view>
         </view>
@@ -67,7 +67,7 @@
     </view>
   
     <view class='form_btm'>
-      <view class='txt'>共4个缴费项目，已支付<text>43502.62</text></view>
+      <view class='txt'>共4个缴费项目，已支付<text class="text">43502.62</text></view>
     </view>
   </view>
   <view style='padding:60rpx 100rpx 50rpx;'>

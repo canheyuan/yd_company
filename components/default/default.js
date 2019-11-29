@@ -1,4 +1,5 @@
-// components/default/default.js
+const app = getApp(); //获取应用实例
+
 Component({
     //组件的属性列表
     properties: {
@@ -14,6 +15,7 @@ Component({
 
     //组件的初始数据
     data: {
+        domainUrl: app.globalData.domainUrl,
         backTopShow:true
     },
 

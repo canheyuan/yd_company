@@ -1,0 +1,103 @@
+<import src="/wxParse/wxParse.wxml"/>
+<scroll-view 
+    class="scroll_page" 
+    scroll-y="true" scroll-into-view="{{scrollToView}}" 
+    scroll-with-animation="true" enable-back-to-top="true"
+    bindscrolltolower="loadMoreFn"
+> 
+
+<!-- 头部信息 -->
+<view class='act_details_head'>
+    <view class='top'>
+        <view class='status icons2'><text>{{detailData.statusName}}</text></view>
+        <image 
+            class='img' src='{{detailData.mainImg}}'
+            binderror='errorImgFn' data-obj="detailData.mainImg"  data-img=""
+        ></image>
+
+        <view class='info'>
+            <view class='h3'><text>{{detailData.activityName}}</text></view>
+            <view class='label'>
+                <icon class='icons ico_mf'></icon>
+                <text>{{detailData.price?"¥ " +detailData.price : langData.free[lang]}}</text>
+            </view>
+            <view class='label'>
+                <icon class='icons ico_bm'></icon>
+                <text wx:if="{{detailData.joinCount==null}}">0</text>
+                <text wx:else>{{detailData.joinCount}}</text> {{langData.applyText[lang]}}
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class='act_details_info'>
+    <!-- 活动时间 -->
+    <view class='ico_txt txt_time'>
+        <icon class='icons ico_time'></icon>
+        <text>{{langData.public.time[lang]}}：{{detailData.beginTime}}</text> {{langData.public.toText[lang]}}
+        <text>{{detailData.endTime}}</text>
+    </view>
+    <!-- 主办方 -->
+    <view class='ico_txt'>
+        <icon class='icons ico_zbf'></icon>
+        <text>{{langData.public.sponsor[lang]}}：{{detailData.organizer}}</text>
+    </view>
+    <!-- 地址 -->
+    <view class='ico_txt'>
+        <icon class='icons ico_dz'></icon>
+        <text>{{langData.public.address[lang]}}：{{detailData.addressName}}</text>
+    </view>
+
+</view>
+
+<!-- 活动详情 -->
+<view class='yd_title02'><text class='txt'>{{langData.actDetail[lang]}}</text></view>
+<view class='details_ctn'>
+    <view class='yd_title01'>{{langData.rule[lang]}}</view>
+    <template is="wxParse" data="{{wxParseData:rule.nodes}}"/>
+
+    <view class='yd_title01'>{{langData.public.warmPrompt[lang]}}</view>
+    <template is="wxParse" data="{{wxParseData:tips.nodes}}"/>
+    <template is="wxParse" data="{{wxParseData:html.nodes}}"/>
+</view>
+
+
+<!-- 评论列表 -->
+<discuss-list
+    wx:if="{{detailData}}"
+    id='discuss-list'
+    target-page="activity"
+    bindscrollDiscussFn="scrollDiscussFn"
+    detail-id="{{detailData.activityId}}" 
+    is-collected="{{detailData.isCollected}}"
+    reach-data="{{discussReach}}"
+></discuss-list>
+
+</scroll-view>
+
+<!-- 底部报名按钮 -->
+<!-- 已报名 -->
+<navigator 
+    wx:if="{{detailData.isJoined==1 && detailData.status == 2}}" class='btm_btn' 
+    url='/pageactivity/activity-apply-details/activity-apply-details?id={{detailData.activityId}}'
+>
+    <image src='{{domainUrl}}/images/icon/ybm_btn.png'></image>
+</navigator>
+<!-- 未报名 -->
+<form  
+    wx:if="{{detailData.isJoined==2 && detailData.status == 2}}" report-submit="true" bindsubmit="loginTipShow" 
+    data-url='/pages/activity/activity-apply/activity-apply?id={{detailData.activityId}}'
+>
+    <button class='btm_btn' form-type='submit'><image src='{{domainUrl}}/images/icon/wybm_btn.png'></image></button>
+</form>
+
+<!-- 登录提示 -->
+<view hidden="{{hasUserInfo}}">
+    <login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
+</view>
+
+<!-- 返回首页按钮 -->
+<navigator wx:if="{{isIndexBtnShow}}" class='index_btn'  url='/pages/index/index' hover-class='none' open-type='switchTab'>
+    <image src='{{domainUrl}}/images/icon/back2h_btn.png'></image>
+</navigator>
+

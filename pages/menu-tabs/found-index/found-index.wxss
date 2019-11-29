@@ -33,7 +33,7 @@ page{padding-top:80rpx;}
 .news_item .news_pic .news_img{width: 280rpx; height: 193rpx;}
 /* 标签 */
 .news_item .news_icon{padding-top: 9rpx;}
-.yd_label text{height:34rpx; line-height:34rpx; padding:0 15rpx; border:1rpx solid #bdbdbd; border-radius:8rpx; font-size:22rpx; color:#aeaeae; margin-right:10rpx;}
+.yd_label .text{height:34rpx; line-height:34rpx; padding:0 15rpx; border:1rpx solid #bdbdbd; border-radius:8rpx; font-size:22rpx; color:#aeaeae; margin-right:10rpx;}
 /* 小图标带文字 */
 .news_item .news_cont .ico_txt{margin-right: 0;}
 .news_item .news_cont .ico_txt.time{float: left;}

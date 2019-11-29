@@ -1,0 +1,8 @@
+
+/* 文章页样式控制 */
+.details_ctn{font-size:34rpx; line-height:56rpx; color:#333; padding: 30rpx 40rpx 20rpx; position: relative; width:100%; overflow: hidden; box-sizing:border-box;}
+.details_ctn image{width: 100%!important; height: auto; border-radius: 10rpx; overflow: hidden;}
+.details_ctn>view{margin-bottom:20rpx!important;}
+.details_ctn view{font-size:32rpx; width:100%!important; box-sizing:border-box;}
+.details_ctn text{font-size:32rpx!important;line-height:50rpx!important; text-indent:2rem; display: block; margin:20rpx 0 50rpx;}
+

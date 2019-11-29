@@ -211,7 +211,7 @@
 <view class='index_mdl06' wx:if="{{hotActList.length>0 &&  moduleSwitch.activity}}">
     <view class='index_title'>
         <navigator 
-            class='more_btn' hover-class='hover' url="/activity/activity-list/activity-list"
+            class='more_btn' hover-class='hover' url="/pages/activity/activity-list/activity-list"
         >{{langData.moreText[lang]}}</navigator>
         <text>{{langData.activityTitle[lang]}}</text>
     </view>
@@ -219,7 +219,7 @@
         <scroll-view class='scroll_box' scroll-x="true" style='height:100%; width:100%;'>
             <view class='hot_act_list' style='width:{{hotActList.length*320+20}}rpx;'>
                 <navigator  
-                    class='li' url='/activity/activity-details/activity-details?id={{item.activityId}}' 
+                    class='li' url='/pages/activity/activity-details/activity-details?id={{item.activityId}}' 
                     wx:for="{{hotActList}}" wx:key="activityId"
                 >
                     <image 

@@ -72,11 +72,11 @@
                 <view class='pop_ctn' style="padding:30rpx 0;">
                     <view wx-if="{{tipType=='remove'}}" class='p'>{{langData.desTip[lang]}}</view>
                     <view wx-if="{{tipType=='star'}}" class='star_list'>
-                    <view 
-                        class='icons {{starScore>starItem?"cur":""}}'
-                        wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}" wx:for-item="starItem" 
-                        bindtap="starChangeFn"  data-star="{{index+1}}" 
-                    ></view>
+                        <view 
+                            class='icons {{starScore>starItem?"cur":""}}'
+                            wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}" wx:for-item="starItem" 
+                            bindtap="starChangeFn"  data-star="{{index+1}}" 
+                        ></view>
                     </view>
                 </view>
                 <view class='btm_btn clearfix'>

@@ -1,0 +1,6 @@
+
+/* 加载更多提示文字 */
+.more_tip{text-align: center; height:40rpx; margin:30rpx 0;}
+.more_tip .txt{ text-align: center; font-size:28rpx; color:#777777; line-height:40rpx; height:40rpx; }
+.more_tip .txt::before{content:'————'; color:#d7d7d7; display:inline-block; font-size:24rpx; line-height:40rpx; margin-right:30rpx;}
+.more_tip .txt::after{content:'————'; color:#d7d7d7; display:inline-block; font-size:24rpx; line-height:40rpx; margin-left:30rpx; vertical-align: middle;}

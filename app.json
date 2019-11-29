@@ -49,12 +49,10 @@
             ]
         },
         {
-            "root": "found",
+            "root": "pages/found/",
             "pages": [
                 "policy-detail/policy-detail",
                 "policy_reading/policy_reading",
-                "policy-assess-2/policy-assess-2",
-                "policy-assess-1/policy-assess-1",
                 "expert/expert",
                 "expert-detail/expert-detail",
                 "news-detail/news-detail",
@@ -62,11 +60,9 @@
             ]
         },
         {
-            "name":"services",
-            "root": "services",
+            "root": "pages/services/",
             "pages": [
                 "services-intro/services-intro",
-                "company_list/company_list",
                 "services-classify/services-classify",
                 "services-index/services-index",
                 "serve-list/serve-list",
@@ -113,7 +109,7 @@
             ]
         },
         {
-            "root": "complaint",
+            "root": "pages/complaint",
             "pages": [
                 "complaint-detail/complaint-detail",
                 "complaint-apply/complaint-apply",
@@ -121,7 +117,7 @@
             ]
         },
         {
-            "root": "activity",
+            "root": "pages/activity/",
             "pages": [
                 "activity-list/activity-list",
                 "activity-apply/activity-apply",
@@ -130,7 +126,7 @@
             ]
         },
         {
-            "root": "visitor",
+            "root": "pages/visitor/",
             "pages": [
                 "visitor-record/visitor-record",
                 "visitor-appointment-detail/visitor-appointment-detail",
@@ -182,13 +178,13 @@
         "pages/menu-tabs/serve-index/serve-index": {
             "network": "all",
             "packages": [
-                "services"
+                "pages/services"
             ]
         },
         "pages/menu-tabs/found-index/found-index": {
             "network": "all",
             "packages": [
-                "found"
+                "pages/found"
             ]
         },
         "pages/menu-tabs/user-index/user-index": {

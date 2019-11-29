@@ -1,3 +1,5 @@
+@import '/style/detail-page.wxss';
+
 page{background:#f7f7f7;}
 .form_mdl .dl .dt{width:210rpx;}
 .tag_box2{margin:40rpx 40rpx 20rpx;}

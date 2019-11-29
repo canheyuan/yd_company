@@ -64,7 +64,7 @@ Page({
         } else if (item.targetType == 'my_repair') { //报修
             gotoUrl = "/pages/repair/repair-detail/repair-detail?id=" + item.targetAddress
         } else if (item.targetType == 'my_activity') { //活动
-            gotoUrl = "/activity/activity-details/activity-details?id=" + item.targetAddress
+            gotoUrl = "/pages/activity/activity-details/activity-details?id=" + item.targetAddress
         }
 
         //设置已读

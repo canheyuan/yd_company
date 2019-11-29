@@ -39,7 +39,7 @@ Component({
         gotoDetailsFn(e) {
             var exId = e.currentTarget.dataset.id;
             wx.navigateTo({
-                url: '/found/expert-detail/expert-detail?id=' + exId
+                url: '/pages/found/expert-detail/expert-detail?id=' + exId
             })
         },
 

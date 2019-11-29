@@ -1,0 +1,10 @@
+
+/* 小图标背景 */
+.icons {display:inline-block; background:url(https://www.5iparks.com/static/yuanding/images/icons.png?v=1) no-repeat; background-size:500rpx 500rpx;}
+.icons2 {display:inline-block; background:url(https://www.5iparks.com/static/yuanding/images/icons2.png?v=1) no-repeat; background-size:500rpx 500rpx;}
+
+/* 搜藏图标 */
+.ico_collect{ width:65rpx; height:65rpx; background:url(https://www.5iparks.com/static/yuanding/images/icon/ico_favorite_corner.png) no-repeat; background-size:100% 100%; position:absolute; top:0;right:0; z-index:9; border-top-right-radius: 15rpx;display: none;}
+.ico_collect.act{background-image:url(https://www.5iparks.com/static/yuanding/images/icon/ico_favorite_corner_act.png)}
+.collect .ico_collect{display:inline-block;}
+

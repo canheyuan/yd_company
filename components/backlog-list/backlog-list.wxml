@@ -10,7 +10,7 @@
         wx:for="{{listInfo.list}}" wx:key="entityId"
         class='li {{item.className}}' bindtap="goToBackLog" data-url="{{item.goUrl}}"
     >
-        <view class='time'><text>{{item.date}}</text>{{item.time}}</view>
+        <view class='time'><text class="date">{{item.date}}</text>{{item.time}}</view>
         <view class='dot'><text class='dot_in'></text></view>
         <view class='info'>
             <view class='title'>{{item.title}}<text class='label'>{{item.labelName}}</text></view>

@@ -7,6 +7,16 @@
     <icon class='icons ico_top'></icon>
 </view>
 
+<!-- 返回首页按钮 -->
+<navigator 
+    wx:if="{{mName=='homeBtn'}}"  hidden="{{!isShow}}" 
+    class='index_btn' hover-class='none'  style="bottom:{{mTop?mTop:20}}rpx;" 
+    url='/pages/index/index' open-type='switchTab'
+>
+    <image class="img" src='{{domainUrl}}/images/icon/back2h_btn.png'></image>
+</navigator>
+
+
 
 <!-- 通用列表 -->
 <view wx:if="{{mName=='dfList'}}" class="default_list {{mClass}}">

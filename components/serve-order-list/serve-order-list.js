@@ -145,7 +145,7 @@ Component({
         //跳转到详情页
         gotoDetailFn(e){
             var id = e.currentTarget.dataset.id;
-            wx.navigateTo({ url: `/services/serve-order-detail/serve-order-detail?id=${id}` })
+            wx.navigateTo({ url: `/pages/services/serve-order-detail/serve-order-detail?id=${id}` })
         },
 
         //评分星星

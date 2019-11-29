@@ -41,12 +41,13 @@ Component({
     attached() {
        
         //搜藏页才需要加类collect
-        var l_name = (this.properties.targetPage == "collect") ? "collect" : "";
-        this.setData({
-            targetName: 'activity_collect',
-            listName: l_name
-        });
-
+        
+        if (this.properties.targetPage == "collect") {
+            this.setData({
+                targetName: 'activity_collect',
+                listName: 'collect'
+            });
+        }
     },
 
     /**-------- 组件的方法列表 ---------**/
@@ -142,7 +143,7 @@ Component({
         gotoDetailsFn(e) {
             var id = e.currentTarget.dataset.activity_id;
             wx.navigateTo({
-                url: '/activity/activity-details/activity-details?id=' + id,
+                url: '/pages/activity/activity-details/activity-details?id=' + id,
             });
         },
 

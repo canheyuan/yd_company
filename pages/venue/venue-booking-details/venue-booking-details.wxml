@@ -107,7 +107,7 @@
             </view>
             
             <!-- <view class='form_btm reserve_btm'>
-            <view class='txt'>￥{{detailsData.price + langData.reserveText1[lang] + veneuTime + langData.reserveText2[lang]}} <text>¥{{detailsData.price*veneuTime}}</text></view>
+            <view class='txt'>￥{{detailsData.price + langData.reserveText1[lang] + veneuTime + langData.reserveText2[lang]}} <text class="text">¥{{detailsData.price*veneuTime}}</text></view>
             </view> -->
         </view>
 

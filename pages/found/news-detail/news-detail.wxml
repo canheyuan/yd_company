@@ -1,0 +1,49 @@
+<import src="/wxParse/wxParse.wxml"/>
+
+<scroll-view 
+    class="scroll_page" 
+    scroll-y="true" scroll-into-view="{{scrollToView}}" 
+    scroll-with-animation="true" enable-back-to-top="true"
+    bindscrolltolower="loadMoreFn"
+>
+<!-- 新闻标题 -->
+<view class='news_title_box clearfix'>
+    <view class='news_title'>{{detailData.newsTitle}}</view>
+    <view class='news_source'>{{detailData.author}}</view>
+    <view class='ico_txt visitor'><image class="img" src='{{domainUrl}}/images/icon/ico_eye.png'></image>{{detailData.pv}}</view>
+    <view class='ico_txt time'><image class="img" src='{{domainUrl}}/images/icon/ico_clock.png'></image>{{detailData.publishTime}}</view>
+</view>
+
+<!-- 新闻详情 -->
+<view class='details_ctn clearfix'>
+    <view class='news_pic'><image src="{{detailData.mainImgList}}" mode='widthFix'></image></view>
+    <!-- <view class='quotes'><image src='{{domainUrl}}/images/icon/quotes.png' mode='widthFix'></image></view> -->
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+</view>
+
+<!-- 评论列表 -->
+<discuss-list
+    wx:if="{{detailData}}"
+    id='discuss-list'
+    target-page="news"
+    bindscrollDiscussFn="scrollDiscussFn"
+    detail-id="{{detailData.newsId}}" 
+    is-collected="{{detailData.isCollected}}"
+    reach-data="{{discussReach}}"
+></discuss-list>
+
+</scroll-view>
+
+<!-- 返回顶部 -->
+<default m-name="backTop" m-top="120" is-show="{{backTopShow}}"></default>
+
+<!-- 登录提示 -->
+<!-- <view hidden="{{isLoginPopHide}}">
+    <login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
+</view> -->
+
+
+
+
+
+ 

@@ -64,7 +64,7 @@ Page({
             wx.showToast({ title: '请输入搜索关键词', icon: 'none', duration: 2000 });
             return;
         }
-        wx.navigateTo({ url: `/services/serve-list/serve-list?search=${serveVal}`} )
+        wx.navigateTo({ url: `/pages/services/serve-list/serve-list?search=${serveVal}`} )
     },
 
     //获取广告数据
@@ -97,16 +97,16 @@ Page({
                 gotoUrl = '/pages/message/notice-details/notice-details?id=' + slideItem.targetAddress;
                 break;
             case 'activity':
-                gotoUrl = '/activity/activity-details/activity-details?id=' + slideItem.targetAddress;
+                gotoUrl = '/pages/activity/activity-details/activity-details?id=' + slideItem.targetAddress;
                 break;
             case 'news':
-                gotoUrl = '/found/news-detail/news-detail?id=' + slideItem.targetAddress;
+                gotoUrl = '/pages/found/news-detail/news-detail?id=' + slideItem.targetAddress;
                 break;
             case 'policy':
-                gotoUrl = '/found/policy-detail/policy-detail?id=' + slideItem.targetAddress;
+                gotoUrl = '/pages/found/policy-detail/policy-detail?id=' + slideItem.targetAddress;
                 break;
             case 'service':
-                gotoUrl = '/services/serve-detail/serve-detail?id=' + slideItem.targetAddress;
+                gotoUrl = '/pages/services/serve-detail/serve-detail?id=' + slideItem.targetAddress;
                 break;
             case 'url':
                 gotoUrl = '/pages/common/web-view/web-view?url=' + slideItem.targetAddress;  //调换h5地址
@@ -149,7 +149,7 @@ Page({
     gotoServeDetailFn(e){
         var serveId = e.currentTarget.dataset.id;
         wx.navigateTo({
-            url: `/services/serve-detail/serve-detail?id=${serveId}`,
+            url: `/pages/services/serve-detail/serve-detail?id=${serveId}`,
         })
     },
 
@@ -162,7 +162,7 @@ Page({
             success: (res) => {
                 var serveMenuList = res.data.data;
                 serveMenuList.forEach(item=>{
-                    item.link = `/services/serve-category/serve-category?id=${item.id}`;
+                    item.link = `/pages/services/serve-category/serve-category?id=${item.id}`;
                 })
                 _this.setData({
                     serveMenuList: serveMenuList,
@@ -182,7 +182,7 @@ Page({
                 //console.log('首页推荐服务列表：',res.data)
                 var serveRecommendList = res.data.data;
                 serveRecommendList.forEach(item => {
-                    item.link = `/services/serve-detail/serve-detail?id=${item.id}`;
+                    item.link = `/pages/services/serve-detail/serve-detail?id=${item.id}`;
                 })
                 _this.setData({
                     serveRecommendList: serveRecommendList,
@@ -220,7 +220,7 @@ Page({
                 var supplierList = res.data.data;
                 supplierList.forEach(item => {
                     item.star = parseInt(item.star);
-                    item.link = `/services/supplier-list/supplier-list?id=${item.id}`;
+                    item.link = `/pages/services/supplier-list/supplier-list?id=${item.id}`;
                 })
                 _this.setData({
                     supplierList: supplierList,

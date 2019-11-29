@@ -29,7 +29,7 @@
             <view class='bonus'>
                 <view class='interpret'>{{langData.bonusText01[lang]}}</view>
                 <view class='money' wx:if="{{item.highestReward}}">
-                    <text>¥</text>{{item.highestReward}}
+                    <text class="text">¥</text>{{item.highestReward}}
                 </view>
                 <view class='money' wx:if="{{!item.highestReward}}">{{langData.bonusText02[lang]}}</view>
                 <view class='btn_sm orange' style='width:80%;'>{{langData.knowBtn[lang]}}</view>

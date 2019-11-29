@@ -49,7 +49,7 @@
             <!-- 取消服务按钮 -->
             <navigator 
                 wx:if="{{item.status==1}}" class="btn btn01" 
-                url="/services/serve-cancel/serve-cancel?id={{item.id}}"
+                url="/pages/services/serve-cancel/serve-cancel?id={{item.id}}"
             >{{langData.cancelBtn[lang]}}</navigator>
 
             <!-- 服务完成按钮 -->

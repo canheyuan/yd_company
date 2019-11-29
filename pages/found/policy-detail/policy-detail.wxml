@@ -1,0 +1,92 @@
+<import src="/wxParse/wxParse.wxml"/>
+
+<!-- 政策匹配 -->
+<view class='news_title_box clearfix'>
+    <view class='news_title'>{{policyData.policyTitle}}</view>
+    <view class='news_cgl_box'>
+        <view class='cgl_card'>
+            <view class='title'>{{langData.title01[lang]}}</view>
+            <view class='percent'>{{policyData.probability}}%</view>
+            <view class='col1'>
+                <view class='money'>{{langData.bestText[lang]}}: <text>{{policyData.highestReward?'￥'+policyData.highestReward:langData.noText[lang]}}</text></view>
+                <view class='time'>{{langData.cutOffTime[lang]}}: {{policyData.endTime}}</view>
+            </view>
+
+            <view class='col2' wx:if="{{policyData.isAssess==1}}">
+                <view class='ico_txt standard'>
+                    <image class="img" src='{{domainUrl}}/images/icon/ico_correct.png'></image>
+                    <text>{{policyData.passNum}}</text> {{langData.condition[lang]}}
+                </view>
+                <view class='ico_txt await'>
+                    <image class="img" src='{{domainUrl}}/images/icon/ico_wrong.png'></image>
+                    <text>{{policyData.failNum}}</text> {{langData.unCondition[lang]}}
+                </view>
+            </view>
+
+            <navigator url="/pages/found/policy_reading/policy_reading" hover-class='none'  wx:if="{{policyData.isAssess==1}}">
+                <view class='check_detail_btn' style='width: 32%;'>{{langData.checkDetailBtn[lang]}}</view>
+            </navigator>
+        </view>
+    </view>
+</view>
+
+<!-- 政策标题 -->
+<view class='yd_title02 bxnr_tit'><view class='txt'>{{langData.title02[lang]}}</view></view>
+<view class='policy_title_box clearfix'>
+    <view class='policy_title'>
+        {{policyData.originalTitle}}
+        <text>{{policyData.articleNumber?policyData.articleNumber:''}}</text>
+    </view>
+    <view class='info clearfix'>
+        <view class='ico_txt time'>
+            <image class="img" src='{{domainUrl}}/images/icon/ico_clock.png'></image>
+            {{langData.issueText[lang]}}：{{policyData.beginTime}}
+        </view>
+        <view class='ico_txt institution'>
+            <image class="img" src='{{domainUrl}}/images/icon/ico_building.png'></image>
+            {{policyData.releaseOrganization?policyData.releaseOrganization:''}}
+        </view>
+    </view>
+</view>
+
+<!-- 政策详情 -->
+<view class='details_ctn clearfix'>
+  <!-- <view class='quotes'><image src='{{domainUrl}}/images/icon/quotes.png' mode='widthFix'></image></view> -->
+  <!-- <template is="wxParse" data="{{wxParseData:policy.nodes}}"/> -->
+  <view><template is="wxParse" data="{{wxParseData:policy.nodes}}"/></view>
+</view>
+
+<!-- 附件区 -->
+<view class='attached_box' wx:if="{{policyData.attachmentList.length>0}}">
+    <view class='title'>{{langData.accessoryArea[lang]}}</view>
+    <view class='ul'>
+        <navigator 
+            class='li' url='{{filePath}}'
+            wx:for="{{policyData.attachmentList}}" wx:key="{{index}}" 
+        >{{langData.accessory[lang]}}{{index}}：{{item.fileName}}</navigator>
+    </view>
+</view>
+
+<!-- 访问原文链接 -->
+<view data-url='{{policyData.policySource}}' bindtap='copyUrlFn'>
+    <view class='original_link' bind>{{langData.original[lang]}}</view>
+</view>
+
+
+<!-- 底部工具栏 -->
+<view class='tool_bar clearfix'>
+  <!-- <navigator url="/pages/found/policy-assess-1/policy-assess-1">
+    <view class='blue_btn' style='width:60%;'>{{langData.assessBtn[lang]}}</view>
+  </navigator> -->
+  <view class='blue_btn' style='width:60%;' bindtap="kefuFn">{{langData.referBtn[lang]}}</view>
+  <!-- <navigator url="">
+    <button open-type="contact" class='blue_btn' style='width:60%;' session-from="/pages/found/policy-detail/policy-detail?id={{policyData.policyId}}" send-message-title="{{policyData.policyTitle}}">立即咨询</button>
+  </navigator> -->
+  
+  <view class='icon_box icon_favorite {{isCollected==1?"act":""}}' bindtap="collectFn">{{langData.collectBtn[lang]}}</view>
+</view>
+
+<!-- 登录提示 -->
+<view hidden="{{isLoginPopHide}}">
+    <login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
+</view>

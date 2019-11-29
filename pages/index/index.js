@@ -209,7 +209,7 @@ Page({
                 image: 'ico07',
                 title: langMenuData.activity[lang],
                 typeName: 'activity',
-                link: '/activity/activity-list/activity-list',
+                link: '/pages/activity/activity-list/activity-list',
                 skipType: 'navigate',
                 islogin: false,
                 visit: 0,
@@ -239,7 +239,7 @@ Page({
                 image: 'ico11',
                 title: langMenuData.visitor[lang],
                 typeName: 'visitor',
-                link: '/visitor/visitor-appointment/visitor-appointment',
+                link: '/pages/visitor/visitor-appointment/visitor-appointment',
                 skipType: 'navigate',
                 islogin: true,
                 visit: 0,
@@ -249,7 +249,7 @@ Page({
                 image: 'ico10',
                 title: langMenuData.companyNews[lang],
                 typeName: 'companyNews',
-                link: '/found/company-news-list/company-news-list',
+                link: '/pages/found/company-news-list/company-news-list',
                 skipType: 'navigate',
                 islogin: false,
                 visit: 0,
@@ -269,7 +269,7 @@ Page({
                 image: 'ico08',
                 title: langMenuData.scanCode[lang],
                 typeName: 'scancode',
-                link: '/visitor/scan-code/scan-code',
+                link: '/pages/visitor/scan-code/scan-code',
                 skipType: 'navigate',
                 islogin: true,
                 visit: 0,
@@ -289,7 +289,7 @@ Page({
                 image: 'ico15',
                 title: langMenuData.complaint[lang],
                 typeName: 'complaint',
-                link: '/complaint/complaint-apply/complaint-apply',
+                link: '/pages/complaint/complaint-apply/complaint-apply',
                 skipType: 'navigate',
                 islogin: true,
                 visit: 0,
@@ -456,16 +456,16 @@ Page({
                 gotoUrl = '/pages/message/notice-details/notice-details?id=' + slideItem.targetAddress;
                 break;
             case 'activity':
-                gotoUrl = '/activity/activity-details/activity-details?id=' + slideItem.targetAddress;
+                gotoUrl = '/pages/activity/activity-details/activity-details?id=' + slideItem.targetAddress;
                 break;
             case 'news':
-                gotoUrl = '/found/news-detail/news-detail?id=' + slideItem.targetAddress;
+                gotoUrl = '/pages/found/news-detail/news-detail?id=' + slideItem.targetAddress;
                 break;
             case 'policy':
-                gotoUrl = '/found/policy-detail/policy-detail?id=' + slideItem.targetAddress;
+                gotoUrl = '/pagesfound/policy-detail/policy-detail?id=' + slideItem.targetAddress;
                 break;
             case 'service':
-                gotoUrl = '/services/serve-detail/serve-detail?id=' + slideItem.targetAddress;
+                gotoUrl = '/pages/services/serve-detail/serve-detail?id=' + slideItem.targetAddress;
                 break;
             case 'url':
                 gotoUrl = '/pages/common/web-view/web-view?url=' + slideItem.targetAddress;  //调换h5地址
@@ -567,7 +567,7 @@ Page({
     goToPolicy(e) {
         var policyId = e.currentTarget.dataset.id;
         wx.navigateTo({
-            url: '/found/policy-detail/policy-detail?id=' + policyId
+            url: '/pages/found/policy-detail/policy-detail?id=' + policyId
         })
     },
 

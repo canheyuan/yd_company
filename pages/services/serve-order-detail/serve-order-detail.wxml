@@ -1,0 +1,210 @@
+
+<!-- 头部 -->
+<view class="confirm_head">
+    <view class="company">
+        <view class="status {{detailData.statusClass}}">{{detailData.statusName}}</view>
+        <view class="label1" wx:if="{{detailData.supplierType==1}}">
+            <icon class="icons ico_rz"></icon>
+            {{langData.attestationLabel[lang]}}
+        </view>
+        <view class="label2" wx:if="{{detailData.supplierType==2}}">
+            {{langData.selfsupportLabel[lang]}}
+        </view>
+        <view class="txt">{{detailData.supplierName}}</view>
+    </view>
+    <view class="gys_info">
+        <image 
+            class='icon bg01' 
+            src='{{detailData.mainImg?detailData.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
+        ></image>
+        <view class='info'>
+            <view class="price_box">
+                <view class="price">￥{{detailData.unitPrice}}</view>
+                <view class="price"> x {{detailData.count}}</view>
+            </view>
+
+            <view class='h3'>{{detailData.serviceName}}</view>
+            <view class="p">{{langData.regionTitle[lang]}}：{{detailData.serviceRegionStr}}</view>
+            <view class="p">{{langData.deadlineTitle[lang]}}：{{detailData.serviceDurationStr}}</view>
+        </view>
+    </view>
+</view>
+
+
+<!-- 填写订单信息 -->
+<view class='layout_box'>
+    <view class='layout_ctn'>
+        <!-- 用户姓名 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.userName[lang]}}</view>
+            <view class='dd'>
+                <text class="txt">{{detailData.contact}}</text>
+            </view>
+        </view>
+
+        <!-- 联系电话 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.public.contactPhone[lang]}}</view>
+            <view class='dd'>
+                <text class="txt">{{detailData.contactPhone}}</text>
+            </view>
+        </view>
+
+        <!-- 备注信息 -->
+        <view class='dl bor_no' style="padding-bottom:0;">
+            <view class='dt fl_none'>{{langData.public.remark[lang]}}</view>
+            <view class='dd'>
+                <text class="textarea">{{detailData.remark?detailData.remark:langData.public.remarkNone[lang]}}</text>
+            </view>
+        </view>
+
+        <!-- 购买数量 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.payNum[lang]}}</view>
+            <view class='dd'>
+                <text class="txt">{{detailData.count}}</text>
+            </view>
+        </view>
+
+        <!-- 支付金额 -->
+        <view class='dl'>
+            <view class='dt'>{{langData.public.payMoney[lang]}}</view>
+            <view class='dd'>
+                <text class="pay_price txt f_orange">￥{{detailData.amount}}</text>
+            </view>
+        </view>
+
+    </view>
+
+    <!-- 服务评价 -->
+    <view 
+        wx:if="{{detailData.status==5}}"
+        class='layout_ctn' style="margin-top:30rpx; text-align:center;"
+    >
+        <view class='dl'>
+            <view class='dd'><view class="txt" style="font-weight:bold;">{{langData.evaluationTitle[lang]}}</view></view>
+        </view>
+        <view class='dl'>
+            <view class='dd'>
+                <view class='u_star'>
+                    <view 
+                        class='icon {{detailData.star>index?"act":""}}'
+                        wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}"
+                    ></view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 订单其他信息 -->
+    <view class="order_other">
+        <view class="p">
+            <icon class="icons ico_bill"></icon>
+            <text class="txt">{{langData.orderNo[lang]}}</text>{{detailData.orderNo}}
+        </view>
+        <view class="p" wx:if="{{detailData.createTime}}">
+            <icon class="icons ico_time"></icon>
+            <text class="txt">{{langData.createTime[lang]}}</text>{{detailData.createTime}}
+        </view>
+        <view class="p" wx:if="{{detailData.confirmTime}}">
+            <icon></icon>
+            <text class="txt">{{langData.confirmTime[lang]}}</text>{{detailData.confirmTime}}
+        </view>
+        <view class="p" wx:if="{{detailData.deliveryTime}}">
+            <icon></icon>
+            <text class="txt">{{langData.deliveryTime[lang]}}</text>{{detailData.deliveryTime}}
+        </view>
+        <view class="p" wx:if="{{detailData.checkTime}}">
+            <icon></icon>
+            <text class="txt">{{langData.checkTime[lang]}}</text>{{detailData.checkTime}}
+        </view>
+        <view class="p" wx:if="{{detailData.cancelTime}}">
+            <icon></icon>
+            <text class="txt">{{langData.cancelTime[lang]}}</text>{{detailData.cancelTime}}
+        </view>
+    </view>
+
+    <view class="more_tip"><text class="txt">{{langData.public.noMoreText[lang]}}</text></view>
+
+</view>
+
+<!-- 底部按钮 -->
+
+<!-- 按钮占位符 -->
+<view style="height:100rpx;" wx:if="{{detailData.status==1 || detailData.status==3 || detailData.status==4}}"></view>
+<!-- 取消服务 -->
+<navigator 
+    wx:if="{{detailData.status==1}}"
+    class="u_btn white btm_fixed box_shadow" hover-class="hover"
+    url="/pages/services/serve-cancel/serve-cancel?id={{detailData.id}}"
+>{{langData.cancelBtn[lang]}}</navigator>
+
+<!-- 确认完成 -->
+<button 
+    wx:if="{{detailData.status==3}}" plain="true" 
+    class="u_btn blue btm_fixed" hover-class="hover"
+     bindtap="openTipPop" data-type="finish" data-id="{{item.id}}"
+>{{langData.confirmFinishBtn[lang]}}</button>
+
+<!-- 立即评价 -->
+<button 
+    wx:if="{{detailData.status==4}}" plain="true" 
+    class="u_btn blue btm_fixed" hover-class="hover"
+     bindtap="openTipPop" data-type="evaluation" data-id="{{item.id}}"
+>{{langData.evaluationBtn[lang]}}</button>
+
+<!-- 提示弹窗 -->
+<view class='mask_bg pop_show' hidden='{{!popData.show}}'>
+    <view class='mask_bg_ctn'>
+        <view class='pop_mdl'>
+            <view class='h3'>{{popData.title}}</view>
+            <text class='alert'>{{popData.des}}</text>
+            <view class='u_star' wx:if="{{popData.isScore}}" style="margin-top:20rpx;">
+                <view 
+                    class='icon {{starScore>starItem?"act":""}}'
+                    wx:for="{{[0,1,2,3,4]}}" wx:key="{{index}}" wx:for-item="starItem" 
+                    bindtap="starChangeFn"  data-star="{{index+1}}" 
+                ></view>
+            </view>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap="{{popData.callOffFnName}}">{{langData.public.callOffBtn[lang]}}</view>
+                <view class='btn' bindtap='{{popData.confirmFnName}}'>{{langData.public.confirmBtn[lang]}}</view>
+            </view>
+            <view class='close_btn icons' bindtap="{{popData.callOffFnName}}" ></view>
+        </view>
+    </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

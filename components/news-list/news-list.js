@@ -119,7 +119,7 @@ Component({
                     this.setData({
                         ['listInfo.list[' + index + ']']: newItem
                     })
-                    wx.navigateTo({ url: `/found/news-detail/news-detail?id=${newsId}` });
+                    wx.navigateTo({ url: `/pages/found/news-detail/news-detail?id=${newsId}` });
                 }
             });
         },

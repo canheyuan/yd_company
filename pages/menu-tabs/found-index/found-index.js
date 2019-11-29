@@ -153,7 +153,7 @@ Page({
             url: `/news/click?newsId=${newsId}`,
             method: 'POST',
             complete: (res) => {
-                wx.navigateTo({ url: `/found/news-detail/news-detail?id=${newsId}` });
+                wx.navigateTo({ url: `/pages/found/news-detail/news-detail?id=${newsId}` });
             }
         });
     },
@@ -177,7 +177,7 @@ Page({
     //跳转专家详情
     goToExpert(e) {
         var exId = e.currentTarget.dataset.exid;
-        wx.navigateTo({ url: `/found/expert-detail/expert-detail?id=${exId}` });
+        wx.navigateTo({ url: `/pages/found/expert-detail/expert-detail?id=${exId}` });
     },
 
     //关闭登录提示弹窗

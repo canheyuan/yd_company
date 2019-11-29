@@ -1,0 +1,124 @@
+
+<!-- banner -->
+<view class="visitor_banner">
+    <image src="{{domainUrl}}/images/visitor/fkyy_banner01.jpg" class="img" mode='widthFix'></image>
+</view>
+
+<form  bindsubmit="submitFn" class='visitor_form'>
+    <view class='form_mdl'>
+        <!-- 访客姓名 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.vName[lang]}}</text>
+            <view class='dd'>
+                <input 
+                    class='input' type='text' name="visitorName" 
+                    placeholder='{{langData.vNamePl[lang]}}' placeholder-class='pl_input'value='' 
+                />
+            </view>
+        </view>
+
+        <!-- 访客手机 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.vPhone[lang]}}</text>
+            <view class='dd'>
+                <input 
+                    class='input' type='text' name="visitorPhone" value='' 
+                    placeholder='{{langData.vPhonePl[lang]}}' placeholder-class='pl_input' 
+                />
+            </view>
+        </view>
+
+        <!-- 访客地点 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.vPlace[lang]}}</text>
+            <view class='dd'>
+                <text class='txt'>{{visitorData.parkName}}</text>
+            </view>
+        </view>
+
+        <!-- 详细地址 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.vAddress[lang]}}</text>
+            <view class='dd'>
+                <text class='txt'>{{visitorData.address}}</text>
+            </view>
+        </view>
+
+        <!-- 访问楼层 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.vFloor[lang]}}</text>
+            <view class='dd'>
+                <picker 
+                    class='picker' bindchange="selectFn" data-indexName="roomIndex" name=""
+                    value="{{visitorData.roomList[roomIndex].id}}" 
+                    range="{{visitorData.roomList}}" range-key="roomName"
+                >
+                    <view style="color:{{roomIndex?'#333333':'#c2c2c2'}}">
+                        {{roomIndex?visitorData.roomList[roomIndex].roomName:langData.public.pleaseChoosePl[lang]}}
+                    </view>
+                </picker>
+                <icon class='icons ico_arrow'></icon>
+            </view>
+        </view>
+        
+        <!-- 预约日期 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.vDate[lang]}}</text>
+            <view class='dd'>
+                <picker 
+                    class='picker' name="" mode="date" 
+                    bindchange="selectFn"  data-indexName="dateValue"
+                >
+                    <view style="color:{{dateValue?'#333333':'#c2c2c2'}}">
+                        {{dateValue?dateValue:langData.vDatePl[lang]}}
+                    </view>
+                </picker>
+                <icon class='icons ico_arrow'></icon>
+            </view>
+        </view>
+
+        <!-- 预约时间 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.vTime[lang]}}</text>
+            <view class='dd'>
+                <picker 
+                    class='picker' name="" mode="time" 
+                    bindchange="selectFn" data-indexName="timeValue"
+                >
+                    <view style="color:{{timeValue?'#333333':'#c2c2c2'}}">
+                    {{timeValue?timeValue:langData.vTimePl[lang]}}
+                    </view>
+                </picker>
+                <icon class='icons ico_arrow'></icon>
+            </view>
+        </view>
+
+        <!-- 车牌号码 -->
+        <view class='dl'>
+            <text class='dt'>{{langData.carCode[lang]}}</text>
+            <view class='dd'>
+                <input 
+                    class='input' type='text' name="carPlate" value=''
+                    placeholder='{{langData.carCodePl[lang]}}' placeholder-class='pl_input' 
+                />
+            </view>
+        </view>
+
+    </view>
+    
+    <!-- 预约记录、扫一扫 -->
+    <view style='text-align:center;'>
+        <navigator 
+            url='/pages/visitor/visitor-record/visitor-record' 
+            class='check_btn'
+        >{{langData.vRecordBtn[lang]}}</navigator>
+        <view class='check_btn' bindtap='scanFn'>{{langData.scanBtn[lang]}}</view>
+    </view>
+    
+
+    <!-- 确定按钮 -->
+    <view style="padding:80rpx 100rpx 100rpx;">
+        <button class='blue_btn' form-type="submit">{{langData.public.confirmBtn[lang]}}</button>
+    </view>
+  
+</form>

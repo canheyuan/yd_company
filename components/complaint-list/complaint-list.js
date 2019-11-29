@@ -118,7 +118,7 @@ Component({
         gotoDetail(e) {
             var id = e.currentTarget.dataset.id;
             console.log(id);
-            wx.navigateTo({ url: `/complaint/complaint-detail/complaint-detail?id=${id}` });
+            wx.navigateTo({ url: `/pages/complaint/complaint-detail/complaint-detail?id=${id}` });
         }
 
     }
