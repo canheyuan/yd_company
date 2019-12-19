@@ -1,5 +1,4 @@
 
-
 page{padding-top:80rpx;}
 .reach_load{top:-20rpx;}
 /* 选项卡切换 */
@@ -19,7 +18,7 @@ page{padding-top:80rpx;}
 
 /* 幻灯片文字 */
 .found_slide_cont{position: absolute;height: 320rpx; width: 100%; top: 0; left: 0; background:url(https://www.5iparks.com/static/yuanding/images/found/banner_mask.png) repeat-x center bottom; background-size:auto 100%;}
-.found_slide_title{position: absolute; left: 22rpx; bottom: 26rpx; font-size: 34rpx; color: #fff;}
+.found_slide_title{position: absolute; left: 22rpx; bottom: 26rpx; font-size: 34rpx; color: #fff; width:600rpx;display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 1;}
 .found_slide_dot{position: absolute; width: 72rpx; height: 72rpx; right: 18rpx; bottom: 16rpx; font-size: 30rpx; font-style: italic; line-height: 72rpx; color: #fff; /*background: rgba(0,0,0,.3);*/ border-radius: 50%; padding-left: 5rpx;}
 .found_slide_dot .text_big{font-size: 46rpx;}
 

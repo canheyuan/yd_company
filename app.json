@@ -4,7 +4,10 @@
         "pages/menu-tabs/serve-index/serve-index",
         "pages/menu-tabs/found-index/found-index",
         "pages/menu-tabs/user-index/user-index",
-        "pages/temp/layout/layout"
+        "pages/temp/layout/layout",
+        "pages/parking/enquiry-index/enquiry-index",
+        "pages/parking/enquiry-detail/enquiry-detail",
+        "pages/parking/pay-detail/pay-detail"
     ],
     "subPackages": [
         {
@@ -77,7 +80,6 @@
                 "serve-cancel/serve-cancel"
             ]
         },
-        
         {
             "root": "pages/supplies/",
             "pages": [

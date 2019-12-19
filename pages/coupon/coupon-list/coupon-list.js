@@ -11,7 +11,7 @@ Page({
         isIndexBtnShow :false,   //返回首页按钮是否显示
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //生命周期函数--监听页面加载
@@ -68,7 +68,7 @@ Page({
                         listItem.discountSumPrice = discountArr[0] > 0 ? `${langData.manText[lang]}${discountArr[0]}${langData.text1[lang]}` : langData.text3[lang];
                     } else if (listItem.couponType == 2) {
                         var discountArr = listItem.discountText.split(',');
-                        if(_this.data.langType=='en'){
+                        if(_this.data.lang=='en'){
                             listItem.discountPrice = parseInt(10 - discountArr[1]) * 10 + langData.public.zheText[lang];
                         }else{
                             listItem.discountPrice = discountArr[1] + langData.public.zheText[lang];

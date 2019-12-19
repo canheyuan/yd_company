@@ -1,7 +1,7 @@
 <!-- 登录提示弹窗 -->
 <view class='mask_bg pop_show' wx:if="{{isShow}}">
-  <view class='mask_bg_ctn'>
-      <view class='login_tip_mdl'>
+    <view class='mask_bg_ctn'>
+        <view class='login_tip_mdl'>
             <view class='close_btn icons' bindtap="closePopFn" wx:if="{{closeBtnShow}}"></view>
             <text class='txt'>{{langData.tipText1[lang]}}</text>
             
@@ -17,6 +17,6 @@
                     bindgetuserinfo='getUserInfoFn' data-page="register"
                 >{{langData.regBtn[lang]}}</button>
             </view>
-      </view>
-  </view>
+        </view>
+    </view>
 </view>

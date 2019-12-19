@@ -3,7 +3,7 @@
 function pageDataFn(){
     var app = getApp();  //获取应用实例
     var lang = app.globalData.lang;
-    var langData = app.globalData.langNewData.result;
+    var langData = app.globalData.langData.result;
     var page_data = {
         //默认
         nothing: {

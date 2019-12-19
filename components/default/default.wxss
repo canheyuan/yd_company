@@ -26,10 +26,10 @@
 }
 
 /* 服务市场菜单 */
-.menu_list{ display: flex; flex-wrap: wrap; width:100%; padding:0rpx 0 10rpx;  margin:10rpx 0;}
-.menu_list .a{ width:20%; text-align: center; padding:25rpx 0; font-size:0;}
-.menu_list .a .icon{display:inline-block; width:70rpx; height:70rpx; background:#eee; margin-bottom:10rpx; border-radius:100%;}
-.menu_list .a .text{display:block; width:70%; height:26rpx; background:#eee; margin:0 auto;}
+.serve_menu{ display: flex; flex-wrap: wrap; width:100%; padding:0rpx 0 10rpx;  margin:10rpx 0;}
+.serve_menu .a{ width:20%; text-align: center; padding:25rpx 0; font-size:0;}
+.serve_menu .a .icon{display:inline-block; width:70rpx; height:70rpx; background:#eee; margin-bottom:10rpx; border-radius:100%;}
+.serve_menu .a .text{display:block; width:70%; height:26rpx; background:#eee; margin:0 auto;}
 
 
 /* 服务市场推荐服务 */
@@ -40,8 +40,20 @@
 .rec_li .info .p{height:26rpx; background:#eee; margin-bottom:10rpx;}
 
 
+/* 我的--顶部菜单列表 */
+.user_menu{display: flex; display:-webkit-flex; flex-wrap: row nowrap; -webkit-flex-wrap:row nowrap; width:100%; font-size:0;}
+.user_menu .li{display:block; flex:1; -webkit-flex:1; width:100%; padding:35rpx 0 20rpx; text-align: center;}
+.user_menu .li .icon{  width: 60rpx; height: 60rpx; border-radius:6rpx; background:#eee; display: inline-block; margin-bottom:20rpx;}
+.user_menu .li .text{display:block; margin:0 auto; height:30rpx; width:120rpx; max-width:60%; background:#eee;}
 
-
+/* 我的--底部菜单列表 */
+.user_menu2{margin-bottom:20rpx;}
+.user_menu2 .li{height:102rpx;  background:#fff; position:relative;}
+.user_menu2 .li .ico_tri{width:50rpx; height:50rpx; position:absolute; right:20rpx; top:50%; margin-top:-25rpx; background-position: -198rpx -60rpx;}
+.user_menu2 .li .info{overflow: hidden; border-bottom:1rpx solid #e5e5e5; padding-right:90rpx; height:100prx;}
+.user_menu2 .li .txt{height:100rpx; line-height:100rpx; font-size:30rpx; color:#333333;}
+.user_menu2 .li .menu_ico{width:50rpx; height:50rpx; float:left; margin:25rpx 20rpx 0; background:#eee; border-raidus:6rpx;}
+.user_menu2 .li:last-child .info{border-bottom:none;}
 
 
 

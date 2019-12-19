@@ -1,0 +1,83 @@
+<!-- <view class="record_list">
+    <navigator class='li' hover-class='hover' url=''>
+        <icon class='icons ico_tri'></icon>
+        <view class='info'>
+            <text class="txt_r">切换车牌号</text>
+            <text class='txt'>粤A B4567</text>
+        </view>
+    </navigator>
+</view> -->
+
+<!-- 订单信息 -->
+<view class='layout_box'>
+    <view class='layout_ctn'>
+        <!-- 车牌号 -->
+        <view class='dl'>
+            <view class='dt'>车牌号</view>
+            <view class='dd'>
+                <view class="picker">
+                    <icon class="icons ico_arrow"></icon>
+                    <navigator 
+                        class="txt_r f_blue" open-type="reLaunch"
+                        url="/pages/parking/enquiry-index/enquiry-index"
+                    >切换</navigator>
+                    <text class="txt">粤A B4567</text>
+                </view>
+            </view>
+        </view>
+
+       <!-- 车辆类型 -->
+        <view class='dl'>
+            <view class='dt'>车辆类型</view>
+            <view class='dd'>
+                <text class="txt">月保车辆</text>
+            </view>
+        </view>
+
+        <!-- 停车场 -->
+        <view class='dl'>
+            <view class='dt'>停车场</view>
+            <view class='dd'>
+                <picker class="picker" range="{{parkingLotList}}">
+                    <icon class="icons ico_arrow"></icon>
+                    <text class="txt">广佛一期停车场</text>
+                </picker>
+                
+            </view>
+        </view>
+
+        <!-- 有效期 -->
+        <view class='dl'>
+            <view class='dt'>有效期</view>
+            <view class='dd'>
+                <text class="txt">2019.12.1-2019.12.31</text>
+            </view>
+        </view>
+
+        <!-- 缴费周期 -->
+        <view class='dl'>
+            <view class='dt'>缴费周期</view>
+            <view class='dd pay_date'>
+                <view class="buy_num" style="float:left;">
+                    <icon class="icons ico_minus" bindtap="changeNumFn" data-type="minus"></icon>
+                    <text class="num">1</text>
+                    <icon class="icons ico_add" bindtap="changeNumFn" data-type="add"></icon>
+                </view>
+                <text class="txt">个月</text>
+            </view>
+        </view>
+
+        <!-- 总计费用 -->
+        <view class='dl'>
+            <view class='dt'>总计</view>
+            <view class='dd'>
+                <text class="pay_price txt f_orange">￥500</text>
+            </view>
+        </view>
+
+    </view>
+</view>
+
+<view class="u_btn_wrap">
+    <view class="u_btn blue w100">立即支付</view>
+</view>

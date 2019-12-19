@@ -12,12 +12,12 @@
         <view class='get_time'>{{item.getTimeTxt}}</view>
         <view class='mf_txt' wx:if="{{item.couponType == 3}}">{{langData.free[lang]}}</view>
         <view class='yh_txt' wx:if="{{item.couponType != 3}}">
-            <view class='num' style="{{langType=='en'?'font-size:30rpx;':''}}">{{item.discountPrice}}</view>
+            <view class='num' style="{{lang=='en'?'font-size:30rpx;':''}}">{{item.discountPrice}}</view>
             <view class='tip'>{{item.discountSumPrice}}</view>
         </view>
         <view class='jd_box'> <view class='jd_bar' style='width:{{item.jdNum}}%'></view> </view>
-        <view class='jd_txt' wx:if="{{langType=='zh'}}">{{langData.yqText[lang]}} <text>{{item.jdNum}}%</text></view>
-        <view class='jd_txt' wx:if="{{langType=='en'}}"><text>{{item.jdNum}}%</text> {{langData.yqText[lang]}}</view>
+        <view class='jd_txt' wx:if="{{lang=='zh'}}">{{langData.yqText[lang]}} <text>{{item.jdNum}}%</text></view>
+        <view class='jd_txt' wx:if="{{lang=='en'}}"><text>{{item.jdNum}}%</text> {{langData.yqText[lang]}}</view>
         <view class='use_time'><icon class='icons ico_time'></icon>{{item.useTimeText}}</view>
         <view class='get_btn' bindtap='getCouponFn' data-id="{{item.couponId}}" data-index="{{index}}">{{langData.lqBtn[lang]}}</view>
 

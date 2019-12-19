@@ -31,7 +31,7 @@ page{background:#f7f7f7; padding-bottom:120rpx; }
 .serve_detail_ctn .title{text-align: center; line-height:0; padding:40rpx 0 25rpx;}
 .serve_detail_ctn .title image{display:inline-block; width:118rpx; height:25rpx; margin:0 20rpx; vertical-align: top;}
 .serve_detail_ctn .title text{font-size:26rpx; color:#f68b00; line-height:26rpx;}
-.details_ctn{background:#fff;  min-height:500rpx;}
+.details_ctn{background:#fff;  min-height:300rpx;}
 
 .serve_btm_wrap{position:fixed; left:0; bottom:0; z-index: 99; width:100%; padding:20rpx 30rpx; background:#fff;}
 .serve_btm_wrap .blue_btn{display:inline-block; height:80rpx; line-height:80rpx; width: 38%; margin-right:3%;}

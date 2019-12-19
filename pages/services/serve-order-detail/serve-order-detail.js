@@ -4,7 +4,7 @@ Page({
     data: {
         domainUrl: app.globalData.domainUrl,
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
 
         detailData:null,    //详情数据
         orderId:'', //订单id

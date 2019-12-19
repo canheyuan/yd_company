@@ -1,7 +1,7 @@
 
 <view class='act_list {{listName}}'  wx:if="{{listInfo.list.length>0 && listInfo.list}}">
     <view class='li'  wx:for="{{listInfo.list}}" wx:key="activity{{index}}">
-        <icon class='ico_collect act' bindtap="collectPopShow" data-id="{{listInfo.activityId}}"></icon>
+        <icon class='ico_collect act' bindtap="collectPopShow" data-id="{{item.activityId}}"></icon>
 
         <!-- 状态status -->
         <view class='btns'> 
@@ -30,7 +30,7 @@
             <!-- 我要报名按钮 -->
             <form  
                 wx:if="{{item.status==2 && item.isJoined!=1}}"  report-submit="true" bindsubmit="applyBtnFn" 
-                data-url='/pages/activity/activity-apply/activity-apply?id={{detailsData.activityId}}'
+                data-url='/pages/activity/activity-apply/activity-apply?id={{item.activityId}}'
             >
                 <button 
                     class='btn {{item.status==3?"disabled":""}}' hover-class='none' 
@@ -52,7 +52,6 @@
                 <icon class='icons ico_bm'></icon>
                 <text>{{item.joinCount?item.joinCount:'0'}}</text>{{langData.applyText[lang]}}
             </view>
-
         </view>
 
         <!-- 报名成功图标 -->
@@ -70,6 +69,6 @@
 <list-nothing c-name="{{targetName}}" wx:if="{{!listInfo.list.length>0 && listInfo.list}}"></list-nothing>
 
 <!-- 登录提示 -->
-<view hidden="{{hasUserInfo}}">
+<view hidden="{{loginTipShow}}">
     <login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
 </view>

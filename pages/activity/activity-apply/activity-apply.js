@@ -11,6 +11,7 @@ Page({
 
     //生命周期函数--监听页面加载
     onLoad: function (options) {
+        console.log('options',options)
         //设置语言,判断是否切换语言
         app.loadLangNewFn(this, 'activity', (res, lang) => {
             wx.setNavigationBarTitle({ title: res.actApplayTitle[lang] });  //设置当前页面的title
@@ -23,7 +24,7 @@ Page({
         app.requestFn({
             url: `/activityUser/initInfo`,
             data: {
-                activityId: this.data.activityId
+                activityId: activityId
             },
             success: (res) => {
                 console.log("用户信息", res.data.data);

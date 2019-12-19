@@ -1,7 +1,6 @@
 {
     "navigationBarTitleText": "",
     "usingComponents": {
-        "discuss-list": "/components/discuss-list/discuss-list",
-        "login-tip": "/components/login-tip/login-tip"
+        "discuss-list": "/components/discuss-list/discuss-list"
     }
 }

@@ -2,7 +2,8 @@
 <!-- 新闻列表 -->
 <news-list target-page="companyNews" reach-data="{{reach}}"></news-list>
 
-
+<!-- 返回顶部 -->
+<default m-name="backTop" m-top="20" is-show="{{backTopShow}}"></default>
 
 
 

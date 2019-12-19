@@ -31,7 +31,7 @@
 </view>
 
 
-<!-- 填写订单信息 -->
+<!-- 订单信息 -->
 <view class='layout_box'>
     <view class='layout_ctn'>
         <!-- 用户姓名 -->

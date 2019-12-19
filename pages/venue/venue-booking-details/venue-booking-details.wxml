@@ -42,7 +42,8 @@
         wx:if="{{detailsData.description.length > 150}}"
         bindtap="checkMoreFn"
     >
-        {{!moreDes?langData.public.checkMoreBtn[lang]:langData.public.packUpBtn[lang]}}<icon class='icons ico_arrow'></icon>
+        {{!moreDes?langData.public.checkMoreBtn[lang]:langData.public.packUpBtn[lang]}}
+        <icon class='icons ico_arrow'></icon>
     </view>
 
 </view>
@@ -58,16 +59,20 @@
             <input style='display:none;' name="chamberId" value='{{detailsData.chamberId}}' /><!-- 场地id -->
             <input style='display:none;' name="attendance" value='' /><!-- 到场人数,非必填 -->
             <input style='display:none;' name="remark" value='' /><!-- 备注,非必填 -->
+
+            <!-- 预定日期 -->  
             <view class='dl'>
                 <text class='dt'>{{langData.public.reserveDate[lang]}}</text>
                 <view class='dd'>
                     <view class='date_txt'>{{dateUrl}}</view>
                 </view>
             </view>
+
+            <!-- 预定时间 -->  
             <view class='dl'>
                 <text class='dt'>{{langData.public.reserveTime[lang]}}</text>
                 <view class='dd'>
-                    <!-- 时间段 -->  
+                    
                     <view class="picker_group">  
                         <picker 
                             class="picker_time" name="orderStart" value="{{dateUrl}} {{startTime}}" range="{{hours_start}}" 
@@ -85,19 +90,30 @@
                     </view>
                 </view>
             </view>
+
+            <!-- 联系人 -->
             <view class='dl'>
                 <text class='dt'>{{langData.public.contact[lang]}}</text>
                 <view class='dd'>
-                    <input type='text' class='input' name="contact" placeholder='{{langData.public.contactPl[lang]}}' value="" placeholder-class='pl_input' />
-                </view>
-            </view>
-            <view class='dl'>
-                <text class='dt'>{{langData.public.contactPhone[lang]}}</text>
-                <view class='dd'>
-                    <input type='text' class='input' name="phone" placeholder='{{langData.public.contactPhonePl[lang]}}' value="" placeholder-class='pl_input' />
+                    <input 
+                        type='text' class='input' name="contact"  value=""
+                        placeholder='{{langData.public.contactPl[lang]}}' placeholder-class='pl_input' 
+                    />
                 </view>
             </view>
 
+            <!-- 联系电话 -->
+            <view class='dl'>
+                <text class='dt'>{{langData.public.contactPhone[lang]}}</text>
+                <view class='dd'>
+                    <input 
+                        type='number' class='input' name="phone"  value=""
+                        placeholder='{{langData.public.contactPhonePl[lang]}}' placeholder-class='pl_input' 
+                    />
+                </view>
+            </view>
+
+            <!-- 价格提示 -->
             <view class='reserve_btm'>
                 <view class="reserve_btm_box">
                     <view class='txt'>{{detailsData.price + langData.reserveText1[lang] + veneuTime + langData.reserveText2[lang] + detailsData.freeHours + langData.reserveText3[lang]}}</view>

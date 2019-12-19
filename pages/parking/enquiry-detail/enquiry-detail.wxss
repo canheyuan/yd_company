@@ -1,0 +1,18 @@
+@import '/style/layout.wxss';
+@import '/style/btn.wxss';
+
+page{background:#f7f7f7;}
+
+.record_list .li{height:90rpx;  background:#fff; position:relative; border-top:1rpx solid #e5e5e5; padding-left:50rpx; }
+.record_list .li .ico_tri{width:50rpx; height:50rpx; position:absolute; right:20rpx; top:50%; margin-top:-25rpx; background-position: -198rpx -60rpx; }
+.record_list .li .info{overflow: hidden; padding-right:90rpx; height:90prx;}
+.record_list .li .txt_r{float:right; line-height:90rpx; font-size:30rpx; color:#999;}
+.record_list .li .txt{line-height:90rpx; font-size:30rpx; color:#333333;}
+
+.record_list .li:last-child{border-bottom:none;}
+.record_list .li.hover{opacity: .8;}
+.record_list .li.hover text{color:#2a99f1;}
+
+.parking_detail .dl .dd .date{font-weight: bold; font-size:36rpx;}
+.parking_detail .dl .dd .green{color:#07c160;}
+.parking_detail .dl .dd .red{color:#ff0000}

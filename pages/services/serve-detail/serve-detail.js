@@ -14,9 +14,7 @@ Page({
     //生命周期函数--监听页面加载
     onLoad: function (options) {
         //设置语言,判断是否切换语言
-        app.loadLangNewFn(this, 'serve', (res, lang) => {
-            
-        });
+        app.loadLangNewFn(this, 'serve');
         this.getDetailFn(options.id)
     },
 

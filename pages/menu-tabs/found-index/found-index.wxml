@@ -43,7 +43,7 @@
     </view>
 
     <!-- 新闻列表 -->
-    <news-list target-page="news" reach-data="{{tagList[0].reach}}" lang="{{langType}}" type-show="true"></news-list>
+    <news-list target-page="news" reach-data="{{tagList[0].reach}}" lang="{{lang}}" type-show="true"></news-list>
 
 </view>
 <!-- 新鲜事_End -->
@@ -106,7 +106,7 @@
         </view>
         <policy-list 
             wx:if="{{policyType && tagList[1].reach}}"
-            target-page="policy" policy-type="{{policyType}}"  lang="{{langType}}" 
+            target-page="policy" policy-type="{{policyType}}"  lang="{{lang}}" 
             reachData="{{tagList[1].reach}}" bindrecommendTotal="recommendTotalFn"
         ></policy-list>
   </view>
@@ -121,7 +121,9 @@
 </view>
 
 <!------------------ tab栏菜单 ------------------>
-<view wx:if="{{langType=='en'}}" class="tab_box">
-    <tab index='1' lang-change='{{langType}}'></tab>
+<view wx:if="{{lang=='en'}}" class="tab_box">
+    <tab index='1' lang-change='{{lang}}'></tab>
 </view>
 
+<!-- 返回顶部 -->
+<default m-name="backTop" m-top="20" is-show="{{backTopShow}}"></default>

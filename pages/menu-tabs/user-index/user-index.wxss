@@ -6,19 +6,20 @@ page{background: #f7f7f7; }
 .user_head .update_txt .bj_txt{display:inline-block; font-size: 26rpx; color: #fff; opacity: .8; line-height:40rpx;}
 .user_head .update_txt>image{width: 40rpx; height: 40rpx; display:inline-block;  margin-right:5rpx;vertical-align: middle;}
 
-.user_head .per_info{ display:block; overflow:hidden; box-sizing: border-box; width: 100%;}
+.user_head .per_info{ display:block; overflow:hidden; box-sizing: border-box; width: 100%; height:320rpx;}
 .user_head .per_info .per_img{ width: 160rpx; height: 160rpx; border-radius:100%; border:10rpx solid #fff; }
-.user_head .per_info .name{text-align: center;}
-.user_head .per_info .name text{font-size: 34rpx; font-weight: bold;}
+.user_head .per_info .name{text-align: center; height:40rpx; margin-bottom:10rpx;}
+.user_head .per_info .name text{font-size: 34rpx; line-height:40rpx; font-weight: bold;}
 .user_head .per_info .name .ico_sex{  width: 38rpx; height: 38rpx; display: inline-block; margin-left: 10rpx;  vertical-align: middle; }
-.user_head .per_info .company_name{ display:inline-block; min-width: 315rpx;  padding:0 20rpx;  height: 42rpx;  border:  solid 1rpx #bfbfbf;  border-radius: 30rpx; font-size: 24rpx; line-height: 42rpx; text-align: center; color: #949494;  margin-top:15rpx; }
+.user_head .per_info .company_name{ display:inline-block; min-width: 320rpx; text-align: center;  padding:0 20rpx;  height: 42rpx; line-height: 42rpx;  border:  solid 1rpx #bfbfbf;  border-radius: 21rpx; font-size: 24rpx;  color: #949494;}
 
 /*功能卡*/
-.head_btn_box{  height: 180rpx; padding: 30rpx 25rpx 0; background:#fff no-repeat center top; background-size:100% auto;text-align: center;  }
-.head_btn_list .a{ display: inline-block; width: 25%; font-size: 26rpx; }
-.head_btn_list .a .ico{  width: 60rpx; height: 60rpx; display: block; margin: 35rpx auto 20rpx; }
-.head_btn_list .a .txt{color:#666;}
-.head_btn_list .a.hover .txt{background:none; color:#4a7df6;}
+.head_btn_box{  height: 180rpx; padding: 30rpx 80rpx 0; background:#fff no-repeat center top; background-size:100% auto;text-align: center;  }
+.head_btn_list{display: flex; display:-webkit-flex; flex-wrap: row nowrap; -webkit-flex-wrap:row nowrap; width:100%; font-size:0;}
+.head_btn_list .a{ display:block; flex:1; -webkit-flex:1; width:100%; padding:35rpx 0 20rpx; text-align: center;}
+.head_btn_list .a .ico{  width: 60rpx; height: 60rpx; display: inline-block; margin-bottom:20rpx;}
+.head_btn_list .a .txt{ display:block; text-align: center; height:30rpx; line-height:30rpx; color:#666; font-size: 26rpx; }
+.head_btn_list .a.hover .txt{color:#4a7df6;}
 
 
 .menu_list{margin-bottom:20rpx;}

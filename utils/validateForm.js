@@ -1,6 +1,7 @@
 const app = getApp();  //获取应用实例
 const commonFn = require('common.js'); //一些通用的函数
-var langData = app.globalData.langData[app.globalData.langType].validate;
+var lang = app.globalData.lang
+var langData = app.globalData.langData.validate;
 
 
 
@@ -25,55 +26,55 @@ var formTip = (tipArr, callback) => {
         switch (opt.name) {
             case 'empty':
                 isItemTip = !opt.verifyText
-                tipText = langData.empty;
+                tipText = langData.empty[lang];
                 break;
             case 'phone':
                 isItemTip = !commonFn.phoneregFn(opt.verifyText)
-                tipText = langData.phone;
+                tipText = langData.phone[lang];
                 break;
             case 'email':
                 isItemTip = !commonFn.emailRegFn(opt.verifyText)
-                tipText = langData.email;
+                tipText = langData.email[lang];
                 break;
             case 'verifyCodeEmpty':
                 isItemTip = opt.verifyText == ''
-                tipText = langData.verifyCodeEmpty;
+                tipText = langData.verifyCodeEmpty[lang];
                 break;
             case 'password':
                 isItemTip = opt.verifyText == ''
-                tipText = langData.password;
+                tipText = langData.password[lang];
                 break;
             case 'passwordAgain':
                 isItemTip = opt.verifyText == ''
-                tipText = langData.passwordAgain;
+                tipText = langData.passwordAgain[lang];
                 break;
             case 'passwordContrast':
                 isItemTip = opt.verifyText != opt.verifyText2
-                tipText = langData.passwordContrast;
+                tipText = langData.passwordContrast[lang];
                 break;
             case 'userName':
                 isItemTip = opt.verifyText == ''
-                tipText = langData.userName;
+                tipText = langData.userName[lang];
                 break;
             case 'park':
                 isItemTip = !opt.verifyText
-                tipText = langData.park;
+                tipText = langData.park[lang];
                 break;
             case 'ent':
                 isItemTip = !opt.verifyText
-                tipText = langData.ent;
+                tipText = langData.ent[lang];
                 break;
             case 'name':
                 isItemTip = !opt.verifyText
-                tipText = langData.name;
+                tipText = langData.name[lang];
                 break;
             case 'date':
                 isItemTip = !opt.verifyText
-                tipText = langData.date;
+                tipText = langData.date[lang];
                 break;
             case 'time':
                 isItemTip = !opt.verifyText
-                tipText = langData.time;
+                tipText = langData.time[lang];
                 break;
         }
         if (isItemTip) {

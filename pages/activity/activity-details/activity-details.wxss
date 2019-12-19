@@ -3,7 +3,7 @@
 
 page{background:#fff; height:100%;}
 
-.scroll_page{height:100%;width:100%; box-sizing: border-box; padding-bottom:120rpx; }
+.scroll_page{height:100%;width:100%; box-sizing: border-box;  }
 
 .act_details_head{background:url(https://www.5iparks.com/static/yuanding/images/act_details_img.jpg) no-repeat; background-size:100% 100%; width:100%; height:330rpx; box-sizing:border-box; padding:60rpx 25rpx 30rpx;  }
 .yd_title02{padding:40rpx 0; background:#f7f7f7;}

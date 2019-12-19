@@ -40,8 +40,7 @@
 
     <view style="padding:100rpx 100rpx 50rpx;">
         <navigator 
-            class='blue_btn' bindtap="returnPage" 
-            url='/pages/activity/activity-details/activity-details?id={{detailData.activityId}}'
+            class='blue_btn' bindtap="returnPage" open-type="navigateBack"
         >{{langData.returnActDetail[lang]}}</navigator>
     </view>
 

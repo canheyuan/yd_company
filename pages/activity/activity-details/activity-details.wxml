@@ -55,7 +55,6 @@
 <view class='details_ctn'>
     <view class='yd_title01'>{{langData.rule[lang]}}</view>
     <template is="wxParse" data="{{wxParseData:rule.nodes}}"/>
-
     <view class='yd_title01'>{{langData.public.warmPrompt[lang]}}</view>
     <template is="wxParse" data="{{wxParseData:tips.nodes}}"/>
     <template is="wxParse" data="{{wxParseData:html.nodes}}"/>
@@ -72,6 +71,7 @@
     is-collected="{{detailData.isCollected}}"
     reach-data="{{discussReach}}"
 ></discuss-list>
+<view style="height:120rpx;"></view>
 
 </scroll-view>
 
@@ -79,7 +79,7 @@
 <!-- 已报名 -->
 <navigator 
     wx:if="{{detailData.isJoined==1 && detailData.status == 2}}" class='btm_btn' 
-    url='/pageactivity/activity-apply-details/activity-apply-details?id={{detailData.activityId}}'
+    url='/pages/activity/activity-apply-details/activity-apply-details?id={{detailData.activityId}}'
 >
     <image src='{{domainUrl}}/images/icon/ybm_btn.png'></image>
 </navigator>
@@ -92,7 +92,7 @@
 </form>
 
 <!-- 登录提示 -->
-<view hidden="{{hasUserInfo}}">
+<view hidden="{{loginPopHide}}">
     <login-tip close-btn-show="true" bindclosePop="closePopFn"></login-tip>
 </view>
 

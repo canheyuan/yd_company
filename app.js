@@ -1,35 +1,31 @@
 const mtjwxsdk = require('./utils/mtj-wx-sdk.js');  //百度统计
 var appConfig = require('config.js');   //不同小程序的配置信息
 let langJson = require('lang.js');   //加载语言文件包
-let langNewJson = require('lang_new.js');   //加载语言文件包
 let webim = require('utils/webim_wx.js');   //腾讯云IM
 let chatIm = require('utils/chatIm.js');    //封装腾讯云接口
 
 App({
     globalData: {
-        appVersion: '1.4.1',       //上传的版本号
-        appVersionDate: '20191122', //版本更新的日期
+        appVersion: '1.4.4',       //上传的版本号
+        appVersionDate: '20191213', //版本更新的日期
 
-        langType: '',     //当前小程序的语言版本
-        langData: null,
-
-        //新的语言json格式
+        langData: null,  //语言json格式
         lang: '',    //当前小程序的语言版本
-        langNewData: null,
-
+        
         domainUrlDev: 'http://192.168.0.244/yuanding',        //接口测试机
         domainUrl: 'https://www.5iparks.com/static/yuanding', //图片正式机
         jkDevUrl: 'http://192.168.0.244:8080/api',  //图片开发板
+        jkUrl: 'https://www.5iparks.com/api',       //接口正式版
 
         //判断页面是否刷新参数（刷新：true，不刷新：false）
         foundTag: 0,        //进入发现页，0新鲜事，1政策
         indexReach: true,    //首页
         foundReach: true,    //发现
-        expertReach: true,    //发现页专家
+        expertReach: true,   //发现页专家
         serveReach: true,    //服务首页
         userIndexReach: true,    //我的页面
         userInfoReach: false,    //修改信息页面
-        couponListReach: false,    //我的卡包券
+        couponListReach: false,  //我的卡包券
         myRepairReach: false,    //我的报修列表
 
         loginCode: '',        //微信登录获取code
@@ -66,23 +62,22 @@ App({
     
     onLaunch: function (opt) {
         
-        
         //在globalData加入功能开关
         this.globalData.appApi = appConfig.appApi
         this.globalData.moduleSwitch = appConfig.moduleSwitch;
-        this.globalData.jkUrl = appConfig.jkUrl;
 
+        if (appConfig.jkUrl){
+            this.globalData.jkUrl = appConfig.jkUrl;
+        }
+        
         //获取语言
         this.globalData.langData = langJson;
-        this.globalData.langNewData = langNewJson;
         if (this.globalData.moduleSwitch.lang){
-            this.globalData.langType = wx.getStorageSync('langtype') ? wx.getStorageSync('langtype') : 'zh';
             this.globalData.lang = wx.getStorageSync('langtype') ? wx.getStorageSync('langtype') : 'zh';
-            if (this.globalData.langType == 'en') {
+            if (this.globalData.lang == 'en') {
                 wx.hideTabBar();
             }
         }else{
-            this.globalData.langType = 'zh'
             this.globalData.lang = 'zh'
         }
 
@@ -99,30 +94,14 @@ App({
         this.getWxLoginInfo();
     },
 
-    //当前页加载语言文件包(页面this，页面对应json的字段，)
-    loadLangFn(pageThis, page, callback) {
-        //设置语言,判断是否切换语言
-        var langType = this.globalData.langType;
-        if (langType != pageThis.data.langType) {
-            var newLangData = this.globalData.langData[langType][page];
-            var langPublicData = this.globalData.langData[langType].public;
-            newLangData.public = langPublicData;
-            var setDatas = {
-                langType: langType,
-                langData: newLangData
-            }
-            pageThis.setData(setDatas);
-            callback && callback(newLangData);
-        }
-    },
 
     //新的json格式，当前页加载语言文件包(页面this，页面对应json的字段，)
     loadLangNewFn(pageThis, page, callback) {
         //设置语言,判断是否切换语言
         var langType = this.globalData.lang;
         if (langType != pageThis.data.lang) {
-            var newLangData = this.globalData.langNewData[page];
-            var langPublicData = this.globalData.langNewData.public;
+            var newLangData = this.globalData.langData[page];
+            var langPublicData = this.globalData.langData.public;
             newLangData.public = langPublicData;
             var setDatas = {
                 lang: langType,

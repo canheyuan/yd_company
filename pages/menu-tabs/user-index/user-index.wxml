@@ -1,7 +1,6 @@
 <!-- 下拉刷新动画 -->
 <!-- <reach-load></reach-load> -->
 
-
 <!--顶部-->
 <view 
     class='user_head'
@@ -9,22 +8,21 @@
 >
     <!-- 编辑按钮 -->
     <navigator class='update_txt' url='/pages/user/user-info/user-info' hover-class='hover'>
-        <image src='{{domainUrl}}/images/me/bj.png'></image>
+        <image src='{{domainUrl}}/images/me/bj.png' lazy-load="true"></image>
         <text class='bj_txt'>{{langData.editBtn[lang]}}</text>
     </navigator>
 
     <!-- 我的信息 -->
     <view class="per_info">
         <image
-            class='per_img' src='{{userInfo.headImgs?userInfo.headImgs:domainUrl+"/images/default/df_userhead.png"}}'
-            binderror='errorImgFn' data-obj="userInfo.headImgs"
-            data-img="{{domainUrl}}/images/default/df_userhead.png"
+            class='per_img' src='{{userInfo.headImgs}}' binderror='errorImgFn' data-obj="userInfo.headImgs" 
+            data-img="{{domainUrl}}/images/default/df_userhead.png"  lazy-load="true"
         >
         </image>
         <view class='name'>
             <text>{{userInfo.name}}</text>
             <image 
-                wx:if="{{userInfo.sex==1 || userInfo.sex==2}}" class='ico_sex' 
+                wx:if="{{userInfo.sex==1 || userInfo.sex==2}}" class='ico_sex'  lazy-load="true"
                 src='{{domainUrl}}/images/me/{{userInfo.sex == 1?"man":"woman"}}.png'
             ></image>
         </view>
@@ -33,12 +31,13 @@
    
     <!-- 顶部功能按钮 -->
     <view class="head_btn_box" style="background-image:url({{domainUrl}}/images/me/user_btn_bg.png);">
-        <view class='head_btn_list'>
+        <default m-name="userMenu" m-num="3" wx:if="{{!menuFinish}}"></default>
+        <view class='head_btn_list' wx:if="{{menuFinish}}">
             <navigator 
                 class='a' hover-class='hover'  wx:if="{{moduleSwitch.repair}}"
                 url='/pages/user/my-repair/my-repair'
             >
-                <image class='ico' src='{{domainUrl}}/images/me/ico_repair.png'></image>
+                <image class='ico' src='{{domainUrl}}/images/me/ico_repair.png' lazy-load="true"></image>
                 <text class='txt'>{{langData.repairBtn[lang]}}</text>
             </navigator>
             
@@ -46,12 +45,12 @@
                 class='a' hover-class='hover' wx:if="{{moduleSwitch.venue}}"
                 url='/pages/user/my-reserve/my-reserve' 
             >
-                <image class='ico' src='{{domainUrl}}/images/me/ico_venue.png'></image>
+                <image class='ico' src='{{domainUrl}}/images/me/ico_venue.png' lazy-load="true"></image>
                 <text class='txt'>{{langData.venueBtn[lang]}}</text>
             </navigator>
 
             <navigator class='a' hover-class='hover' url='' bindtap="fapiaoTip">
-                <image class='ico' src='{{domainUrl}}/images/me/ico_invoice.png'></image>
+                <image class='ico' src='{{domainUrl}}/images/me/ico_invoice.png' lazy-load="true"></image>
                 <text class='txt'>{{langData.invoiceBtn[lang]}}</text>
             </navigator>
 
@@ -59,7 +58,7 @@
                 class='a' hover-class='hover' wx:if="{{moduleSwitch.recommend && isRecommendInfo==1}}"
                 url='/pages/recommend/recommend-index/recommend-index' bindtap='recommendGotoUrl' 
             >
-                <image class='ico' src='{{domainUrl}}/images/me/ico_recommend.png'></image>
+                <image class='ico' src='{{domainUrl}}/images/me/ico_recommend.png' lazy-load="true"></image>
                 <text class='txt'>{{langData.recommendBtn[lang]}}</text>
             </navigator> -->
         </view>
@@ -67,7 +66,8 @@
 </view>
 
 <!-- 菜单按钮列表 -->
-<view class='menu_list'>
+<default m-name="userMenu2" m-num="4" wx:if="{{!menuFinish}}"></default>
+<view class='menu_list' wx:if="{{menuFinish}}">
     <navigator 
         wx:for="{{menuList}}" wx:key="menuList{{index}}" wx:if="{{item.isShow}}"
         class='li {{item.isLast?"last":""}}' hover-class='hover' 
@@ -97,6 +97,6 @@
 </view>
 
 <!------------------ tab栏菜单 ------------------>
-<view wx:if="{{langType=='en'}}" class="tab_box">
-    <tab index='3' lang-change='{{langType}}'></tab>
+<view wx:if="{{lang=='en'}}" class="tab_box">
+    <tab index='3' lang-change='{{lang}}'></tab>
 </view>

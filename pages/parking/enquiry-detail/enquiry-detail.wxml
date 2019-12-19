@@ -1,0 +1,70 @@
+<view class="record_list">
+    <navigator class='li' hover-class='hover' url=''>
+        <icon class='icons ico_tri'></icon>
+        <view class='info'>
+            <navigator class="txt_r" open-type="navigateBack">切换车牌号</navigator>
+            <text class='txt'>{{carDetail.carPlate}}</text>
+        </view>
+    </navigator>
+</view>
+
+<!-- 订单信息 -->
+<view class='layout_box parking_detail'>
+    <view class='layout_ctn'>
+        <!-- 到期时间 -->
+        <view class='dl'>
+            <view class='dt'>到期时间</view>
+            <view class='dd'>
+                <text class="txt f_orange date">{{carDetail.expiredDate}}</text>
+            </view>
+        </view>
+
+        <!-- 姓名 -->
+        <view class='dl'>
+            <view class='dt'>用户</view>
+            <view class='dd'>
+                <text class="txt">{{carDetail.contact}}</text>
+            </view>
+        </view>
+        
+        <!-- 绑定手机 -->
+        <view class='dl'>
+            <view class='dt'>绑定手机</view>
+            <view class='dd'>
+                <text class="txt">{{carDetail.contactPhone}}</text>
+            </view>
+        </view>
+
+        <!-- 车辆状态 -->
+        <view class='dl'>
+            <view class='dt'>车辆状态</view>
+            <view class='dd'>
+                <text class="txt {{carDetail.statusClass}}">{{carDetail.statusName}}</text>
+            </view>
+        </view>
+
+        <!-- 车辆类型 -->
+        <view class='dl'>
+            <view class='dt'>车辆类型</view>
+            <view class='dd'>
+                <text class="txt">月保车辆</text>
+            </view>
+        </view>
+
+        <!-- 停车场 -->
+        <view class='dl'>
+            <view class='dt'>停车场</view>
+            <view class='dd'>
+                <text class="txt">{{carDetail.parkingLot}}</text>
+            </view>
+        </view>
+
+    </view>
+</view>
+
+<view class="u_btn_wrap">
+    <navigator 
+        class="u_btn blue w100"
+        url="/pages/parking/pay-detail/pay-detail?id={{carDetail.id}}"
+    >立即续费</navigator>
+</view>

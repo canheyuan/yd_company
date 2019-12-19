@@ -1,0 +1,25 @@
+page{background:#f7f7f7;}
+
+.top_tip{background:#fff1cf; line-height:36rpx; padding:10rpx 30rpx; font-size:24rpx; color:#de6a1c}
+
+.enquiry_head{ margin-bottom:100rpx;}
+.enquiry_head .img_box{width:100%; height:290rpx; overflow: hidden;}
+.enquiry_head .img{width:100%;}
+.car_code_box{margin:-55rpx 20rpx 70rpx; height:110rpx; line-height:110rpx; background:#fff; border-radius:10rpx; box-sizing: border-box; padding-left:0rpx; position:relative; z-index: 9;}
+.car_code_box .code1{float:left; width:130rpx;text-align: center; height:110rpx; font-size:36rpx; color:#000; margin-right:30rpx; padding-left:40rpx;}
+.car_code_box .code1 .ico_tri{width:40rpx; height:40rpx; background-position:-360rpx -160rpx; vertical-align: middle; position:relative; top:-4rpx; margin-left:10rpx;}
+.car_code_box .code2{display:block; overflow: hidden; height:110rpx; line-height:110rpx; font-size:36rpx; color:#000;}
+.car_code_box .code2.placeholder{color:#999;}
+.enquiry_head .blue_btn{margin:0 100rpx;}
+
+.record_mdl .yd_title01{margin:0 30rpx 20rpx;}
+.record_list .li{height:90rpx;  background:#fff; position:relative; border-bottom:1rpx solid #e5e5e5; padding-left:30rpx; }
+.record_list .li .ico_tri{width:50rpx; height:50rpx; position:absolute; right:20rpx; top:50%; margin-top:-25rpx; background-position: -198rpx -60rpx;}
+.record_list .li .info{overflow: hidden; padding-right:90rpx; height:90prx;}
+.record_list .li .txt{line-height:90rpx; font-size:30rpx; color:#333333;}
+.record_list .li:last-child{border-bottom:none;}
+.record_list .li.hover{opacity: .8;}
+.record_list .li.hover text{color:#2a99f1;}
+
+
+

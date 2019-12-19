@@ -31,7 +31,7 @@
     is-collected="{{detailData.isCollected}}"
     reach-data="{{discussReach}}"
 ></discuss-list>
-
+<view style="height:120rpx;"></view>
 </scroll-view>
 
 <!-- 返回顶部 -->

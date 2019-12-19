@@ -2,8 +2,8 @@ const app = getApp();   //获取应用实例
 
 //通用列表页
 const listPage = (option) => {
-    var appLangData = app.globalData.langData;
-    var appLangType = app.globalData.langType;
+    var langData = app.globalData.langData;
+    var lang = app.globalData.lang;
     let opt = option ? option : null;
     if (!option.listDataName) {
         var listInfo = option.page.data['listInfo'];
@@ -21,8 +21,8 @@ const listPage = (option) => {
         listDataName: 'listInfo',  //当前列表的名称
         isReach: false,             //是否合并
         isFinish:false,             //监听接口是否读取结束
-        moreTxt: appLangData[appLangType].public.moreText,  //上拉更多文字
-        noMoreTxt: appLangData[appLangType].public.noMoreText,//没有更多了
+        moreTxt: langData.public.moreText[lang],  //上拉更多文字
+        noMoreTxt: langData.public.noMoreText[lang],//没有更多了
         data: {},
         dataType: 'json',
         getListDataFn: null,  //获取列表数据和总数，，需要return回来

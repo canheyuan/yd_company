@@ -34,7 +34,7 @@
 
 
 <!-- 服务市场菜单 -->
-<view wx:if="{{mName=='serveMenu'}}" class="menu_list {{mClass}}">
+<view wx:if="{{mName=='serveMenu'}}" class="serve_menu {{mClass}}">
     <view 
         class="a" wx:if="{{mNum>index}}" 
         wx:for="{{[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]}}" wx:key="*this"
@@ -59,6 +59,23 @@
     </view>
 </block>
 
+<!-- 我的-底部菜单按钮 -->
+<view wx:if="{{mName=='userMenu'}}" class="user_menu">
+    <view 
+        class="li" wx:if="{{mNum>index}}"  wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="*this"
+    ><view class="icon"></view><view class="text"></view></view>
+</view>
+
+<!-- 我的-底部菜单按钮 -->
+<view wx:if="{{mName=='userMenu2'}}" class="user_menu2">
+    <view 
+        class="li" wx:if="{{mNum>index}}"  wx:for="{{[0,1,2,3,4,5,6]}}" wx:key="*this"
+    >
+        <icon class='icons2 menu_ico'></icon>
+        <view class='info'><text class='txt'>--</text></view>
+        <icon class='icons ico_tri'></icon>
+    </view>
+</view>
 
 
 

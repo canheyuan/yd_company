@@ -23,5 +23,14 @@ Page({
     //页面上拉触底事件的处理函数
     onReachBottom: function () {
         this.setData({ reach: Math.random() });
-    }
+    },
+
+    //监听滚动判断是否显示返回顶部按钮
+    onPageScroll(e) {
+        if (e.scrollTop > 800 && !this.data.backTopShow) {
+            this.setData({ backTopShow: true });
+        } else if (e.scrollTop < 800 && this.data.backTopShow) {
+            this.setData({ backTopShow: false });
+        }
+    },
 })

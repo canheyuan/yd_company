@@ -27,7 +27,7 @@
                 <view class='title'><text>{{item.positionName}}</text> | <text>{{item.serviceProvider}}</text></view>
                 <view class='news_tips yd_label'>
                     <view class='ico_txt institution'>
-                        <image class="img" src='{{domainUrl}}/images/icon/ico_loc_sm.png'></image>{{item.cityName}}
+                        <image class="image" src='{{domainUrl}}/images/icon/ico_loc_sm.png'></image>{{item.cityName}}
                     </view>
                     <text class="text" wx:for="{{item.focusAreas}}" wx:key="*this">{{item}}</text>
                 </view>

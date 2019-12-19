@@ -155,8 +155,8 @@ Page({
                 app.globalData.isLogin = false;
                 app.globalData.loginInfo = null,
 
-                    //重置所有刷新状态
-                    app.resetAllReach();
+                //重置所有刷新状态
+                app.resetAllReach();
 
                 webim.logout();
                 wx.removeStorageSync('backUrl'); //清除之前缓存

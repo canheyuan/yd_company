@@ -15,6 +15,7 @@
 .act_list .li .top .info .h3{font-size:34rpx; line-height:48rpx; font-weight: 500; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 2;}
 .act_list .li .top .info .title{color: #888; font-size:24rpx; line-height:32rpx; margin:8rpx 0;}
 .act_list .li .top .info .ico_txt.institution{display:inline-block; height:38rpx; line-height:38rpx; padding:0 15rpx 0 6rpx; border-radius:8rpx; font-size:22rpx; color:#acacac; background: #f0f0f0; margin-right:10rpx;}
+.act_list .li .top .info .ico_txt.institution .icon{width:30rpx; height:30rpx; vertical-align: middle; position:relative;top:-4rpx;}
 .act_list .li .top .info .intro{color: #888; font-size: 28rpx; line-height: 40rpx; border-bottom: 1rpx dashed #ccc; padding: 0 10rpx 20rpx 0;  margin: 12rpx -10rpx 0 0; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 3; max-height:120rpx; }
 .act_list .li .top .info .intro>view{ display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 3; max-height:120rpx; }
 .act_list .li .top .info .intro view{font-size:30rpx!important; line-height:40rpx!important; color:#666!important;}

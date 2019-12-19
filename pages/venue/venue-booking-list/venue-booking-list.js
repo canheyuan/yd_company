@@ -45,19 +45,63 @@ Page({
 
     },
 
+
     //设置顶部日期
+    // dateFn(dayNum) {
+    //     var langData = this.data.langData;
+    //     var lang = this.data.lang
+    //     const add0 = m => { return m < 10 ? '0' + m : m };
+    //     var weekTxt = langData.dayNames;
+    //     var nowDateTime = commonFn.dateFn()
+
+    //     var nowDateList = [];
+    //     for (var i = 0; i < dayNum; i++) {
+    //         var dayTxt = nowDateTime.day + i;
+    //         var dayTxt2 = nowDateTime.day + i + 1;
+    //         var month1 = nowDateTime.month;
+    //         var month2 = nowDateTime.month;
+    //         var weekTxt2 = weekTxt[(nowDateTime.week + i) % 7][lang];
+    //         if (i == 0) { weekTxt2 = langData.today[lang] };
+    //         if (i == 1) { weekTxt2 = langData.tomorrow[lang] };
+    //         if (dayTxt > days) {
+    //             month1 = month1 + 1;
+    //             dayTxt = dayTxt - nowDateTime.days;
+    //         }
+    //         if (dayTxt2 > nowDateTime.days) {
+    //             month2 = month2 + 1;
+    //             dayTxt2 = dayTxt2 - nowDateTime.days;
+    //         }
+    //         console.log(nowDateTime.days, month2);
+    //         var date = year + '-' + add0(month1) + '-' + add0(dayTxt);
+    //         var date2 = year + '-' + add0(month2) + '-' + add0(dayTxt2);
+
+    //         var arrItem = { 
+    //             date_start: date, 
+    //             date_end: date2, 
+    //             day: dayTxt, 
+    //             week: weekTxt2 
+    //         };
+    //         nowDateList.push(arrItem);
+    //     }
+    //     return nowDateList;
+    // },
+
     dateFn(dayTimes) {
         var langData = this.data.langData;
         var lang = this.data.lang
         const add0 = m => { return m < 10 ? '0' + m : m };
         var weekTxt = langData.dayNames;
+        var nowDateTime = commonFn.dateFn()
+
         var nowTime = new Date();
-        var year = nowTime.getFullYear();
-        var month = nowTime.getMonth() + 1;
-        var day = nowTime.getDate();
-        var week = nowTime.getDay();
+        var year = nowTime.getFullYear();   //年份
+        var month = nowTime.getMonth() + 1; //月份
+        var day = nowTime.getDate();    //日
+        var week = nowTime.getDay();    //周
         var dayDate = new Date(year, month, 0);
         var days = dayDate.getDate(); //当前月份天数
+
+
         var nowDateList = [];
         for (var i = 0; i < dayTimes; i++) {
             var dayTxt = day + i;

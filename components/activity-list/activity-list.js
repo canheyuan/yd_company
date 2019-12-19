@@ -30,7 +30,7 @@ Component({
         domainUrl: app.globalData.domainUrl,
         listInfo: {},   //列表数据
         listName: '',  //搜藏页面添加的class    
-        hasUserInfo: true, //是否有用户信息
+        loginTipShow: true, //是否有用户信息
         targetName: 'activity',  //暂无目标页面
         isFirst:true,
 
@@ -152,7 +152,7 @@ Component({
             var formId = e.detail.formId;
             var url = e.currentTarget.dataset.url;
             if (!app.globalData.isLogin) {
-                this.setData({ hasUserInfo: false });
+                this.setData({ loginTipShow: false });
             } else {
                 app.getFormIdFn(formId, () => {
                     wx.navigateTo({ url: url });
@@ -162,7 +162,7 @@ Component({
 
         //关闭登录提示弹窗
         closePopFn() {
-            this.setData({ hasUserInfo: true });
+            this.setData({ loginTipShow: true });
         },
 
         //打开收藏弹窗
@@ -170,10 +170,12 @@ Component({
             this.triggerEvent('collectPopShow', { type: 'activity', id: e.currentTarget.dataset.id });
         },
 
+
+
         //图片加载失败显示默认图
         errorImgFn(e) {
             //有三个参数：当前页面this，要替换的对象，替换图片地址
             commonFn.errorImg(this, e.currentTarget.dataset.obj);
-        }
+        },
     }
 })

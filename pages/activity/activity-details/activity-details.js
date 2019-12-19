@@ -6,15 +6,14 @@ var WxParse = require('../../../wxParse/wxParse.js');
 Page({
     data: {
         domainUrl: app.globalData.domainUrl,
-
         isIndexBtnShow:false,   //返回首页按钮是否显示
         backTopShow:false,  //返回顶部按钮是否显示
         
         detailData: null,  //数据信息
-        hasUserInfo: true, //是否有用户信息
+        loginPopHide: true, //是否有用户信息
         scrollToView:'',  //定位到页面某个位置，传元素id值
         discussReach:1,    //是否刷新评论列表
-
+        
         langData: null,  //语言数据
         lang: '',    //语言类型
     },
@@ -39,8 +38,9 @@ Page({
     loginTipShow(e) {
         var formId = e.detail.formId;
         var url = e.currentTarget.dataset.url;
+        console.log('url', url)
         if (!app.globalData.isLogin) {
-            this.setData({ hasUserInfo: false });
+            this.setData({ loginPopHide: false });
         } else {
             app.getFormIdFn(formId, () => {
                 wx.navigateTo({ url: url });
@@ -121,9 +121,12 @@ Page({
 
                 WxParse.wxParse('rule', 'html', detailData.rule, _this, 0);
                 WxParse.wxParse('tips', 'html', detailData.tips, _this, 0);
-
             }
         });
+    },
+
+    closePopFn(){
+        this.setData({ loginPopHide : true })
     },
 
     //用户点击右上角分享

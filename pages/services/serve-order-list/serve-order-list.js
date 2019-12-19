@@ -4,7 +4,7 @@ Page({
     data: {
         domainUrl: app.globalData.domainUrl,
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
         tagList: null,  //订单状态type（1-待确认 2-待交付 3-待验收 4-待评价 5-已评价 6-已取消）
         tagIndex: 0,
     },

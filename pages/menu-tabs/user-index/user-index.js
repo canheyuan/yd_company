@@ -9,14 +9,14 @@ Page({
         userInfo: null,  //用户信息
         isLoginPopHide: true, //是否有用户信息
         isRecommendInfo: false, 
-
+        menuFinish:false,   //菜单是否加载完了
         pickerLang: {
             list: ['中文', 'English'],
             index: 0
         },
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
 
@@ -45,7 +45,9 @@ Page({
             // { title: langData.changeGardenBtn[lang], ico_class: 'ico_garden', link: '/pages/common/change-garden/change-garden', isShow: true },
             // { title: langData.discussBtn[lang], ico_class: 'ico_discuss', link: '', isShow: true },
         ];
+
         this.setData({
+            menuFinish:true,
             moduleSwitch: moduleSwitch,
             menuList: menuList
         });
@@ -79,8 +81,10 @@ Page({
         if (!app.globalData.isLogin) {
             _this.setData({ isLoginPopHide: false }); //弹出提示登录弹窗
         } else {
+            var userInfo = app.globalData.loginInfo.userInfo
+            userInfo.headImgs = userInfo.headImgs ? userInfo.headImgs : _this.data.domainUrl + "/images/default/df_userhead.png"
             _this.setData({
-                userInfo: app.globalData.loginInfo.userInfo,
+                userInfo: userInfo,
                 isLoginPopHide: true
             });
             _this.isParkInfo(() => {
@@ -115,7 +119,6 @@ Page({
         } else {
             wx.showTabBar();
         }
-        app.globalData.langType = langType
         app.globalData.lang = langType
         wx.setStorageSync('langtype', langType);
         //设置语言,判断是否切换语言

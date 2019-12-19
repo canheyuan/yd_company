@@ -2,7 +2,7 @@
 function pageDataFn() {
     var app = getApp();  //获取应用实例
     var lang = app.globalData.lang
-    var langData = app.globalData.langNewData.nothingData;
+    var langData = app.globalData.langData.nothingData;
     var page_data = {
         //活动列表暂无状态
         activity: {

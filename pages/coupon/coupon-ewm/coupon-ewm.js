@@ -15,7 +15,7 @@ Page({
         isFirst: true, //判断是否是第一次加载接口
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //生命周期函数--监听页面加载

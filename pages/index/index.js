@@ -215,6 +215,16 @@ Page({
                 visit: 0,
                 isShow: moduleSwitch.activity,
             },
+            {   //月保缴费
+                image: 'ico02',
+                title: langMenuData.parking[lang],
+                typeName: 'parking',
+                link: '/pages/parking/enquiry-index/enquiry-index',
+                skipType: 'navigate',
+                islogin: true,
+                visit: 0,
+                isShow: moduleSwitch.parking,
+            },
             {   //推荐有礼
                 image: 'ico17',
                 title: langMenuData.recommend[lang],

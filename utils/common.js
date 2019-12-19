@@ -11,16 +11,16 @@ const emailRegFn = email =>{
 }
 
 //时间戳转时间
-const getDate = shijianchuo => {
+const getDate = timestamp => {
   //shijianchuo是整数，否则要parseInt转换  
-  var time = new Date(shijianchuo);
-  var y = time.getFullYear();
-  var m = time.getMonth() + 1;
-  var d = time.getDate();
-  var h = time.getHours();
-  var mm = time.getMinutes();
-  var s = time.getSeconds();
-  return y + '-' + add0(m) + '-' + add0(d) + ' ' + add0(h) + ':' + add0(mm) + ':' + add0(s);
+    var time = new Date(timestamp);
+    var y = time.getFullYear();
+    var m = time.getMonth() + 1;
+    var d = time.getDate();
+    var h = time.getHours();
+    var mm = time.getMinutes();
+    var s = time.getSeconds();
+    return y + '-' + add0(m) + '-' + add0(d) + ' ' + add0(h) + ':' + add0(mm) + ':' + add0(s);
 }; 
 const add0 = m => { return m < 10 ? '0' + m : m };
 
@@ -28,6 +28,34 @@ const add0 = m => { return m < 10 ? '0' + m : m };
 const getTimes = datetime =>{
   var date = new Date(datetime.replace(/-/g, '/'));
   return date.getTime();
+}
+
+const dateFn = (timestamp) => {
+    var nowDate = timestamp ? new Date(timestamp) : new Date();
+    var year = nowDate.getFullYear()				//年
+    var month = nowDate.getMonth() + 1		//月
+    var day = nowDate.getDate()				//日
+    var week = nowDate.getDay()				//周几（0-6：日-一）
+    var days = new Date(year, month, 0).getDate()	//当月天数
+    var hour = nowDate.getHours()				//小时 
+    var minute = nowDate.getMinutes()				//小时 
+    var second = nowDate.getSeconds()			//秒
+    var millisecond = nowDate.getMilliseconds()	//毫秒
+    var date = `${year}-${add0(month)}-${add0(day)}`	//日期
+    var dateTime = `${date} ${add0(hour)}:${add0(minute)}:${add0(second)}`	//日期时间
+    return {
+        date: date,
+        dateTime: dateTime,
+        year: year,
+        month: month,
+        week: week,
+        day: day,
+        days: days,
+        hour: hour,
+        minute: minute,
+        second: second,
+        millisecond: millisecond
+    }
 }
 
 //图片加载失败时加载预览图
@@ -102,5 +130,6 @@ module.exports = {
   getTimes    : getTimes,  //时间转时间戳
   replaceTxt  : replaceTxt,  //替换详情页文本
   getCurrentPageUrl: getCurrentPageUrl,  //获取当前页面的url
+    dateFn,
   codeCountDown,    //倒计时
 }

@@ -244,8 +244,8 @@
 
 
 <!------------------ tab栏菜单 ------------------>
-<view wx:if="{{langType=='en'}}" class="tab_box">
-    <tab index='0' lang-change='{{langType}}'></tab>
+<view wx:if="{{lang=='en'}}" class="tab_box">
+    <tab index='0' lang-change='{{lang}}'></tab>
 </view>
 
 

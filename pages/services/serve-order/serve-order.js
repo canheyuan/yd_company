@@ -5,7 +5,7 @@ Page({
     data: {
         domainUrl: app.globalData.domainUrl,
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
         userInfo: null,
         serveId: '', //4e31b88314367e857a78bbac4147307b
         detailData:null,

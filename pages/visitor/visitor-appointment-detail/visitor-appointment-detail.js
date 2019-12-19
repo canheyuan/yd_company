@@ -9,7 +9,7 @@ Page({
         detailsData: null,
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
 
     },
 

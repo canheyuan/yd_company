@@ -9,7 +9,7 @@ Page({
         goUrl: null,    //登录后跳转的地址
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     //页面加载完后
@@ -71,7 +71,7 @@ Page({
                     } else if (_this.data.goUrl.type == 'switchTab') {
                         wx.switchTab({ url: _this.data.goUrl.url });
                     } else {
-                        wx.navigateTo({ url: _this.data.goUrl.url });
+                        wx.redirectTo({ url: _this.data.goUrl.url });
                     }
 
                 });

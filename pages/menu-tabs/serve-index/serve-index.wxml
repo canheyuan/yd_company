@@ -30,7 +30,8 @@
             <view wx:for="{{serveSlideList}}" wx:key="advertId" class="dot {{index==serveSlideIndex?'act':''}}"></view>
         </view>
     </view>
-    <image wx:if="{{!serveSlideList.length>0}}" class="banner_df" src="{{domainUrl}}/images/default/img_730_320.jpg"></image>
+    <image wx:if="{{!serveSlideList.length>0}}" class="banner_df" lazy-load="true"
+    src="{{domainUrl}}/images/default/img_730_320.jpg"></image>
 
 </view>
 
@@ -50,7 +51,7 @@
         class="li" hover-class="hover" wx:if="{{serveMenuList.length>10}}"
         url="/pages/services/serve-category/serve-category" 
     >
-        <image class="ico" src="{{domainUrl}}/images/services/s_ico10.png"></image>
+        <image class="ico" src="{{domainUrl}}/images/services/s_ico10.png" ></image>
         <view class="text">{{langData.public.all[lang]}}</view>
     </navigator>
 </view>
@@ -98,7 +99,7 @@
                 class='icon bg0{{index+1}}' 
                 src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
             ></image> -->
-            <image class="icon" src="{{item.mainImg}}" lazy-load="true"></image>
+            <image class="icon {{item.mainImg?'':'none'}}" src="{{item.mainImg}}" lazy-load="true"></image>
             <view class='info'>
                 <view class="price_box" wx:if="{{item.priceType==3}}">
                     <view class="price">{{langData.priceStatus01[lang]}}</view>

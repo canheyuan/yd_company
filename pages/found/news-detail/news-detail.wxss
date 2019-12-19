@@ -3,7 +3,7 @@
 
 page{height:100%;}
 
-.scroll_page{height:100%;width:100%; box-sizing: border-box; padding-bottom:120rpx; }
+.scroll_page{height:100%;width:100%; box-sizing: border-box; }
 
 /* 新闻标题 */
 .news_title_box{padding: 35rpx 40rpx 18rpx; border-bottom: 1rpx solid #e2e2e2;}

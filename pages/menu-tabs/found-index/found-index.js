@@ -38,19 +38,19 @@ Page({
 
         //设置显示哪一块内容,资讯0或政策1
         var tagIndex = app.globalData.foundTag ;
+        var tagList = this.data.tagList;
         this.setData({
             isLoginPopHide: true,
             tagIndex: tagIndex
         });
-
-        if (app.globalData.foundReach) {    //是否加载发现页面
-            app.globalData.aa = true;
+        console.log('onshow--foundindex', app.globalData.foundReach, tagList[tagIndex].isShow)
+        if (app.globalData.foundReach || !tagList[tagIndex].isShow) {    //是否加载发现页面
             app.globalData.foundReach = false;
 
             var policyTitleList = this.data.policyTitleList;
-            var tagList = this.data.tagList;
-            tagList[0].isShow = false;
-            tagList[1].isShow = false;
+            
+            // tagList[0].isShow = false;
+            // tagList[1].isShow = false;
             //设置语言,判断是否切换语言
             app.loadLangNewFn(this, 'foundIndex', (res, lang) => {
                 wx.setNavigationBarTitle({ title: res.foundTitle[lang] });  //设置当前页面的title
@@ -62,7 +62,7 @@ Page({
                 policyTitleList: policyTitleList,
                 tagList: tagList
             });
-
+            
             this.reachFn();
         }else{
             //专家列表是否刷新
@@ -248,5 +248,14 @@ Page({
     onReachBottom: function () {
         var tagIndex = this.data.tagIndex;
         this.setData({ ['tagList[' + tagIndex + '].reach']: Math.random() });
+    },
+
+    //监听滚动判断是否显示返回顶部按钮
+    onPageScroll(e) {
+        if (e.scrollTop > 800 && !this.data.backTopShow) {
+            this.setData({ backTopShow: true });
+        } else if (e.scrollTop < 800 && this.data.backTopShow) {
+            this.setData({ backTopShow: false });
+        }
     },
 })

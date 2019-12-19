@@ -107,9 +107,23 @@
 				},
 				{
 					"id": 7,
-					"name": "pages/order/cost-details/cost-details",
-					"pathName": "pages/common/web-view/web-view",
+					"name": "个人中心",
+					"pathName": "pages/menu-tabs/user-index/user-index",
 					"query": "url= https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd811f5114e3e56f3&redirect_uri=https://cloud.ywpark.net/bbpark_new/htdocs/html/wechat/i-business/index.html&response_type=code&scope=snsapi_base&state=1#wechat_redirect",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "查询月保",
+					"pathName": "pages/parking/enquiry-index/enquiry-index",
+					"query": "url= https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd811f5114e3e56f3&redirect_uri=https://cloud.ywpark.net/bbpark_new/htdocs/html/wechat/i-business/index.html&response_type=code&scope=snsapi_base&state=1#wechat_redirect",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "月保详情",
+					"pathName": "pages/parking/enquiry-detail/enquiry-detail",
+					"query": "code=粤A123456",
 					"scene": null
 				}
 			]

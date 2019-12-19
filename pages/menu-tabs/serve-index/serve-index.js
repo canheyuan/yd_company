@@ -4,7 +4,7 @@ Page({
     data: {
         domainUrl: app.globalData.domainUrl,
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
 
         //顶部幻灯片列表
         serveSlideList:null,
@@ -247,12 +247,7 @@ Page({
         this.reachFn();
         wx.stopPullDownRefresh(); //下拉刷新后页面上移
     },
-
-    //页面上拉触底事件的处理函数
-    onReachBottom: function () {
-
-    },
-
+    
     //用户点击右上角分享
     onShareAppMessage: function () {
 

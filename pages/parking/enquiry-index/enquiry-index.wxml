@@ -1,0 +1,53 @@
+
+<!-- 顶部提示 -->
+<view class="top_tip">请首次在本园区中办理月保车辆的用户移步至园区物业服务中心办理月保车辆服务。详情请联系物业服务中心：020-81171400</view>
+
+<!-- 月保查询 -->
+<view class="enquiry_head">
+    <view class="img_box">
+        <image class="img" mode="widthFix" src="{{domainUrl}}/images/car_head.jpg"></image>
+    </view>
+    <view class="car_code_box box_shadow">
+        <picker 
+            class="code1" mode="multiSelector" range="{{carArr}}"
+            bindchange="carCode1Fn"
+        >
+            <view class="txt">{{carCode1Text}}<icon class="icons ico_tri"></icon></view>
+        </picker>
+        <input 
+            class="code2" placeholder="请输入车牌号" placeholder-class="placeholder"
+            bindinput="carCode2Fn" bindconfirm="getParkingMonthlyFn" value="{{carCode2Text}}" maxlength="6"
+        ></input>
+    </view>
+    <view class="blue_btn" bindtap="getParkingMonthlyFn">查询</view>
+</view>
+
+<!-- 历史记录 -->
+<view class="record_mdl">
+    <view class="yd_title01">历史记录</view>
+    <view class="record_list">
+        <navigator 
+            wx:for="{{historyList}}" wx:key="title"
+            class='li' hover-class='hover' 
+            url='/pages/parking/enquiry-detail/enquiry-detail?code={{item}}'
+        >
+            <icon class='icons ico_tri'></icon>
+            <view class='info'><text class='txt'>{{item}}</text></view>
+        </navigator>
+    </view>
+</view>
+
+<!-- 查询失败弹窗 -->
+<view class="mask_bg" wx:if="{{false}}">
+    <view class="mask_bg_ctn">
+        <view class='pop_mdl'>
+            <view class='h3'>暂无查到您的车辆信息</view>
+            <view class='pop_ctn'>
+                <view class='des' style="font-size:30rpx;">请确保您的车辆有在我们园区办理月保服务</view>
+            </view>
+            <view class='btm_btn clearfix'>
+                <view class='btn' bindtap="closePop">我知道了</view>
+            </view>
+        </view>
+    </view>
+</view>

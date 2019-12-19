@@ -18,13 +18,12 @@ var configData = {
     -----------------------------------------------------------------------------------------------*/
     //园叮
     yuanding: {
-        jkUrl: 'https://www.5iparks.com/api',       //接口正式版
         mtjAppKey: 'cb5e07b28d',    //百度统计appKey
         appApi: {
             channel: '',  //园叮不传，小招传cmb
             aid: 'F9ZHVYCYS1'   //后台获取数据的唯一标识
         },
-
+        
         //模块开关    
         moduleSwitch: {
             indexBook: false,  //首页线上图书模块
@@ -44,6 +43,7 @@ var configData = {
             coupon: true,  //优惠券
             serve:true, //服务
             lang: false,  //语言切换
+            parking:false,    //月保
         }
     },
 
@@ -75,12 +75,12 @@ var configData = {
             coupon: true,  //优惠券
             serve: true, //服务
             lang: false,  //语言切换
+            parking: true,    //月保
         },
     },
 
     //广佛数字创意园园叮系统
     guangfo:{
-        jkUrl: 'https://www.5iparks.com/api',       //接口正式版
         appApi: {
             channel: '',  //园叮不传，小招传cmb
             aid: 'S030T7M3VD'   //后台获取数据的唯一标识
@@ -105,6 +105,7 @@ var configData = {
             coupon: true,  //优惠券
             serve: true, //服务
             lang: false,  //语言切换
+            parking: false,    //月保
         },
 
         //百度统计appKey

@@ -21,7 +21,7 @@ Page({
         formSubmitStatus: false, //提交状态，控制不重复提交（true：提交中，false：未提交）
 
         langData: null,  //语言数据
-        langType: '',    //语言类型
+        lang: '',    //语言类型
     },
 
     onLoad: function (options) {
