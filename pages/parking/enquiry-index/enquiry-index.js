@@ -12,8 +12,11 @@ Page({
         carCode1Text:'粤A',
         carCode2Text: '',
 
+        
         carDeatail:null,    //车辆信息
         historyList:null,   //历史记录
+        eqnquiryErrorShow:false,    //查询失败弹窗
+        recordEditing:false,    //历史记录是否编辑中
     },
 
     onLoad: function (options) {
@@ -24,7 +27,7 @@ Page({
     carCode1Fn(e){
         var carArr = this.data.carArr 
         var carIndex = e.detail.value 
-        this.setData({ 
+        this.setData({
             carIndex: carIndex,
             carCode1Text: carArr[0][carIndex[0]] + carArr[1][carIndex[1]]
         })
@@ -44,14 +47,21 @@ Page({
             return;
         }
         var carPlate = this.data.carCode1Text + carCode2Text
-        app.requestFn({
-            url: `/parkingMonthly/detail/${carPlate}`,
-            success: (res) => {
-                var carDetail = res.data.data;
-                wx.setStorageSync('carDetail', carDetail)
-                wx.navigateTo({ url: '/pages/parking/enquiry-detail/enquiry-detail' })
-            }
-        });
+        wx.navigateTo({ url: `/pages/parking/enquiry-detail/enquiry-detail?code=${carPlate}` })
+
+        // app.requestFn({
+        //     isLoading:false,
+        //     url: `/parkingMonthly/detail/${carPlate}`,
+        //     success: (res) => {
+        //         wx.navigateTo({ url: `/pages/parking/enquiry-detail/enquiry-detail?code=${carPlate}` })
+        //     },
+        //     isOtherTip:false,
+        //     successOther:(res)=>{
+        //         if(res.data.code !=0){
+        //             this.closeEqnquiryErrorPop()
+        //         }
+        //     }
+        // });
     },
 
     //获取历史记录
@@ -60,9 +70,33 @@ Page({
             url: `/parkingMonthly/getSearchRecord`,
             success: (res) => {
                 var historyList = res.data.data;
-                this.setData({historyList : historyList})
+                this.setData({ historyList : historyList })
             }
         });
+    },
+    
+    //历史记录编辑
+    editRecordFn(){
+        console.log('历史记录编辑')
+        this.setData({ recordEditing : !this.data.recordEditing})
+    },
+
+    // 点击历史记录
+    historyRecordFn(e){
+        var carPlate = e.currentTarget.dataset.code   //车牌号
+        if(this.data.recordEditing){    //判断是否编辑状态
+            //删除记录    
+            app.requestFn({
+                url: `/parkingMonthly/removeSearchRecord/${carPlate}`,
+                method:'POST',
+                success: (res) => {
+                    this.getHistoryListFn() 
+                }
+            });
+        }else{  
+            //跳转详情
+            wx.navigateTo({ url: `/pages/parking/enquiry-detail/enquiry-detail?code=${carPlate}`})
+        }   
     },
 
     //用户点击右上角分享

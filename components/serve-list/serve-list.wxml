@@ -4,7 +4,7 @@
         class='li' url='/pages/services/serve-detail/serve-detail?id={{item.id}}'
         wx:for="{{listInfo.list}}" wx:key="serve{{index}}"
     >
-        <image class='icon' src='{{item.mainImg}}'></image>
+        <image class='icon' src='{{item.icon}}'></image>
         <view class='info'>
             <view class="price_box" wx:if="{{item.priceType==3}}">
                 <view class="price">{{langData.priceStatus01[lang]}}</view>

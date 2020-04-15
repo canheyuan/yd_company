@@ -6,7 +6,7 @@ let chatIm = require('utils/chatIm.js');    //封装腾讯云接口
 
 App({
     globalData: {
-        appVersion: '1.4.4',       //上传的版本号
+        appVersion: '1.4.5',       //上传的版本号
         appVersionDate: '20191213', //版本更新的日期
 
         langData: null,  //语言json格式
@@ -14,7 +14,7 @@ App({
         
         domainUrlDev: 'http://192.168.0.244/yuanding',        //接口测试机
         domainUrl: 'https://www.5iparks.com/static/yuanding', //图片正式机
-        jkDevUrl: 'http://192.168.0.244:8080/api',  //图片开发板
+        jkDevUrl: 'http://192.168.0.244:8080/api',  //接口开发板
         jkUrl: 'https://www.5iparks.com/api',       //接口正式版
 
         //判断页面是否刷新参数（刷新：true，不刷新：false）
@@ -57,7 +57,6 @@ App({
                 extInfo: { park: 'yuanding' }
             }
         },
-
     },
     
     onLaunch: function (opt) {
@@ -177,7 +176,7 @@ App({
                     }
                     
                 } else {
-                    this.globalData.indexReach = true;
+                    //this.globalData.indexReach = true;
                     if(opt.isOtherTip){
                         wx.showToast({ title: res.data.msg, icon: 'none', duration: 3000 });
                     }

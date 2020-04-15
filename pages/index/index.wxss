@@ -37,7 +37,7 @@
 /* 菜单 */
 .menu_list{padding:10rpx 0 0;  overflow: hidden; transition:all .3s;}
 .menu_list .a{display:block; width:25%; text-align: center; float:left; padding:15rpx 0; height:160rpx;}
-.menu_list .a .icon{display:block; width:130rpx; height:130rpx; margin:0 auto; background:url(https://www.5iparks.com/static/yuanding/images/index-menu-icons.png) no-repeat; background-size:650rpx 520rpx;}
+.menu_list .a .icon{display:block; width:130rpx; height:130rpx; margin:0 auto; background:url(https://www.5iparks.com/static/yuanding/images/index-menu-icons.png?d=20191220) no-repeat; background-size:650rpx 520rpx;}
 .menu_list .a .icon.ico01{background-position:0rpx 0rpx;}
 .menu_list .a .icon.ico02{background-position:-130rpx 0rpx;}
 .menu_list .a .icon.ico03{background-position:-260rpx 0rpx;}
@@ -55,6 +55,7 @@
 .menu_list .a .icon.ico15{background-position:-520rpx -260rpx;}
 .menu_list .a .icon.ico16{background-position:0rpx -390rpx;}
 .menu_list .a .icon.ico17{background-position:-130rpx -390rpx;}
+.menu_list .a .icon.ico18{background-position:-260rpx -390rpx;}
 .menu_list .a .title{font-size:26rpx; color:#333333; display: block;}
 .menu_list .a.hover .title{color:#2a99f1;}
 .more_menu{position:absolute; bottom:0; left:50%; margin-left:-45rpx; background:#f0f0f0; width:90rpx; height:50rpx; border-top-left-radius: 45rpx; border-top-right-radius: 45rpx; text-align: center; padding-top:10rpx; box-sizing: border-box;}

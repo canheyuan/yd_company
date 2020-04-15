@@ -1,0 +1,24 @@
+
+<view class='scan_code_mdl box_shadow'>
+    <view class='scan_code' style='background-image:url({{domainUrl}}/images/visitor/code_bg.png);'>
+        <view class='per_img'><image class='img' src='{{userInfo.headImgs}}'></image></view>
+
+        <view class='info'>
+          <view class='name'>{{userInfo.name}}</view>
+          <view class='line'>{{userInfo.nickname}}</view>
+          <view class='company_name'>{{userInfo.enterpriseInfo.entName}}</view>
+        </view>
+
+        <view class='code_box'>
+          <view class='tip'>出示你的入园二维码给管理员扫</view>
+          <!-- <image class='ewm' src='{{domainUrl}}/images/temp/ewm.png'></image> -->
+          <view class="tip_box">您目前不在入园名单中，请及时与贵公司负责人进行联系。</view>
+        </view>
+    </view>
+</view>
+<text class="tip_des">为避免外来人员进入园区，确保园区安全
+    请务必妥善保管好你的入园码</text>
+
+<!-- <navigator url='/pages/visitor/history-record/history-record' class='check_btn'>查看历史记录 >></navigator> -->
+
+

@@ -12,8 +12,13 @@ page{background:#f7f7f7;}
 .car_code_box .code2.placeholder{color:#999;}
 .enquiry_head .blue_btn{margin:0 100rpx;}
 
-.record_mdl .yd_title01{margin:0 30rpx 20rpx;}
+
+.record_head{padding:0 30rpx; margin-bottom:20rpx;}
+.record_head .edit_record{float:right;  font-size:28rpx; color:#2a99f1;}
+.record_head .yd_title01{overflow:hidden;}
+
 .record_list .li{height:90rpx;  background:#fff; position:relative; border-bottom:1rpx solid #e5e5e5; padding-left:30rpx; }
+.record_list .li .del_btn{float:left; padding:26rpx 20rpx 20rpx 0; font-size:0; line-height:0;}
 .record_list .li .ico_tri{width:50rpx; height:50rpx; position:absolute; right:20rpx; top:50%; margin-top:-25rpx; background-position: -198rpx -60rpx;}
 .record_list .li .info{overflow: hidden; padding-right:90rpx; height:90prx;}
 .record_list .li .txt{line-height:90rpx; font-size:30rpx; color:#333333;}

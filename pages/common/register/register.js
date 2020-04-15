@@ -335,7 +335,6 @@ Page({
                 success: (res) => {
 
                     var loginInfo = res.data.data;
-                    if (app.globalData.apiMsgSwitch) { console.log('注册成功返回数据:', loginInfo); }
                     wx.removeStorageSync('userInfo'); //清除之前缓存
                     app.globalData.sessionId = loginInfo.sessionId; //存储登录后的sessionId,记录登录状态
 

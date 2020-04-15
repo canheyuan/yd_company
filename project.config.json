@@ -26,7 +26,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.6",
+	"libVersion": "2.4.4",
 	"appid": "wx89d739bab6040e66",
 	"projectname": "%E5%9B%AD%E5%8F%AE-%E4%BC%81%E4%B8%9A%E7%AB%AF",
 	"isGameTourist": false,
@@ -124,6 +124,34 @@
 					"name": "月保详情",
 					"pathName": "pages/parking/enquiry-detail/enquiry-detail",
 					"query": "code=粤A123456",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "月保续费页面",
+					"pathName": "pages/parking/pay-detail/pay-detail",
+					"query": "code=粤A123456",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "优惠券",
+					"pathName": "pages/coupon/coupon-list/coupon-list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "扫码入园",
+					"pathName": "pages/visitor/garden-code/garden-code",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 13,
+					"name": "结果页",
+					"pathName": "pages/common/result/result",
+					"query": "page=parkCode",
 					"scene": null
 				}
 			]

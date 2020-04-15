@@ -7,7 +7,7 @@
         </view>
     </navigator>
 </view> -->
-
+<form  bindsubmit="formSubmit"  report-submit="true">
 <!-- 订单信息 -->
 <view class='layout_box'>
     <view class='layout_ctn'>
@@ -16,12 +16,12 @@
             <view class='dt'>车牌号</view>
             <view class='dd'>
                 <view class="picker">
-                    <icon class="icons ico_arrow"></icon>
-                    <navigator 
+                    <!-- <icon class="icons ico_arrow"></icon> -->
+                    <!-- <navigator 
                         class="txt_r f_blue" open-type="reLaunch"
                         url="/pages/parking/enquiry-index/enquiry-index"
-                    >切换</navigator>
-                    <text class="txt">粤A B4567</text>
+                    >切换</navigator> -->
+                    <text class="txt">{{renewInfo.carPlate}}</text>
                 </view>
             </view>
         </view>
@@ -38,10 +38,11 @@
         <view class='dl'>
             <view class='dt'>停车场</view>
             <view class='dd'>
-                <picker class="picker" range="{{parkingLotList}}">
+                <text class="txt">{{renewInfo.parkingLot}}</text>
+                <!-- <picker class="picker" range="{{parkingLotList}}">
                     <icon class="icons ico_arrow"></icon>
                     <text class="txt">广佛一期停车场</text>
-                </picker>
+                </picker> -->
                 
             </view>
         </view>
@@ -50,7 +51,7 @@
         <view class='dl'>
             <view class='dt'>有效期</view>
             <view class='dd'>
-                <text class="txt">2019.12.1-2019.12.31</text>
+                <text class="txt">{{renewInfo.startDate}} - {{renewInfo.endDate}}</text>
             </view>
         </view>
 
@@ -60,10 +61,10 @@
             <view class='dd pay_date'>
                 <view class="buy_num" style="float:left;">
                     <icon class="icons ico_minus" bindtap="changeNumFn" data-type="minus"></icon>
-                    <text class="num">1</text>
+                    <text class="num">{{periodCount}}</text>
                     <icon class="icons ico_add" bindtap="changeNumFn" data-type="add"></icon>
                 </view>
-                <text class="txt">个月</text>
+                <text class="txt">（{{periodMonth}}个月/周期）</text>
             </view>
         </view>
 
@@ -71,7 +72,7 @@
         <view class='dl'>
             <view class='dt'>总计</view>
             <view class='dd'>
-                <text class="pay_price txt f_orange">￥500</text>
+                <text class="pay_price txt f_orange">￥{{renewInfo.amount}}</text>
             </view>
         </view>
 
@@ -79,5 +80,7 @@
 </view>
 
 <view class="u_btn_wrap">
-    <view class="u_btn blue w100">立即支付</view>
+    <button class='u_btn blue w100' form-type="submit">立即支付</button>
 </view>
+
+</form>

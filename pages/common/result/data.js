@@ -193,7 +193,24 @@ function pageDataFn(){
             btm_btn: langData.serveCancel.btm_btn[lang],
             btm_btn_url: '/pages/menu-tabs/serve-index/serve-index',
             btm_btn_type: 'switchTab'
-        }
+        },
+        parkingRoder:{
+            page_title: '月保缴费',
+            icon: '/images/order/zfcg_img.png',
+            title: '月保支付成功！',
+            btm_btn: langData.backIndexBtn[lang],
+            btm_btn_url: '/pages/index/index',
+            btm_btn_type: 'switchTab'
+        },
+        //扫码入园
+        parkCode:{
+            page_title: '月保缴费',
+            icon: '/images/order/zfcg_img.png',
+            title: '月保支付成功！',
+            btm_btn: langData.backIndexBtn[lang],
+            btm_btn_url: '/pages/index/index',
+            btm_btn_type: 'switchTab'
+        },
     }
     return page_data
 }

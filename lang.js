@@ -637,7 +637,7 @@ module.exports = {
         popText2:{zh:'并已放到您的账户',en:'And put it in your account'},
         popUseBtn:{zh:'去使用',en:'Go to use'},
 
-        startTime:{zh:'领取时间:',en:'Pick up time:'},
+        startTime:{zh:'领取:',en:'Pick up time:'},
         endTime:{zh:'结束时间:',en:'End Time:'},
         pastDue:{zh:'过期:',en:'Expired'},
 

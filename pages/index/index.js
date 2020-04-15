@@ -216,7 +216,7 @@ Page({
                 isShow: moduleSwitch.activity,
             },
             {   //月保缴费
-                image: 'ico02',
+                image: 'ico18',
                 title: langMenuData.parking[lang],
                 typeName: 'parking',
                 link: '/pages/parking/enquiry-index/enquiry-index',
@@ -380,9 +380,10 @@ Page({
 
     //点击菜单栏是否提示弹窗
     loginTipShow(e) {
+        var lang = this.data.lang
         var dataItem = e.currentTarget.dataset.item;
         var url = dataItem.link;
-        var islogin = dataItem.islogin;
+        var islogin = dataItem.islogin; //当前菜单是否需要登录才能进入
         var gotoType = dataItem.skipType;
         var typeName = dataItem.typeName;
         //判断当前状态是否登录&&当前链接是否需要登录
@@ -393,11 +394,12 @@ Page({
             if (approveStatus != 'ENABLED' && islogin) {
                 wx.showToast({ title: this.data.langData.jurisdictionTip[lang], icon: 'none', duration: 3000 });
             } else {
+                
                 //设置缓存记录菜单访问的次数
                 var menuInfo = wx.getStorageSync('menuInfo') ? wx.getStorageSync('menuInfo') : [];
                 menuInfo.forEach(item => {
                     if (typeName == item.typeName && typeName != 'orderfood') { item.visit += 1; }
-                });
+                })
                 wx.setStorageSync('menuInfo', menuInfo);
 
                 if (typeName == 'policy') {

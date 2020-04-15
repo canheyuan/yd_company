@@ -12,10 +12,13 @@
 <view class='layout_box parking_detail'>
     <view class='layout_ctn'>
         <!-- 到期时间 -->
-        <view class='dl'>
-            <view class='dt'>到期时间</view>
+        <view class='dl' wx:if="{{carDetail.validityArr}}">
+            <view class='dt'>有效期</view>
             <view class='dd'>
-                <text class="txt f_orange date">{{carDetail.expiredDate}}</text>
+                <text 
+                    wx:for="{{carDetail.validityArr}}" wx:key="*this" 
+                    class="txt f_orange date"
+                >{{item.startDate + ' ~ ' + item.endDate}}</text>
             </view>
         </view>
 
@@ -64,7 +67,22 @@
 
 <view class="u_btn_wrap">
     <navigator 
-        class="u_btn blue w100"
-        url="/pages/parking/pay-detail/pay-detail?id={{carDetail.id}}"
+        class="u_btn w100 {{carDetail.status==2?'disabled':'blue'}}" bindtap="payBtnFn"
+        data-url="/pages/parking/pay-detail/pay-detail?id={{carDetail.id}}"
     >立即续费</navigator>
+</view>
+
+<!-- 查询失败弹窗 -->
+<view class="mask_bg" wx:if="{{eqnquiryErrorShow}}">
+    <view class="mask_bg_ctn">
+        <view class='pop_mdl'>
+            <view class='h3'>暂无查到您的车辆信息</view>
+            <view class='pop_ctn' style="padding:20rpx 0;">
+                <view class='des' style="font-size:30rpx;">请确保您的车辆有在我们园区办理月保服务</view>
+            </view>
+            <view class='btm_btn clearfix'>
+                <navigator class='btn' open-type="navigateBack">我知道了</navigator>
+            </view>
+        </view>
+    </view>
 </view>

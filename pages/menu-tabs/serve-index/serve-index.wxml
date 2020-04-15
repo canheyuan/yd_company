@@ -95,11 +95,7 @@
             class='li' url='{{item.link}}'
             wx:for="{{serveRecommendList}}" wx:key="id"
         >
-            <!-- <image 
-                class='icon bg0{{index+1}}' 
-                src='{{item.mainImg?item.mainImg:domainUrl + "/images/services/tj_ico.png"}}'
-            ></image> -->
-            <image class="icon {{item.mainImg?'':'none'}}" src="{{item.mainImg}}" lazy-load="true"></image>
+            <image class="icon {{item.icon?'':'none'}}" src="{{item.icon}}" lazy-load="true"></image>
             <view class='info'>
                 <view class="price_box" wx:if="{{item.priceType==3}}">
                     <view class="price">{{langData.priceStatus01[lang]}}</view>
@@ -156,7 +152,7 @@
             class='li' url='/pages/services/serve-detail/serve-detail?id={{item.id}}'
             wx:for="{{categoryItem.serviceList}}" wx:key="id"
         >
-            <image  class='icon {{item.mainImg?"":"none"}}'  src='{{item.mainImg}}' lazy-load="true" ></image>
+            <image  class='icon {{item.icon?"":"none"}}'  src='{{item.icon}}' lazy-load="true" ></image>
             <view class='info'>
                 <view class="price_box" wx:if="{{item.priceType==3}}">
                     <view class="price">{{langData.priceStatus01[lang]}}</view>

@@ -23,31 +23,23 @@
 </view>
 
 <!-- 历史记录 -->
-<view class="record_mdl">
-    <view class="yd_title01">历史记录</view>
+<view class="record_mdl" wx:if="{{historyList && historyList.length>0}}">
+    <view class="record_head">
+        <view class="edit_record" bindtap="editRecordFn">{{recordEditing?"完成":"编辑"}}</view>
+        <view class="yd_title01">历史记录</view>
+    </view>    
     <view class="record_list">
-        <navigator 
-            wx:for="{{historyList}}" wx:key="title"
+        <view 
+            wx:for="{{historyList}}" wx:key="*this" 
             class='li' hover-class='hover' 
-            url='/pages/parking/enquiry-detail/enquiry-detail?code={{item}}'
+            bindtap="historyRecordFn" 
+            data-code="{{item}}"
         >
+            <view class="del_btn" hidden="{{!recordEditing}}"><van-icon name="delete" color="#ff0000" size="40rpx" /></view>
             <icon class='icons ico_tri'></icon>
             <view class='info'><text class='txt'>{{item}}</text></view>
-        </navigator>
+        </view> 
     </view>
 </view>
 
-<!-- 查询失败弹窗 -->
-<view class="mask_bg" wx:if="{{false}}">
-    <view class="mask_bg_ctn">
-        <view class='pop_mdl'>
-            <view class='h3'>暂无查到您的车辆信息</view>
-            <view class='pop_ctn'>
-                <view class='des' style="font-size:30rpx;">请确保您的车辆有在我们园区办理月保服务</view>
-            </view>
-            <view class='btm_btn clearfix'>
-                <view class='btn' bindtap="closePop">我知道了</view>
-            </view>
-        </view>
-    </view>
-</view>
+

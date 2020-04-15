@@ -8,7 +8,7 @@
         style="background:url({{domainUrl}}/images/coupon/coupon_bg.png) no-repeat; background-size:100% 100%;"
     >
         <view class='status'>{{item.statusName}}</view>
-        <view class='tit'>{{item.couponName}}</view>
+        <view class='tit'><view class="tit_ctn">{{item.couponName}}</view></view>
         <view class='get_time'>{{item.getTimeTxt}}</view>
         <view class='mf_txt' wx:if="{{item.couponType == 3}}">{{langData.free[lang]}}</view>
         <view class='yh_txt' wx:if="{{item.couponType != 3}}">

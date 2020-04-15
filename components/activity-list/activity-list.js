@@ -33,7 +33,6 @@ Component({
         loginTipShow: true, //是否有用户信息
         targetName: 'activity',  //暂无目标页面
         isFirst:true,
-
         langData: null,  //语言数据
     },
 

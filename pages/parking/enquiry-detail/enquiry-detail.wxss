@@ -13,6 +13,6 @@ page{background:#f7f7f7;}
 .record_list .li.hover{opacity: .8;}
 .record_list .li.hover text{color:#2a99f1;}
 
-.parking_detail .dl .dd .date{font-weight: bold; font-size:36rpx;}
+.parking_detail .dl .dd .date{font-weight: bold; font-size:32rpx;}
 .parking_detail .dl .dd .green{color:#07c160;}
 .parking_detail .dl .dd .red{color:#ff0000}

@@ -137,7 +137,8 @@
                 "visitor-success/visitor-success",
                 "scan-code/scan-code",
                 "scan-success/scan-success",
-                "visitor-operation/visitor-operation"
+                "visitor-operation/visitor-operation",
+                "garden-code/garden-code"
             ]
         },
         {
@@ -244,7 +245,8 @@
         "list-nothing": "/components/result-nothing/result-nothing",
         "default-list": "/components/default-list/default-list",
         "reach-load": "/components/reach-load/reach-load",
-        "login-tip": "/components/login-tip/login-tip"
+        "login-tip": "/components/login-tip/login-tip",
+        "van-icon": "/vant/icon/index"
     },
     "sitemapLocation": "sitemap.json"
 }
